@@ -52,7 +52,12 @@
         }
       },
       "diff_pair_dimensions": [],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "starved_thermal|79502000|140644922|7d66b505-941f-4aed-b664-526723d37273|52b0aa10-dc56-4bc0-ab16-9e06ada7fc3c|F.Cu",
+          ""
+        ]
+      ],
       "meta": {
         "version": 2
       },
@@ -486,7 +491,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "",
+      "plot": "output/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "",
