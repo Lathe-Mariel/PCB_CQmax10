@@ -9861,7 +9861,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "43"
 			(at 49.53 184.785 90)
 			(effects
 				(font
@@ -10964,7 +10964,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "43"
 			(at 49.53 157.48 90)
 			(effects
 				(font
@@ -14175,7 +14175,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "43"
 			(at 49.53 167.005 90)
 			(effects
 				(font
@@ -14340,7 +14340,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "43"
 			(at 49.53 175.895 90)
 			(effects
 				(font
