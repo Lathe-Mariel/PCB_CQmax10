@@ -1,0 +1,398 @@
+Analysis & Synthesis report for lcd
+Sat Aug 22 22:20:30 2026
+Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |lcd_ctrl|state
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Post-Synthesis Netlist Statistics for Top Partition
+ 14. Elapsed Time Per Partition
+ 15. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                             ;
++------------------------------------+-----------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sat Aug 22 22:20:30 2026               ;
+; Quartus Prime Version              ; 24.1std.0 Build 1077 03/04/2025 SC Standard Edition ;
+; Revision Name                      ; lcd                                                 ;
+; Top-level Entity Name              ; lcd_ctrl                                            ;
+; Family                             ; MAX 10                                              ;
+; Total logic elements               ; 2,762                                               ;
+;     Total combinational functions  ; 2,741                                               ;
+;     Dedicated logic registers      ; 212                                                 ;
+; Total registers                    ; 212                                                 ;
+; Total pins                         ; 9                                                   ;
+; Total virtual pins                 ; 0                                                   ;
+; Total memory bits                  ; 0                                                   ;
+; Embedded Multiplier 9-bit elements ; 0                                                   ;
+; Total PLLs                         ; 0                                                   ;
+; UFM blocks                         ; 0                                                   ;
+; ADC blocks                         ; 0                                                   ;
++------------------------------------+-----------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; 10M08SCE144C8G     ;                    ;
+; Top-level entity name                                            ; lcd_ctrl           ; lcd                ;
+; Family name                                                      ; MAX 10             ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 12          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 12          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processors 7-12        ;   0.0%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                       ;
++----------------------------------+-----------------+------------------------+----------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                         ; Library ;
++----------------------------------+-----------------+------------------------+----------------------------------------------------------------------+---------+
+; lcd_ctrl.v                       ; yes             ; User Verilog HDL File  ; C:/Users/user/Documents/GitHub/PCB_CQmax10/CQmax10/sample/lcd_ctrl.v ;         ;
+; img_rom.v                        ; yes             ; User Verilog HDL File  ; C:/Users/user/Documents/GitHub/PCB_CQmax10/CQmax10/sample/img_rom.v  ;         ;
++----------------------------------+-----------------+------------------------+----------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary               ;
++---------------------------------------------+-------------+
+; Resource                                    ; Usage       ;
++---------------------------------------------+-------------+
+; Estimated Total logic elements              ; 2,762       ;
+;                                             ;             ;
+; Total combinational functions               ; 2741        ;
+; Logic element usage by number of LUT inputs ;             ;
+;     -- 4 input functions                    ; 2315        ;
+;     -- 3 input functions                    ; 223         ;
+;     -- <=2 input functions                  ; 203         ;
+;                                             ;             ;
+; Logic elements by mode                      ;             ;
+;     -- normal mode                          ; 2548        ;
+;     -- arithmetic mode                      ; 193         ;
+;                                             ;             ;
+; Total registers                             ; 212         ;
+;     -- Dedicated logic registers            ; 212         ;
+;     -- I/O registers                        ; 0           ;
+;                                             ;             ;
+; I/O pins                                    ; 9           ;
+;                                             ;             ;
+; Embedded Multiplier 9-bit elements          ; 0           ;
+;                                             ;             ;
+; Maximum fan-out node                        ; img_addr[0] ;
+; Maximum fan-out                             ; 957         ;
+; Total fan-out                               ; 11254       ;
+; Average fan-out                             ; 3.79        ;
++---------------------------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                        ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name         ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------+-------------+--------------+
+; |lcd_ctrl                  ; 2741 (466)          ; 212 (212)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 9    ; 0            ; 0          ; |lcd_ctrl                   ; lcd_ctrl    ; work         ;
+;    |img_rom:u_img_rom|     ; 2275 (2275)         ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lcd_ctrl|img_rom:u_img_rom ; img_rom     ; work         ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |lcd_ctrl|state                                                                                                                                                                                                                                                                        ;
++---------------------+--------------------+-------------------+------------------+-------------------+------------------+-------------------+--------------------+------------------+---------------------+--------------------+-------------------+-------------------+-----------------+--------------+
+; Name                ; state.S_NEXT_FRAME ; state.S_FRAME_END ; state.S_PIX_LO_W ; state.S_PIX_LO_TX ; state.S_PIX_HI_W ; state.S_PIX_HI_TX ; state.S_PIX_ADDR_W ; state.S_PIX_CALC ; state.S_FRAME_START ; state.S_SLPOUT_DLY ; state.S_SWRST_DLY ; state.S_INIT_WAIT ; state.S_INIT_TX ; state.S_WAIT ;
++---------------------+--------------------+-------------------+------------------+-------------------+------------------+-------------------+--------------------+------------------+---------------------+--------------------+-------------------+-------------------+-----------------+--------------+
+; state.S_WAIT        ; 0                  ; 0                 ; 0                ; 0                 ; 0                ; 0                 ; 0                  ; 0                ; 0                   ; 0                  ; 0                 ; 0                 ; 0               ; 0            ;
+; state.S_INIT_TX     ; 0                  ; 0                 ; 0                ; 0                 ; 0                ; 0                 ; 0                  ; 0                ; 0                   ; 0                  ; 0                 ; 0                 ; 1               ; 1            ;
+; state.S_INIT_WAIT   ; 0                  ; 0                 ; 0                ; 0                 ; 0                ; 0                 ; 0                  ; 0                ; 0                   ; 0                  ; 0                 ; 1                 ; 0               ; 1            ;
+; state.S_SWRST_DLY   ; 0                  ; 0                 ; 0                ; 0                 ; 0                ; 0                 ; 0                  ; 0                ; 0                   ; 0                  ; 1                 ; 0                 ; 0               ; 1            ;
+; state.S_SLPOUT_DLY  ; 0                  ; 0                 ; 0                ; 0                 ; 0                ; 0                 ; 0                  ; 0                ; 0                   ; 1                  ; 0                 ; 0                 ; 0               ; 1            ;
+; state.S_FRAME_START ; 0                  ; 0                 ; 0                ; 0                 ; 0                ; 0                 ; 0                  ; 0                ; 1                   ; 0                  ; 0                 ; 0                 ; 0               ; 1            ;
+; state.S_PIX_CALC    ; 0                  ; 0                 ; 0                ; 0                 ; 0                ; 0                 ; 0                  ; 1                ; 0                   ; 0                  ; 0                 ; 0                 ; 0               ; 1            ;
+; state.S_PIX_ADDR_W  ; 0                  ; 0                 ; 0                ; 0                 ; 0                ; 0                 ; 1                  ; 0                ; 0                   ; 0                  ; 0                 ; 0                 ; 0               ; 1            ;
+; state.S_PIX_HI_TX   ; 0                  ; 0                 ; 0                ; 0                 ; 0                ; 1                 ; 0                  ; 0                ; 0                   ; 0                  ; 0                 ; 0                 ; 0               ; 1            ;
+; state.S_PIX_HI_W    ; 0                  ; 0                 ; 0                ; 0                 ; 1                ; 0                 ; 0                  ; 0                ; 0                   ; 0                  ; 0                 ; 0                 ; 0               ; 1            ;
+; state.S_PIX_LO_TX   ; 0                  ; 0                 ; 0                ; 1                 ; 0                ; 0                 ; 0                  ; 0                ; 0                   ; 0                  ; 0                 ; 0                 ; 0               ; 1            ;
+; state.S_PIX_LO_W    ; 0                  ; 0                 ; 1                ; 0                 ; 0                ; 0                 ; 0                  ; 0                ; 0                   ; 0                  ; 0                 ; 0                 ; 0               ; 1            ;
+; state.S_FRAME_END   ; 0                  ; 1                 ; 0                ; 0                 ; 0                ; 0                 ; 0                  ; 0                ; 0                   ; 0                  ; 0                 ; 0                 ; 0               ; 1            ;
+; state.S_NEXT_FRAME  ; 1                  ; 0                 ; 0                ; 0                 ; 0                ; 0                 ; 0                  ; 0                ; 0                   ; 0                  ; 0                 ; 0                 ; 0               ; 1            ;
++---------------------+--------------------+-------------------+------------------+-------------------+------------------+-------------------+--------------------+------------------+---------------------+--------------------+-------------------+-------------------+-----------------+--------------+
+
+
++---------------------------------------------------------------+
+; Registers Removed During Synthesis                            ;
++---------------------------------------+-----------------------+
+; Register name                         ; Reason for Removal    ;
++---------------------------------------+-----------------------+
+; next_y[0]                             ; Merged with next_x[0] ;
+; img_x[0]                              ; Merged with img_y[0]  ;
+; state~18                              ; Lost fanout           ;
+; state~19                              ; Lost fanout           ;
+; state~20                              ; Lost fanout           ;
+; state~21                              ; Lost fanout           ;
+; Total Number of Removed Registers = 6 ;                       ;
++---------------------------------------+-----------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 212   ;
+; Number of registers using Synchronous Clear  ; 42    ;
+; Number of registers using Synchronous Load   ; 56    ;
+; Number of registers using Asynchronous Clear ; 210   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 137   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; next_x[7]                               ; 3       ;
+; next_x[3]                               ; 3       ;
+; next_x[2]                               ; 3       ;
+; next_y[6]                               ; 4       ;
+; next_y[5]                               ; 4       ;
+; next_y[2]                               ; 4       ;
+; lcd_cs~reg0                             ; 2       ;
+; img_x[7]                                ; 3       ;
+; img_x[3]                                ; 4       ;
+; img_x[2]                                ; 3       ;
+; img_y[6]                                ; 3       ;
+; img_y[5]                                ; 3       ;
+; img_y[2]                                ; 3       ;
+; Total number of inverted registers = 13 ;         ;
++-----------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |lcd_ctrl|cur_color[15]    ;
+; 7:1                ; 24 bits   ; 96 LEs        ; 24 LEs               ; 72 LEs                 ; Yes        ; |lcd_ctrl|dly_cnt[17]      ;
+; 9:1                ; 7 bits    ; 42 LEs        ; 7 LEs                ; 35 LEs                 ; Yes        ; |lcd_ctrl|init_idx[1]      ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lcd_ctrl|tx_byte[1]       ;
+; 3:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |lcd_ctrl|col_cnt          ;
+; 14:1               ; 3 bits    ; 27 LEs        ; 12 LEs               ; 15 LEs                 ; No         ; |lcd_ctrl|Selector11       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 9                           ;
+; cycloneiii_ff         ; 212                         ;
+;     CLR               ; 42                          ;
+;     CLR SCLR          ; 6                           ;
+;     CLR SLD           ; 25                          ;
+;     ENA CLR           ; 75                          ;
+;     ENA CLR SCLR      ; 31                          ;
+;     ENA CLR SCLR SLD  ; 5                           ;
+;     ENA CLR SLD       ; 26                          ;
+;     plain             ; 2                           ;
+; cycloneiii_lcell_comb ; 2744                        ;
+;     arith             ; 193                         ;
+;         2 data inputs ; 125                         ;
+;         3 data inputs ; 68                          ;
+;     normal            ; 2551                        ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 17                          ;
+;         2 data inputs ; 62                          ;
+;         3 data inputs ; 155                         ;
+;         4 data inputs ; 2315                        ;
+;                       ;                             ;
+; Max LUT depth         ; 8.00                        ;
+; Average LUT depth     ; 5.97                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:27     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 24.1std.0 Build 1077 03/04/2025 SC Standard Edition
+    Info: Processing started: Sat Aug 22 22:19:50 2026
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lcd -c lcd
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file lcd_ctrl.v
+    Info (12023): Found entity 1: lcd_ctrl File: C:/Users/user/Documents/GitHub/PCB_CQmax10/CQmax10/sample/lcd_ctrl.v Line: 17
+Info (12021): Found 1 design units, including 1 entities, in source file img_rom.v
+    Info (12023): Found entity 1: img_rom File: C:/Users/user/Documents/GitHub/PCB_CQmax10/CQmax10/sample/img_rom.v Line: 8
+Info (12127): Elaborating entity "lcd_ctrl" for the top level hierarchy
+Warning (10034): Output port "led" at lcd_ctrl.v(27) has no driver File: C:/Users/user/Documents/GitHub/PCB_CQmax10/CQmax10/sample/lcd_ctrl.v Line: 27
+Info (12128): Elaborating entity "img_rom" for hierarchy "img_rom:u_img_rom" File: C:/Users/user/Documents/GitHub/PCB_CQmax10/CQmax10/sample/lcd_ctrl.v Line: 65
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276013): RAM logic "img_rom:u_img_rom|Ram0" is uninferred because MIF is not supported for the selected family File: C:/Users/user/Documents/GitHub/PCB_CQmax10/CQmax10/sample/img_rom.v Line: 22
+Info (13000): Registers with preset signals will power-up high File: C:/Users/user/Documents/GitHub/PCB_CQmax10/CQmax10/sample/lcd_ctrl.v Line: 20
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "led0" is stuck at GND File: C:/Users/user/Documents/GitHub/PCB_CQmax10/CQmax10/sample/lcd_ctrl.v Line: 24
+    Warning (13410): Pin "led1" is stuck at VCC File: C:/Users/user/Documents/GitHub/PCB_CQmax10/CQmax10/sample/lcd_ctrl.v Line: 25
+    Warning (13410): Pin "led" is stuck at GND File: C:/Users/user/Documents/GitHub/PCB_CQmax10/CQmax10/sample/lcd_ctrl.v Line: 27
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 4 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 2776 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 7 output pins
+    Info (21061): Implemented 2767 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 6 warnings
+    Info: Peak virtual memory: 4859 megabytes
+    Info: Processing ended: Sat Aug 22 22:20:30 2026
+    Info: Elapsed time: 00:00:40
+    Info: Total CPU time (on all processors): 00:00:58
+
+

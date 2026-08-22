@@ -1,0 +1,33 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "lcd_cs",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_dc",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_mosi",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_sck",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "btn_rst",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

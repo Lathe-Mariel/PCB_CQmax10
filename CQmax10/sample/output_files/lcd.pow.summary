@@ -1,0 +1,12 @@
+Power Analyzer Status : Successful - Sat Aug 22 21:59:26 2026
+Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Standard Edition
+Revision Name : lcd
+Top-level Entity Name : lcd_ctrl
+Family : MAX 10
+Device : 10M08SCE144C8G
+Power Models : Final
+Total Thermal Power Dissipation : 121.26 mW
+Core Dynamic Thermal Power Dissipation : 0.00 mW
+Core Static Thermal Power Dissipation : 110.62 mW
+I/O Thermal Power Dissipation : 10.64 mW
+Power Estimation Confidence : Low: user provided insufficient toggle rate data

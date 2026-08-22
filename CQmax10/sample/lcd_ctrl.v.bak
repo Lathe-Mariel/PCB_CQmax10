@@ -20,19 +20,12 @@ module lcd_ctrl (
     output reg  lcd_cs,    // G5  Chip Select (Low有効)
     output reg  lcd_dc,    // K11 Data/Command (RS)
     output reg  lcd_mosi,  // G8  SPI MOSI
-    output reg  lcd_sck,    // J5  SPI Clock
-    output wire   led0,
-	 output wire  led1,
-	 output reg  led
-	 );
+    output reg  lcd_sck    // J5  SPI Clock
+);
 
 // ============================================================
 // ユーザボタン 2段同期化 + 非同期リセット生成
 // ============================================================
-
-assign led0 = 0;
-assign led1 = 1;
-
 reg btn_r1, btn_r2;
 always @(posedge clk) begin
     btn_r1 <= btn_rst;
@@ -266,9 +259,6 @@ reg       dir_y;      // 0=下方向, 1=上方向
 
 // 位置更新ロジック (move_pulse ごとに next_x/next_y を更新)
 always @(posedge clk or negedge rst_n) begin
-
-//    led <= 1;
-
     if (!rst_n) begin
         next_x <= 9'd140;   // 初期位置: 中央付近
         next_y <= 8'd100;

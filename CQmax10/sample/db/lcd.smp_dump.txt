@@ -1,0 +1,17 @@
+
+State Machine - |lcd_ctrl|state
+Name state.S_NEXT_FRAME state.S_FRAME_END state.S_PIX_LO_W state.S_PIX_LO_TX state.S_PIX_HI_W state.S_PIX_HI_TX state.S_PIX_ADDR_W state.S_PIX_CALC state.S_FRAME_START state.S_SLPOUT_DLY state.S_SWRST_DLY state.S_INIT_WAIT state.S_INIT_TX state.S_WAIT 
+state.S_WAIT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.S_INIT_TX 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.S_INIT_WAIT 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.S_SWRST_DLY 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.S_SLPOUT_DLY 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.S_FRAME_START 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.S_PIX_CALC 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.S_PIX_ADDR_W 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.S_PIX_HI_TX 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.S_PIX_HI_W 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.S_PIX_LO_TX 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.S_PIX_LO_W 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.S_FRAME_END 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_NEXT_FRAME 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
