@@ -1,0 +1,18 @@
+Fitter Status : Successful - Mon Aug 24 02:00:03 2026
+Quartus Prime Version : 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+Revision Name : matrix_led
+Top-level Entity Name : top_matrix_led
+Family : MAX 10
+Device : 10M08SCE144C8G
+Timing Models : Final
+Total logic elements : 236 / 8,064 ( 3 % )
+    Total combinational functions : 228 / 8,064 ( 3 % )
+    Dedicated logic registers : 116 / 8,064 ( 1 % )
+Total registers : 116
+Total pins : 13 / 101 ( 13 % )
+Total virtual pins : 0
+Total memory bits : 0 / 387,072 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 48 ( 0 % )
+Total PLLs : 0 / 1 ( 0 % )
+UFM blocks : 0 / 1 ( 0 % )
+ADC blocks : 0

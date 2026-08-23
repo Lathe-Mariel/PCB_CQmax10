@@ -1,0 +1,49 @@
+FPGAデザインを設計して，Quartus Primer Lite用のプロジェクトを作る
+
+# アプリケーション
+2色マトリクスLEDのダイナミック点灯制御
+
+## マトリクスLEDの信号
+8ビットシフトレジスタ経由のColumn Green
+8ビットシフトレジスタ経由のRow
+8ビットシフトレジスタ経由のColumn Red
+3つの信号のクロックは1つ（信号名：CLOCK）
+
+## 表示内容
+1秒ごとに異なる文字を表示する
+表示するのは数字の0～9まで
+
+# HDL
+SystemVerilog
+
+# 合成系
+Quartus Prime lite
+
+# デバイス
+## FPGAチップ
+max10
+
+## LEDマトリクス
+LTP-12188M-08 (https://akizukidenshi.com/goodsaffix/ltp12188m.pdf)
+
+## シフトレジスタ
+74HC595(https://toshiba.semicon-storage.com/info/TC74HC595AP_datasheet_ja_20140301.pdf?did=16501&prodName=TC74HC595AP)
+
+## ベースボード
+https://github.com/Lathe-Mariel/PCB_CQmax10
+
+# 物理制約
+信号は全て，3.3-V LVCMOS
+
+信号名 | FPGA ピン | 内容
+---|---|---
+ROW | 98 | Row(Anode)
+COL_GREEN | 101 | Column Green(Cathode Green)
+COL_RED | 99 Column Red(Cathode Red)
+CLR1 | 100 | Clear1(column green shift regster clear, active low)
+CLR3 | 96 | Clear3(row shift regster clear, active low)
+CLR2 | 105 | Clear2(column red shift regster clear, active low)
+RCLOCK | 97 | R Clock(shift regster rck)
+CLOCK | 106 | Clock(shift regster clock)
+clk | 88 | System clock
+rst_n | 17 | system reset_n

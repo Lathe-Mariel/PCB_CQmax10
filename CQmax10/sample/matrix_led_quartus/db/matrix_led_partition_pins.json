@@ -1,0 +1,61 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "ROW",
+					"strict" : false
+				},
+				{
+					"name" : "COL_GREEN",
+					"strict" : false
+				},
+				{
+					"name" : "COL_RED",
+					"strict" : false
+				},
+				{
+					"name" : "CLR1",
+					"strict" : false
+				},
+				{
+					"name" : "CLR3",
+					"strict" : false
+				},
+				{
+					"name" : "CLR2",
+					"strict" : false
+				},
+				{
+					"name" : "RCLOCK",
+					"strict" : false
+				},
+				{
+					"name" : "CLOCK",
+					"strict" : false
+				},
+				{
+					"name" : "led",
+					"strict" : false
+				},
+				{
+					"name" : "led0",
+					"strict" : false
+				},
+				{
+					"name" : "sw0",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "rst_n",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

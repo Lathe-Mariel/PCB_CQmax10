@@ -1,0 +1,11 @@
+
+State Machine - |top_matrix_led|state
+Name state.ST_HOLD state.ST_LATCH_LO state.ST_LATCH_HI state.ST_LATCH_SETUP state.ST_BIT_CLKHI state.ST_BIT_SETUP state.ST_LOAD state.ST_CLR 
+state.ST_CLR 0 0 0 0 0 0 0 0 
+state.ST_LOAD 0 0 0 0 0 0 1 1 
+state.ST_BIT_SETUP 0 0 0 0 0 1 0 1 
+state.ST_BIT_CLKHI 0 0 0 0 1 0 0 1 
+state.ST_LATCH_SETUP 0 0 0 1 0 0 0 1 
+state.ST_LATCH_HI 0 0 1 0 0 0 0 1 
+state.ST_LATCH_LO 0 1 0 0 0 0 0 1 
+state.ST_HOLD 1 0 0 0 0 0 0 1 

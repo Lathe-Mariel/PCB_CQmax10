@@ -1,0 +1,6 @@
+QUARTUS_VERSION = "24.1"
+DATE = "24:00:00  August 24, 2026"
+
+# Revisions
+
+PROJECT_REVISION = "matrix_led"

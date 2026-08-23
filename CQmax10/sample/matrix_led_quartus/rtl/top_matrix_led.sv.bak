@@ -1,0 +1,289 @@
+`default_nettype none
+// =============================================================================
+// top_matrix_led.sv
+// -----------------------------------------------------------------------------
+// 2-color (Red/Green) 8x8 dot-matrix LED dynamic-scan driver
+//
+//   Target device : Intel/Altera MAX 10, 10M08SAE144C8G (144-pin EQFP)
+//                    -- matches the PCB_CQmax10 / "CQ-MAX10-A"-style board.
+//                    Change DEVICE in the .qsf if your board uses a
+//                    different MAX 10 part/package.
+//   Synthesis tool: Quartus Prime Lite
+//   LED matrix    : Akizuki LTP-12188M-08 (8x8, bi-color, common-anode rows)
+//   Drivers       : 3x TC74HC595AP shift registers
+//                      - ROW        -> row (anode)          shift register SER
+//                      - COL_GREEN  -> column green (cathode) shift register SER
+//                      - COL_RED    -> column red (cathode)   shift register SER
+//                    All three 595's SH_CP (shift clock) pins are wired
+//                    together to the single shared CLOCK signal; their
+//                    ST_CP (storage/latch clock) pins are wired together to
+//                    RCLOCK. CLR1/CLR2/CLR3 are independent /MR (clear,
+//                    active-low) pins, one per register.
+//
+// -----------------------------------------------------------------------------
+// DISPLAY BEHAVIOUR
+//   Digits 0-9 are shown in turn, one full digit per second. Even digits are
+//   drawn in GREEN, odd digits in RED, so both column color channels (and
+//   both independent 74HC595 clear lines CLR1/CLR2) are exercised.
+//   The 8x8 glyph is scanned row-by-row (dynamic multiplexing): for each of
+//   the 8 rows, the row-select pattern and the two column patterns are
+//   shifted into the three 74HC595's (8 shared CLOCK pulses), then latched
+//   together with a single RCLOCK pulse, then held for ROW_HOLD_TICKS system
+//   clock cycles before moving on to the next row. With the default
+//   parameters below this gives an 8-row refresh rate of ~125 Hz (no visible
+//   flicker).
+//
+// -----------------------------------------------------------------------------
+// !!! ASSUMPTIONS - PLEASE VERIFY AGAINST THE ACTUAL PCB_CQmax10 HARDWARE !!!
+//   1. clk (pin 88) frequency = 50 MHz (as specified). Every timing
+//      parameter below (row refresh rate, 1-second digit rate, shift clock
+//      rate) is derived from CLK_FREQ_HZ, so if the real oscillator ever
+//      changes, update CLK_FREQ_HZ here and the create_clock period in
+//      matrix_led.sdc together.
+//   2. ROW is assumed active-HIGH (a '1' shifted out turns that row's anode
+//      driver on) and COL_GREEN/COL_RED are assumed active-LOW (a '0' sinks
+//      the cathode and lights that color). If your row/column driver
+//      transistors invert this, flip ROW_ACTIVE_HIGH / COL_ACTIVE_LOW.
+//   3. Bits are shifted MSB-first into every 74HC595 (bit[7] of the pattern
+//      is sent first). If your column wiring is mirrored left-to-right,
+//      either swap this shift order or mirror the font_rom patterns.
+//   4. CLR1/CLR2/CLR3 are pulsed low for CLR_PULSE_TICKS cycles once after
+//      reset to force all three 595 shift/storage stages to a known (all
+//      zero) state, then held high (inactive) for normal operation since
+//      RCLOCK continuously overwrites the storage register anyway.
+// =============================================================================
+
+module top_matrix_led #(
+    parameter int CLK_FREQ_HZ       = 50_000_000,             // system clk = 50 MHz
+    parameter int SHIFT_HALF_PERIOD = 6,                       // sys-clk cycles per CLOCK/RCLOCK half-period
+    parameter int ROW_HOLD_TICKS    = CLK_FREQ_HZ / 1000,      // ~1 kHz row switch -> ~125 Hz frame refresh
+    parameter int DIGIT_HOLD_TICKS  = CLK_FREQ_HZ,             // 1 second per digit
+    parameter int CLR_PULSE_TICKS   = 16,                      // width of the power-up /MR pulse
+    parameter bit ROW_ACTIVE_HIGH   = 1'b1,                    // see assumption (2) above
+    parameter bit COL_ACTIVE_LOW    = 1'b1                     // see assumption (2) above
+)(
+    input  logic clk,          // pin 88  : system clock
+    input  logic rst_n,        // pin 17  : asynchronous reset, active low
+
+    output logic ROW,          // pin 98  : row shift register serial data in
+    output logic COL_GREEN,    // pin 101 : column-green shift register serial data in
+    output logic COL_RED,      // pin 99  : column-red shift register serial data in
+
+    output logic CLR1,         // pin 100 : column-green shift reg clear, active low
+    output logic CLR3,         // pin 96  : row shift reg clear, active low
+    output logic CLR2,         // pin 105 : column-red shift reg clear, active low
+
+    output logic RCLOCK,       // pin 97  : storage register clock (latch, shared)
+    output logic CLOCK         // pin 106 : shift register clock (shared)
+);
+
+    // ------------------------------------------------------------------
+    // Reset synchronizer (async assert, sync de-assert)
+    // ------------------------------------------------------------------
+    logic [1:0] rst_sync;
+    logic       rst_int_n;
+
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (!rst_n) rst_sync <= 2'b00;
+        else        rst_sync <= {rst_sync[0], 1'b1};
+    end
+    assign rst_int_n = rst_sync[1];
+
+    // ------------------------------------------------------------------
+    // 1-second digit counter: cycles 0 -> 9 -> 0 ...
+    // ------------------------------------------------------------------
+    logic [31:0] sec_cnt;
+    logic [3:0]  digit_idx;
+
+    always_ff @(posedge clk or negedge rst_int_n) begin
+        if (!rst_int_n) begin
+            sec_cnt   <= 32'd0;
+            digit_idx <= 4'd0;
+        end else if (sec_cnt == DIGIT_HOLD_TICKS-1) begin
+            sec_cnt   <= 32'd0;
+            digit_idx <= (digit_idx == 4'd9) ? 4'd0 : digit_idx + 4'd1;
+        end else begin
+            sec_cnt <= sec_cnt + 32'd1;
+        end
+    end
+
+    // ------------------------------------------------------------------
+    // Font lookup for the row currently being scanned
+    // ------------------------------------------------------------------
+    logic [2:0] row_idx;     // 0-7, which glyph row is being scanned right now
+    logic [7:0] col_pattern; // 1 = pixel lit, bit7 = leftmost column
+
+    font_rom u_font (
+        .digit   (digit_idx),
+        .row     (row_idx),
+        .pattern (col_pattern)
+    );
+
+    // Even digit -> green, odd digit -> red (exercises both color channels)
+    logic [7:0] row_sel_raw, colg_raw, colr_raw;
+    always_comb begin
+        row_sel_raw = 8'h01 << row_idx;                       // one-hot: selects active row
+        colg_raw    = digit_idx[0] ? 8'h00      : col_pattern;
+        colr_raw    = digit_idx[0] ? col_pattern : 8'h00;
+    end
+
+    // Apply hardware polarity (see assumption 2)
+    logic [7:0] row_pat, colg_pat, colr_pat;
+    assign row_pat  = ROW_ACTIVE_HIGH ? row_sel_raw : ~row_sel_raw;
+    assign colg_pat = COL_ACTIVE_LOW  ? ~colg_raw   :  colg_raw;
+    assign colr_pat = COL_ACTIVE_LOW  ? ~colr_raw   :  colr_raw;
+
+    // ------------------------------------------------------------------
+    // Scan / shift-out sequencer
+    // ------------------------------------------------------------------
+    typedef enum logic [3:0] {
+        ST_CLR,          // hold CLR1/CLR2/CLR3 low once after reset
+        ST_LOAD,         // load row/col pattern for current row into shift regs
+        ST_BIT_SETUP,    // drive data bit on ROW/COL_GREEN/COL_RED, CLOCK low
+        ST_BIT_CLKHI,    // CLOCK high (rising edge shifts the bit into all 3 595's)
+        ST_LATCH_SETUP,  // RCLOCK low, settle
+        ST_LATCH_HI,     // RCLOCK high (rising edge latches all 3 storage regs)
+        ST_LATCH_LO,     // RCLOCK back low
+        ST_HOLD          // display current row for ROW_HOLD_TICKS, then next row
+    } state_e;
+
+    state_e      state;
+    logic [7:0]  row_shift, colg_shift, colr_shift; // MSB-first shift-out registers
+    logic [2:0]  bit_idx;                            // counts which of the 8 bits is being sent
+    logic [31:0] timer;
+
+    always_ff @(posedge clk or negedge rst_int_n) begin
+        if (!rst_int_n) begin
+            state      <= ST_CLR;
+            row_idx    <= 3'd0;
+            bit_idx    <= 3'd0;
+            timer      <= 32'd0;
+            row_shift  <= 8'h00;
+            colg_shift <= 8'h00;
+            colr_shift <= 8'h00;
+            ROW        <= 1'b0;
+            COL_GREEN  <= 1'b0;
+            COL_RED    <= 1'b0;
+            CLOCK      <= 1'b0;
+            RCLOCK     <= 1'b0;
+            CLR1       <= 1'b0;   // asserted (active-low) immediately at reset
+            CLR2       <= 1'b0;
+            CLR3       <= 1'b0;
+        end else begin
+            unique case (state)
+
+                // ---- power-up clear pulse -------------------------------
+                ST_CLR: begin
+                    CLR1   <= 1'b0;
+                    CLR2   <= 1'b0;
+                    CLR3   <= 1'b0;
+                    CLOCK  <= 1'b0;
+                    RCLOCK <= 1'b0;
+                    if (timer == CLR_PULSE_TICKS-1) begin
+                        timer <= 32'd0;
+                        CLR1  <= 1'b1;   // release clear (idle = high)
+                        CLR2  <= 1'b1;
+                        CLR3  <= 1'b1;
+                        state <= ST_LOAD;
+                    end else begin
+                        timer <= timer + 32'd1;
+                    end
+                end
+
+                // ---- load next row's pattern into the shift-out regs ---
+                ST_LOAD: begin
+                    row_shift  <= row_pat;
+                    colg_shift <= colg_pat;
+                    colr_shift <= colr_pat;
+                    bit_idx    <= 3'd0;
+                    timer      <= 32'd0;
+                    CLOCK      <= 1'b0;
+                    state      <= ST_BIT_SETUP;
+                end
+
+                // ---- present MSB of each shift-out reg, CLOCK low -------
+                ST_BIT_SETUP: begin
+                    ROW       <= row_shift[7];
+                    COL_GREEN <= colg_shift[7];
+                    COL_RED   <= colr_shift[7];
+                    CLOCK     <= 1'b0;
+                    if (timer == SHIFT_HALF_PERIOD-1) begin
+                        timer <= 32'd0;
+                        state <= ST_BIT_CLKHI;
+                    end else begin
+                        timer <= timer + 32'd1;
+                    end
+                end
+
+                // ---- CLOCK high: rising edge shifts the bit in ----------
+                ST_BIT_CLKHI: begin
+                    CLOCK <= 1'b1;
+                    if (timer == SHIFT_HALF_PERIOD-1) begin
+                        timer      <= 32'd0;
+                        row_shift  <= {row_shift[6:0],  1'b0};
+                        colg_shift <= {colg_shift[6:0], 1'b0};
+                        colr_shift <= {colr_shift[6:0], 1'b0};
+                        if (bit_idx == 3'd7) begin
+                            bit_idx <= 3'd0;
+                            state   <= ST_LATCH_SETUP;
+                        end else begin
+                            bit_idx <= bit_idx + 3'd1;
+                            state   <= ST_BIT_SETUP;
+                        end
+                    end else begin
+                        timer <= timer + 32'd1;
+                    end
+                end
+
+                // ---- RCLOCK low, settle ---------------------------------
+                ST_LATCH_SETUP: begin
+                    CLOCK  <= 1'b0;
+                    RCLOCK <= 1'b0;
+                    if (timer == SHIFT_HALF_PERIOD-1) begin
+                        timer <= 32'd0;
+                        state <= ST_LATCH_HI;
+                    end else begin
+                        timer <= timer + 32'd1;
+                    end
+                end
+
+                // ---- RCLOCK high: rising edge latches storage regs ------
+                ST_LATCH_HI: begin
+                    RCLOCK <= 1'b1;
+                    if (timer == SHIFT_HALF_PERIOD-1) begin
+                        timer <= 32'd0;
+                        state <= ST_LATCH_LO;
+                    end else begin
+                        timer <= timer + 32'd1;
+                    end
+                end
+
+                // ---- RCLOCK back low -------------------------------------
+                ST_LATCH_LO: begin
+                    RCLOCK <= 1'b0;
+                    if (timer == SHIFT_HALF_PERIOD-1) begin
+                        timer <= 32'd0;
+                        state <= ST_HOLD;
+                    end else begin
+                        timer <= timer + 32'd1;
+                    end
+                end
+
+                // ---- hold this row visible, then advance to next row ----
+                ST_HOLD: begin
+                    if (timer == ROW_HOLD_TICKS-1) begin
+                        timer   <= 32'd0;
+                        row_idx <= (row_idx == 3'd7) ? 3'd0 : row_idx + 3'd1;
+                        state   <= ST_LOAD;
+                    end else begin
+                        timer <= timer + 32'd1;
+                    end
+                end
+
+                default: state <= ST_CLR;
+            endcase
+        end
+    end
+
+endmodule
+`default_nettype wire
