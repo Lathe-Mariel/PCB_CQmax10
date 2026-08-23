@@ -17,13 +17,16 @@
 module lcd_ctrl (
     input  wire clk,       // 50 MHz
     input  wire btn_rst,   // ユーザボタン H11 (押下=Low)
+	 input  wire sw1,
     output reg  lcd_cs,    // G5  Chip Select (Low有効)
     output reg  lcd_dc,    // K11 Data/Command (RS)
     output reg  lcd_mosi,  // G8  SPI MOSI
     output reg  lcd_sck,    // J5  SPI Clock
     output wire   led0,
 	 output wire  led1,
-	 output reg  led
+	 output wire  led,
+	 output wire   led2,
+	 output reg  led3
 	 );
 
 // ============================================================
@@ -31,7 +34,12 @@ module lcd_ctrl (
 // ============================================================
 
 assign led0 = 0;
-assign led1 = 1;
+assign led1 = 0;
+assign led2 = sw1;
+
+assign led = led_reg;
+
+reg led_reg;
 
 reg btn_r1, btn_r2;
 always @(posedge clk) begin
@@ -170,10 +178,12 @@ always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
         poweron_cnt <= 24'd0;
         init_start  <= 1'b0;
+		  led3 <= 0;
     end else begin
-        if (poweron_cnt == POWERON_WAIT)
+        if (poweron_cnt == POWERON_WAIT)begin
             init_start <= 1'b1;
-        else begin
+				led3 <= 1;
+        end else begin
             init_start  <= 1'b0;
             poweron_cnt <= poweron_cnt + 1'b1;
         end
@@ -267,14 +277,14 @@ reg       dir_y;      // 0=下方向, 1=上方向
 // 位置更新ロジック (move_pulse ごとに next_x/next_y を更新)
 always @(posedge clk or negedge rst_n) begin
 
-//    led <= 1;
-
     if (!rst_n) begin
         next_x <= 9'd140;   // 初期位置: 中央付近
         next_y <= 8'd100;
         dir_x  <= 1'b0;    // 初期方向: 右下
         dir_y  <= 1'b0;
     end else if (move_pulse) begin
+	     led_reg <= !led_reg;
+		  
         // X方向移動 & 跳ね返り
         if (!dir_x) begin
             if (next_x >= X_MAX) begin

@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Sat Aug 22 22:20:30 2026
+Analysis & Synthesis Status : Successful - Sun Aug 23 01:55:14 2026
 Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Standard Edition
 Revision Name : lcd
 Top-level Entity Name : lcd_ctrl
 Family : MAX 10
-Total logic elements : 2,762
-    Total combinational functions : 2,741
-    Dedicated logic registers : 212
-Total registers : 212
-Total pins : 9
+Total logic elements : 2,757
+    Total combinational functions : 2,736
+    Dedicated logic registers : 214
+Total registers : 214
+Total pins : 12
 Total virtual pins : 0
 Total memory bits : 0
 Embedded Multiplier 9-bit elements : 0

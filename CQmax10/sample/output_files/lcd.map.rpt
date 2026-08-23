@@ -1,5 +1,5 @@
 Analysis & Synthesis report for lcd
-Sat Aug 22 22:20:30 2026
+Sun Aug 23 01:55:14 2026
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Standard Edition
 
 
@@ -47,16 +47,16 @@ on the Quartus Prime software download page.
 +------------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                             ;
 +------------------------------------+-----------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Aug 22 22:20:30 2026               ;
+; Analysis & Synthesis Status        ; Successful - Sun Aug 23 01:55:14 2026               ;
 ; Quartus Prime Version              ; 24.1std.0 Build 1077 03/04/2025 SC Standard Edition ;
 ; Revision Name                      ; lcd                                                 ;
 ; Top-level Entity Name              ; lcd_ctrl                                            ;
 ; Family                             ; MAX 10                                              ;
-; Total logic elements               ; 2,762                                               ;
-;     Total combinational functions  ; 2,741                                               ;
-;     Dedicated logic registers      ; 212                                                 ;
-; Total registers                    ; 212                                                 ;
-; Total pins                         ; 9                                                   ;
+; Total logic elements               ; 2,757                                               ;
+;     Total combinational functions  ; 2,736                                               ;
+;     Dedicated logic registers      ; 214                                                 ;
+; Total registers                    ; 214                                                 ;
+; Total pins                         ; 12                                                  ;
 ; Total virtual pins                 ; 0                                                   ;
 ; Total memory bits                  ; 0                                                   ;
 ; Embedded Multiplier 9-bit elements ; 0                                                   ;
@@ -165,12 +165,14 @@ on the Quartus Prime software download page.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.1%      ;
+;     Processor 2            ;   0.0%      ;
 ;     Processor 3            ;   0.0%      ;
 ;     Processor 4            ;   0.0%      ;
 ;     Processor 5            ;   0.0%      ;
 ;     Processor 6            ;   0.0%      ;
-;     Processors 7-12        ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
+;     Processors 9-12        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -189,30 +191,30 @@ on the Quartus Prime software download page.
 +---------------------------------------------+-------------+
 ; Resource                                    ; Usage       ;
 +---------------------------------------------+-------------+
-; Estimated Total logic elements              ; 2,762       ;
+; Estimated Total logic elements              ; 2,757       ;
 ;                                             ;             ;
-; Total combinational functions               ; 2741        ;
+; Total combinational functions               ; 2736        ;
 ; Logic element usage by number of LUT inputs ;             ;
-;     -- 4 input functions                    ; 2315        ;
+;     -- 4 input functions                    ; 2310        ;
 ;     -- 3 input functions                    ; 223         ;
 ;     -- <=2 input functions                  ; 203         ;
 ;                                             ;             ;
 ; Logic elements by mode                      ;             ;
-;     -- normal mode                          ; 2548        ;
+;     -- normal mode                          ; 2543        ;
 ;     -- arithmetic mode                      ; 193         ;
 ;                                             ;             ;
-; Total registers                             ; 212         ;
-;     -- Dedicated logic registers            ; 212         ;
+; Total registers                             ; 214         ;
+;     -- Dedicated logic registers            ; 214         ;
 ;     -- I/O registers                        ; 0           ;
 ;                                             ;             ;
-; I/O pins                                    ; 9           ;
+; I/O pins                                    ; 12          ;
 ;                                             ;             ;
 ; Embedded Multiplier 9-bit elements          ; 0           ;
 ;                                             ;             ;
 ; Maximum fan-out node                        ; img_addr[0] ;
-; Maximum fan-out                             ; 957         ;
-; Total fan-out                               ; 11254       ;
-; Average fan-out                             ; 3.79        ;
+; Maximum fan-out                             ; 952         ;
+; Total fan-out                               ; 11245       ;
+; Average fan-out                             ; 3.78        ;
 +---------------------------------------------+-------------+
 
 
@@ -221,8 +223,8 @@ on the Quartus Prime software download page.
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name         ; Entity Name ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------+-------------+--------------+
-; |lcd_ctrl                  ; 2741 (466)          ; 212 (212)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 9    ; 0            ; 0          ; |lcd_ctrl                   ; lcd_ctrl    ; work         ;
-;    |img_rom:u_img_rom|     ; 2275 (2275)         ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lcd_ctrl|img_rom:u_img_rom ; img_rom     ; work         ;
+; |lcd_ctrl                  ; 2736 (465)          ; 214 (214)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 12   ; 0            ; 0          ; |lcd_ctrl                   ; lcd_ctrl    ; work         ;
+;    |img_rom:u_img_rom|     ; 2271 (2271)         ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lcd_ctrl|img_rom:u_img_rom ; img_rom     ; work         ;
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -270,10 +272,10 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 212   ;
+; Total registers                              ; 214   ;
 ; Number of registers using Synchronous Clear  ; 42    ;
 ; Number of registers using Synchronous Load   ; 56    ;
-; Number of registers using Asynchronous Clear ; 210   ;
+; Number of registers using Asynchronous Clear ; 211   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 137   ;
 ; Number of registers using Preset             ; 0     ;
@@ -321,29 +323,29 @@ Encoding Type:  One-Hot
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 9                           ;
-; cycloneiii_ff         ; 212                         ;
-;     CLR               ; 42                          ;
+; boundary_port         ; 12                          ;
+; cycloneiii_ff         ; 214                         ;
+;     CLR               ; 43                          ;
 ;     CLR SCLR          ; 6                           ;
 ;     CLR SLD           ; 25                          ;
 ;     ENA CLR           ; 75                          ;
 ;     ENA CLR SCLR      ; 31                          ;
 ;     ENA CLR SCLR SLD  ; 5                           ;
 ;     ENA CLR SLD       ; 26                          ;
-;     plain             ; 2                           ;
-; cycloneiii_lcell_comb ; 2744                        ;
+;     plain             ; 3                           ;
+; cycloneiii_lcell_comb ; 2738                        ;
 ;     arith             ; 193                         ;
 ;         2 data inputs ; 125                         ;
 ;         3 data inputs ; 68                          ;
-;     normal            ; 2551                        ;
-;         0 data inputs ; 2                           ;
+;     normal            ; 2545                        ;
+;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 17                          ;
 ;         2 data inputs ; 62                          ;
 ;         3 data inputs ; 155                         ;
-;         4 data inputs ; 2315                        ;
+;         4 data inputs ; 2310                        ;
 ;                       ;                             ;
 ; Max LUT depth         ; 8.00                        ;
-; Average LUT depth     ; 5.97                        ;
+; Average LUT depth     ; 5.98                        ;
 +-----------------------+-----------------------------+
 
 
@@ -352,7 +354,7 @@ Encoding Type:  One-Hot
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:27     ;
+; Top            ; 00:00:20     ;
 +----------------+--------------+
 
 
@@ -362,7 +364,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 24.1std.0 Build 1077 03/04/2025 SC Standard Edition
-    Info: Processing started: Sat Aug 22 22:19:50 2026
+    Info: Processing started: Sun Aug 23 01:54:46 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lcd -c lcd
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
@@ -371,28 +373,26 @@ Info (12021): Found 1 design units, including 1 entities, in source file lcd_ctr
 Info (12021): Found 1 design units, including 1 entities, in source file img_rom.v
     Info (12023): Found entity 1: img_rom File: C:/Users/user/Documents/GitHub/PCB_CQmax10/CQmax10/sample/img_rom.v Line: 8
 Info (12127): Elaborating entity "lcd_ctrl" for the top level hierarchy
-Warning (10034): Output port "led" at lcd_ctrl.v(27) has no driver File: C:/Users/user/Documents/GitHub/PCB_CQmax10/CQmax10/sample/lcd_ctrl.v Line: 27
-Info (12128): Elaborating entity "img_rom" for hierarchy "img_rom:u_img_rom" File: C:/Users/user/Documents/GitHub/PCB_CQmax10/CQmax10/sample/lcd_ctrl.v Line: 65
+Info (12128): Elaborating entity "img_rom" for hierarchy "img_rom:u_img_rom" File: C:/Users/user/Documents/GitHub/PCB_CQmax10/CQmax10/sample/lcd_ctrl.v Line: 73
 Info (276014): Found 1 instances of uninferred RAM logic
     Info (276013): RAM logic "img_rom:u_img_rom|Ram0" is uninferred because MIF is not supported for the selected family File: C:/Users/user/Documents/GitHub/PCB_CQmax10/CQmax10/sample/img_rom.v Line: 22
-Info (13000): Registers with preset signals will power-up high File: C:/Users/user/Documents/GitHub/PCB_CQmax10/CQmax10/sample/lcd_ctrl.v Line: 20
+Info (13000): Registers with preset signals will power-up high File: C:/Users/user/Documents/GitHub/PCB_CQmax10/CQmax10/sample/lcd_ctrl.v Line: 21
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "led0" is stuck at GND File: C:/Users/user/Documents/GitHub/PCB_CQmax10/CQmax10/sample/lcd_ctrl.v Line: 24
-    Warning (13410): Pin "led1" is stuck at VCC File: C:/Users/user/Documents/GitHub/PCB_CQmax10/CQmax10/sample/lcd_ctrl.v Line: 25
-    Warning (13410): Pin "led" is stuck at GND File: C:/Users/user/Documents/GitHub/PCB_CQmax10/CQmax10/sample/lcd_ctrl.v Line: 27
+    Warning (13410): Pin "led0" is stuck at GND File: C:/Users/user/Documents/GitHub/PCB_CQmax10/CQmax10/sample/lcd_ctrl.v Line: 25
+    Warning (13410): Pin "led1" is stuck at GND File: C:/Users/user/Documents/GitHub/PCB_CQmax10/CQmax10/sample/lcd_ctrl.v Line: 26
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 4 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 2776 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 2 input pins
-    Info (21059): Implemented 7 output pins
-    Info (21061): Implemented 2767 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 6 warnings
+Info (21057): Implemented 2774 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 3 input pins
+    Info (21059): Implemented 9 output pins
+    Info (21061): Implemented 2762 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 4 warnings
     Info: Peak virtual memory: 4859 megabytes
-    Info: Processing ended: Sat Aug 22 22:20:30 2026
-    Info: Elapsed time: 00:00:40
-    Info: Total CPU time (on all processors): 00:00:58
+    Info: Processing ended: Sun Aug 23 01:55:14 2026
+    Info: Elapsed time: 00:00:28
+    Info: Total CPU time (on all processors): 00:00:38
 
 

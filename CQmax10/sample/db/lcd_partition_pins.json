@@ -20,6 +20,22 @@
 					"strict" : false
 				},
 				{
+					"name" : "led",
+					"strict" : false
+				},
+				{
+					"name" : "led2",
+					"strict" : false
+				},
+				{
+					"name" : "led3",
+					"strict" : false
+				},
+				{
+					"name" : "sw1",
+					"strict" : false
+				},
+				{
 					"name" : "clk",
 					"strict" : false
 				},

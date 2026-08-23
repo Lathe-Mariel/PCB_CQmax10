@@ -118,6 +118,7 @@ clk => init_idx[3].CLK
 clk => init_idx[4].CLK
 clk => init_idx[5].CLK
 clk => init_idx[6].CLK
+clk => led_reg.CLK
 clk => dir_y.CLK
 clk => dir_x.CLK
 clk => next_y[0].CLK
@@ -172,6 +173,7 @@ clk => lcd_dc~reg0.CLK
 clk => lcd_mosi~reg0.CLK
 clk => lcd_sck~reg0.CLK
 clk => lcd_cs~reg0.CLK
+clk => led3~reg0.CLK
 clk => init_start.CLK
 clk => poweron_cnt[0].CLK
 clk => poweron_cnt[1].CLK
@@ -201,13 +203,16 @@ clk => btn_r2.CLK
 clk => btn_r1.CLK
 clk => state~15.DATAIN
 btn_rst => btn_r1.DATAIN
+sw1 => led2.DATAIN
 lcd_cs <= lcd_cs~reg0.DB_MAX_OUTPUT_PORT_TYPE
 lcd_dc <= lcd_dc~reg0.DB_MAX_OUTPUT_PORT_TYPE
 lcd_mosi <= lcd_mosi~reg0.DB_MAX_OUTPUT_PORT_TYPE
 lcd_sck <= lcd_sck~reg0.DB_MAX_OUTPUT_PORT_TYPE
 led0 <= <GND>
-led1 <= <VCC>
-led <= <GND>
+led1 <= <GND>
+led <= led_reg.DB_MAX_OUTPUT_PORT_TYPE
+led2 <= sw1.DB_MAX_OUTPUT_PORT_TYPE
+led3 <= led3~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |lcd_ctrl|img_rom:u_img_rom
