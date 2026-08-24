@@ -1,5 +1,5 @@
 Fitter report for matrix_led
-Mon Aug 24 02:00:03 2026
+Tue Aug 25 00:23:30 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -66,7 +66,7 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------------------------+
 ; Fitter Summary                                                                       ;
 +------------------------------------+-------------------------------------------------+
-; Fitter Status                      ; Successful - Mon Aug 24 02:00:03 2026           ;
+; Fitter Status                      ; Successful - Tue Aug 25 00:23:30 2026           ;
 ; Quartus Prime Version              ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
 ; Revision Name                      ; matrix_led                                      ;
 ; Top-level Entity Name              ; top_matrix_led                                  ;
@@ -153,19 +153,19 @@ on the Quartus Prime software download page.
 ; Number detected on machine ; 36          ;
 ; Maximum allowed            ; 16          ;
 ;                            ;             ;
-; Average used               ; 1.21        ;
+; Average used               ; 1.15        ;
 ; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   1.4%      ;
-;     Processor 3            ;   1.4%      ;
-;     Processor 4            ;   1.4%      ;
-;     Processor 5            ;   1.4%      ;
-;     Processor 6            ;   1.4%      ;
-;     Processor 7            ;   1.4%      ;
-;     Processor 8            ;   1.4%      ;
-;     Processors 9-16        ;   1.4%      ;
+;     Processor 2            ;   1.0%      ;
+;     Processor 3            ;   1.0%      ;
+;     Processor 4            ;   1.0%      ;
+;     Processor 5            ;   1.0%      ;
+;     Processor 6            ;   1.0%      ;
+;     Processor 7            ;   1.0%      ;
+;     Processor 8            ;   1.0%      ;
+;     Processors 9-16        ;   1.0%      ;
 +----------------------------+-------------+
 
 
@@ -234,7 +234,7 @@ The pin-out file can be found in H:/git/PCB_CQmax10/CQmax10/sample/matrix_led_qu
 ;     -- Dedicated logic registers            ; 116 / 8,064 ( 1 % ) ;
 ;     -- I/O registers                        ; 0 / 478 ( 0 % )     ;
 ;                                             ;                     ;
-; Total LABs:  partially or completely used   ; 38 / 504 ( 8 % )    ;
+; Total LABs:  partially or completely used   ; 23 / 504 ( 5 % )    ;
 ; Virtual pins                                ; 0                   ;
 ; I/O pins                                    ; 13 / 101 ( 13 % )   ;
 ;     -- Clock pins                           ; 1 / 4 ( 25 % )      ;
@@ -252,12 +252,12 @@ The pin-out file can be found in H:/git/PCB_CQmax10/CQmax10/sample/matrix_led_qu
 ; CRC blocks                                  ; 0 / 1 ( 0 % )       ;
 ; Remote update blocks                        ; 0 / 1 ( 0 % )       ;
 ; Oscillator blocks                           ; 0 / 1 ( 0 % )       ;
-; Average interconnect usage (total/H/V)      ; 0.7% / 0.6% / 0.9%  ;
-; Peak interconnect usage (total/H/V)         ; 1.9% / 1.6% / 2.3%  ;
+; Average interconnect usage (total/H/V)      ; 0.6% / 0.5% / 0.7%  ;
+; Peak interconnect usage (total/H/V)         ; 1.4% / 1.3% / 1.5%  ;
 ; Maximum fan-out                             ; 116                 ;
 ; Highest non-global fan-out                  ; 114                 ;
-; Total fan-out                               ; 1131                ;
-; Average fan-out                             ; 2.88                ;
+; Total fan-out                               ; 1133                ;
+; Average fan-out                             ; 2.87                ;
 +---------------------------------------------+---------------------+
 *  Register count does not include registers inside RAM blocks or DSP blocks.
 
@@ -289,7 +289,7 @@ The pin-out file can be found in H:/git/PCB_CQmax10/CQmax10/sample/matrix_led_qu
 ;     -- Dedicated logic registers            ; 116 / 8064 ( 1 % ) ; 0 / 8064 ( 0 % )               ;
 ;     -- I/O registers                        ; 0                  ; 0                              ;
 ;                                             ;                    ;                                ;
-; Total LABs:  partially or completely used   ; 38 / 504 ( 8 % )   ; 0 / 504 ( 0 % )                ;
+; Total LABs:  partially or completely used   ; 23 / 504 ( 5 % )   ; 0 / 504 ( 0 % )                ;
 ;                                             ;                    ;                                ;
 ; Virtual pins                                ; 0                  ; 0                              ;
 ; I/O pins                                    ; 13                 ; 0                              ;
@@ -307,7 +307,7 @@ The pin-out file can be found in H:/git/PCB_CQmax10/CQmax10/sample/matrix_led_qu
 ;     -- Registered Output Connections        ; 0                  ; 0                              ;
 ;                                             ;                    ;                                ;
 ; Internal Connections                        ;                    ;                                ;
-;     -- Total Connections                    ; 1132               ; 7                              ;
+;     -- Total Connections                    ; 1134               ; 7                              ;
 ;     -- Registered Connections               ; 570                ; 0                              ;
 ;                                             ;                    ;                                ;
 ; External Connections                        ;                    ;                                ;
@@ -351,13 +351,13 @@ The pin-out file can be found in H:/git/PCB_CQmax10/CQmax10/sample/matrix_led_qu
 +-----------+-------+----------+--------------+--------------+--------------+-----------------+------------------------+---------------+-----------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-------------+---------------------------+----------------------------+-----------------------------+----------------------+----------------------+---------------------+
 ; Name      ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Z coordinate ; Output Register ; Output Enable Register ; Power Up High ; Slew Rate ; PCI I/O Enabled ; Open Drain ; TRI Primitive ; Bus Hold ; Weak Pull Up ; I/O Standard ; Current Strength ; Termination ; Termination Control Block ; Output Buffer Pre-emphasis ; Voltage Output Differential ; Location assigned by ; Output Enable Source ; Output Enable Group ;
 +-----------+-------+----------+--------------+--------------+--------------+-----------------+------------------------+---------------+-----------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-------------+---------------------------+----------------------------+-----------------------------+----------------------+----------------------+---------------------+
-; CLOCK     ; 106   ; 6        ; 31           ; 22           ; 14           ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVCMOS ; 2mA              ; Off         ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
-; CLR1      ; 100   ; 6        ; 31           ; 19           ; 7            ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVCMOS ; 2mA              ; Off         ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
-; CLR2      ; 105   ; 6        ; 31           ; 22           ; 21           ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVCMOS ; 2mA              ; Off         ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
-; CLR3      ; 96    ; 6        ; 31           ; 17           ; 21           ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVCMOS ; 2mA              ; Off         ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
-; COL_GREEN ; 101   ; 6        ; 31           ; 19           ; 14           ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVCMOS ; 2mA              ; Off         ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
-; COL_RED   ; 99    ; 6        ; 31           ; 19           ; 21           ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVCMOS ; 2mA              ; Off         ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
-; RCLOCK    ; 97    ; 6        ; 31           ; 17           ; 7            ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVCMOS ; 2mA              ; Off         ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
+; CLOCK     ; 75    ; 5        ; 31           ; 1            ; 21           ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVCMOS ; 2mA              ; Off         ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
+; CLR1      ; 78    ; 5        ; 31           ; 4            ; 7            ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVCMOS ; 2mA              ; Off         ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
+; CLR2      ; 74    ; 5        ; 31           ; 1            ; 7            ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVCMOS ; 2mA              ; Off         ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
+; CLR3      ; 77    ; 5        ; 31           ; 1            ; 14           ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVCMOS ; 2mA              ; Off         ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
+; COL_GREEN ; 81    ; 5        ; 31           ; 4            ; 14           ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVCMOS ; 2mA              ; Off         ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
+; COL_RED   ; 79    ; 5        ; 31           ; 4            ; 21           ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVCMOS ; 2mA              ; Off         ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
+; RCLOCK    ; 76    ; 5        ; 31           ; 1            ; 0            ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVCMOS ; 2mA              ; Off         ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
 ; ROW       ; 98    ; 6        ; 31           ; 17           ; 14           ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVCMOS ; 2mA              ; Off         ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
 ; led       ; 85    ; 5        ; 31           ; 6            ; 21           ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVCMOS ; 2mA              ; Off         ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
 ; led0      ; 123   ; 8        ; 13           ; 25           ; 28           ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVCMOS ; 2mA              ; Off         ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
@@ -389,8 +389,8 @@ The pin-out file can be found in H:/git/PCB_CQmax10/CQmax10/sample/matrix_led_qu
 ; 2        ; 0 / 7 ( 0 % )   ; 2.5V          ; --           ;
 ; 3        ; 0 / 18 ( 0 % )  ; 2.5V          ; --           ;
 ; 4        ; 1 / 7 ( 14 % )  ; 3.3V          ; --           ;
-; 5        ; 1 / 12 ( 8 % )  ; 3.3V          ; --           ;
-; 6        ; 9 / 15 ( 60 % ) ; 3.3V          ; --           ;
+; 5        ; 8 / 12 ( 67 % ) ; 3.3V          ; --           ;
+; 6        ; 2 / 15 ( 13 % ) ; 3.3V          ; --           ;
 ; 7        ; 0 / 7 ( 0 % )   ; 2.5V          ; --           ;
 ; 8        ; 4 / 17 ( 24 % ) ; 3.3V          ; --           ;
 +----------+-----------------+---------------+--------------+
@@ -474,14 +474,14 @@ The pin-out file can be found in H:/git/PCB_CQmax10/CQmax10/sample/matrix_led_qu
 ; 71       ;            ; --       ; VCCA5                                          ; power  ;                       ; 3.0V/3.3V ; --         ;                 ; --       ; --           ;
 ; 72       ;            ; --       ; VCC_ONE                                        ; power  ;                       ; 3.0V/3.3V ; --         ;                 ; --       ; --           ;
 ; 73       ;            ; --       ; VCC_ONE                                        ; power  ;                       ; 3.0V/3.3V ; --         ;                 ; --       ; --           ;
-; 74       ; 121        ; 5        ; RESERVED_INPUT_WITH_WEAK_PULLUP                ;        ;                       ;           ; Row I/O    ;                 ; no       ; On           ;
-; 75       ; 120        ; 5        ; RESERVED_INPUT_WITH_WEAK_PULLUP                ;        ;                       ;           ; Row I/O    ;                 ; no       ; On           ;
-; 76       ; 123        ; 5        ; RESERVED_INPUT_WITH_WEAK_PULLUP                ;        ;                       ;           ; Row I/O    ;                 ; no       ; On           ;
-; 77       ; 122        ; 5        ; RESERVED_INPUT_WITH_WEAK_PULLUP                ;        ;                       ;           ; Row I/O    ;                 ; no       ; On           ;
-; 78       ; 133        ; 5        ; RESERVED_INPUT_WITH_WEAK_PULLUP                ;        ;                       ;           ; Row I/O    ;                 ; no       ; On           ;
-; 79       ; 132        ; 5        ; RESERVED_INPUT_WITH_WEAK_PULLUP                ;        ;                       ;           ; Row I/O    ;                 ; no       ; On           ;
+; 74       ; 121        ; 5        ; CLR2                                           ; output ; 3.3-V LVCMOS          ;           ; Row I/O    ; Y               ; no       ; Off          ;
+; 75       ; 120        ; 5        ; CLOCK                                          ; output ; 3.3-V LVCMOS          ;           ; Row I/O    ; Y               ; no       ; Off          ;
+; 76       ; 123        ; 5        ; RCLOCK                                         ; output ; 3.3-V LVCMOS          ;           ; Row I/O    ; Y               ; no       ; Off          ;
+; 77       ; 122        ; 5        ; CLR3                                           ; output ; 3.3-V LVCMOS          ;           ; Row I/O    ; Y               ; no       ; Off          ;
+; 78       ; 133        ; 5        ; CLR1                                           ; output ; 3.3-V LVCMOS          ;           ; Row I/O    ; Y               ; no       ; Off          ;
+; 79       ; 132        ; 5        ; COL_RED                                        ; output ; 3.3-V LVCMOS          ;           ; Row I/O    ; Y               ; no       ; Off          ;
 ; 80       ; 135        ; 5        ; RESERVED_INPUT_WITH_WEAK_PULLUP                ;        ;                       ;           ; Row I/O    ;                 ; --       ; --           ;
-; 81       ; 134        ; 5        ; RESERVED_INPUT_WITH_WEAK_PULLUP                ;        ;                       ;           ; Row I/O    ;                 ; no       ; On           ;
+; 81       ; 134        ; 5        ; COL_GREEN                                      ; output ; 3.3-V LVCMOS          ;           ; Row I/O    ; Y               ; no       ; Off          ;
 ; 82       ;            ; 5        ; VCCIO5                                         ; power  ;                       ; 3.3V      ; --         ;                 ; --       ; --           ;
 ; 83       ;            ;          ; GND                                            ; gnd    ;                       ;           ; --         ;                 ; --       ; --           ;
 ; 84       ; 141        ; 5        ; RESERVED_INPUT_WITH_WEAK_PULLUP                ;        ;                       ;           ; Row I/O    ;                 ; no       ; On           ;
@@ -496,17 +496,17 @@ The pin-out file can be found in H:/git/PCB_CQmax10/CQmax10/sample/matrix_led_qu
 ; 93       ; 158        ; 6        ; RESERVED_INPUT_WITH_WEAK_PULLUP                ;        ;                       ;           ; Row I/O    ;                 ; no       ; On           ;
 ; 94       ;            ; 6        ; VCCIO6                                         ; power  ;                       ; 3.3V      ; --         ;                 ; --       ; --           ;
 ; 95       ;            ;          ; GND                                            ; gnd    ;                       ;           ; --         ;                 ; --       ; --           ;
-; 96       ; 172        ; 6        ; CLR3                                           ; output ; 3.3-V LVCMOS          ;           ; Row I/O    ; Y               ; no       ; Off          ;
-; 97       ; 173        ; 6        ; RCLOCK                                         ; output ; 3.3-V LVCMOS          ;           ; Row I/O    ; Y               ; no       ; Off          ;
+; 96       ; 172        ; 6        ; RESERVED_INPUT_WITH_WEAK_PULLUP                ;        ;                       ;           ; Row I/O    ;                 ; no       ; On           ;
+; 97       ; 173        ; 6        ; RESERVED_INPUT_WITH_WEAK_PULLUP                ;        ;                       ;           ; Row I/O    ;                 ; --       ; --           ;
 ; 98       ; 174        ; 6        ; ROW                                            ; output ; 3.3-V LVCMOS          ;           ; Row I/O    ; Y               ; no       ; Off          ;
-; 99       ; 176        ; 6        ; COL_RED                                        ; output ; 3.3-V LVCMOS          ;           ; Row I/O    ; Y               ; no       ; Off          ;
-; 100      ; 177        ; 6        ; CLR1                                           ; output ; 3.3-V LVCMOS          ;           ; Row I/O    ; Y               ; no       ; Off          ;
-; 101      ; 178        ; 6        ; COL_GREEN                                      ; output ; 3.3-V LVCMOS          ;           ; Row I/O    ; Y               ; no       ; Off          ;
+; 99       ; 176        ; 6        ; RESERVED_INPUT_WITH_WEAK_PULLUP                ;        ;                       ;           ; Row I/O    ;                 ; no       ; On           ;
+; 100      ; 177        ; 6        ; RESERVED_INPUT_WITH_WEAK_PULLUP                ;        ;                       ;           ; Row I/O    ;                 ; no       ; On           ;
+; 101      ; 178        ; 6        ; RESERVED_INPUT_WITH_WEAK_PULLUP                ;        ;                       ;           ; Row I/O    ;                 ; no       ; On           ;
 ; 102      ; 179        ; 6        ; RESERVED_INPUT_WITH_WEAK_PULLUP                ;        ;                       ;           ; Row I/O    ;                 ; no       ; On           ;
 ; 103      ;            ; 6        ; VCCIO6                                         ; power  ;                       ; 3.3V      ; --         ;                 ; --       ; --           ;
 ; 104      ;            ;          ; GND                                            ; gnd    ;                       ;           ; --         ;                 ; --       ; --           ;
-; 105      ; 188        ; 6        ; CLR2                                           ; output ; 3.3-V LVCMOS          ;           ; Row I/O    ; Y               ; no       ; Off          ;
-; 106      ; 190        ; 6        ; CLOCK                                          ; output ; 3.3-V LVCMOS          ;           ; Row I/O    ; Y               ; no       ; Off          ;
+; 105      ; 188        ; 6        ; RESERVED_INPUT_WITH_WEAK_PULLUP                ;        ;                       ;           ; Row I/O    ;                 ; no       ; On           ;
+; 106      ; 190        ; 6        ; RESERVED_INPUT_WITH_WEAK_PULLUP                ;        ;                       ;           ; Row I/O    ;                 ; no       ; On           ;
 ; 107      ;            ; --       ; VCCA3                                          ; power  ;                       ; 3.0V/3.3V ; --         ;                 ; --       ; --           ;
 ; 108      ;            ; --       ; VCC_ONE                                        ; power  ;                       ; 3.0V/3.3V ; --         ;                 ; --       ; --           ;
 ; 109      ;            ; --       ; VCC_ONE                                        ; power  ;                       ; 3.0V/3.3V ; --         ;                 ; --       ; --           ;
@@ -596,7 +596,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; led0      ; Output   ; --            ; --            ; --                    ; --  ; --   ;
 ; sw0       ; Input    ; --            ; (6) 868 ps    ; --                    ; --  ; --   ;
 ; clk       ; Input    ; (0) 0 ps      ; --            ; --                    ; --  ; --   ;
-; rst_n     ; Input    ; (6) 873 ps    ; --            ; --                    ; --  ; --   ;
+; rst_n     ; Input    ; --            ; (6) 873 ps    ; --                    ; --  ; --   ;
 +-----------+----------+---------------+---------------+-----------------------+-----+------+
 
 
@@ -609,8 +609,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ;      - led0~output  ; 1                 ; 6       ;
 ; clk                 ;                   ;         ;
 ; rst_n               ;                   ;         ;
-;      - rst_sync[0]  ; 0                 ; 6       ;
-;      - rst_sync[1]  ; 0                 ; 6       ;
+;      - rst_sync[0]  ; 1                 ; 6       ;
+;      - rst_sync[1]  ; 1                 ; 6       ;
 +---------------------+-------------------+---------+
 
 
@@ -619,18 +619,18 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+--------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
 ; Name               ; Location           ; Fan-Out ; Usage        ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
 +--------------------+--------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
-; Equal0~10          ; LCCOMB_X23_Y15_N2  ; 17      ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; Equal3~1           ; LCCOMB_X18_Y18_N14 ; 11      ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; Selector36~2       ; LCCOMB_X23_Y18_N20 ; 2       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; Equal0~10          ; LCCOMB_X15_Y14_N30 ; 17      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; Equal3~1           ; LCCOMB_X17_Y13_N6  ; 11      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; Selector36~2       ; LCCOMB_X15_Y12_N28 ; 2       ; Clock enable ; no     ; --                   ; --               ; --                        ;
 ; clk                ; PIN_88             ; 116     ; Clock        ; yes    ; Global Clock         ; GCLK9            ; --                        ;
-; row_idx[0]~3       ; LCCOMB_X18_Y18_N8  ; 5       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; row_shift[7]~0     ; LCCOMB_X23_Y18_N0  ; 22      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; row_idx[0]~3       ; LCCOMB_X17_Y13_N0  ; 5       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; row_shift[7]~0     ; LCCOMB_X15_Y12_N8  ; 22      ; Clock enable ; no     ; --                   ; --               ; --                        ;
 ; rst_n              ; PIN_17             ; 2       ; Async. clear ; no     ; --                   ; --               ; --                        ;
-; rst_sync[1]        ; FF_X18_Y18_N1      ; 114     ; Async. clear ; no     ; --                   ; --               ; --                        ;
-; state.ST_BIT_CLKHI ; FF_X23_Y18_N5      ; 34      ; Sync. load   ; no     ; --                   ; --               ; --                        ;
-; state.ST_BIT_SETUP ; FF_X23_Y18_N9      ; 5       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; state.ST_CLR       ; FF_X20_Y18_N15     ; 8       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; timer[24]~34       ; LCCOMB_X23_Y18_N26 ; 32      ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
+; rst_sync[1]        ; FF_X17_Y13_N25     ; 114     ; Async. clear ; no     ; --                   ; --               ; --                        ;
+; state.ST_BIT_CLKHI ; FF_X15_Y12_N13     ; 34      ; Sync. load   ; no     ; --                   ; --               ; --                        ;
+; state.ST_BIT_SETUP ; FF_X15_Y12_N25     ; 5       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; state.ST_CLR       ; FF_X15_Y13_N21     ; 8       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; timer[24]~34       ; LCCOMB_X15_Y12_N0  ; 32      ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
 +--------------------+--------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
 
 
@@ -648,113 +648,113 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+------------------------+
 ; Routing Resource Type ; Usage                  ;
 +-----------------------+------------------------+
-; Block interconnects   ; 277 / 27,275 ( 1 % )   ;
-; C16 interconnects     ; 3 / 1,240 ( < 1 % )    ;
-; C4 interconnects      ; 186 / 20,832 ( < 1 % ) ;
-; Direct links          ; 25 / 27,275 ( < 1 % )  ;
+; Block interconnects   ; 247 / 27,275 ( < 1 % ) ;
+; C16 interconnects     ; 7 / 1,240 ( < 1 % )    ;
+; C4 interconnects      ; 133 / 20,832 ( < 1 % ) ;
+; Direct links          ; 58 / 27,275 ( < 1 % )  ;
 ; Global clocks         ; 1 / 10 ( 10 % )        ;
-; Local interconnects   ; 147 / 8,064 ( 2 % )    ;
-; R24 interconnects     ; 6 / 1,320 ( < 1 % )    ;
-; R4 interconnects      ; 158 / 28,560 ( < 1 % ) ;
+; Local interconnects   ; 150 / 8,064 ( 2 % )    ;
+; R24 interconnects     ; 3 / 1,320 ( < 1 % )    ;
+; R4 interconnects      ; 133 / 28,560 ( < 1 % ) ;
 +-----------------------+------------------------+
 
 
-+---------------------------------------------------------------------------+
-; LAB Logic Elements                                                        ;
-+--------------------------------------------+------------------------------+
-; Number of Logic Elements  (Average = 6.21) ; Number of LABs  (Total = 38) ;
-+--------------------------------------------+------------------------------+
-; 1                                          ; 16                           ;
-; 2                                          ; 5                            ;
-; 3                                          ; 3                            ;
-; 4                                          ; 1                            ;
-; 5                                          ; 0                            ;
-; 6                                          ; 0                            ;
-; 7                                          ; 0                            ;
-; 8                                          ; 0                            ;
-; 9                                          ; 0                            ;
-; 10                                         ; 0                            ;
-; 11                                         ; 0                            ;
-; 12                                         ; 0                            ;
-; 13                                         ; 1                            ;
-; 14                                         ; 2                            ;
-; 15                                         ; 4                            ;
-; 16                                         ; 6                            ;
-+--------------------------------------------+------------------------------+
++----------------------------------------------------------------------------+
+; LAB Logic Elements                                                         ;
++---------------------------------------------+------------------------------+
+; Number of Logic Elements  (Average = 10.26) ; Number of LABs  (Total = 23) ;
++---------------------------------------------+------------------------------+
+; 1                                           ; 4                            ;
+; 2                                           ; 3                            ;
+; 3                                           ; 0                            ;
+; 4                                           ; 1                            ;
+; 5                                           ; 0                            ;
+; 6                                           ; 1                            ;
+; 7                                           ; 0                            ;
+; 8                                           ; 0                            ;
+; 9                                           ; 0                            ;
+; 10                                          ; 0                            ;
+; 11                                          ; 0                            ;
+; 12                                          ; 0                            ;
+; 13                                          ; 2                            ;
+; 14                                          ; 0                            ;
+; 15                                          ; 2                            ;
+; 16                                          ; 10                           ;
++---------------------------------------------+------------------------------+
 
 
 +-------------------------------------------------------------------+
 ; LAB-wide Signals                                                  ;
 +------------------------------------+------------------------------+
-; LAB-wide Signals  (Average = 1.47) ; Number of LABs  (Total = 38) ;
+; LAB-wide Signals  (Average = 1.57) ; Number of LABs  (Total = 23) ;
 +------------------------------------+------------------------------+
-; 1 Async. clear                     ; 22                           ;
-; 1 Clock                            ; 22                           ;
-; 1 Clock enable                     ; 8                            ;
+; 1 Async. clear                     ; 14                           ;
+; 1 Clock                            ; 14                           ;
+; 1 Clock enable                     ; 3                            ;
 ; 1 Sync. clear                      ; 2                            ;
-; 1 Sync. load                       ; 1                            ;
+; 1 Sync. load                       ; 2                            ;
 ; 2 Clock enables                    ; 1                            ;
 +------------------------------------+------------------------------+
 
 
-+----------------------------------------------------------------------------+
-; LAB Signals Sourced                                                        ;
-+---------------------------------------------+------------------------------+
-; Number of Signals Sourced  (Average = 9.21) ; Number of LABs  (Total = 38) ;
-+---------------------------------------------+------------------------------+
-; 0                                           ; 0                            ;
-; 1                                           ; 12                           ;
-; 2                                           ; 7                            ;
-; 3                                           ; 2                            ;
-; 4                                           ; 1                            ;
-; 5                                           ; 1                            ;
-; 6                                           ; 1                            ;
-; 7                                           ; 0                            ;
-; 8                                           ; 1                            ;
-; 9                                           ; 0                            ;
-; 10                                          ; 0                            ;
-; 11                                          ; 0                            ;
-; 12                                          ; 0                            ;
-; 13                                          ; 0                            ;
-; 14                                          ; 0                            ;
-; 15                                          ; 3                            ;
-; 16                                          ; 0                            ;
-; 17                                          ; 1                            ;
-; 18                                          ; 0                            ;
-; 19                                          ; 1                            ;
-; 20                                          ; 0                            ;
-; 21                                          ; 0                            ;
-; 22                                          ; 1                            ;
-; 23                                          ; 1                            ;
-; 24                                          ; 0                            ;
-; 25                                          ; 2                            ;
-; 26                                          ; 0                            ;
-; 27                                          ; 1                            ;
-; 28                                          ; 1                            ;
-; 29                                          ; 0                            ;
-; 30                                          ; 0                            ;
-; 31                                          ; 0                            ;
-; 32                                          ; 2                            ;
-+---------------------------------------------+------------------------------+
++-----------------------------------------------------------------------------+
+; LAB Signals Sourced                                                         ;
++----------------------------------------------+------------------------------+
+; Number of Signals Sourced  (Average = 15.30) ; Number of LABs  (Total = 23) ;
++----------------------------------------------+------------------------------+
+; 0                                            ; 0                            ;
+; 1                                            ; 3                            ;
+; 2                                            ; 4                            ;
+; 3                                            ; 0                            ;
+; 4                                            ; 1                            ;
+; 5                                            ; 0                            ;
+; 6                                            ; 0                            ;
+; 7                                            ; 0                            ;
+; 8                                            ; 0                            ;
+; 9                                            ; 0                            ;
+; 10                                           ; 0                            ;
+; 11                                           ; 0                            ;
+; 12                                           ; 1                            ;
+; 13                                           ; 0                            ;
+; 14                                           ; 0                            ;
+; 15                                           ; 0                            ;
+; 16                                           ; 2                            ;
+; 17                                           ; 2                            ;
+; 18                                           ; 1                            ;
+; 19                                           ; 0                            ;
+; 20                                           ; 0                            ;
+; 21                                           ; 1                            ;
+; 22                                           ; 0                            ;
+; 23                                           ; 1                            ;
+; 24                                           ; 1                            ;
+; 25                                           ; 2                            ;
+; 26                                           ; 0                            ;
+; 27                                           ; 1                            ;
+; 28                                           ; 0                            ;
+; 29                                           ; 0                            ;
+; 30                                           ; 0                            ;
+; 31                                           ; 0                            ;
+; 32                                           ; 3                            ;
++----------------------------------------------+------------------------------+
 
 
 +--------------------------------------------------------------------------------+
 ; LAB Signals Sourced Out                                                        ;
 +-------------------------------------------------+------------------------------+
-; Number of Signals Sourced Out  (Average = 4.26) ; Number of LABs  (Total = 38) ;
+; Number of Signals Sourced Out  (Average = 7.00) ; Number of LABs  (Total = 23) ;
 +-------------------------------------------------+------------------------------+
 ; 0                                               ; 0                            ;
-; 1                                               ; 16                           ;
-; 2                                               ; 6                            ;
-; 3                                               ; 3                            ;
-; 4                                               ; 4                            ;
+; 1                                               ; 5                            ;
+; 2                                               ; 2                            ;
+; 3                                               ; 0                            ;
+; 4                                               ; 3                            ;
 ; 5                                               ; 1                            ;
-; 6                                               ; 0                            ;
+; 6                                               ; 3                            ;
 ; 7                                               ; 0                            ;
-; 8                                               ; 1                            ;
+; 8                                               ; 0                            ;
 ; 9                                               ; 0                            ;
-; 10                                              ; 2                            ;
-; 11                                              ; 0                            ;
+; 10                                              ; 3                            ;
+; 11                                              ; 1                            ;
 ; 12                                              ; 1                            ;
 ; 13                                              ; 0                            ;
 ; 14                                              ; 0                            ;
@@ -766,31 +766,33 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------------------------------------+
 ; LAB Distinct Inputs                                                        ;
 +---------------------------------------------+------------------------------+
-; Number of Distinct Inputs  (Average = 7.11) ; Number of LABs  (Total = 38) ;
+; Number of Distinct Inputs  (Average = 9.96) ; Number of LABs  (Total = 23) ;
 +---------------------------------------------+------------------------------+
 ; 0                                           ; 0                            ;
 ; 1                                           ; 0                            ;
-; 2                                           ; 1                            ;
-; 3                                           ; 1                            ;
-; 4                                           ; 13                           ;
-; 5                                           ; 3                            ;
-; 6                                           ; 3                            ;
-; 7                                           ; 2                            ;
-; 8                                           ; 3                            ;
+; 2                                           ; 0                            ;
+; 3                                           ; 2                            ;
+; 4                                           ; 3                            ;
+; 5                                           ; 0                            ;
+; 6                                           ; 1                            ;
+; 7                                           ; 3                            ;
+; 8                                           ; 1                            ;
 ; 9                                           ; 0                            ;
-; 10                                          ; 5                            ;
-; 11                                          ; 0                            ;
-; 12                                          ; 2                            ;
-; 13                                          ; 1                            ;
-; 14                                          ; 0                            ;
+; 10                                          ; 4                            ;
+; 11                                          ; 1                            ;
+; 12                                          ; 1                            ;
+; 13                                          ; 0                            ;
+; 14                                          ; 1                            ;
 ; 15                                          ; 0                            ;
 ; 16                                          ; 1                            ;
-; 17                                          ; 1                            ;
-; 18                                          ; 0                            ;
+; 17                                          ; 0                            ;
+; 18                                          ; 1                            ;
 ; 19                                          ; 0                            ;
-; 20                                          ; 0                            ;
-; 21                                          ; 0                            ;
-; 22                                          ; 1                            ;
+; 20                                          ; 1                            ;
+; 21                                          ; 1                            ;
+; 22                                          ; 0                            ;
+; 23                                          ; 0                            ;
+; 24                                          ; 1                            ;
 +---------------------------------------------+------------------------------+
 
 
@@ -962,21 +964,21 @@ Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:00
-Info (11888): Total time spent on timing analysis during the Fitter is 0.15 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.17 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:02
+Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
 Warning (169177): 3 pins must meet Intel FPGA requirements for 3.3-, 3.0-, and 2.5-V interfaces. For more information, refer to AN 447: Interfacing MAX 10 Devices with 3.3/3.0/2.5-V LVTTL/LVCMOS I/O Systems.
     Info (169178): Pin sw0 uses I/O standard 3.3-V LVCMOS at 62 File: H:/git/PCB_CQmax10/CQmax10/sample/matrix_led_quartus/rtl/top_matrix_led.sv Line: 79
     Info (169178): Pin clk uses I/O standard 3.3-V LVCMOS at 88 File: H:/git/PCB_CQmax10/CQmax10/sample/matrix_led_quartus/rtl/top_matrix_led.sv Line: 65
     Info (169178): Pin rst_n uses I/O standard 3.3-V LVCMOS at 17 File: H:/git/PCB_CQmax10/CQmax10/sample/matrix_led_quartus/rtl/top_matrix_led.sv Line: 66
 Info (144001): Generated suppressed messages file H:/git/PCB_CQmax10/CQmax10/sample/matrix_led_quartus/output_files/matrix_led.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 6531 megabytes
-    Info: Processing ended: Mon Aug 24 02:00:03 2026
-    Info: Elapsed time: 00:00:06
+    Info: Peak virtual memory: 6529 megabytes
+    Info: Processing ended: Tue Aug 25 00:23:31 2026
+    Info: Elapsed time: 00:00:11
     Info: Total CPU time (on all processors): 00:00:11
 
 

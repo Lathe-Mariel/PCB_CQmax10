@@ -1,5 +1,5 @@
 Power Analyzer report for matrix_led
-Mon Aug 24 02:00:09 2026
+Tue Aug 25 00:23:37 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -53,27 +53,27 @@ on the Quartus Prime software download page.
 ; Number detected on machine ; 36          ;
 ; Maximum allowed            ; 16          ;
 ;                            ;             ;
-; Average used               ; 1.29        ;
+; Average used               ; 1.21        ;
 ; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-16        ;   1.9%      ;
+;     Processors 2-16        ;   1.4%      ;
 +----------------------------+-------------+
 
 
 +-------------------------------------------------------------------------------------------+
 ; Power Analyzer Summary                                                                    ;
 +----------------------------------------+--------------------------------------------------+
-; Power Analyzer Status                  ; Successful - Mon Aug 24 02:00:09 2026            ;
+; Power Analyzer Status                  ; Successful - Tue Aug 25 00:23:37 2026            ;
 ; Quartus Prime Version                  ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition  ;
 ; Revision Name                          ; matrix_led                                       ;
 ; Top-level Entity Name                  ; top_matrix_led                                   ;
 ; Family                                 ; MAX 10                                           ;
 ; Device                                 ; 10M08SCE144C8G                                   ;
 ; Power Models                           ; Final                                            ;
-; Total Thermal Power Dissipation        ; 148.90 mW                                        ;
-; Core Dynamic Thermal Power Dissipation ; 5.86 mW                                          ;
+; Total Thermal Power Dissipation        ; 148.09 mW                                        ;
+; Core Dynamic Thermal Power Dissipation ; 5.06 mW                                          ;
 ; Core Static Thermal Power Dissipation  ; 110.70 mW                                        ;
 ; I/O Thermal Power Dissipation          ; 32.34 mW                                         ;
 ; Power Estimation Confidence            ; Low: user provided insufficient toggle rate data ;
@@ -152,11 +152,11 @@ on the Quartus Prime software download page.
 +---------------------+-----------------------------------+-----------------------------+--------------------------------+-------------------------------+-----------------------------------------------------------+
 ; Block Type          ; Total Thermal Power by Block Type ; Block Thermal Dynamic Power ; Block Thermal Static Power (1) ; Routing Thermal Dynamic Power ; Block Average Toggle Rate (millions of transitions / sec) ;
 +---------------------+-----------------------------------+-----------------------------+--------------------------------+-------------------------------+-----------------------------------------------------------+
-; Combinational cell  ; 0.28 mW                           ; 0.18 mW                     ; --                             ; 0.10 mW                       ;    5.164                                                  ;
-; Clock control block ; 1.28 mW                           ; 0.00 mW                     ; --                             ; 1.28 mW                       ;  100.000                                                  ;
-; Register cell       ; 0.76 mW                           ; 0.50 mW                     ; --                             ; 0.26 mW                       ;    6.142                                                  ;
+; Combinational cell  ; 0.26 mW                           ; 0.18 mW                     ; --                             ; 0.07 mW                       ;    4.993                                                  ;
+; Clock control block ; 1.07 mW                           ; 0.00 mW                     ; --                             ; 1.07 mW                       ;  100.000                                                  ;
+; Register cell       ; 0.67 mW                           ; 0.42 mW                     ; --                             ; 0.25 mW                       ;    6.142                                                  ;
 ; I/O                 ; 3.44 mW                           ; 2.53 mW                     ; 0.90 mW                        ; 0.00 mW                       ;    7.812                                                  ;
-; Voltage Regulator   ; 3.54 mW                           ; 3.54 mW                     ; 0.00 mW                        ; --                            ; --                                                        ;
+; Voltage Regulator   ; 3.06 mW                           ; 3.06 mW                     ; 0.00 mW                        ; --                            ; --                                                        ;
 +---------------------+-----------------------------------+-----------------------------+--------------------------------+-------------------------------+-----------------------------------------------------------+
 (1) The "Block Thermal Static Power" for all block types except Pins and the Voltage Regulator, if one exists, is part of the "Core Static Thermal Power Dissipation" value found on the PowerPlay Power Analyzer-->Summary report panel. The "Core Static Thermal Power Dissipation" also contains the thermal static power dissipated by the routing.
 
@@ -166,9 +166,9 @@ on the Quartus Prime software download page.
 +-------------------------------------+--------------------------------------+---------------------------------+-----------------------------------+-----------------------------------+------------------------------------------------+
 ; Compilation Hierarchy Node          ; Total Thermal Power by Hierarchy (1) ; Block Thermal Dynamic Power (1) ; Block Thermal Static Power (1)(2) ; Routing Thermal Dynamic Power (1) ; Full Hierarchy Name                            ;
 +-------------------------------------+--------------------------------------+---------------------------------+-----------------------------------+-----------------------------------+------------------------------------------------+
-; |top_matrix_led                     ; 9.29 mW (9.20 mW)                    ; 6.75 mW (6.69 mW)               ; 0.90 mW (0.90 mW)                 ; 1.64 mW (1.60 mW)                 ; |top_matrix_led                                ;
+; |top_matrix_led                     ; 8.49 mW (8.41 mW)                    ; 6.20 mW (6.14 mW)               ; 0.90 mW (0.90 mW)                 ; 1.39 mW (1.37 mW)                 ; |top_matrix_led                                ;
 ;     |hard_block:auto_generated_inst ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |top_matrix_led|hard_block:auto_generated_inst ;
-;     |font_rom:u_font                ; 0.10 mW (0.10 mW)                    ; 0.06 mW (0.06 mW)               ; --                                ; 0.04 mW (0.04 mW)                 ; |top_matrix_led|font_rom:u_font                ;
+;     |font_rom:u_font                ; 0.08 mW (0.08 mW)                    ; 0.06 mW (0.06 mW)               ; --                                ; 0.02 mW (0.02 mW)                 ; |top_matrix_led|font_rom:u_font                ;
 +-------------------------------------+--------------------------------------+---------------------------------+-----------------------------------+-----------------------------------+------------------------------------------------+
 (1) Value in parentheses is the power consumed at that level of hierarchy. Value not in parentheses is the power consumed at that level of hierarchy plus the power consumed by all levels of hierarchy below it.
 
@@ -180,7 +180,7 @@ on the Quartus Prime software download page.
 +-----------------+-----------------------+--------------------------+
 ; Clock Domain    ; Clock Frequency (MHz) ; Total Core Dynamic Power ;
 +-----------------+-----------------------+--------------------------+
-; clk             ; 50.00                 ; 2.31                     ;
+; clk             ; 50.00                 ; 1.99                     ;
 ; No clock domain ; 0.00                  ; 0.00                     ;
 +-----------------+-----------------------+--------------------------+
 
@@ -192,7 +192,7 @@ on the Quartus Prime software download page.
 +----------------+-------------------------+---------------------------+--------------------------+----------------------------------+
 ; VCCIO          ; 10.08 mA                ; 0.74 mA                   ; 9.33 mA                  ; 10.08 mA                         ;
 ; VCCA           ; 0.00 mA                 ; 0.00 mA                   ; 0.00 mA                  ; 0.00 mA                          ;
-; VCC_ONE        ; 38.87 mA                ; 1.97 mA                   ; 36.90 mA                 ; 38.87 mA                         ;
+; VCC_ONE        ; 38.60 mA                ; 1.70 mA                   ; 36.90 mA                 ; 38.60 mA                         ;
 +----------------+-------------------------+---------------------------+--------------------------+----------------------------------+
 (1) Currents reported in columns "Total Current Drawn", "Dynamic Current Drawn", and "Static Current Drawn" are sufficient for user operation of the device.  
 (2) Currents reported in column "Minimum Power Supply Current" are sufficient for power-up, configuration, and user operation of the device.
@@ -208,8 +208,8 @@ on the Quartus Prime software download page.
 ; 2        ; 2.5V          ; 0.25 mA             ; 0.00 mA               ; 0.25 mA              ;
 ; 3        ; 2.5V          ; 0.25 mA             ; 0.00 mA               ; 0.25 mA              ;
 ; 4        ; 3.3V          ; 1.62 mA             ; 0.00 mA               ; 1.62 mA              ;
-; 5        ; 3.3V          ; 1.68 mA             ; 0.07 mA               ; 1.62 mA              ;
-; 6        ; 3.3V          ; 2.43 mA             ; 0.68 mA               ; 1.75 mA              ;
+; 5        ; 3.3V          ; 2.27 mA             ; 0.54 mA               ; 1.73 mA              ;
+; 6        ; 3.3V          ; 1.84 mA             ; 0.21 mA               ; 1.63 mA              ;
 ; 7        ; 2.5V          ; 0.25 mA             ; 0.00 mA               ; 0.25 mA              ;
 ; 8        ; 3.3V          ; 1.67 mA             ; 0.00 mA               ; 1.67 mA              ;
 +----------+---------------+---------------------+-----------------------+----------------------+
@@ -241,9 +241,9 @@ on the Quartus Prime software download page.
 ;     -- Number of signals with Static Probability from Node, entity or clock assignment ; 2 (0.4%)    ; 1 (5.0%)   ; 0 (0.0%)     ; 1 (0.3%)      ;
 ;                                                                                        ;             ;            ;              ;               ;
 ; Vectorless estimation                                                                  ;             ;            ;              ;               ;
-;     -- Number of signals with Toggle Rate from Vectorless estimation                   ; 438 (98.0%) ; 12 (60.0%) ; 116 (100.0%) ; 310 (99.7%)   ;
-;     -- Number of signals with Zero toggle rate, from Vectorless estimation             ; 18 (4.0%)   ; 2 (10.0%)  ; 2 (1.7%)     ; 14 (4.5%)     ;
-;     -- Number of signals with Static Probability from Vectorless estimation            ; 438 (98.0%) ; 12 (60.0%) ; 116 (100.0%) ; 310 (99.7%)   ;
+;     -- Number of signals with Toggle Rate from Vectorless estimation                   ; 440 (98.0%) ; 12 (60.0%) ; 116 (100.0%) ; 312 (99.7%)   ;
+;     -- Number of signals with Zero toggle rate, from Vectorless estimation             ; 17 (3.8%)   ; 2 (10.0%)  ; 2 (1.7%)     ; 13 (4.2%)     ;
+;     -- Number of signals with Static Probability from Vectorless estimation            ; 440 (98.0%) ; 12 (60.0%) ; 116 (100.0%) ; 312 (99.7%)   ;
 ;                                                                                        ;             ;            ;              ;               ;
 ; Default assignment                                                                     ;             ;            ;              ;               ;
 ;     -- Number of signals with Toggle Rate from Default assignment                      ; 0 (0.0%)    ; 0 (0.0%)   ; 0 (0.0%)     ; 0 (0.0%)      ;
@@ -268,7 +268,7 @@ on the Quartus Prime software download page.
 Info: *******************************************************************
 Info: Running Quartus Prime Power Analyzer
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
-    Info: Processing started: Mon Aug 24 02:00:07 2026
+    Info: Processing started: Tue Aug 25 00:23:35 2026
 Info: Command: quartus_pow --read_settings_files=off --write_settings_files=off matrix_led -c matrix_led
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
@@ -282,11 +282,11 @@ Info (218000): Using Advanced I/O Power to simulate I/O buffers with the specifi
 Warning (215044): No board thermal model was selected.  Analyzing without board thermal modeling.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (215049): Average toggle rate for this design is 5.767 millions of transitions / sec
-Info (215031): Total thermal power estimate for the design is 148.90 mW
+Info (215049): Average toggle rate for this design is 5.648 millions of transitions / sec
+Info (215031): Total thermal power estimate for the design is 148.09 mW
 Info: Quartus Prime Power Analyzer was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 4968 megabytes
-    Info: Processing ended: Mon Aug 24 02:00:09 2026
+    Info: Peak virtual memory: 4960 megabytes
+    Info: Processing ended: Tue Aug 25 00:23:37 2026
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 

@@ -33,15 +33,15 @@ set_location_assignment PIN_88 -to clk
 set_location_assignment PIN_17 -to rst_n
 
 set_location_assignment PIN_98 -to ROW
-set_location_assignment PIN_101 -to COL_GREEN
-set_location_assignment PIN_99 -to COL_RED
+set_location_assignment PIN_81 -to COL_GREEN
+set_location_assignment PIN_79 -to COL_RED
 
-set_location_assignment PIN_100 -to CLR1
-set_location_assignment PIN_96 -to CLR3
-set_location_assignment PIN_105 -to CLR2
+set_location_assignment PIN_78 -to CLR1
+set_location_assignment PIN_77 -to CLR3
+set_location_assignment PIN_74 -to CLR2
 
-set_location_assignment PIN_97 -to RCLOCK
-set_location_assignment PIN_106 -to CLOCK
+set_location_assignment PIN_76 -to RCLOCK
+set_location_assignment PIN_75 -to CLOCK
 
 # ------------------------------------------------------------------
 # I/O standard: all signals are 3.3-V LVCMOS
