@@ -23,18 +23,21 @@ Quartus Prime lite
 ## ベースボード
 https://github.com/Lathe-Mariel/PCB_CQmax10
 
+## System clock
+50MHz
+
 # 物理制約
 信号は全て，3.3-V LVCMOS
 
 信号名 | FPGA ピン | 内容
 ---|---|---
-LED0 |  98 | 
-LED1 | 101 | 
-LED2 |  99 
-LED3 | 100 | 
-LED4 |  96 | 
-LED5 | 105 |
-LED6 |  97 | 
-LED7 | 106 | 
-clk  | 88  | System clock
+LED0 |  98 | led
+LED1 | 101 | led
+LED2 |  99 | led
+LED3 | 100 | led
+LED4 |  96 | led
+LED5 | 105 | led
+LED6 |  97 | led
+LED7 | 106 | led
+clk  | 88  | System clock(50MHz)
 rst_n | 17 | system reset_n
