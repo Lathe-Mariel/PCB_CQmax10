@@ -1,0 +1,40 @@
+FPGAデザインを設計して，Quartus Primer Lite用のプロジェクトを作ってください
+
+# アプリケーション
+8個のLEDの点灯制御
+
+## 点灯パターン
+ナイトライダー
+
+## LEDの駆動信号
+FPGAのピンで直接駆動する
+明るさはPWMで制御する
+
+# HDL
+SystemVerilog
+
+# 合成系
+Quartus Prime lite
+
+# デバイス
+## FPGAチップ
+10M08SCE144C8G
+
+## ベースボード
+https://github.com/Lathe-Mariel/PCB_CQmax10
+
+# 物理制約
+信号は全て，3.3-V LVCMOS
+
+信号名 | FPGA ピン | 内容
+---|---|---
+LED0 |  98 | 
+LED1 | 101 | 
+LED2 |  99 
+LED3 | 100 | 
+LED4 |  96 | 
+LED5 | 105 |
+LED6 |  97 | 
+LED7 | 106 | 
+clk  | 88  | System clock
+rst_n | 17 | system reset_n
