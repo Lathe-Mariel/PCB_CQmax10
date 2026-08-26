@@ -55,7 +55,7 @@
 
 module top_matrix_led #(
     parameter int CLK_FREQ_HZ       = 50_000_000,             // system clk = 50 MHz
-    parameter int SHIFT_HALF_PERIOD = 600,                       // sys-clk cycles per CLOCK/RCLOCK half-period
+    parameter int SHIFT_HALF_PERIOD = 10,                       // sys-clk cycles per CLOCK/RCLOCK half-period
     parameter int ROW_HOLD_TICKS    = CLK_FREQ_HZ / 1000,      // ~1 kHz row switch -> ~125 Hz frame refresh
     parameter int DIGIT_HOLD_TICKS  = CLK_FREQ_HZ,             // 1 second per digit
     parameter int CLR_PULSE_TICKS   = 16,                      // width of the power-up /MR pulse
@@ -97,19 +97,19 @@ assign led0 = sw0;
     // ------------------------------------------------------------------
     // 1-second digit counter: cycles 0 -> 9 -> 0 ...
     // ------------------------------------------------------------------
-    logic [31:0] sec_cnt;
+    logic [25:0] sec_cnt;
     logic [3:0]  digit_idx;
 
     always_ff @(posedge clk or negedge rst_int_n) begin
         if (!rst_int_n) begin
-            sec_cnt   <= 32'd0;
+            sec_cnt   <= 26'd0;
             digit_idx <= 4'd0;
         end else if (sec_cnt == DIGIT_HOLD_TICKS-1) begin
-            sec_cnt   <= 32'd0;
+            sec_cnt   <= 26'd0;
             digit_idx <= (digit_idx == 4'd9) ? 4'd0 : digit_idx + 4'd1;
 		      led <= !led;
         end else begin
-            sec_cnt <= sec_cnt + 32'd1;
+            sec_cnt <= sec_cnt + 26'd1;
         end
     end
 
@@ -156,14 +156,14 @@ assign led0 = sw0;
     state_e      state;
     logic [7:0]  row_shift, colg_shift, colr_shift; // MSB-first shift-out registers
     logic [2:0]  bit_idx;                            // counts which of the 8 bits is being sent
-    logic [31:0] timer;
+    logic [25:0] timer;
 
     always_ff @(posedge clk or negedge rst_int_n) begin
         if (!rst_int_n) begin
             state      <= ST_CLR;
             row_idx    <= 3'd0;
             bit_idx    <= 3'd0;
-            timer      <= 32'd0;
+            timer      <= 26'd0;
             row_shift  <= 8'h00;
             colg_shift <= 8'h00;
             colr_shift <= 8'h00;
@@ -186,25 +186,29 @@ assign led0 = sw0;
                     CLOCK  <= 1'b0;
                     RCLOCK <= 1'b0;
                     if (timer == CLR_PULSE_TICKS-1) begin
-                        timer <= 32'd0;
+                        timer <= 26'd0;
                         CLR1  <= 1'b1;   // release clear (idle = high)
                         CLR2  <= 1'b1;
                         CLR3  <= 1'b1;
                         state <= ST_LOAD;
                     end else begin
-                        timer <= timer + 32'd1;
+                        timer <= timer + 26'd1;
                     end
                 end
 
                 // ---- load next row's pattern into the shift-out regs ---
                 ST_LOAD: begin
-                    row_shift  <= row_pat;
-                    colg_shift <= colg_pat;
-                    colr_shift <= colr_pat;
-                    bit_idx    <= 3'd0;
-                    timer      <= 32'd0;
-                    CLOCK      <= 1'b0;
-                    state      <= ST_BIT_SETUP;
+					     if(timer == SHIFT_HALF_PERIOD-1)begin
+                        row_shift  <= row_pat;
+                        colg_shift <= colg_pat;
+                        colr_shift <= colr_pat;
+                        bit_idx    <= 3'd0;
+                        timer      <= 26'd0;
+                        CLOCK      <= 1'b0;
+                        state      <= ST_BIT_SETUP;
+			           end else begin
+						      timer <= timer + 26'd1;
+						  end
                 end
 
                 // ---- present MSB of each shift-out reg, CLOCK low -------
@@ -214,10 +218,10 @@ assign led0 = sw0;
                     COL_RED   <= colr_shift[7];
                     CLOCK     <= 1'b0;
                     if (timer == SHIFT_HALF_PERIOD-1) begin
-                        timer <= 32'd0;
+                        timer <= 26'd0;
                         state <= ST_BIT_CLKHI;
                     end else begin
-                        timer <= timer + 32'd1;
+                        timer <= timer + 26'd1;
                     end
                 end
 
@@ -225,7 +229,7 @@ assign led0 = sw0;
                 ST_BIT_CLKHI: begin
                     CLOCK <= 1'b1;
                     if (timer == SHIFT_HALF_PERIOD-1) begin
-                        timer      <= 32'd0;
+                        timer      <= 26'd0;
                         row_shift  <= {row_shift[6:0],  1'b0};
                         colg_shift <= {colg_shift[6:0], 1'b0};
                         colr_shift <= {colr_shift[6:0], 1'b0};
@@ -237,7 +241,7 @@ assign led0 = sw0;
                             state   <= ST_BIT_SETUP;
                         end
                     end else begin
-                        timer <= timer + 32'd1;
+                        timer <= timer + 26'd1;
                     end
                 end
 
@@ -246,10 +250,10 @@ assign led0 = sw0;
                     CLOCK  <= 1'b0;
                     RCLOCK <= 1'b0;
                     if (timer == SHIFT_HALF_PERIOD-1) begin
-                        timer <= 32'd0;
+                        timer <= 26'd0;
                         state <= ST_LATCH_HI;
                     end else begin
-                        timer <= timer + 32'd1;
+                        timer <= timer + 26'd1;
                     end
                 end
 
@@ -257,10 +261,10 @@ assign led0 = sw0;
                 ST_LATCH_HI: begin
                     RCLOCK <= 1'b1;
                     if (timer == SHIFT_HALF_PERIOD-1) begin
-                        timer <= 32'd0;
+                        timer <= 26'd0;
                         state <= ST_LATCH_LO;
                     end else begin
-                        timer <= timer + 32'd1;
+                        timer <= timer + 26'd1;
                     end
                 end
 
@@ -269,21 +273,21 @@ assign led0 = sw0;
 
                     RCLOCK <= 1'b0;
                     if (timer == SHIFT_HALF_PERIOD-1) begin
-                        timer <= 32'd0;
+                        timer <= 26'd0;
                         state <= ST_HOLD;
                     end else begin
-                        timer <= timer + 32'd1;
+                        timer <= timer + 26'd1;
                     end
                 end
 
                 // ---- hold this row visible, then advance to next row ----
                 ST_HOLD: begin
                     if (timer == ROW_HOLD_TICKS-1) begin
-                        timer   <= 32'd0;
-                        row_idx <= (row_idx == 3'd7) ? 3'd0 : row_idx + 3'd1;
+                        timer   <= 26'd0;
+                        row_idx <= row_idx + 3'd1;
                         state   <= ST_LOAD;
                     end else begin
-                        timer <= timer + 32'd1;
+                        timer <= timer + 26'd1;
                     end
                 end
 

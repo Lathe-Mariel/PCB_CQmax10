@@ -18,27 +18,27 @@ module font_rom (
         unique case (digit)
             4'd0: begin
                 unique case (row)
-                    3'd0: pattern = 8'h3C;//00111100
-                    3'd1: pattern = 8'h66;//01100110
-                    3'd2: pattern = 8'h66;//01100110
-                    3'd3: pattern = 8'h66;//01100110
-                    3'd4: pattern = 8'h66;//01100110
-                    3'd5: pattern = 8'h66;//01100110
-                    3'd6: pattern = 8'h66;//01100110
-                    3'd7: pattern = 8'h3C;//00111100
+                    3'd0: pattern = 8'h3C;
+                    3'd1: pattern = 8'h66;
+                    3'd2: pattern = 8'h66;
+                    3'd3: pattern = 8'h66;
+                    3'd4: pattern = 8'h66;
+                    3'd5: pattern = 8'h66;
+                    3'd6: pattern = 8'h66;
+                    3'd7: pattern = 8'h3C;
                     default: pattern = 8'h00;
                 endcase
             end
             4'd1: begin
                 unique case (row)
-                    3'd0: pattern = 8'h18;//00011000
-                    3'd1: pattern = 8'h38;//00111000
-                    3'd2: pattern = 8'h18;//00011000
-                    3'd3: pattern = 8'h18;//00011000
-                    3'd4: pattern = 8'h18;//00011000
-                    3'd5: pattern = 8'h18;//00011000
-                    3'd6: pattern = 8'h18;//00011000
-                    3'd7: pattern = 8'h3C;//00110100
+                    3'd0: pattern = 8'h18;
+                    3'd1: pattern = 8'h38;
+                    3'd2: pattern = 8'h18;
+                    3'd3: pattern = 8'h18;
+                    3'd4: pattern = 8'h18;
+                    3'd5: pattern = 8'h18;
+                    3'd6: pattern = 8'h18;
+                    3'd7: pattern = 8'h3C;
                     default: pattern = 8'h00;
                 endcase
             end
