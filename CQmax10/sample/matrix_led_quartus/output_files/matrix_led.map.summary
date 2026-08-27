@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Thu Aug 27 02:58:28 2026
+Analysis & Synthesis Status : Successful - Fri Aug 28 02:35:47 2026
 Quartus Prime Version : 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 Revision Name : matrix_led
 Top-level Entity Name : top_matrix_led
 Family : MAX 10
-Total logic elements : 203
-    Total combinational functions : 191
+Total logic elements : 204
+    Total combinational functions : 192
     Dedicated logic registers : 104
 Total registers : 104
-Total pins : 13
+Total pins : 21
 Total virtual pins : 0
 Total memory bits : 0
 Embedded Multiplier 9-bit elements : 0

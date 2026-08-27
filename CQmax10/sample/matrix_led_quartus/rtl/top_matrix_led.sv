@@ -61,7 +61,7 @@ module top_matrix_led #(
     parameter int CLR_PULSE_TICKS   = 16,                      // width of the power-up /MR pulse
     parameter bit ROW_ACTIVE_HIGH   = 1'b1,                    // see assumption (2) above
     parameter bit COL_ACTIVE_LOW    = 1'b1                     // see assumption (2) above
-)(
+	 )(
     input  logic clk,          // pin 88  : system clock
     input  logic rst_n,        // pin 17  : asynchronous reset, active low
 
@@ -77,10 +77,12 @@ module top_matrix_led #(
     output logic CLOCK,         // pin 106 : shift register clock (shared)
 	 output logic led,
 	 input logic sw0,
-	 output logic led0
+	 output logic led0,
+	 output logic [7:0] leds
 );
 
 assign led0 = sw0;
+assign leds = 8'b00000000;//row_pat;
 
     // ------------------------------------------------------------------
     // Reset synchronizer (async assert, sync de-assert)
@@ -128,7 +130,7 @@ assign led0 = sw0;
     // Even digit -> green, odd digit -> red (exercises both color channels)
     logic [7:0] row_sel_raw, colg_raw, colr_raw;
     always_comb begin
-        row_sel_raw = 8'h01 << row_idx;                       // one-hot: selects active row
+        row_sel_raw = 8'h80 >> row_idx;                       // one-hot: selects active row
         colg_raw    = digit_idx[0] ? 8'h00      : col_pattern;
         colr_raw    = digit_idx[0] ? col_pattern : 8'h00;
     end

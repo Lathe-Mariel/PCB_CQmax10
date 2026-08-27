@@ -1,5 +1,5 @@
 Analysis & Synthesis report for matrix_led
-Thu Aug 27 02:58:28 2026
+Fri Aug 28 02:35:47 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -47,16 +47,16 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Aug 27 02:58:28 2026           ;
+; Analysis & Synthesis Status        ; Successful - Fri Aug 28 02:35:47 2026           ;
 ; Quartus Prime Version              ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
 ; Revision Name                      ; matrix_led                                      ;
 ; Top-level Entity Name              ; top_matrix_led                                  ;
 ; Family                             ; MAX 10                                          ;
-; Total logic elements               ; 203                                             ;
-;     Total combinational functions  ; 191                                             ;
+; Total logic elements               ; 204                                             ;
+;     Total combinational functions  ; 192                                             ;
 ;     Dedicated logic registers      ; 104                                             ;
 ; Total registers                    ; 104                                             ;
-; Total pins                         ; 13                                              ;
+; Total pins                         ; 21                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -185,30 +185,30 @@ on the Quartus Prime software download page.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 203       ;
+; Estimated Total logic elements              ; 204       ;
 ;                                             ;           ;
-; Total combinational functions               ; 191       ;
+; Total combinational functions               ; 192       ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 81        ;
-;     -- 3 input functions                    ; 23        ;
-;     -- <=2 input functions                  ; 87        ;
+;     -- 4 input functions                    ; 83        ;
+;     -- 3 input functions                    ; 21        ;
+;     -- <=2 input functions                  ; 88        ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 141       ;
+;     -- normal mode                          ; 142       ;
 ;     -- arithmetic mode                      ; 50        ;
 ;                                             ;           ;
 ; Total registers                             ; 104       ;
 ;     -- Dedicated logic registers            ; 104       ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
-; I/O pins                                    ; 13        ;
+; I/O pins                                    ; 21        ;
 ;                                             ;           ;
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
 ; Maximum fan-out                             ; 104       ;
-; Total fan-out                               ; 989       ;
-; Average fan-out                             ; 3.08      ;
+; Total fan-out                               ; 1001      ;
+; Average fan-out                             ; 2.96      ;
 +---------------------------------------------+-----------+
 
 
@@ -217,7 +217,7 @@ on the Quartus Prime software download page.
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------+----------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name             ; Entity Name    ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------+----------------+--------------+
-; |top_matrix_led            ; 191 (138)           ; 104 (104)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 13   ; 0            ; 0          ; |top_matrix_led                 ; top_matrix_led ; work         ;
+; |top_matrix_led            ; 192 (139)           ; 104 (104)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 21   ; 0            ; 0          ; |top_matrix_led                 ; top_matrix_led ; work         ;
 ;    |font_rom:u_font|       ; 53 (53)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_matrix_led|font_rom:u_font ; font_rom       ; work         ;
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------+----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -275,8 +275,8 @@ Encoding Type:  One-Hot
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output    ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------+
 ; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |top_matrix_led|colg_shift[7] ;
-; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |top_matrix_led|row_shift[7]  ;
 ; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |top_matrix_led|row_shift[3]  ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |top_matrix_led|row_shift[7]  ;
 ; 6:1                ; 6 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |top_matrix_led|colr_shift[6] ;
 ; 6:1                ; 6 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |top_matrix_led|colg_shift[6] ;
 ; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |top_matrix_led|bit_idx[2]    ;
@@ -306,7 +306,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 13                          ;
+; boundary_port         ; 21                          ;
 ; cycloneiii_ff         ; 104                         ;
 ;     CLR               ; 37                          ;
 ;     CLR SCLR          ; 26                          ;
@@ -314,17 +314,18 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     ENA CLR SCLR      ; 1                           ;
 ;     ENA CLR SLD       ; 15                          ;
 ;     plain             ; 1                           ;
-; cycloneiii_lcell_comb ; 191                         ;
+; cycloneiii_lcell_comb ; 193                         ;
 ;     arith             ; 50                          ;
 ;         2 data inputs ; 50                          ;
-;     normal            ; 141                         ;
+;     normal            ; 143                         ;
+;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 4                           ;
-;         2 data inputs ; 33                          ;
-;         3 data inputs ; 23                          ;
-;         4 data inputs ; 81                          ;
+;         2 data inputs ; 34                          ;
+;         3 data inputs ; 21                          ;
+;         4 data inputs ; 83                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 6.00                        ;
-; Average LUT depth     ; 3.47                        ;
+; Average LUT depth     ; 3.46                        ;
 +-----------------------+-----------------------------+
 
 
@@ -343,7 +344,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
-    Info: Processing started: Thu Aug 27 02:58:17 2026
+    Info: Processing started: Fri Aug 28 02:35:36 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off matrix_led -c matrix_led
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file rtl/font_rom.sv
@@ -351,19 +352,28 @@ Info (12021): Found 1 design units, including 1 entities, in source file rtl/fon
 Info (12021): Found 1 design units, including 1 entities, in source file rtl/top_matrix_led.sv
     Info (12023): Found entity 1: top_matrix_led File: H:/git/PCB_CQmax10/CQmax10/sample/matrix_led_quartus/rtl/top_matrix_led.sv Line: 56
 Info (12127): Elaborating entity "top_matrix_led" for the top level hierarchy
-Info (12128): Elaborating entity "font_rom" for hierarchy "font_rom:u_font" File: H:/git/PCB_CQmax10/CQmax10/sample/matrix_led_quartus/rtl/top_matrix_led.sv Line: 126
+Info (12128): Elaborating entity "font_rom" for hierarchy "font_rom:u_font" File: H:/git/PCB_CQmax10/CQmax10/sample/matrix_led_quartus/rtl/top_matrix_led.sv Line: 128
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "leds[0]" is stuck at GND File: H:/git/PCB_CQmax10/CQmax10/sample/matrix_led_quartus/rtl/top_matrix_led.sv Line: 82
+    Warning (13410): Pin "leds[1]" is stuck at GND File: H:/git/PCB_CQmax10/CQmax10/sample/matrix_led_quartus/rtl/top_matrix_led.sv Line: 82
+    Warning (13410): Pin "leds[2]" is stuck at GND File: H:/git/PCB_CQmax10/CQmax10/sample/matrix_led_quartus/rtl/top_matrix_led.sv Line: 82
+    Warning (13410): Pin "leds[3]" is stuck at GND File: H:/git/PCB_CQmax10/CQmax10/sample/matrix_led_quartus/rtl/top_matrix_led.sv Line: 82
+    Warning (13410): Pin "leds[4]" is stuck at GND File: H:/git/PCB_CQmax10/CQmax10/sample/matrix_led_quartus/rtl/top_matrix_led.sv Line: 82
+    Warning (13410): Pin "leds[5]" is stuck at GND File: H:/git/PCB_CQmax10/CQmax10/sample/matrix_led_quartus/rtl/top_matrix_led.sv Line: 82
+    Warning (13410): Pin "leds[6]" is stuck at GND File: H:/git/PCB_CQmax10/CQmax10/sample/matrix_led_quartus/rtl/top_matrix_led.sv Line: 82
+    Warning (13410): Pin "leds[7]" is stuck at GND File: H:/git/PCB_CQmax10/CQmax10/sample/matrix_led_quartus/rtl/top_matrix_led.sv Line: 82
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 4 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 217 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 226 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
-    Info (21059): Implemented 10 output pins
-    Info (21061): Implemented 204 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 0 warnings
+    Info (21059): Implemented 18 output pins
+    Info (21061): Implemented 205 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 9 warnings
     Info: Peak virtual memory: 4848 megabytes
-    Info: Processing ended: Thu Aug 27 02:58:28 2026
+    Info: Processing ended: Fri Aug 28 02:35:47 2026
     Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:27
+    Info: Total CPU time (on all processors): 00:00:26
 
 
