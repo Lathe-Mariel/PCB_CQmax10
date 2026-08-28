@@ -1,0 +1,68 @@
+FPGAで動く1キーゲームを作る
+
+# Application
+なつかしの1キーゲームを作ってください．画面はLCDに表示します．
+1ドット幅の線が自動的に伸びていきます．ボタンを押している間は線の伸びる方向が切り替わります．
+線がゲームフィールドの右端にあたると，線の進む方向（左右）が反転します．
+線がゲームフィールドの上端，下端に達するか，線と線が重なるとGame Overです．
+
+## Specification
+・画面は横向き（Landscape）に使う
+・ゲームフィールドは320×200
+・画面下側の320x40領域は，情報表示（Scoreなど）領域にする
+・画面は左右方向がX軸（右向きが＋），上下方向をY軸（下向きが＋）とする
+・ユーザ入力装置として，ボタンAを使う
+
+## 動作
+1.座標(0,0)を起点に，右下に直線が伸びていく（1ドット線が伸びるごとにScore に1を足す）
+2.以降は，次の条件でGame Overとする（Game Overになったら，2秒待ち，その後ボタンを押すと，初めからプレイ）
+　・線がゲームフィールの上端（Y:0）に触れる
+　・線がゲームフィールの下端（Y:200）に触れる
+　・線がすでに描画した線に触れる
+3.ボタンAを押している間だけ，直線が伸びる方向を反転する（上向きにする）
+4.ゲームフィールドの右端（320）まで線が行くと，線が伸びる方向（符号）を反転する
+5.ゲームフィールドの左端（0）まで線が行くと，線が伸びる方向（符号）を反転する
+
+# HDL
+SystemVerilog
+
+# IDE
+Quartus Primer Lite
+
+# Hardware
+
+## System Clock
+50MHz
+
+## FPGA
+max10(10M08SCE144C8G)
+
+## Board
+### Core Board
+https://fpga.tokyo/wp-content/uploads/2024/07/CQ-MAX10-A_%E5%9B%9E%E8%B7%AF%E5%9B%B3_R0.pdf
+
+### Base Board
+PCB_CQmax10
+https://github.com/Lathe-Mariel/PCB_CQmax10
+
+## LCD Module
+PMOD-TFTLCD v1.1
+
+### Resolution
+320x240
+
+### Driver IC
+ILI9341
+
+# 物理制約
+
+信号 | 役割り | FPGA Pin No.
+
+clk | system clock | 85
+btn_rst | Reset_n | 17
+Button | User Button | 62
+lcd_cs | lcd chip select | 81
+lcd_mosi | lcd mosi | 78
+lcd_sck | lcd spi clock | 75
+lcd_dc | lcd dc | 77
+
