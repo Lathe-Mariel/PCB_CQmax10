@@ -1,0 +1,189 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "led",
+					"strict" : false
+				},
+				{
+					"name" : "led0",
+					"strict" : false
+				},
+				{
+					"name" : "leds[0]",
+					"strict" : false
+				},
+				{
+					"name" : "leds[1]",
+					"strict" : false
+				},
+				{
+					"name" : "leds[2]",
+					"strict" : false
+				},
+				{
+					"name" : "leds[3]",
+					"strict" : false
+				},
+				{
+					"name" : "leds[4]",
+					"strict" : false
+				},
+				{
+					"name" : "leds[5]",
+					"strict" : false
+				},
+				{
+					"name" : "leds[6]",
+					"strict" : false
+				},
+				{
+					"name" : "leds[7]",
+					"strict" : false
+				},
+				{
+					"name" : "port3[0]",
+					"strict" : false
+				},
+				{
+					"name" : "port3[1]",
+					"strict" : false
+				},
+				{
+					"name" : "port3[2]",
+					"strict" : false
+				},
+				{
+					"name" : "port3[3]",
+					"strict" : false
+				},
+				{
+					"name" : "port3[4]",
+					"strict" : false
+				},
+				{
+					"name" : "port3[5]",
+					"strict" : false
+				},
+				{
+					"name" : "port3[6]",
+					"strict" : false
+				},
+				{
+					"name" : "port3[7]",
+					"strict" : false
+				},
+				{
+					"name" : "port4[0]",
+					"strict" : false
+				},
+				{
+					"name" : "port4[1]",
+					"strict" : false
+				},
+				{
+					"name" : "port4[2]",
+					"strict" : false
+				},
+				{
+					"name" : "port4[3]",
+					"strict" : false
+				},
+				{
+					"name" : "port4[4]",
+					"strict" : false
+				},
+				{
+					"name" : "port4[5]",
+					"strict" : false
+				},
+				{
+					"name" : "port4[6]",
+					"strict" : false
+				},
+				{
+					"name" : "port4[7]",
+					"strict" : false
+				},
+				{
+					"name" : "port5[0]",
+					"strict" : false
+				},
+				{
+					"name" : "port5[1]",
+					"strict" : false
+				},
+				{
+					"name" : "port5[2]",
+					"strict" : false
+				},
+				{
+					"name" : "port5[3]",
+					"strict" : false
+				},
+				{
+					"name" : "port5[4]",
+					"strict" : false
+				},
+				{
+					"name" : "port5[5]",
+					"strict" : false
+				},
+				{
+					"name" : "port5[6]",
+					"strict" : false
+				},
+				{
+					"name" : "port5[7]",
+					"strict" : false
+				},
+				{
+					"name" : "port6[0]",
+					"strict" : false
+				},
+				{
+					"name" : "port6[1]",
+					"strict" : false
+				},
+				{
+					"name" : "port6[2]",
+					"strict" : false
+				},
+				{
+					"name" : "port6[3]",
+					"strict" : false
+				},
+				{
+					"name" : "port6[4]",
+					"strict" : false
+				},
+				{
+					"name" : "port6[5]",
+					"strict" : false
+				},
+				{
+					"name" : "port6[6]",
+					"strict" : false
+				},
+				{
+					"name" : "port6[7]",
+					"strict" : false
+				},
+				{
+					"name" : "sw0",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "rst_n",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
