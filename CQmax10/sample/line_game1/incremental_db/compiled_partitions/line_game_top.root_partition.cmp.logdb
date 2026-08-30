@@ -1,0 +1,2 @@
+v1
+PORT_SWAPPING,PORT_SWAPPING_FINISHED,lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult0|mult_2ls:auto_generated|mac_mult1,
