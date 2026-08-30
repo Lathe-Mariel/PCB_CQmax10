@@ -1,0 +1,18 @@
+Fitter Status : Failed - Mon Aug 31 00:12:09 2026
+Quartus Prime Version : 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+Revision Name : line_game_top
+Top-level Entity Name : line_game_top
+Family : MAX 10
+Device : 10M50SCE144C8G
+Timing Models : Final
+Total logic elements : 1,001 / 49,760 ( 2 % )
+    Total combinational functions : 974 / 49,760 ( 2 % )
+    Dedicated logic registers : 450 / 49,760 ( < 1 % )
+Total registers : 450
+Total pins : 7 / 101 ( 7 % )
+Total virtual pins : 0
+Total memory bits : 64,000 / 1,677,312 ( 4 % )
+Embedded Multiplier 9-bit elements : 1 / 288 ( < 1 % )
+Total PLLs : 0 / 1 ( 0 % )
+UFM blocks : 0 / 1 ( 0 % )
+ADC blocks : 0

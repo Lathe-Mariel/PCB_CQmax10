@@ -1,0 +1,59 @@
+
+State Machine - |line_game_top|lcd_ili9341_ctrl:u_lcd|ret_id
+Name ret_id.R_FILL_STREAM_ENTRY ret_id.R_FILL_RAMWR ret_id.R_FILL_PASET4 ret_id.R_FILL_PASET3 ret_id.R_FILL_PASET2 ret_id.R_FILL_PASET1 ret_id.R_FILL_CASET4 ret_id.R_FILL_CASET3 ret_id.R_FILL_CASET2 ret_id.R_FILL_CASET1 ret_id.R_INIT_NEXT 
+ret_id.R_INIT_NEXT 0 0 0 0 0 0 0 0 0 0 0 
+ret_id.R_FILL_CASET1 0 0 0 0 0 0 0 0 0 1 1 
+ret_id.R_FILL_CASET2 0 0 0 0 0 0 0 0 1 0 1 
+ret_id.R_FILL_CASET3 0 0 0 0 0 0 0 1 0 0 1 
+ret_id.R_FILL_CASET4 0 0 0 0 0 0 1 0 0 0 1 
+ret_id.R_FILL_PASET1 0 0 0 0 0 1 0 0 0 0 1 
+ret_id.R_FILL_PASET2 0 0 0 0 1 0 0 0 0 0 1 
+ret_id.R_FILL_PASET3 0 0 0 1 0 0 0 0 0 0 1 
+ret_id.R_FILL_PASET4 0 0 1 0 0 0 0 0 0 0 1 
+ret_id.R_FILL_RAMWR 0 1 0 0 0 0 0 0 0 0 1 
+ret_id.R_FILL_STREAM_ENTRY 1 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |line_game_top|lcd_ili9341_ctrl:u_lcd|state
+Name state.S_FILL_STREAM state.S_FILL_START state.S_SEND_WAIT state.S_SEND state.S_INIT_DELAY state.S_INIT_STEP state.S_IDLE 
+state.S_IDLE 0 0 0 0 0 0 0 
+state.S_INIT_STEP 0 0 0 0 0 1 1 
+state.S_INIT_DELAY 0 0 0 0 1 0 1 
+state.S_SEND 0 0 0 1 0 0 1 
+state.S_SEND_WAIT 0 0 1 0 0 0 1 
+state.S_FILL_START 0 1 0 0 0 0 1 
+state.S_FILL_STREAM 1 0 0 0 0 0 1 
+
+State Machine - |line_game_top|lcd_ili9341_ctrl:u_lcd|spi_byte_master:u_spi|state
+Name state.S_IDLE state.S_HIGH state.S_LOW 
+state.S_IDLE 0 0 0 
+state.S_LOW 1 0 1 
+state.S_HIGH 1 1 0 
+
+State Machine - |line_game_top|game_core:u_game|state
+Name state.S_GAMEOVER_WAIT_PRESS state.S_GAMEOVER_WAIT_RELEASE state.S_GAMEOVER_DELAY state.S_SCORE_CELL_WAIT state.S_SCORE_CELL_DRAW state.S_SCORE_CELL_NEXT state.S_SCORE_BCD_ITER state.S_SCORE_BCD state.S_RUN_COMMIT state.S_RUN_DRAW_WAIT state.S_RUN_DRAW state.S_RUN_COLL_READ state.S_RUN_COLL_ADDR state.S_RUN_COMPUTE state.S_RUN_WAIT_TICK state.S_ORIGIN_DRAW_WAIT state.S_ORIGIN_DRAW state.S_ORIGIN_MARK state.S_ORIGIN_ADDR state.S_DIV_LINE_WAIT state.S_DIV_LINE state.S_FIELD_CLEAR_WAIT state.S_FIELD_CLEAR state.S_MEM_CLEAR state.S_LCD_INIT_WAIT state.S_LCD_INIT 
+state.S_LCD_INIT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.S_LCD_INIT_WAIT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.S_MEM_CLEAR 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.S_FIELD_CLEAR 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.S_FIELD_CLEAR_WAIT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.S_DIV_LINE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.S_DIV_LINE_WAIT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.S_ORIGIN_ADDR 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.S_ORIGIN_MARK 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.S_ORIGIN_DRAW 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.S_ORIGIN_DRAW_WAIT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.S_RUN_WAIT_TICK 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.S_RUN_COMPUTE 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_RUN_COLL_ADDR 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_RUN_COLL_READ 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_RUN_DRAW 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_RUN_DRAW_WAIT 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_RUN_COMMIT 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_SCORE_BCD 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_SCORE_BCD_ITER 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_SCORE_CELL_NEXT 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_SCORE_CELL_DRAW 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_SCORE_CELL_WAIT 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_GAMEOVER_DELAY 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_GAMEOVER_WAIT_RELEASE 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_GAMEOVER_WAIT_PRESS 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
