@@ -151,7 +151,9 @@ module game_core #(
 
     // address = y*FIELD_W + x  (FIELD_W = 320 = 256+64, i.e. shift-add)
     function automatic logic [ADDR_W-1:0] field_addr(input logic [8:0] x, input logic [7:0] y);
-        field_addr = (ADDR_W)'((y << 8) + (y << 6) + x);
+        logic [17:0] addr_full;
+        addr_full = ({9'd0, y} << 8) + ({9'd0, y} << 6) + {9'd0, x};
+        field_addr = addr_full[ADDR_W-1:0];
     endfunction
 
     // -----------------------------------------------------------------

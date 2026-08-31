@@ -160,7 +160,7 @@ module lcd_ili9341_ctrl #(
             S_IDLE: begin
                 lcd_cs <= 1'b1;
                 if (req_valid) begin
-                    unique case (req_cmd)
+                    case (req_cmd)
                         CMD_INIT: begin
                             init_idx <= '0;
                             lcd_cs   <= 1'b0;

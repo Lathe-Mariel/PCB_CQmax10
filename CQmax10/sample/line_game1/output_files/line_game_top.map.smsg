@@ -1,1 +1,1 @@
-Warning (10268): Verilog HDL information at game_core.sv(160): always construct contains both blocking and non-blocking assignments File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 160
+Warning (10268): Verilog HDL information at game_core.sv(162): always construct contains both blocking and non-blocking assignments File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 162

@@ -2,10 +2,10 @@
 clk => clk.IN4
 btn_rst => btn_rst.IN1
 Button => Button.IN1
-lcd_cs <= lcd_ili9341_ctrl:u_lcd.lcd_cs
-lcd_mosi <= lcd_ili9341_ctrl:u_lcd.lcd_mosi
-lcd_sck <= lcd_ili9341_ctrl:u_lcd.lcd_sck
-lcd_dc <= lcd_ili9341_ctrl:u_lcd.lcd_dc
+lcd_cs << lcd_ili9341_ctrl:u_lcd.lcd_cs
+lcd_mosi << lcd_ili9341_ctrl:u_lcd.lcd_mosi
+lcd_sck << lcd_ili9341_ctrl:u_lcd.lcd_sck
+lcd_dc << lcd_ili9341_ctrl:u_lcd.lcd_dc
 
 
 |line_game_top|reset_sync:u_reset
