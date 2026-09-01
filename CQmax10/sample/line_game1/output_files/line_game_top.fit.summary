@@ -1,14 +1,14 @@
-Fitter Status : Successful - Tue Sep  1 01:05:04 2026
+Fitter Status : Successful - Wed Sep  2 01:00:30 2026
 Quartus Prime Version : 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 Revision Name : line_game_top
 Top-level Entity Name : line_game_top
 Family : MAX 10
 Device : 10M08SCE144C8G
 Timing Models : Final
-Total logic elements : 982 / 8,064 ( 12 % )
-    Total combinational functions : 975 / 8,064 ( 12 % )
-    Dedicated logic registers : 450 / 8,064 ( 6 % )
-Total registers : 450
+Total logic elements : 987 / 8,064 ( 12 % )
+    Total combinational functions : 972 / 8,064 ( 12 % )
+    Dedicated logic registers : 468 / 8,064 ( 6 % )
+Total registers : 468
 Total pins : 7 / 101 ( 7 % )
 Total virtual pins : 0
 Total memory bits : 64,000 / 387,072 ( 17 % )

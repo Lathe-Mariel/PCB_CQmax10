@@ -58,6 +58,7 @@ module game_core #(
     // -----------------------------------------------------------------
     localparam int MEM_DEPTH = FIELD_W * FIELD_H;
     localparam int ADDR_W    = $clog2(MEM_DEPTH);
+    localparam logic [ADDR_W-1:0] MEM_DEPTH_M1 = MEM_DEPTH - 1;
 
     logic collision_mem [0:MEM_DEPTH-1];
     logic [ADDR_W-1:0] mem_addr;
@@ -122,11 +123,19 @@ module game_core #(
     logic [36:0] dd_sr;   // {20-bit BCD, 17-bit remaining binary}
     logic [4:0]  dd_iter;
     logic [3:0]  digit [0:DIGITS-1];
+    logic [19:0] bcd_part, bcd_adj;
 
     // score cell scan (digit index, glyph row, glyph col)
     logic [2:0] cell_digit;
     logic [2:0] cell_row;
     logic [2:0] cell_col;
+    logic [4:0] glyph_row;
+
+    // latched per-step target (stays stable across the multi-cycle
+    // collision-check/draw/commit sequence even if btn_level changes)
+    logic [8:0]         lat_x;
+    logic [7:0]         lat_y;
+    logic signed [1:0]  lat_dx;
 
     // -----------------------------------------------------------------
     // combinational: X bounce, Y direction from button, collision addr
@@ -191,7 +200,7 @@ module game_core #(
                 mem_we    <= 1'b1;
                 mem_wdata <= 1'b0;
                 mem_addr  <= clr_cnt;
-                if (clr_cnt == ADDR_W'(MEM_DEPTH - 1)) begin
+                if (clr_cnt == MEM_DEPTH_M1) begin
                     clr_cnt <= '0;
                     state   <= S_FIELD_CLEAR;
                 end else begin
@@ -258,6 +267,9 @@ module game_core #(
                     go_cnt <= '0;
                     state  <= S_GAMEOVER_DELAY;
                 end else begin
+                    lat_x    <= next_x;
+                    lat_y    <= next_y;
+                    lat_dx   <= ndx;
                     mem_addr <= field_addr(next_x, next_y);
                     state    <= S_RUN_COLL_ADDR;
                 end
@@ -274,7 +286,7 @@ module game_core #(
 
             S_RUN_DRAW: begin
                 req_cmd   <= CMD_FILL;
-                req_x     <= next_x; req_y <= next_y;
+                req_x     <= lat_x; req_y <= lat_y;
                 req_w     <= 9'd1;   req_h <= 9'd1;
                 req_color <= COLOR_LINE;
                 req_valid <= 1'b1;
@@ -285,9 +297,9 @@ module game_core #(
             S_RUN_COMMIT: begin
                 mem_we    <= 1'b1;
                 mem_wdata <= 1'b1;
-                pos_x     <= next_x;
-                pos_y     <= next_y;
-                dir_x     <= ndx;
+                pos_x     <= lat_x;
+                pos_y     <= lat_y;
+                dir_x     <= lat_dx;
                 score     <= score + 17'd1;
                 state     <= S_SCORE_BCD;
             end
@@ -299,7 +311,6 @@ module game_core #(
                 state   <= S_SCORE_BCD_ITER;
             end
             S_SCORE_BCD_ITER: begin
-                logic [19:0] bcd_part, bcd_adj;
                 bcd_part = dd_sr[36:17];
                 bcd_adj[3:0]   = (bcd_part[3:0]   >= 5) ? bcd_part[3:0]   + 4'd3 : bcd_part[3:0];
                 bcd_adj[7:4]   = (bcd_part[7:4]   >= 5) ? bcd_part[7:4]   + 4'd3 : bcd_part[7:4];
@@ -321,7 +332,6 @@ module game_core #(
 
             // -------- redraw every score digit cell (simple, always fresh) --
             S_SCORE_CELL_DRAW: begin
-                logic [4:0] glyph_row;
                 glyph_row = digit_row(digit[DIGITS-1-cell_digit], cell_row);
                 req_cmd   <= CMD_FILL;
                 req_x     <= (SCORE_X0 + cell_digit*DIGIT_PITCH + cell_col*CELL_PX);

@@ -1,5 +1,5 @@
 Power Analyzer report for line_game_top
-Tue Sep  1 01:05:12 2026
+Wed Sep  2 01:00:37 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -53,19 +53,19 @@ on the Quartus Prime software download page.
 ; Number detected on machine ; 36          ;
 ; Maximum allowed            ; 16          ;
 ;                            ;             ;
-; Average used               ; 1.96        ;
+; Average used               ; 2.03        ;
 ; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-16        ;   6.4%      ;
+;     Processors 2-16        ;   6.8%      ;
 +----------------------------+-------------+
 
 
 +-------------------------------------------------------------------------------------------+
 ; Power Analyzer Summary                                                                    ;
 +----------------------------------------+--------------------------------------------------+
-; Power Analyzer Status                  ; Successful - Tue Sep  1 01:05:12 2026            ;
+; Power Analyzer Status                  ; Successful - Wed Sep  2 01:00:37 2026            ;
 ; Quartus Prime Version                  ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition  ;
 ; Revision Name                          ; line_game_top                                    ;
 ; Top-level Entity Name                  ; line_game_top                                    ;
@@ -259,9 +259,9 @@ on the Quartus Prime software download page.
 ;     -- Number of signals with Static Probability from Node, entity or clock assignment ; 0 (0.0%)     ; 0 (0.0%)  ; 0 (0.0%)     ; 0 (0.0%)      ;
 ;                                                                                        ;              ;           ;              ;               ;
 ; Vectorless estimation                                                                  ;              ;           ;              ;               ;
-;     -- Number of signals with Toggle Rate from Vectorless estimation                   ; 1748 (99.5%) ; 6 (42.9%) ; 450 (100.0%) ; 1292 (100.0%) ;
-;     -- Number of signals with Zero toggle rate, from Vectorless estimation             ; 19 (1.1%)    ; 1 (7.1%)  ; 6 (1.3%)     ; 12 (0.9%)     ;
-;     -- Number of signals with Static Probability from Vectorless estimation            ; 1748 (99.5%) ; 6 (42.9%) ; 450 (100.0%) ; 1292 (100.0%) ;
+;     -- Number of signals with Toggle Rate from Vectorless estimation                   ; 1768 (99.5%) ; 6 (42.9%) ; 468 (100.0%) ; 1294 (100.0%) ;
+;     -- Number of signals with Zero toggle rate, from Vectorless estimation             ; 18 (1.0%)    ; 1 (7.1%)  ; 6 (1.3%)     ; 11 (0.9%)     ;
+;     -- Number of signals with Static Probability from Vectorless estimation            ; 1768 (99.5%) ; 6 (42.9%) ; 468 (100.0%) ; 1294 (100.0%) ;
 ;                                                                                        ;              ;           ;              ;               ;
 ; Default assignment                                                                     ;              ;           ;              ;               ;
 ;     -- Number of signals with Toggle Rate from Default assignment                      ; 0 (0.0%)     ; 0 (0.0%)  ; 0 (0.0%)     ; 0 (0.0%)      ;
@@ -286,7 +286,7 @@ on the Quartus Prime software download page.
 Info: *******************************************************************
 Info: Running Quartus Prime Power Analyzer
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
-    Info: Processing started: Tue Sep  1 01:05:09 2026
+    Info: Processing started: Wed Sep  2 01:00:35 2026
 Info: Command: quartus_pow --read_settings_files=off --write_settings_files=off line_game -c line_game_top
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (21077): Low junction temperature is 0 degrees C
@@ -305,9 +305,9 @@ Info (334004): Delay annotation completed successfully
 Info (215049): Average toggle rate for this design is 0.000 millions of transitions / sec
 Info (215031): Total thermal power estimate for the design is 130.75 mW
 Info: Quartus Prime Power Analyzer was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 5011 megabytes
-    Info: Processing ended: Tue Sep  1 01:05:12 2026
-    Info: Elapsed time: 00:00:03
+    Info: Peak virtual memory: 5010 megabytes
+    Info: Processing ended: Wed Sep  2 01:00:37 2026
+    Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:04
 
 

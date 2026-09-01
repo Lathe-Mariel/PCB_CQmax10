@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Tue Sep  1 01:04:46 2026
+Analysis & Synthesis Status : Successful - Wed Sep  2 01:00:11 2026
 Quartus Prime Version : 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 Revision Name : line_game_top
 Top-level Entity Name : line_game_top
 Family : MAX 10
-Total logic elements : 1,001
-    Total combinational functions : 974
-    Dedicated logic registers : 450
-Total registers : 450
+Total logic elements : 999
+    Total combinational functions : 971
+    Dedicated logic registers : 468
+Total registers : 468
 Total pins : 7
 Total virtual pins : 0
 Total memory bits : 64,000

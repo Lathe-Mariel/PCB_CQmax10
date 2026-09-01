@@ -68,46 +68,41 @@ module lcd_ili9341_ctrl #(
     //   ctrl = 10 -> delay, byte field = delay in ~1ms units
     //   ctrl = 11 -> end of sequence
     // ---------------------------------------------------------------
-    localparam int INIT_LEN = 33;
-    logic [9:0] init_rom [0:INIT_LEN-1];
-    initial begin
-        // NOTE: Quartus supports this initial-block-on-a-ROM pattern for
-        // synthesis (it just preloads constant memory contents); it is not
-        // the kind of behavioural `initial` block that is unsynthesizable.
-        init_rom[0]  = {2'b00, 8'h01};            // SWRESET
-        init_rom[1]  = {2'b10, 8'd10};             // delay 10ms
-        init_rom[2]  = {2'b00, 8'h11};            // SLPOUT
-        init_rom[3]  = {2'b10, 8'd120};            // delay 120ms
-        init_rom[4]  = {2'b00, 8'hC0};            // PWCTR1
-        init_rom[5]  = {2'b01, 8'h23};
-        init_rom[6]  = {2'b00, 8'hC1};            // PWCTR2
-        init_rom[7]  = {2'b01, 8'h10};
-        init_rom[8]  = {2'b00, 8'hC5};            // VMCTR1
-        init_rom[9]  = {2'b01, 8'h3E};
-        init_rom[10] = {2'b01, 8'h28};
-        init_rom[11] = {2'b00, 8'hC7};            // VMCTR2
-        init_rom[12] = {2'b01, 8'h86};
-        init_rom[13] = {2'b00, 8'h36};            // MADCTL (orientation/BGR)
-        init_rom[14] = {2'b01, MADCTL_VALUE};
-        init_rom[15] = {2'b00, 8'h3A};            // COLMOD
-        init_rom[16] = {2'b01, 8'h55};             // 16 bpp (RGB565)
-        init_rom[17] = {2'b00, 8'hB1};            // FRMCTR1
-        init_rom[18] = {2'b01, 8'h00};
-        init_rom[19] = {2'b01, 8'h18};
-        init_rom[20] = {2'b00, 8'hB6};            // DISCTRL
-        init_rom[21] = {2'b01, 8'h08};
-        init_rom[22] = {2'b01, 8'h82};
-        init_rom[23] = {2'b01, 8'h27};
-        init_rom[24] = {2'b00, 8'h2A};            // CASET, full width (init)
-        init_rom[25] = {2'b01, 8'h00};
-        init_rom[26] = {2'b01, 8'h00};
-        init_rom[27] = {2'b01, 8'h01};
-        init_rom[28] = {2'b01, 8'h3F};
-        init_rom[29] = {2'b00, 8'h29};            // DISPON
-        init_rom[30] = {2'b10, 8'd20};             // delay 20ms
-        init_rom[31] = {2'b11, 8'h00};            // END
-        init_rom[32] = {2'b11, 8'h00};            // (unused, END padding)
-    end
+    localparam int INIT_LEN = 32;
+    localparam logic [9:0] init_rom [0:INIT_LEN-1] = '{
+        {2'b00, 8'h01},             // SWRESET
+        {2'b10, 8'd10},             // delay 10ms
+        {2'b00, 8'h11},             // SLPOUT
+        {2'b10, 8'd120},            // delay 120ms
+        {2'b00, 8'hC0},             // PWCTR1
+        {2'b01, 8'h23},
+        {2'b00, 8'hC1},             // PWCTR2
+        {2'b01, 8'h10},
+        {2'b00, 8'hC5},             // VMCTR1
+        {2'b01, 8'h3E},
+        {2'b01, 8'h28},
+        {2'b00, 8'hC7},             // VMCTR2
+        {2'b01, 8'h86},
+        {2'b00, 8'h36},             // MADCTL (orientation/BGR)
+        {2'b01, MADCTL_VALUE},
+        {2'b00, 8'h3A},             // COLMOD
+        {2'b01, 8'h55},             // 16 bpp (RGB565)
+        {2'b00, 8'hB1},             // FRMCTR1
+        {2'b01, 8'h00},
+        {2'b01, 8'h18},
+        {2'b00, 8'hB6},             // DISCTRL
+        {2'b01, 8'h08},
+        {2'b01, 8'h82},
+        {2'b01, 8'h27},
+        {2'b00, 8'h2A},             // CASET, full width (init)
+        {2'b01, 8'h00},
+        {2'b01, 8'h00},
+        {2'b01, 8'h01},
+        {2'b01, 8'h3F},
+        {2'b00, 8'h29},             // DISPON
+        {2'b10, 8'd20},             // delay 20ms
+        {2'b11, 8'h00}              // END
+    };
 
     localparam logic [7:0] CMD_CASET = 8'h2A;
     localparam logic [7:0] CMD_PASET = 8'h2B;

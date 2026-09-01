@@ -14,7 +14,6 @@ module spi_byte_master #(
     output logic         done        // 1 cycle pulse when byte is finished
 );
     localparam int DW = (HALF_PERIOD <= 1) ? 1 : $clog2(HALF_PERIOD);
-    localparam logic [DW-1:0] HALF_PERIOD_M1 = HALF_PERIOD - 1;
 
     typedef enum logic [1:0] {S_IDLE, S_LOW, S_HIGH} state_t;
     state_t state;
@@ -24,7 +23,7 @@ module spi_byte_master #(
     logic [7:0]    shreg;
     logic [3:0]    bitcnt;
 
-    assign tick = (div_cnt == HALF_PERIOD_M1);
+    assign tick = (div_cnt == DW'(HALF_PERIOD - 1));
 
     always_ff @(posedge clk) begin
         if (rst) begin

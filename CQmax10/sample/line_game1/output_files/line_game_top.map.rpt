@@ -1,5 +1,5 @@
 Analysis & Synthesis report for line_game_top
-Tue Sep  1 01:04:46 2026
+Wed Sep  2 01:00:11 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -65,15 +65,15 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Sep  1 01:04:46 2026           ;
+; Analysis & Synthesis Status        ; Successful - Wed Sep  2 01:00:11 2026           ;
 ; Quartus Prime Version              ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
 ; Revision Name                      ; line_game_top                                   ;
 ; Top-level Entity Name              ; line_game_top                                   ;
 ; Family                             ; MAX 10                                          ;
-; Total logic elements               ; 1,001                                           ;
-;     Total combinational functions  ; 974                                             ;
-;     Dedicated logic registers      ; 450                                             ;
-; Total registers                    ; 450                                             ;
+; Total logic elements               ; 999                                             ;
+;     Total combinational functions  ; 971                                             ;
+;     Dedicated logic registers      ; 468                                             ;
+; Total registers                    ; 468                                             ;
 ; Total pins                         ; 7                                               ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 64,000                                          ;
@@ -185,7 +185,7 @@ on the Quartus Prime software download page.
 ;     Processor 1            ; 100.0%      ;
 ;     Processor 2            ;   0.1%      ;
 ;     Processor 3            ;   0.1%      ;
-;     Processor 4            ;   0.1%      ;
+;     Processor 4            ;   0.0%      ;
 ;     Processor 5            ;   0.0%      ;
 ;     Processor 6            ;   0.0%      ;
 ;     Processor 7            ;   0.0%      ;
@@ -248,20 +248,20 @@ on the Quartus Prime software download page.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 1,001     ;
+; Estimated Total logic elements              ; 999       ;
 ;                                             ;           ;
-; Total combinational functions               ; 974       ;
+; Total combinational functions               ; 971       ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 404       ;
-;     -- 3 input functions                    ; 246       ;
-;     -- <=2 input functions                  ; 324       ;
+;     -- 4 input functions                    ; 403       ;
+;     -- 3 input functions                    ; 252       ;
+;     -- <=2 input functions                  ; 316       ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 714       ;
-;     -- arithmetic mode                      ; 260       ;
+;     -- normal mode                          ; 712       ;
+;     -- arithmetic mode                      ; 259       ;
 ;                                             ;           ;
-; Total registers                             ; 450       ;
-;     -- Dedicated logic registers            ; 450       ;
+; Total registers                             ; 468       ;
+;     -- Dedicated logic registers            ; 468       ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
 ; I/O pins                                    ; 7         ;
@@ -270,8 +270,8 @@ on the Quartus Prime software download page.
 ; Embedded Multiplier 9-bit elements          ; 1         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 458       ;
-; Total fan-out                               ; 4642      ;
+; Maximum fan-out                             ; 476       ;
+; Total fan-out                               ; 4693      ;
 ; Average fan-out                             ; 3.21      ;
 +---------------------------------------------+-----------+
 
@@ -281,9 +281,9 @@ on the Quartus Prime software download page.
 +------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------+------------------+--------------+
 ; Compilation Hierarchy Node                     ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                                                                     ; Entity Name      ; Library Name ;
 +------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------+------------------+--------------+
-; |line_game_top                                 ; 974 (1)             ; 450 (0)                   ; 64000       ; 0          ; 1            ; 1       ; 0         ; 7    ; 0            ; 0          ; |line_game_top                                                                                                                          ; line_game_top    ; work         ;
+; |line_game_top                                 ; 971 (1)             ; 468 (0)                   ; 64000       ; 0          ; 1            ; 1       ; 0         ; 7    ; 0            ; 0          ; |line_game_top                                                                                                                          ; line_game_top    ; work         ;
 ;    |debounce:u_debounce|                       ; 31 (31)             ; 23 (23)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|debounce:u_debounce                                                                                                      ; debounce         ; work         ;
-;    |game_core:u_game|                          ; 577 (549)           ; 281 (278)                 ; 64000       ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|game_core:u_game                                                                                                         ; game_core        ; work         ;
+;    |game_core:u_game|                          ; 577 (549)           ; 300 (297)                 ; 64000       ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|game_core:u_game                                                                                                         ; game_core        ; work         ;
 ;       |altsyncram:collision_mem_rtl_0|         ; 22 (0)              ; 3 (0)                     ; 64000       ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|game_core:u_game|altsyncram:collision_mem_rtl_0                                                                          ; altsyncram       ; work         ;
 ;          |altsyncram_9r71:auto_generated|      ; 22 (0)              ; 3 (3)                     ; 64000       ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|game_core:u_game|altsyncram:collision_mem_rtl_0|altsyncram_9r71:auto_generated                                           ; altsyncram_9r71  ; work         ;
 ;             |decode_aj9:rden_decode|           ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|game_core:u_game|altsyncram:collision_mem_rtl_0|altsyncram_9r71:auto_generated|decode_aj9:rden_decode                    ; decode_aj9       ; work         ;
@@ -291,11 +291,11 @@ on the Quartus Prime software download page.
 ;             |mux_q1b:mux2|                     ; 6 (6)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|game_core:u_game|altsyncram:collision_mem_rtl_0|altsyncram_9r71:auto_generated|mux_q1b:mux2                              ; mux_q1b          ; work         ;
 ;       |lpm_mult:Mult0|                         ; 6 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|game_core:u_game|lpm_mult:Mult0                                                                                          ; lpm_mult         ; work         ;
 ;          |multcore:mult_core|                  ; 6 (6)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|game_core:u_game|lpm_mult:Mult0|multcore:mult_core                                                                       ; multcore         ; work         ;
-;    |lcd_ili9341_ctrl:u_lcd|                    ; 365 (277)           ; 143 (124)                 ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|lcd_ili9341_ctrl:u_lcd                                                                                                   ; lcd_ili9341_ctrl ; work         ;
+;    |lcd_ili9341_ctrl:u_lcd|                    ; 362 (273)           ; 142 (123)                 ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|lcd_ili9341_ctrl:u_lcd                                                                                                   ; lcd_ili9341_ctrl ; work         ;
 ;       |lpm_mult:Mult0|                         ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult0                                                                                    ; lpm_mult         ; work         ;
 ;          |mult_2ls:auto_generated|             ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult0|mult_2ls:auto_generated                                                            ; mult_2ls         ; work         ;
-;       |lpm_mult:Mult1|                         ; 58 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult1                                                                                    ; lpm_mult         ; work         ;
-;          |multcore:mult_core|                  ; 58 (26)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult1|multcore:mult_core                                                                 ; multcore         ; work         ;
+;       |lpm_mult:Mult1|                         ; 59 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult1                                                                                    ; lpm_mult         ; work         ;
+;          |multcore:mult_core|                  ; 59 (27)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult1|multcore:mult_core                                                                 ; multcore         ; work         ;
 ;             |mpar_add:padder|                  ; 32 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult1|multcore:mult_core|mpar_add:padder                                                 ; mpar_add         ; work         ;
 ;                |lpm_add_sub:adder[0]|          ; 32 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult1|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                            ; lpm_add_sub      ; work         ;
 ;                   |add_sub_arg:auto_generated| ; 32 (32)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult1|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_arg:auto_generated ; add_sub_arg      ; work         ;
@@ -447,337 +447,8 @@ Encoding Type:  One-Hot
 ; game_core:u_game|state~30                       ; Lost fanout                                         ;
 ; game_core:u_game|state~31                       ; Lost fanout                                         ;
 ; game_core:u_game|state~32                       ; Lost fanout                                         ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~0               ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~1               ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~2               ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~3               ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~4               ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~5               ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~6               ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~7               ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~8               ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~9               ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~10              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~11              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~12              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~13              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~14              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~15              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~16              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~17              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~18              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~19              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~20              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~21              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~22              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~23              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~24              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~25              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~26              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~27              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~28              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~29              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~30              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~31              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~32              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~33              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~34              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~35              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~36              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~37              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~38              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~39              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~40              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~41              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~42              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~43              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~44              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~45              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~46              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~47              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~48              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~49              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~50              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~51              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~52              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~53              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~54              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~55              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~56              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~57              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~58              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~59              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~60              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~61              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~62              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~63              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~64              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~65              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~66              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~67              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~68              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~69              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~70              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~71              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~72              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~73              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~74              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~75              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~76              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~77              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~78              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~79              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~80              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~81              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~82              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~83              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~84              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~85              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~86              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~87              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~88              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~89              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~90              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~91              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~92              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~93              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~94              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~95              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~96              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~97              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~98              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~99              ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~100             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~101             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~102             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~103             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~104             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~105             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~106             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~107             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~108             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~109             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~110             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~111             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~112             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~113             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~114             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~115             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~116             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~117             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~118             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~119             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~120             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~121             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~122             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~123             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~124             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~125             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~126             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~127             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~128             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~129             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~130             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~131             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~132             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~133             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~134             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~135             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~136             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~137             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~138             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~139             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~140             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~141             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~142             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~143             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~144             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~145             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~146             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~147             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~148             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~149             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~150             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~151             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~152             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~153             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~154             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~155             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~156             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~157             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~158             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~159             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~160             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~161             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~162             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~163             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~164             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~165             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~166             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~167             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~168             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~169             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~170             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~171             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~172             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~173             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~174             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~175             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~176             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~177             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~178             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~179             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~180             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~181             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~182             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~183             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~184             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~185             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~186             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~187             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~188             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~189             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~190             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~191             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~192             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~193             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~194             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~195             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~196             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~197             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~198             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~199             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~200             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~201             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~202             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~203             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~204             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~205             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~206             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~207             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~208             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~209             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~210             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~211             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~212             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~213             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~214             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~215             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~216             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~217             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~218             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~219             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~220             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~221             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~222             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~223             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~224             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~225             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~226             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~227             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~228             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~229             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~230             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~231             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~232             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~233             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~234             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~235             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~236             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~237             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~238             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~239             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~240             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~241             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~242             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~243             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~244             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~245             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~246             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~247             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~248             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~249             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~250             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~251             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~252             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~253             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~254             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~255             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~256             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~257             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~258             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~259             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~260             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~261             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~262             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~263             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~264             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~265             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~266             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~267             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~268             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~269             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~270             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~271             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~272             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~273             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~274             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~275             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~276             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~277             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~278             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~279             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~280             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~281             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~282             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~283             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~284             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~285             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~286             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~287             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~288             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~289             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~290             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~291             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~292             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~293             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~294             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~295             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~296             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~297             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~298             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~299             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~300             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~301             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~302             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~303             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~304             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~305             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~306             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~307             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~308             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~309             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~310             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~311             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~312             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~313             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~314             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~315             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~316             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~317             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~318             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~319             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~320             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~321             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~322             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~323             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~324             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~325             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~326             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~327             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~328             ; Stuck at GND due to stuck port clock                ;
-; lcd_ili9341_ctrl:u_lcd|init_rom~329             ; Stuck at GND due to stuck port clock                ;
-; Total Number of Removed Registers = 381         ;                                                     ;
+; lcd_ili9341_ctrl:u_lcd|init_idx[5]              ; Lost fanout                                         ;
+; Total Number of Removed Registers = 52          ;                                                     ;
 +-------------------------------------------------+-----------------------------------------------------+
 
 
@@ -786,12 +457,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 450   ;
-; Number of registers using Synchronous Clear  ; 215   ;
+; Total registers                              ; 468   ;
+; Number of registers using Synchronous Clear  ; 214   ;
 ; Number of registers using Synchronous Load   ; 25    ;
 ; Number of registers using Asynchronous Clear ; 3     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 346   ;
+; Number of registers using Clock Enable       ; 364   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -810,28 +481,28 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                            ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------+
-; 3:1                ; 19 bits   ; 38 LEs        ; 19 LEs               ; 19 LEs                 ; Yes        ; |line_game_top|game_core:u_game|digit[2][2]                           ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |line_game_top|game_core:u_game|dd_sr[9]                              ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |line_game_top|game_core:u_game|clr_cnt[0]                            ;
-; 4:1                ; 19 bits   ; 38 LEs        ; 19 LEs               ; 19 LEs                 ; Yes        ; |line_game_top|debounce:u_debounce|cnt[10]                            ;
+; 3:1                ; 19 bits   ; 38 LEs        ; 19 LEs               ; 19 LEs                 ; Yes        ; |line_game_top|game_core:u_game|digit[1][2]                           ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |line_game_top|game_core:u_game|dd_sr[1]                              ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |line_game_top|game_core:u_game|clr_cnt[11]                           ;
+; 4:1                ; 19 bits   ; 38 LEs        ; 19 LEs               ; 19 LEs                 ; Yes        ; |line_game_top|debounce:u_debounce|cnt[17]                            ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |line_game_top|game_core:u_game|req_y[6]                              ;
-; 4:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; Yes        ; |line_game_top|game_core:u_game|req_x[8]                              ;
-; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |line_game_top|game_core:u_game|tick_cnt[20]                          ;
+; 4:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; Yes        ; |line_game_top|game_core:u_game|req_x[7]                              ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |line_game_top|game_core:u_game|tick_cnt[26]                          ;
 ; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |line_game_top|game_core:u_game|cell_col[0]                           ;
 ; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |line_game_top|game_core:u_game|mem_addr[15]                          ;
-; 6:1                ; 12 bits   ; 48 LEs        ; 12 LEs               ; 36 LEs                 ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|delay_cnt[28]                   ;
-; 6:1                ; 20 bits   ; 80 LEs        ; 40 LEs               ; 40 LEs                 ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|delay_cnt[13]                   ;
-; 6:1                ; 17 bits   ; 68 LEs        ; 17 LEs               ; 51 LEs                 ; Yes        ; |line_game_top|game_core:u_game|score_shown[12]                       ;
-; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |line_game_top|game_core:u_game|cell_row[2]                           ;
-; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|spi_byte_master:u_spi|bitcnt[0] ;
-; 6:1                ; 7 bits    ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|spi_byte_master:u_spi|shreg[4]  ;
-; 6:1                ; 17 bits   ; 68 LEs        ; 34 LEs               ; 34 LEs                 ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|pix_left[2]                     ;
-; 7:1                ; 32 bits   ; 128 LEs       ; 32 LEs               ; 96 LEs                 ; Yes        ; |line_game_top|game_core:u_game|go_cnt[10]                            ;
-; 8:1                ; 6 bits    ; 30 LEs        ; 6 LEs                ; 24 LEs                 ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|init_idx[1]                     ;
+; 6:1                ; 12 bits   ; 48 LEs        ; 12 LEs               ; 36 LEs                 ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|delay_cnt[27]                   ;
+; 6:1                ; 20 bits   ; 80 LEs        ; 40 LEs               ; 40 LEs                 ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|delay_cnt[14]                   ;
+; 6:1                ; 17 bits   ; 68 LEs        ; 17 LEs               ; 51 LEs                 ; Yes        ; |line_game_top|game_core:u_game|score_shown[5]                        ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |line_game_top|game_core:u_game|cell_row[0]                           ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|spi_byte_master:u_spi|bitcnt[1] ;
+; 6:1                ; 7 bits    ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|spi_byte_master:u_spi|shreg[3]  ;
+; 6:1                ; 17 bits   ; 68 LEs        ; 34 LEs               ; 34 LEs                 ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|pix_left[6]                     ;
+; 7:1                ; 32 bits   ; 128 LEs       ; 32 LEs               ; 96 LEs                 ; Yes        ; |line_game_top|game_core:u_game|go_cnt[7]                             ;
+; 8:1                ; 6 bits    ; 30 LEs        ; 6 LEs                ; 24 LEs                 ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|init_idx[5]                     ;
 ; 13:1               ; 3 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|spi_data[6]                     ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |line_game_top|game_core:u_game|cell_digit[1]                         ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |line_game_top|game_core:u_game|cell_digit[0]                         ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |line_game_top|game_core:u_game|ndx[1]                                ;
-; 8:1                ; 4 bits    ; 20 LEs        ; 16 LEs               ; 4 LEs                  ; No         ; |line_game_top|game_core:u_game|Mux0                                  ;
+; 8:1                ; 4 bits    ; 20 LEs        ; 16 LEs               ; 4 LEs                  ; No         ; |line_game_top|game_core:u_game|Mux3                                  ;
 ; 7:1                ; 9 bits    ; 36 LEs        ; 18 LEs               ; 18 LEs                 ; No         ; |line_game_top|lcd_ili9341_ctrl:u_lcd|ret_id                          ;
 ; 7:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |line_game_top|lcd_ili9341_ctrl:u_lcd|spi_byte_master:u_spi|state     ;
 ; 16:1               ; 5 bits    ; 50 LEs        ; 20 LEs               ; 30 LEs                 ; No         ; |line_game_top|game_core:u_game|state                                 ;
@@ -1141,31 +812,31 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 7                           ;
-; cycloneiii_ff         ; 450                         ;
+; cycloneiii_ff         ; 468                         ;
 ;     CLR               ; 3                           ;
-;     ENA               ; 177                         ;
-;     ENA SCLR          ; 150                         ;
+;     ENA               ; 196                         ;
+;     ENA SCLR          ; 149                         ;
 ;     ENA SLD           ; 19                          ;
 ;     SCLR              ; 64                          ;
 ;     SCLR SLD          ; 1                           ;
 ;     SLD               ; 5                           ;
 ;     plain             ; 31                          ;
-; cycloneiii_lcell_comb ; 974                         ;
-;     arith             ; 260                         ;
-;         2 data inputs ; 210                         ;
+; cycloneiii_lcell_comb ; 971                         ;
+;     arith             ; 259                         ;
+;         2 data inputs ; 209                         ;
 ;         3 data inputs ; 50                          ;
-;     normal            ; 714                         ;
+;     normal            ; 712                         ;
 ;         0 data inputs ; 3                           ;
 ;         1 data inputs ; 16                          ;
-;         2 data inputs ; 95                          ;
-;         3 data inputs ; 196                         ;
-;         4 data inputs ; 404                         ;
+;         2 data inputs ; 88                          ;
+;         3 data inputs ; 202                         ;
+;         4 data inputs ; 403                         ;
 ; cycloneiii_mac_mult   ; 1                           ;
 ; cycloneiii_mac_out    ; 1                           ;
 ; cycloneiii_ram_block  ; 8                           ;
 ;                       ;                             ;
 ; Max LUT depth         ; 12.00                       ;
-; Average LUT depth     ; 3.98                        ;
+; Average LUT depth     ; 3.87                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1184,7 +855,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
-    Info: Processing started: Tue Sep  1 01:04:30 2026
+    Info: Processing started: Wed Sep  2 00:59:54 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off line_game -c line_game_top
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -1206,17 +877,13 @@ Info (12127): Elaborating entity "line_game_top" for the top level hierarchy
 Info (12128): Elaborating entity "reset_sync" for hierarchy "reset_sync:u_reset" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/line_game_top.sv Line: 29
 Info (12128): Elaborating entity "debounce" for hierarchy "debounce:u_debounce" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/line_game_top.sv Line: 40
 Info (12128): Elaborating entity "game_core" for hierarchy "game_core:u_game" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/line_game_top.sv Line: 69
-Warning (10230): Verilog HDL assignment warning at game_core.sv(327): truncated value with size 32 to match size of target (9) File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 327
-Warning (10230): Verilog HDL assignment warning at game_core.sv(328): truncated value with size 32 to match size of target (8) File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 328
+Warning (10230): Verilog HDL assignment warning at game_core.sv(61): truncated value with size 32 to match size of target (16) File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 61
+Warning (10230): Verilog HDL assignment warning at game_core.sv(337): truncated value with size 32 to match size of target (9) File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 337
+Warning (10230): Verilog HDL assignment warning at game_core.sv(338): truncated value with size 32 to match size of target (8) File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 338
 Info (12128): Elaborating entity "lcd_ili9341_ctrl" for hierarchy "lcd_ili9341_ctrl:u_lcd" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/line_game_top.sv Line: 91
-Info (10264): Verilog HDL Case Statement information at lcd_ili9341_ctrl.sv(163): all case item expressions in this case statement are onehot File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 163
-Warning (10030): Net "init_rom.data_a" at lcd_ili9341_ctrl.sv(72) has no driver or initial value, using a default initial value '0' File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 72
-Warning (10030): Net "init_rom.waddr_a" at lcd_ili9341_ctrl.sv(72) has no driver or initial value, using a default initial value '0' File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 72
-Warning (10030): Net "init_rom.we_a" at lcd_ili9341_ctrl.sv(72) has no driver or initial value, using a default initial value '0' File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 72
+Info (10264): Verilog HDL Case Statement information at lcd_ili9341_ctrl.sv(158): all case item expressions in this case statement are onehot File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 158
 Info (12128): Elaborating entity "spi_byte_master" for hierarchy "lcd_ili9341_ctrl:u_lcd|spi_byte_master:u_spi" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 62
-Critical Warning (127005): Memory depth (64) in the design file differs from memory depth (33) in the Memory Initialization File "H:/git/PCB_CQmax10/CQmax10/sample/line_game1/db/line_game_top.ram0_lcd_ili9341_ctrl_a77899c9.hdl.mif" -- setting initial value for remaining addresses to 0
-Info (276014): Found 1 instances of uninferred RAM logic
-    Info (276013): RAM logic "lcd_ili9341_ctrl:u_lcd|init_rom" is uninferred because MIF is not supported for the selected family File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 72
+Warning (10230): Verilog HDL assignment warning at spi_byte_master.sv(17): truncated value with size 32 to match size of target (1) File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/spi_byte_master.sv Line: 17
 Info (19000): Inferred 1 megafunctions from design logic
     Info (276029): Inferred altsyncram megafunction from the following design logic: "game_core:u_game|collision_mem_rtl_0" 
         Info (286033): Parameter OPERATION_MODE set to SINGLE_PORT
@@ -1230,9 +897,9 @@ Info (19000): Inferred 1 megafunctions from design logic
         Info (286033): Parameter INDATA_ACLR_A set to NONE
         Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
 Info (278001): Inferred 3 megafunctions from design logic
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "lcd_ili9341_ctrl:u_lcd|Mult0" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 175
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "lcd_ili9341_ctrl:u_lcd|Mult1" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 202
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "game_core:u_game|Mult0" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 327
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "lcd_ili9341_ctrl:u_lcd|Mult0" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 170
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "lcd_ili9341_ctrl:u_lcd|Mult1" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 197
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "game_core:u_game|Mult0" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 337
 Info (12130): Elaborated megafunction instantiation "game_core:u_game|altsyncram:collision_mem_rtl_0"
 Info (12133): Instantiated megafunction "game_core:u_game|altsyncram:collision_mem_rtl_0" with the following parameter:
     Info (12134): Parameter "OPERATION_MODE" = "SINGLE_PORT"
@@ -1253,8 +920,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/deco
     Info (12023): Found entity 1: decode_aj9 File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/db/decode_aj9.tdf Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_q1b.tdf
     Info (12023): Found entity 1: mux_q1b File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/db/mux_q1b.tdf Line: 23
-Info (12130): Elaborated megafunction instantiation "lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult0" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 175
-Info (12133): Instantiated megafunction "lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult0" with the following parameter: File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 175
+Info (12130): Elaborated megafunction instantiation "lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult0" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 170
+Info (12133): Instantiated megafunction "lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult0" with the following parameter: File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 170
     Info (12134): Parameter "LPM_WIDTHA" = "9"
     Info (12134): Parameter "LPM_WIDTHB" = "8"
     Info (12134): Parameter "LPM_WIDTHP" = "17"
@@ -1266,8 +933,8 @@ Info (12133): Instantiated megafunction "lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult0" 
     Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
 Info (12021): Found 1 design units, including 1 entities, in source file db/mult_2ls.tdf
     Info (12023): Found entity 1: mult_2ls File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/db/mult_2ls.tdf Line: 29
-Info (12130): Elaborated megafunction instantiation "lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult1" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 202
-Info (12133): Instantiated megafunction "lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult1" with the following parameter: File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 202
+Info (12130): Elaborated megafunction instantiation "lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult1" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 197
+Info (12133): Instantiated megafunction "lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult1" with the following parameter: File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 197
     Info (12134): Parameter "LPM_WIDTHA" = "8"
     Info (12134): Parameter "LPM_WIDTHB" = "16"
     Info (12134): Parameter "LPM_WIDTHP" = "24"
@@ -1283,8 +950,8 @@ Info (12131): Elaborated megafunction instantiation "lcd_ili9341_ctrl:u_lcd|lpm_
 Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_arg.tdf
     Info (12023): Found entity 1: add_sub_arg File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/db/add_sub_arg.tdf Line: 23
 Info (12131): Elaborated megafunction instantiation "lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult1|altshift:external_latency_ffs", which is child of megafunction instantiation "lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult1" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_mult.tdf Line: 352
-Info (12130): Elaborated megafunction instantiation "game_core:u_game|lpm_mult:Mult0" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 327
-Info (12133): Instantiated megafunction "game_core:u_game|lpm_mult:Mult0" with the following parameter: File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 327
+Info (12130): Elaborated megafunction instantiation "game_core:u_game|lpm_mult:Mult0" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 337
+Info (12133): Instantiated megafunction "game_core:u_game|lpm_mult:Mult0" with the following parameter: File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 337
     Info (12134): Parameter "LPM_WIDTHA" = "3"
     Info (12134): Parameter "LPM_WIDTHB" = "5"
     Info (12134): Parameter "LPM_WIDTHP" = "8"
@@ -1298,21 +965,21 @@ Info (12131): Elaborated megafunction instantiation "game_core:u_game|lpm_mult:M
 Info (12131): Elaborated megafunction instantiation "game_core:u_game|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder", which is child of megafunction instantiation "game_core:u_game|lpm_mult:Mult0" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/multcore.tdf Line: 229
 Info (12131): Elaborated megafunction instantiation "game_core:u_game|lpm_mult:Mult0|altshift:external_latency_ffs", which is child of megafunction instantiation "game_core:u_game|lpm_mult:Mult0" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_mult.tdf Line: 352
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 13 registers lost all their fanouts during netlist optimizations.
+Info (17049): 14 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file H:/git/PCB_CQmax10/CQmax10/sample/line_game1/output_files/line_game_top.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 1032 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1049 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 4 output pins
-    Info (21061): Implemented 1016 logic cells
+    Info (21061): Implemented 1033 logic cells
     Info (21064): Implemented 8 RAM segments
     Info (21062): Implemented 1 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 7 warnings
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 5 warnings
     Info: Peak virtual memory: 4866 megabytes
-    Info: Processing ended: Tue Sep  1 01:04:46 2026
-    Info: Elapsed time: 00:00:16
-    Info: Total CPU time (on all processors): 00:00:30
+    Info: Processing ended: Wed Sep  2 01:00:11 2026
+    Info: Elapsed time: 00:00:17
+    Info: Total CPU time (on all processors): 00:00:31
 
 
 +------------------------------------------+
