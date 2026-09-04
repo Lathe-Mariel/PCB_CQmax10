@@ -1,0 +1,8 @@
+        unique case (step)
+            3'd0: begin phase_inc = 16'd1010; duration_cyc = 27'd6_700_000; end // F#4
+				3'd1: begin phase_inc = 16'd0;   duration_cyc = 27'd18_700_000; end // wait
+            3'd2: begin phase_inc = 16'd758; duration_cyc = 27'd10_000_000; end // C#4, 200ms
+            3'd3: begin phase_inc = 16'd1010; duration_cyc = 27'd10_000_000; end // F#4, 200ms
+            3'd4: begin phase_inc = 16'd758; duration_cyc = 27'd10_000_000; end // C#4, 200ms
+            3'd5: begin phase_inc = 16'd1134; duration_cyc = 27'd22_800_000; end // G#4, 
+            default: begin phase_inc = 16'd0; duration_cyc = 27'd110_000_000; end // 2000ms rest
