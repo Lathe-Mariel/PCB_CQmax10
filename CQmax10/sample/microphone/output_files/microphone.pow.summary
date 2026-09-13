@@ -1,0 +1,12 @@
+Power Analyzer Status : Successful - Sat Sep 12 22:08:25 2026
+Quartus Prime Version : 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+Revision Name : microphone
+Top-level Entity Name : top
+Family : MAX 10
+Device : 10M08SCE144C8G
+Power Models : Final
+Total Thermal Power Dissipation : 174.61 mW
+Core Dynamic Thermal Power Dissipation : 31.51 mW
+Core Static Thermal Power Dissipation : 110.77 mW
+I/O Thermal Power Dissipation : 32.32 mW
+Power Estimation Confidence : Low: user provided insufficient toggle rate data

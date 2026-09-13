@@ -1,0 +1,91 @@
+// =============================================================================
+// comb_filter.sv
+// Lowpass-feedback comb filter (Freeverb-style) used as one branch of the
+// parallel comb bank inside reverb.sv. The delay line is a plain array,
+// which Gowin infers as Block RAM for the sizes used here.
+//
+// Per-sample recurrence (classic "LBCF" used by Schroeder/Freeverb):
+//   bufout      = mem[ptr]
+//   filterstore = bufout*(1-damp) + filterstore*damp     (one-pole lowpass)
+//   mem[ptr]    = in_sample + filterstore*feedback
+//   out_sample  = bufout
+//
+// Timing: `smp_en` is a single-cycle pulse marking a new input sample.
+// The BRAM read has one cycle of latency, so the whole filter has a
+// 2-cycle pipeline: `out_en` pulses exactly when `out_sample` is valid,
+// 2 clk cycles after `smp_en`. This is negligible next to the ~1000+
+// clock audio sample period, so no special handling is needed downstream
+// beyond using `out_en` to know when data is fresh.
+//
+// All intermediate signed widths are kept generous (2x DATA_W or more)
+// so the fixed-point multiplies/adds cannot silently overflow.
+// =============================================================================
+module comb_filter #(
+    parameter int DATA_W     = 14,
+    parameter int DELAY_LEN  = 1116,
+    parameter int ADDR_W     = $clog2(DELAY_LEN),
+    parameter int FB_GAIN_Q8 = 215,   // feedback gain,  Q8 fixed point (~0.84)
+    parameter int DAMP_Q8    = 51     // damping coeff., Q8 fixed point (~0.20)
+) (
+    input  logic                     clk,
+    input  logic                     rst,
+    input  logic                     smp_en,
+    input  logic signed [DATA_W-1:0] in_sample,
+    output logic                     out_en,
+    output logic signed [DATA_W-1:0] out_sample
+);
+
+    // Delay line (inferred as Block RAM for these sizes)
+    logic signed [DATA_W-1:0] mem [0:DELAY_LEN-1];
+    logic [ADDR_W-1:0]        ptr;
+
+    // Stage 1: capture input, issue the BRAM read
+    logic signed [DATA_W-1:0] in_reg;
+    logic signed [DATA_W-1:0] rd_data;
+    logic                     rd_valid;   // pulses when in_reg/rd_data are fresh
+
+    always_ff @(posedge clk) begin
+        if (rst) begin
+            in_reg  <= '0;
+            rd_data <= '0;
+        end else if (smp_en) begin
+            in_reg  <= in_sample;
+            rd_data <= mem[ptr];
+        end
+    end
+
+    always_ff @(posedge clk) begin
+        if (rst) rd_valid <= 1'b0;
+        else     rd_valid <= smp_en;
+    end
+
+    // Stage 2: one-pole damping filter, feedback write-back, output
+    logic signed [DATA_W+9:0] filterstore_next_wide;   // rd_data*257 fits comfortably
+    logic signed [DATA_W-1:0] filterstore;
+    logic signed [DATA_W-1:0] filterstore_next;
+    logic signed [DATA_W+9:0] mem_write_wide;
+    logic signed [DATA_W-1:0] mem_write_val;
+
+    assign filterstore_next_wide = rd_data * (256 - DAMP_Q8) + filterstore * DAMP_Q8;
+    assign filterstore_next      = filterstore_next_wide >>> 8;
+    assign mem_write_wide        = in_reg + ((filterstore_next * FB_GAIN_Q8) >>> 8);
+    assign mem_write_val         = mem_write_wide[DATA_W-1:0];
+
+    always_ff @(posedge clk) begin
+        if (rst) begin
+            ptr         <= '0;
+            filterstore <= '0;
+            out_sample  <= '0;
+            out_en      <= 1'b0;
+        end else begin
+            out_en <= rd_valid;
+            if (rd_valid) begin
+                filterstore <= filterstore_next;
+                mem[ptr]    <= mem_write_val;
+                out_sample  <= rd_data;
+                ptr         <= (ptr == ADDR_W'(DELAY_LEN - 1)) ? '0 : ptr + 1'b1;
+            end
+        end
+    end
+
+endmodule

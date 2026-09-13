@@ -1,0 +1,18 @@
+Fitter Status : Successful - Sat Sep 12 22:08:18 2026
+Quartus Prime Version : 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+Revision Name : microphone
+Top-level Entity Name : top
+Family : MAX 10
+Device : 10M08SCE144C8G
+Timing Models : Final
+Total logic elements : 811 / 8,064 ( 10 % )
+    Total combinational functions : 695 / 8,064 ( 9 % )
+    Dedicated logic registers : 439 / 8,064 ( 5 % )
+Total registers : 439
+Total pins : 14 / 101 ( 14 % )
+Total virtual pins : 0
+Total memory bits : 65,536 / 387,072 ( 17 % )
+Embedded Multiplier 9-bit elements : 0 / 48 ( 0 % )
+Total PLLs : 0 / 1 ( 0 % )
+UFM blocks : 0 / 1 ( 0 % )
+ADC blocks : 0

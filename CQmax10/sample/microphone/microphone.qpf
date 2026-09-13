@@ -1,0 +1,16 @@
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 24.1std.0 Build 1077 03/04/2025 SC Standard Edition
+#
+# Project:  microphone
+# Device:   10M08SCE144C8G  (MAX 10)
+#
+# -------------------------------------------------------------------------- #
+
+QUARTUS_VERSION = "24.1"
+DATE = "12:00:00  September 12, 2026"
+
+# Revisions
+
+PROJECT_REVISION = "microphone"

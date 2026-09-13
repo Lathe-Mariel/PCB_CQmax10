@@ -1,0 +1,1 @@
+Info (10281): Verilog HDL Declaration information at lcd_wave.sv(69): object "POWERON_CNT" differs only in case from object "poweron_cnt" in the same scope File: H:/git/PCB_CQmax10/CQmax10/sample/microphone/rtl/lcd_wave.sv Line: 69

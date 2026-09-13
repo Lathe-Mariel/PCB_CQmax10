@@ -1,0 +1,41 @@
+# ** Note: (vsim-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# vsim -c -do "run -all; quit -f" tb_moving_avg 
+# Start time: 22:49:34 on Sep 12,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# //  Questa Altera Starter FPGA Edition-64
+# //  Version 2025.2 win64 May 31 2025
+# //
+# // Unpublished work. Copyright 2025 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading sv_std.std
+# Loading work.tb_moving_avg(fast)
+# run -all
+# --- test 1: reference model match ---
+# --- test 2: DC convergence ---
+#   DC value 5000 settled correctly
+#   DC value -3000 settled correctly
+# --- test 3: impulse response ---
+#   impulse cleared after N samples
+# --- test 4: noise attenuation ---
+#   input  noise energy = 718170762
+#   output noise energy = 98565781 (13.7%)
+#   theoretical ratio for N=8: 12.5%
+#   noise attenuated correctly
+# ---------------------------------------------
+# errors = 0
+# ---------------------------------------------
+# TEST PASSED
+# ** Note: $finish    : tb_moving_avg.sv(265)
+#    Time: 16471 ns  Iteration: 0  Instance: /tb_moving_avg
+# End time: 22:49:37 on Sep 12,2026, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 0

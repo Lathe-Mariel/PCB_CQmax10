@@ -1,5 +1,5 @@
 Analysis & Synthesis report for top
-Sat Sep  5 01:02:22 2026
+Sun Sep  6 17:49:25 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -50,7 +50,7 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Sep  5 01:02:22 2026           ;
+; Analysis & Synthesis Status        ; Successful - Sun Sep  6 17:49:25 2026           ;
 ; Quartus Prime Version              ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
 ; Revision Name                      ; top                                             ;
 ; Top-level Entity Name              ; top                                             ;
@@ -414,7 +414,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
-    Info: Processing started: Sat Sep  5 01:02:10 2026
+    Info: Processing started: Sun Sep  6 17:49:13 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off top -c top
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -457,7 +457,7 @@ Info (21057): Implemented 329 device resources after synthesis - the final resou
     Info (21062): Implemented 1 DSP elements
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 2 warnings
     Info: Peak virtual memory: 4852 megabytes
-    Info: Processing ended: Sat Sep  5 01:02:22 2026
+    Info: Processing ended: Sun Sep  6 17:49:25 2026
     Info: Elapsed time: 00:00:12
     Info: Total CPU time (on all processors): 00:00:28
 

@@ -1,0 +1,97 @@
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 24.1std.0 Build 1077 03/04/2025 SC Standard Edition
+#
+# Project  : microphone
+# Top level: top
+# Device   : 10M08SCE144C8G (MAX 10)
+#
+# 内容:
+#   PMOD-Microphone v1.0 (I2S) から音声を取り込み、
+#   その波形を PMOD-TFTLCD v1.1 (ILI9341, 320x240) に表示する。
+#
+# -------------------------------------------------------------------------- #
+
+set_global_assignment -name FAMILY "MAX 10"
+set_global_assignment -name DEVICE 10M08SCE144C8G
+set_global_assignment -name TOP_LEVEL_ENTITY top
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 24.1STD.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "12:00:00  SEPTEMBER 12, 2026"
+set_global_assignment -name LAST_QUARTUS_VERSION "25.1std.0 Lite Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
+
+# --- SDC (タイミング制約) ---
+set_global_assignment -name SDC_FILE microphone.sdc
+
+# --- 回路合成の最適化 (速度優先) ---
+set_global_assignment -name OPTIMIZATION_TECHNIQUE SPEED
+
+# --- ソースファイル (SystemVerilog) ---
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/i2s_rx.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/moving_avg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/audio_buf.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/lcd_wave.sv
+
+# ==========================================================================
+# ピン配置
+# ==========================================================================
+
+# --- クロック / リセット ---
+set_location_assignment PIN_88 -to clk
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to clk
+
+set_location_assignment PIN_17 -to btn_rst
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to btn_rst
+
+# --- PMOD 1 : Microphone (PMOD-Microphone v1.0) ---
+#   45 : WS   (LRCLK)
+#   39 : SD   (Serial Data)
+#   47 : SCK  (Serial Clock)
+set_location_assignment PIN_45 -to mic_ws
+set_location_assignment PIN_39 -to mic_sd
+set_location_assignment PIN_47 -to mic_sck
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mic_ws
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mic_sd
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mic_sck
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to mic_sd
+
+# --- PMOD 2 : LCD (PMOD-TFTLCD v1.1) ---
+#   77 : RS   (Data/Command)
+#   81 : CS   (Chip Select, Low 有効)
+#   78 : MOSI
+#   75 : CLK
+set_location_assignment PIN_81 -to lcd_cs
+set_location_assignment PIN_78 -to lcd_mosi
+set_location_assignment PIN_75 -to lcd_sck
+set_location_assignment PIN_77 -to lcd_dc
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lcd_cs
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lcd_mosi
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lcd_sck
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lcd_dc
+
+# --- LED ---
+set_location_assignment PIN_85 -to led
+set_location_assignment PIN_123 -to led0
+set_location_assignment PIN_122 -to led1
+set_location_assignment PIN_121 -to led2
+set_location_assignment PIN_120 -to led3
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led0
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led1
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led2
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led3
+
+# --- 未使用ピンの扱い ---
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS_WEAK_PULLUP "AS INPUT TRI-STATED WITH WEAK PULL-UP"
+
+
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top

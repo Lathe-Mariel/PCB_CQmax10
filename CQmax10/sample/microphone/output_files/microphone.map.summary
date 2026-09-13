@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Sat Sep 12 22:08:09 2026
+Quartus Prime Version : 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+Revision Name : microphone
+Top-level Entity Name : top
+Family : MAX 10
+Total logic elements : 880
+    Total combinational functions : 693
+    Dedicated logic registers : 439
+Total registers : 439
+Total pins : 14
+Total virtual pins : 0
+Total memory bits : 65,536
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
+UFM blocks : 0
+ADC blocks : 0

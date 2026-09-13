@@ -1,0 +1,2 @@
+Warning (10268): Verilog HDL information at comb_filter.sv(48): always construct contains both blocking and non-blocking assignments File: H:/git/PCB_CQmax10/CQmax10/sample/audio2/comb_filter.sv Line: 48
+Warning (10268): Verilog HDL information at allpass_filter.sv(33): always construct contains both blocking and non-blocking assignments File: H:/git/PCB_CQmax10/CQmax10/sample/audio2/allpass_filter.sv Line: 33
