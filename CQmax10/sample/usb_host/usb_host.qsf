@@ -1,0 +1,68 @@
+# -------------------------------------------------------------------------- #
+#
+# CQ-MAX10-A + PMOD-USBHOST keyboard to JTAG UART sample
+#
+# -------------------------------------------------------------------------- #
+
+set_global_assignment -name FAMILY "MAX 10"
+set_global_assignment -name DEVICE 10M08SCE144C8G
+set_global_assignment -name TOP_LEVEL_ENTITY top
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
+set_global_assignment -name EDA_SIMULATION_TOOL "Questa Altera FPGA (SystemVerilog)"
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "SYSTEMVERILOG HDL" -section_id eda_simulation
+
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/reset_sync.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/usb_pll_12mhz.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/hid_keyboard_ascii.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/cdc_byte_strobe.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/jtag_uart_tx.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/top.sv
+set_global_assignment -name VERILOG_FILE rtl/third_party/nand2mario/usb_hid_host.v
+set_global_assignment -name VERILOG_FILE rtl/third_party/nand2mario/usb_hid_host_rom.v
+set_global_assignment -name MISC_FILE rtl/third_party/nand2mario/usb_hid_host_rom.hex
+set_global_assignment -name SDC_FILE usb_host.sdc
+
+set_global_assignment -name QIP_FILE ip/altera_jtag_uart_sources.qip
+
+set_location_assignment PIN_88 -to clk
+set_location_assignment PIN_17 -to rst_n
+set_location_assignment PIN_85 -to led
+set_location_assignment PIN_123 -to led0
+set_location_assignment PIN_52 -to leds[7]
+set_location_assignment PIN_57 -to leds[6]
+set_location_assignment PIN_55 -to leds[5]
+set_location_assignment PIN_59 -to leds[4]
+set_location_assignment PIN_50 -to leds[3]
+set_location_assignment PIN_56 -to leds[2]
+set_location_assignment PIN_58 -to leds[1]
+set_location_assignment PIN_60 -to leds[0]
+
+set_location_assignment PIN_44 -to usb_u1_dp
+set_location_assignment PIN_45 -to usb_u1_dm
+set_location_assignment PIN_46 -to usb_u2_dp
+set_location_assignment PIN_38 -to usb_u2_dm
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to clk
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rst_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to leds[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to leds[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to leds[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to leds[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to leds[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to leds[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to leds[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to leds[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to usb_u1_dp
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to usb_u1_dm
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to usb_u2_dp
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to usb_u2_dm
+
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+
+set_global_assignment -name LAST_QUARTUS_VERSION "25.1std.0 Lite Edition"

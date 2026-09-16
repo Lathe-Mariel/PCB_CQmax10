@@ -1,0 +1,38 @@
+FPGAデザインを作る
+
+## Application
+USB接続のキーボードから文字列を受け取り，その文字列をJTAG UARTに出力する
+
+## Hardware
+### FPGA Board
+CQ-MAX10-A (https://fpga.tokyo/wp-content/uploads/2024/07/CQ-MAX10-A_%E5%9B%9E%E8%B7%AF%E5%9B%B3_R0.pdf)
+CQ-MAX10-A_Pmod_Board(https://github.com/Lathe-Mariel/PCB_CQmax10/blob/main/CQmax10/sample/pmod_checker/pmod_checker.qsf)
+
+#### System Clock
+50MHz(Pin 88)
+
+### PMOD-USBHOST v1.0
+Schematics (https://github.com/wuxx/icesugar/blob/master/schematic/pmod-usbhost-v1.0.pdf)
+
+## Software
+### IDE
+Quartus Prime Lite
+### Simulater
+Questa
+### HDL
+SystemVerilog
+### Sample Code
+#### USB HID Device
+https://github.com/nand2mario/usb_hid_host/tree/main/src
+
+## Physical Constraint
+Pmod Port | FPGA Pin | function
+---|---|---
+1 | 46 | U2P(USB channel2+)
+2 | 44 | U1P(USB channel1+)
+3 | 41 | none
+4 | 38 | U2N(USB channel2-)
+5 | 45 | U1N(USB channel1-)
+6 | 43 | none
+7 | 39 | none
+8 | 47 | none

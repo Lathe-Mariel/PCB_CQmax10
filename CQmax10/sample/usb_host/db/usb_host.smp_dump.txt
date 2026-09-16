@@ -1,0 +1,25 @@
+
+State Machine - |top|jtag_uart_tx:u_jtag_uart_tx|state
+Name state.ST_IDLE state.ST_WRITE_DATA state.ST_READ_CONTROL 
+state.ST_IDLE 0 0 0 
+state.ST_READ_CONTROL 1 0 1 
+state.ST_WRITE_DATA 1 1 0 
+
+State Machine - |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|mbit
+Name mbit.01 
+mbit.00 0 
+mbit.01 1 
+
+State Machine - |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|state
+Name state.S_TOGGLE1 state.S_TOGGLE0 state.S_S2 state.S_S1 state.S_S0 state.S_B2 state.S_B1 state.S_B0 state.S_LDI1 state.S_LDI0 state.0000 
+state.0000 0 0 0 0 0 0 0 0 0 0 0 
+state.S_LDI0 0 0 0 0 0 0 0 0 0 1 1 
+state.S_LDI1 0 0 0 0 0 0 0 0 1 0 1 
+state.S_B0 0 0 0 0 0 0 0 1 0 0 1 
+state.S_B1 0 0 0 0 0 0 1 0 0 0 1 
+state.S_B2 0 0 0 0 0 1 0 0 0 0 1 
+state.S_S0 0 0 0 0 1 0 0 0 0 0 1 
+state.S_S1 0 0 0 1 0 0 0 0 0 0 1 
+state.S_S2 0 0 1 0 0 0 0 0 0 0 1 
+state.S_TOGGLE0 0 1 0 0 0 0 0 0 0 0 1 
+state.S_TOGGLE1 1 0 0 0 0 0 0 0 0 0 1 

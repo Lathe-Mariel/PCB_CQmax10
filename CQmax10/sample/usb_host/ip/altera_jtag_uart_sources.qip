@@ -1,0 +1,4 @@
+set jtag_uart_ip_dir [file normalize [file join $::env(QUARTUS_ROOTDIR) ".." "ip" "altera" "sopc_builder_ip" "altera_avalon_jtag_uart"]]
+set_global_assignment -name SYSTEMVERILOG_FILE [file join $jtag_uart_ip_dir "altera_avalon_jtag_uart.sv"]
+set_global_assignment -name SYSTEMVERILOG_FILE [file join $jtag_uart_ip_dir "altera_avalon_jtag_uart_scfifo_w.sv"]
+set_global_assignment -name SYSTEMVERILOG_FILE [file join $jtag_uart_ip_dir "altera_avalon_jtag_uart_scfifo_r.sv"]

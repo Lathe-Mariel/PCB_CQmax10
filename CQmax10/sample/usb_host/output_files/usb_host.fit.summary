@@ -1,0 +1,18 @@
+Fitter Status : Successful - Thu Sep 17 01:32:12 2026
+Quartus Prime Version : 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+Revision Name : usb_host
+Top-level Entity Name : top
+Family : MAX 10
+Device : 10M08SCE144C8G
+Timing Models : Final
+Total logic elements : 1,240 / 8,064 ( 15 % )
+    Total combinational functions : 1,100 / 8,064 ( 14 % )
+    Dedicated logic registers : 560 / 8,064 ( 7 % )
+Total registers : 560
+Total pins : 16 / 101 ( 16 % )
+Total virtual pins : 0
+Total memory bits : 512 / 387,072 ( < 1 % )
+Embedded Multiplier 9-bit elements : 0 / 48 ( 0 % )
+Total PLLs : 1 / 1 ( 100 % )
+UFM blocks : 0 / 1 ( 0 % )
+ADC blocks : 0
