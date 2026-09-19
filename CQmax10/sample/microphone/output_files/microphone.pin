@@ -31,7 +31,7 @@
  --                  Bank 1B:       3.3V
  --                  Bank 2:       2.5V
  --                  Bank 3:       3.3V
- --                  Bank 4:       2.5V
+ --                  Bank 4:       3.3V
  --                  Bank 5:       3.3V
  --                  Bank 6:       3.3V
  --                  Bank 7:       2.5V
@@ -117,7 +117,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : 44        :        :                   :      
 mic_ws                       : 45        : output : 3.3-V LVCMOS      :         : 3         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : 46        :        :                   :         : 3         :                
 mic_sck                      : 47        : output : 3.3-V LVCMOS      :         : 3         : Y              
-RESERVED_INPUT_WITH_WEAK_PULLUP : 48        :        :                   :         : 3         :                
+sw_dec                       : 48        : input  : 3.3-V LVCMOS      :         : 3         : Y              
 VCCIO3                       : 49        : power  :                   : 3.3V    : 3         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 50        :        :                   :         : 3         :                
 VCC_ONE                      : 51        : power  :                   : 3.0V/3.3V :           :                
@@ -131,12 +131,12 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : 58        :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : 59        :        :                   :         : 3         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 60        :        :                   :         : 3         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 61        :        :                   :         : 4         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 62        :        :                   :         : 4         :                
+sw_inc                       : 62        : input  : 3.3-V LVCMOS      :         : 4         : Y              
 GND                          : 63        : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 64        :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 65        :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 66        :        :                   :         : 4         :                
-VCCIO4                       : 67        : power  :                   : 2.5V    : 4         :                
+VCCIO4                       : 67        : power  :                   : 3.3V    : 4         :                
 GND                          : 68        : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 69        :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 70        :        :                   :         : 4         :                

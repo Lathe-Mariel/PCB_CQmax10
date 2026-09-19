@@ -40,6 +40,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "led2",
+					"strict" : false
+				},
+				{
 					"name" : "led3",
 					"strict" : false
 				},
@@ -49,6 +53,14 @@
 				},
 				{
 					"name" : "btn_rst",
+					"strict" : false
+				},
+				{
+					"name" : "sw_inc",
+					"strict" : false
+				},
+				{
+					"name" : "sw_dec",
 					"strict" : false
 				},
 				{

@@ -8,11 +8,37 @@
 //     グリッド: 32px ごとの暗い線
 //     中央線  : グレー (振幅 0 のライン)
 //     波形    : 緑 (1 サンプル = 1 列)
+//     スペクトラム: 橙の棒グラフ (周波数ごとの値) を画面下部に重ねる
 //
 //   描画方式:
 //     フレーム開始時に書き込みポインタ (wr_ptr) をラッチし、
-//     その 320 サンプル前から現在までのデータを
-//     左→右に 1 サンプル 1 列で描画する。
+//     その (LCD_W * TB_SPP) サンプル前から現在までのデータを
+//     左→右に描画する。tb_sel で 1 列あたりのサンプル数 (TB_SPP) を
+//     切り替えることで、波形の時間軸を動的に変えられる。
+//
+//   時間軸 (tb_sel):
+//     tb_sel を上げるほど 1 列あたりのサンプル数が増える
+//     = より長い時間を表示する (波形は細かく見える)。
+//     フレーム開始時にラッチするので、切り替えは次フレームから反映される。
+//     切り替え時は表示が乱れるため、画面全体をクリアする。
+//
+//   棒グラフ:
+//     bar_n 番目のバーを横幅 BAR_W px で描く。
+//     bar_ram は spectrum.sv が持つため、ここでは
+//       アドレスを出して 1 クロック後に値を読む (bar_data)。
+//     バーの高さは下辺 (LCD_H-1) から上方向に bar_data px。
+//
+//     棒グラフの表示時間は spectrum 側の BAR_LIFE が決める。
+//     ここ (lcd_wave) の BAR_HOLD は、スペクトラム更新 (bar_fresh) が
+//     完全に止まったときだけバーを消すための安全網であり、
+//     通常動作では表示時間に影響しない。
+//     実機では bar_fresh が 6.4 ms ごとに来るので、LCD のフレーム
+//     開始 (約 148 ms ごと) には必ず bar_seen = 1 となり
+//     bar_hold は BAR_HOLD に戻り続ける。
+//
+//     bar_fresh は spectrum 側が 1 クロック幅のパルスで出すため、
+//     フレーム開始でサンプルすると取りこぼす。bar_seen に
+//     ラッチしてフレーム開始時に見る。
 //
 //   SPI : Mode 0, SCK = CLK_HZ / 4 (= 12.5 MHz @ 50 MHz)
 // ============================================================
@@ -22,11 +48,24 @@ module lcd_wave #(
     parameter int BUF_AW = 12,           // 波形 RAM アドレス幅
     parameter int LCD_W  = 320,
     parameter int LCD_H  = 240,
-    parameter int AMP_GAIN_SHIFT = 2,    // 振幅ゲイン (左シフト量)
+    parameter int AMP_GAIN_SHIFT = 0,    // 振幅スケール (2 の冪)
+                                         //   > 0 : 2^n 倍に拡大
+                                         //   = 0 : 等倍
+                                         //   < 0 : 1/2^|n| に縮小
     parameter int FRAME_WAIT = 2_500_000, // フレーム間隔 (50MHz -> 50ms)
     parameter int POWERON_WAIT = 7_500_000, // 電源ON後待機 (50MHz -> 150ms)
     parameter int SWRST_WAIT   = 250_000,   // SWRESET 後待機 (5ms)
-    parameter int SLPOUT_WAIT  = 6_000_000  // SLPOUT 後待機 (120ms)
+    parameter int SLPOUT_WAIT  = 6_000_000, // SLPOUT 後待機 (120ms)
+    parameter bit BAR_EN  = 1'b1,        // 棒グラフを描く
+    parameter int BAR_W   = 5,          // 1 本の横幅 (px)
+    parameter int BAR_N   = 64,          // 表示する本数
+    parameter int BAR_HOLD = 20,         // 棒グラフの寿命 (LCD フレーム数)
+    parameter int TB_SEL  = 0,           // 時間軸の初期値 (0..TB_N-1)
+    parameter int TB_N    = 8,           // 時間軸の段数
+    parameter int TB_SPP0 = 1,           // tb_sel = 0 のサンプル数/列
+    parameter int BAR_GAIN_SH = 1        // バー表示高さの左シフト量
+                                         // (1 で表示高さ 2 倍、0 で等倍)
+                                         // 画面高を超えた分はクリップされる
 ) (
     input  logic               clk,
     input  logic               rst_n,       // 非同期リセット (Low 有効)
@@ -41,6 +80,14 @@ module lcd_wave #(
     output logic [BUF_AW-1:0]  rd_addr,
     input  logic signed [15:0] rdata,
     input  logic [BUF_AW-1:0]  wr_ptr,      // RAM 書き込みポインタ
+
+    // --- スペクトラム RAM 読み出し ---
+    output logic [5:0]         bar_addr,    // 表示する bin
+    input  logic [7:0]         bar_data,    // バーの高さ (1 クロック遅れ)
+
+    // --- 時間軸 / 棒グラフの制御 ---
+    input  logic [2:0]         tb_sel,      // 波形の時間軸 (0..TB_N-1)
+    input  logic               bar_fresh,   // スペクトラムが更新された (パルス)
 
     // --- ステータス ---
     output logic               init_done,
@@ -65,7 +112,6 @@ module lcd_wave #(
     localparam int LAST_ROW = LCD_H - 1;
 
     // サイズ付き定数 (演算に使うものだけ幅を明示する)
-    localparam logic [BUF_AW-1:0]  OFF_PREV     = LCD_W;
     localparam logic [23:0]        POWERON_CNT  = POWERON_WAIT;
     localparam logic [23:0]        FRAME_WAIT_C = FRAME_WAIT;
     localparam logic [23:0]        SWRST_CNT    = SWRST_WAIT;
@@ -77,6 +123,35 @@ module lcd_wave #(
     localparam logic [15:0] COL_GRID = 16'h1082;   // 暗い緑 (グリッド)
     localparam logic [15:0] COL_AXIS = 16'h4208;   // グレー (中央線)
     localparam logic [15:0] COL_WAVE = 16'h07E0;   // 緑 (波形)
+    localparam logic [15:0] COL_BAR  = 16'hFD20;   // 橙 (スペクトラム)
+
+    // ---- 棒グラフのジオメトリ ----
+    localparam int BAR_PITCH = (BAR_W > LCD_W / BAR_N) ? BAR_W : LCD_W / BAR_N;
+    localparam int BAR_BOT   = LCD_H - 1;      // バーの下辺
+
+    localparam logic [8:0] BAR_W_C  = BAR_W;
+    localparam logic [8:0] BAR_P_C  = BAR_PITCH;
+    localparam logic [8:0] BAR_BOT_9 = BAR_BOT[8:0];
+    localparam logic [7:0] BAR_SHF_C = BAR_GAIN_SH[7:0];
+    localparam logic [5:0] BAR_LAST_C = (BAR_N - 1);   // 最後に読み込む bin
+
+    // バーを波形 / 中央線より手前に描くか。
+    //   1 : バーが最優先。バーが途切れない (高さを上げても崩れない)
+    //   0 : 従来の順 (波形 > 中央線 > バー)。バーの高さが中央線を
+    //       超えると波形と中央線がバーを横切って見える
+    localparam bit BAR_OVER_WAVE = 1'b1;
+
+    // ---- 時間軸 ----
+    //   tb_sel は 0..TB_N-1。値が大きいほど 1 列あたりのサンプル数が
+    //   増える (= 長い時間を表示する)。
+    //     spp = TB_SPP0 << tb_sel
+    //   spp は RAM 深さ / LCD_W 以下にクランプする
+    //   (BUF_AW = 12, LCD_W = 320 -> 最大 12)。
+    localparam int MAX_SPP_I = (1 << BUF_AW) / LCD_W;
+    localparam logic [7:0] MAX_SPP_C = MAX_SPP_I[7:0];
+
+    // ---- 棒グラフの寿命 ----
+    localparam int BAR_HOLD_C = BAR_HOLD;
 
     // ========================================================
     // 初期化シーケンス ROM
@@ -229,7 +304,8 @@ module lcd_wave #(
         S_PIX_LO_TX  = 4'd10,
         S_PIX_LO_W   = 4'd11,
         S_FRAME_END  = 4'd12,
-        S_NEXT_FRAME = 4'd13;
+        S_NEXT_FRAME = 4'd13,
+        S_BAR_LD     = 4'd14;
 
     logic [3:0]  state;
     logic [6:0]  init_idx;
@@ -241,10 +317,61 @@ module lcd_wave #(
     logic [15:0] cur_color;
     logic [BUF_AW-1:0] rd_base;
 
+    // ---- 時間軸 ----
+    logic [7:0]  spp_r;        // ラッチした 1 列あたりのサンプル数
+    logic [2:0]  tb_r;         // 前フレームの tb_sel (変化検出用)
+    logic        tb_clr;       // 時間軸が変わった直後の 1 フレームだけ 1
+
+    // ---- 棒グラフの寿命 ----
+    logic [7:0]  bar_hold;
+    logic        bar_seen;     // bar_fresh をラッチした (更新あり)
+
+    // ---- 棒グラフの高さのスナップショット ----
+    //   bar_ram は spectrum 側が約 6.4 ms ごとに書き換えるが、
+    //   LCD のフレームは約 148 ms かかる上に走査が行優先
+    //   (col_cnt が速い) のため、1 本のバーのピクセルは
+    //   フレーム全体に散らばって描かれる。
+    //   bar_data を描画中に生で見ると、1 本のバーがフレーム中に
+    //   何度も高さを変えて「途中で途切れた」ように見えてしまう。
+    //   -> フレーム開始時に全 bin の高さを取り込み、描画はその値だけを使う。
+    logic [7:0]  bar_snap [0:BAR_N-1];
+    logic [7:0]  bar_cur;      // この列で使うスナップショット値
+    logic [5:0]  ld_bin;       // スナップショット読み込み中の bin
+    logic [1:0]  ld_ph;        // 0 = アドレス設定, 1 = 待ち, 2 = 取り込み
+
+    // フレーム開始 (S_FRAME_START) の 1 クロック
+    wire frame_start_evt = (state == S_FRAME_START);
+
+    // bar_fresh は 1 クロックパルスなので、LCD のフレーム開始
+    // (約 160 ms 間隔) でそのままサンプルすると取りこぼす。
+    // ここでラッチし、フレーム開始時に消費する。
+    //   ※ 消費と同じクロックで来た bar_fresh は残す
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (!rst_n)               bar_seen <= 1'b0;
+        else if (frame_start_evt) bar_seen <= bar_fresh;  // 消費
+        else if (bar_fresh)       bar_seen <= 1'b1;       // ラッチ
+    end
+
+    // フレーム開始時に更新する時間軸 (1 列あたりのサンプル数)
+    //   tb_sel = 0 -> 1, 1 -> 2, 2 -> 4, 3 -> 8, ...
+    wire [7:0] spp_calc = (TB_SPP0 > 0) ? (8'd1 << tb_sel) : 8'd1;
+    wire [7:0] spp_next = (spp_calc > MAX_SPP_C) ? MAX_SPP_C : spp_calc;
+
     // 読み出したサンプルから波形の Y 座標を求める
-    //   16bit 符号付き -> ゲイン (左シフト) を掛け、振幅 1 ビット = 1 px
-    //   として中央 (Y_OFFSET) からの変位に変換する
-    wire signed [31:0] samp_off = $signed(rdata) <<< AMP_GAIN_SHIFT;
+    //   16bit 符号付き -> 振幅スケールを掛け、振幅 1 ビット = 1 px
+    //   として中央 (Y_OFFSET) からの変位に変換する。
+    //
+    //   スケールは 2 の冪で指定する:
+    //     AMP_GAIN_SHIFT > 0 : 左シフト (拡大)
+    //     AMP_GAIN_SHIFT < 0 : 右シフト (縮小、算術シフトで符号を保持)
+    //
+    //   左シフト量と右シフト量を分けておくことで、負のシフト量という
+    //   未定義動作 (Verilog では禁止) を避けている。
+    localparam int AMP_LSH = (AMP_GAIN_SHIFT > 0) ?  AMP_GAIN_SHIFT : 0;
+    localparam int AMP_RSH = (AMP_GAIN_SHIFT < 0) ? -AMP_GAIN_SHIFT : 0;
+
+    wire signed [31:0] samp_gain = $signed(rdata) <<< AMP_LSH;
+    wire signed [31:0] samp_off  = samp_gain >>> AMP_RSH;
     wire signed [31:0] y_raw    = $signed({23'd0, Y_OFFSET_C}) - samp_off;
     wire        [7:0]  y_wave   = (y_raw < 32'sd0)                        ? 8'd0 :
                                   (y_raw > $signed({24'd0, Y_MAXROW_C}))  ? Y_MAXROW_C :
@@ -261,9 +388,18 @@ module lcd_wave #(
                                                             : (y_wave + WAVE_HALF_C);
 
     // 現在の列を描画するサンプル位置
-    //   rd_base は「最新サンプル + 1」の位置なので、1 サンプル戻してから
-    //   LCD_W サンプル前を読み出す (最新の LCD_W サンプルを左→右に描画)
-    //   col_cnt は 9bit 固定なので BUF_AW 幅へゼロ拡張する
+    //   rd_base は「最新サンプル + 1」の位置。
+    //   spp = 1 列あたりのサンプル数 (時間軸により変わる)
+    //
+    //     rd_idx = rd_base - 1 - (spp * LCD_W) + (col * spp)
+    //
+    //   つまり「最新の (LCD_W * spp) サンプル」を左→右に描画する。
+    //   spp = 1 のときは従来と同じ 1 サンプル = 1 列になる。
+    //   1 列に複数サンプルがある場合は先頭サンプルを代表値として使う。
+    //
+    //   col_cnt は 9bit 固定なので BUF_AW 幅へゼロ拡張する。
+    //   spp * LCD_W が RAM の深さを超えないよう TB_SEL を選ぶこと
+    //   (BUF_AW = 12 -> 4096, LCD_W = 320 なので spp <= 12)。
     wire [BUF_AW-1:0] col_off;
     generate
         if (BUF_AW <= 9) begin : g_col_off
@@ -273,22 +409,72 @@ module lcd_wave #(
         end
     endgenerate
 
-    wire [BUF_AW-1:0] rd_idx = rd_base - 1'b1 - OFF_PREV + col_off;
+    // 描画範囲の幅 (サンプル数) と、列ごとの読み出し間隔
+    wire [15:0] spp_span_w = spp_r * LCD_W;
+    wire [15:0] col_step_w = col_off * spp_r;
+
+    wire [BUF_AW-1:0] spp_span = spp_span_w[BUF_AW-1:0];
+    wire [BUF_AW-1:0] col_step = col_step_w[BUF_AW-1:0];
+
+    wire [BUF_AW-1:0] rd_idx = rd_base - 1'b1 - spp_span + col_step;
 
     assign rd_addr = rd_idx;
 
-    // ピクセル色 (S_PIX_RD で rdata が有効)
+    // ---- 棒グラフの位置 ----
+    //   col_cnt は 0..319 なので、商と剰余からバー番号とバー内位置を得る。
+    //   BAR_PITCH は 2 の冪でなくても動くよう除算器を使う (合成時に
+    //   定数除算として最適化される)。
+    wire [8:0] bar_off = col_cnt % BAR_P_C;   // バー内の x 位置
+    wire [8:0] bar_n   = col_cnt / BAR_P_C;   // バー番号 (0..)
+
+    // 棒グラフは bar_hold フレームの寿命を持つ。
+    //   bar_seen (スペクトラム更新をラッチ) で BAR_HOLD にリセットし、
+    //   フレームごとに 1 つ減らして 0 になったら表示しない (消去)。
+    //   ※ どのバーを描くかは spectrum 側の bar_ram が 0 かどうかで決まる。
+    wire       bar_alive = (bar_hold != 8'd0);
+    wire       bar_vis   = BAR_EN && bar_alive && (bar_n < BAR_N);
+
+    // スナップショット配列の安全なインデックス
+    //   bar_n が BAR_N 以上のときは 0 を見る (bar_vis が 0 なので使われない)
+    wire [5:0] bar_ix = bar_vis ? bar_n[5:0] : 6'd0;
+
+    // ピクセル色 (S_PIX_RD で rdata / bar_data が有効)
+    //   重ね順 : BAR_OVER_WAVE = 1 なら
+    //              バー > 波形 > 中央線 > グリッド > 背景
+    //            BAR_OVER_WAVE = 0 なら
+    //              波形 > 中央線 > バー > グリッド > 背景
+    //   b_data = 0 のビンはバーを描かない。
     function automatic [15:0] pixel_color(
         input [8:0] x,
         input [7:0] y,
         input [7:0] wy_lo,
-        input [7:0] wy_hi
+        input [7:0] wy_hi,
+        input       in_bar,
+        input [7:0] b_data
     );
-        if ((y >= wy_lo) && (y <= wy_hi))         pixel_color = COL_WAVE;
-        else if (y == Y_OFFSET_C[7:0])            pixel_color = COL_AXIS;
-        else if (x[4:0] == 5'd0)                  pixel_color = COL_GRID;
-        else if (y[4:0] == 5'd0)                  pixel_color = COL_GRID;
-        else                                      pixel_color = COL_BG;    endfunction
+        logic [8:0] h;          // 表示する高さ (BAR_GAIN_SH で増幅)
+        logic       in_bar_region;
+        begin
+            // 内部の高さを表示用に増幅し、画面高以上はクリップする
+            //   9bit で扱うことで y >= (BAR_BOT - h) の引き算が
+            //   アンダーフローしないようにする。
+            h = b_data << BAR_SHF_C;
+            if (h > BAR_BOT_9) h = BAR_BOT_9;
+
+            // このピクセルがバー本体の範囲に入っているか
+            //   y + h >= BAR_BOT ならバーの中 (下辺からの高さ h 以内)
+            in_bar_region = in_bar && (b_data != 8'd0) &&
+                            (({1'b0, y} + h) >= BAR_BOT_9);
+
+            if (BAR_OVER_WAVE && in_bar_region)             pixel_color = COL_BAR;
+            else if ((y >= wy_lo) && (y <= wy_hi))          pixel_color = COL_WAVE;
+            else if (y == Y_OFFSET_C[7:0])                  pixel_color = COL_AXIS;
+            else if (in_bar_region)                         pixel_color = COL_BAR;
+            else if (x[4:0] == 5'd0)                        pixel_color = COL_GRID;
+            else if (y[4:0] == 5'd0)                        pixel_color = COL_GRID;
+            else                                             pixel_color = COL_BG;
+        end
+    endfunction
 
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
@@ -304,6 +490,16 @@ module lcd_wave #(
             tx_byte    <= '0;
             tx_dc_reg  <= 1'b0;
             rd_base    <= '0;
+            spp_r      <= 8'd1;
+            tb_r       <= '0;
+            tb_clr     <= 1'b0;
+            bar_hold   <= '0;
+            bar_addr   <= '0;
+            bar_cur    <= '0;
+            ld_bin     <= '0;
+            ld_ph      <= 2'd0;
+            // bar_seen は専用の always_ff でリセットする
+            // (ここで駆動すると multiple driver になる)
             init_done  <= 1'b0;
             frame_tick <= 1'b0;
         end else begin
@@ -368,24 +564,89 @@ module lcd_wave #(
                 end
 
                 // ---- フレーム開始 ----
-                // 書き込みポインタをラッチして描画範囲を固定する
+                // 書き込みポインタをラッチして描画範囲を固定する。
+                // 時間軸 (spp_r) もここでラッチするので、tb_sel の変更は
+                // 次フレームから反映される。棒グラフの寿命もここで減らす。
                 S_FRAME_START: begin
                     rd_base <= wr_ptr;
+                    spp_r   <= spp_next;
+                    // 時間軸が変わったら表示が乱れるので、このフレームは
+                    // 画面全体をクリアする (tb_clr は 1 フレームだけ 1)
+                    tb_clr  <= (tb_r != tb_sel);
+                    tb_r    <= tb_sel;
+
+                    // スペクトラムが新しければ寿命を延ばし、
+                    // そうでなければ 1 フレーム分減らす。
+                    //   bar_seen は bar_fresh をラッチしたものなので、
+                    //   FFT (約 5.6 ms) の更新を取りこぼさない。
+                    if (bar_seen)       bar_hold <= BAR_HOLD_C[7:0];
+                    else if (bar_alive) bar_hold <= bar_hold - 8'd1;
+
                     pix_cnt <= '0;
                     col_cnt <= '0;
                     row_cnt <= '0;
-                    state   <= S_PIX_CALC;
+                    // このフレームで使うバーの高さを取り込む
+                    ld_bin   <= '0;
+                    ld_ph    <= 2'd0;
+                    bar_addr <= '0;
+                    state    <= S_BAR_LD;
+                end
+
+                // ---- バーの高さのスナップショット ----
+                //   bar_addr も bar_data も 1 クロック遅れのレジスタなので、
+                //   アドレスを出してから値が返るまで 2 サイクルかかる。
+                //     位相 0 : bar_addr に bin を出す
+                //     位相 1 : bar_addr -> bar_ram の読み出しを待つ
+                //     位相 2 : bar_data が有効。配列に取り込む
+                //   1 bin あたり 3 サイクル。64 bin でも 192 サイクル
+                //   (≒ 3.8 us) なのでフレーム時間には影響しない。
+                //
+                //   ここで取り込んだ値をこのフレームの描画にだけ使う。
+                //   これでフレーム中に bar_ram が変わっても、1 フレーム内
+                //   では 1 つの値だけが使われ、バーが途中で途切れない。
+                S_BAR_LD: begin
+                    case (ld_ph)
+                        2'd0: begin
+                            bar_addr <= ld_bin;
+                            ld_ph    <= 2'd1;
+                        end
+                        2'd1: begin
+                            ld_ph <= 2'd2;
+                        end
+                        default: begin
+                            bar_snap[ld_bin] <= bar_data;
+                            ld_ph <= 2'd0;
+                            if (ld_bin == BAR_LAST_C)
+                                state <= S_PIX_CALC;
+                            else
+                                ld_bin <= ld_bin + 6'd1;
+                        end
+                    endcase
                 end
 
                 // ---- 読み出しアドレス設定 ----
+                // 時間軸が変わった直後の 1 フレームは画面全体をクリアする。
+                //
+                // この列で使うバーの高さもここでラッチする。
+                //   bar_n = col_cnt / BAR_P_C は除算 (定数除算だが
+                //   パイプライン化される) で遅延が大きく、さらに
+                //   64 エントリのバー高さ選択が続くため、これらを
+                //   pixel_color と同じサイクルに入れるとタイミングが
+                //   厳しくなる。ここで 1 度レジスタに取ることで
+                //   経路を 2 サイクルに分割する。
                 S_PIX_CALC: begin
-                    state <= S_PIX_RD;
+                    bar_cur <= bar_snap[bar_ix];
+                    state   <= S_PIX_RD;
                 end
 
                 // ---- 波形 RAM 読み出し待ち (1 サイクル) ----
                 S_PIX_RD: begin
-                    cur_color <= pixel_color(col_cnt, row_cnt, y_lo, y_hi);
-                    state     <= S_PIX_HI_TX;
+                    if (tb_clr) cur_color <= COL_BG;
+                    else        cur_color <= pixel_color(col_cnt, row_cnt,
+                                                         y_lo, y_hi,
+                                                         bar_vis && (bar_off < BAR_W_C),
+                                                         bar_cur);
+                    state <= S_PIX_HI_TX;
                 end
 
                 // ---- 上位バイト送信 ----

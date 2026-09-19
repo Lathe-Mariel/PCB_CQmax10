@@ -6,21 +6,44 @@
 //     FPGA が I2S マスタとして SCK / WS を生成し SD を受信
 //
 //   [PMOD 2] PMOD-TFTLCD v1.1 (ILI9341, 320x240, SPI)
-//     音声波形を 1 サンプル 1 列で描画
+//     音声波形を 1 サンプル 1 列で描画。
+//     さらに周波数ごとの値 (スペクトラム) を棒グラフで重ねて表示する。
 //
 //   構成:
 //     i2s_rx     : I2S 受信      -> sample (16bit 符号付き)
-//     moving_avg : 移動平均      -> ノイズ低減
+//     moving_avg : 移動平均      -> ノイズ低減 (波形表示のみ)
 //     audio_buf  : 波形用 RAM    -> 4096 サンプルのリングバッファ
-//     lcd_wave   : ILI9341 制御 + 波形描画
+//     fft128     : 128 点 FFT    -> ビンごとのパワー (mag2)
+//     spectrum   : log2 圧縮     -> バーの高さ (0..239)
+//     lcd_wave   : ILI9341 制御 + 波形 / 棒グラフ描画
 //
-//   ボタン (btn_rst) を押すとリセット
+//   周波数レンジ:
+//     Fs  = SCK_HZ / 64 = 1.28 MHz / 64 = 20.03 kHz
+//     Fse = Fs / DEC_N  = 20.03 kHz / 1
+//     df  = Fse / 128   = 156.5 Hz / bin
+//     表示範囲 = bin 0..63 = 0 .. 10.0 kHz  (64 本の棒グラフ)
+//
+//   ボタン:
+//     btn_rst   (PIN_17) : リセット (押下 = Low)
+//     sw_inc    (PIN_62) : 波形の時間軸を 1 段上げる (1 列あたりのサンプル数 x2)
+//     sw_dec    (PIN_54) : 波形の時間軸を 1 段下げる
+//     時間軸は 1 -> 2 -> 4 -> ... -> 12 サンプル/列 (BUF_AW で上限が決まる)。
+//     押下のたびに変化し、押しっぱなしでは進まない。
 // ============================================================
 
-module top (
+module top #(
+    // シミュレーションで高速に回せるようパラメータにしてある。
+    // 既定値は実機と同じなので合成結果は変わらない。
+    parameter int CLK_HZ     = 50_000_000,  // 入力クロック
+    parameter int SW_WAIT_MS = 10           // スイッチのチャタリング除去時間 (ms)
+) (
     // --- クロック / リセット ---
     input  logic       clk,        // PIN_88 : 50 MHz
     input  logic       btn_rst,    // PIN_17 : 押下 = Low
+
+    // --- タクトスイッチ ---
+    input  logic       sw_inc,     // PIN_62 : 時間軸を上げる
+    input  logic       sw_dec,     // PIN_54 : 時間軸を下げる
 
     // --- PMOD 1 : Microphone ---
     output logic       mic_sck,    // PIN_47 : SCK
@@ -37,19 +60,103 @@ module top (
     output logic       led,        // PIN_85 : フレーム描画ごとにトグル
     output logic       led0,       // PIN_123: マイク入力検出
     output logic       led1,       // PIN_122: サンプル受信ごとにトグル
-    output logic       led2,       // PIN_121: 未使用 (0)
+    output logic       led2,       // PIN_121: FFT フレーム完了ごとにトグル
     output logic       led3        // PIN_120: LCD 初期化完了
 );
 
     // ========================================================
     // パラメータ
     // ========================================================
-    localparam int CLK_HZ  = 50_000_000;   // 入力クロック
-    localparam int SCK_HZ  = 1_000_000;    // I2S ビットクロック (Fs = 15.625 kHz)
+    // CLK_HZ は上でパラメータとして宣言している
+    // I2S は 1 フレーム = 64 SCK なので Fs = SCK_HZ / 64。
+    // 1.28 MHz -> Fs = 20031.25 Hz (ナイキスト = 10.016 kHz)
+    localparam int SCK_HZ  = 1_280_000;    // I2S ビットクロック (Fs = 20.03 kHz)
     localparam int BUF_AW  = 12;           // 波形 RAM アドレス幅 (4096 サンプル)
 
-    localparam int AVG_N         = 8;      // 移動平均のサンプル数
-    localparam int AMP_GAIN_SHIFT = 0;     // 波形表示ゲイン (1 -> 2倍)
+    localparam int AVG_N         = 8;      // 移動平均のサンプル数 (波形表示用)
+    //   波形の振幅スケール (2 の冪で指定)。
+    //     > 0 : 2^AMP_GAIN_SHIFT 倍に拡大 (左シフト)
+    //     = 0 : 等倍
+    //     < 0 : 1/2^|AMP_GAIN_SHIFT| に縮小 (右シフト)
+    //   現在は 1/2 (-1)。
+    localparam int AMP_GAIN_SHIFT = -1;    // 波形表示スケール (-1 = 1/2)
+
+    // ---- FFT / スペクトラム ----
+    localparam int FFT_N     = 128;        // FFT 点数
+    localparam int FFT_DEC_N = 1;          // din_valid の分周比 (1 = 間引きなし)
+    localparam int FFT_HALF  = FFT_N / 2;  // 出力するビン数 (64)
+    localparam int SP_START  = 1;          // 表示する最初の bin (DC を除外)
+    localparam int SP_MAX    = 239;        // バーの内部上限 (px)
+
+    // ---- 棒グラフの表示高さ ----
+    //   表示高さ = bar_data << BAR_GAIN_SH。
+    //   1 にすると従来の 2 倍の高さで表示する
+    //   (画面上端を超えた分はクリップされ、下辺から塗られる)。
+    localparam int BAR_GAIN_SH = 1;        // 2 倍
+
+    // ---- 表示レンジ ----
+    //   Fse = Fs / FFT_DEC_N = 20.031 kHz
+    //   df  = Fse / FFT_N    = 156.5 Hz / bin
+    //   表示帯域 = df * FFT_HALF = 10.0 kHz (bin 0..63)
+    localparam int BAR_N     = 64;         // 表示する本数 = 全 bin (0..63)
+    localparam int BAR_W     = 4;          // 1 本の横幅 (px)
+                                           // pitch = 320 / 64 = 5 px
+                                           // なので 1 px の隙間が空く
+
+    // ---- 棒グラフの表示時間 ----
+    //   「信号が消えてからバーが消えるまで」の時間は
+    //   spectrum 側の BAR_LIFE で決まる。
+    //
+    //     BAR_LIFE : ビンごとの保持時間。単位は FFT フレーム。
+    //                1 FFT フレーム = FFT_N / Fse = 128 / 20.03 kHz
+    //                               = 6.39 ms
+    //                表示時間 [s] = BAR_LIFE * 6.39 ms
+    //
+    //   例) 32 -> 0.20 s  /  156 -> 1.0 s  /  313 -> 2.0 s
+    //
+    //   ◆ 25 以上にすること ◆
+    //   LCD は 1 フレーム約 148 ms = 約 23 FFT フレームごとにしか
+    //   bar_ram を読まない。BAR_LIFE が 25 未満だと LCD が読む前に
+    //   寿命切れで 0 になり、バーが点滅・欠けする。
+    localparam int BAR_LIFE = 64;         // ビンの保持時間 (FFT フレーム)
+                                           // 156 * 6.39 ms ≒ 1.0 s
+
+    //   無音が続いたときに全ビンを一括で消すまでのフレーム数。
+    //   ◆ BAR_LIFE 以上にすること ◆
+    //   小さいとビンごとの保持より先に全部消えてしまい、
+    //   BAR_LIFE をいくら上げても表示が伸びない。
+    localparam int SP_SIL_FRAMES = BAR_LIFE + 8;
+
+    //   BAR_HOLD : lcd_wave 側の安全網。単位は LCD フレーム。
+    //     スペクトラム更新 (bar_fresh) が完全に止まったときに
+    //     バーが残り続けないようにするためのもので、
+    //     **通常動作では表示時間に影響しない**。
+    //     実機で bar_fresh は 6.4 ms ごとに来るので、
+    //     LCD フレーム開始 (約 148 ms ごと) には必ず
+    //     bar_seen = 1 となり BAR_HOLD に戻り続けるため。
+    //     表示時間を変えたい場合は BAR_LIFE を変えること。
+    localparam int BAR_HOLD = 3;           // LCD 側の安全網 (LCD フレーム数)
+
+    // ---- 時間軸 ----
+    //   tb_sel を上げると 1 列あたりのサンプル数が 1,2,4,... と増える
+    //   = 表示する時間が長くなる。
+    //   spp * LCD_W (320) がバッファ長 (4096) を超えないよう段数を決める。
+    //     1,2,4,8 -> 最大 8 * 320 = 2560 (< 4096)
+    localparam int TB_N      = 4;          // 段数 (1, 2, 4, 8 サンプル/列)
+    localparam int TB_SPP0   = 1;          // tb_sel = 0 のサンプル数
+
+    // ---- スペクトラム ----
+    //   無音とみなす mag2 のしきい値
+    localparam int SP_SIG_TH = 1024;
+    //   ゲイン = SP_LOG_MUL / 2^SP_LOG_SH [px / octave]
+    //   1 octave = 6.02 dB。
+    //   従来 (LOG_MUL=11, LOG_MIN=128) に対し LOG_MUL を 33 にしたので
+    //   ちょうど 3 倍 (33/11 = 3)。
+    //   11/16 = 0.69 px/octave -> 33/16 = 2.06 px/octave (約 0.34 px/dB)
+    //   画面 240 px で表示レンジは約 70 dB。
+    localparam int SP_LOG_MIN = 64;       // バー 0 になる q4 (ノイズフロア)
+    localparam int SP_LOG_MUL = 22;        // ゲイン分子 (従来 11 の 3 倍)
+    localparam int SP_LOG_SH  = 4;         // ゲイン分母 (2^SP_LOG_SH = 16)
 
     // ========================================================
     // 電源投入時リセット + ボタン 2 段同期化
@@ -69,6 +176,51 @@ module top (
     end
 
     assign rst_n = (por_cnt == 16'hFFFF) & btn_r2;
+
+    // ========================================================
+    // タクトスイッチ (時間軸の切り替え)
+    //   チャタリング除去し、押下のたびに tb_sel を 1 段変える。
+    //   上限 / 下限に達したら、そのままにする。
+    // ========================================================
+    logic swi_press, swd_press;
+
+    sw_debounce #(
+        .CLK_HZ     (CLK_HZ),
+        .WAIT_MS    (SW_WAIT_MS),
+        .ACTIVE_LOW (1'b1)
+    ) u_sw_inc (
+        .clk    (clk),
+        .rst_n  (rst_n),
+        .sw_in  (sw_inc),
+        .level  (),
+        .press  (swi_press)
+    );
+
+    sw_debounce #(
+        .CLK_HZ     (CLK_HZ),
+        .WAIT_MS    (SW_WAIT_MS),
+        .ACTIVE_LOW (1'b1)
+    ) u_sw_dec (
+        .clk    (clk),
+        .rst_n  (rst_n),
+        .sw_in  (sw_dec),
+        .level  (),
+        .press  (swd_press)
+    );
+
+    // tb_sel : 0 .. TB_N-1 (0 が最短の時間軸)
+    logic [2:0] tb_sel;
+    localparam logic [2:0] TB_LAST = TB_N - 1;
+
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            tb_sel <= 3'd0;
+        end else if (swi_press) begin
+            if (tb_sel != TB_LAST) tb_sel <= tb_sel + 3'd1;
+        end else if (swd_press) begin
+            if (tb_sel != 3'd0)    tb_sel <= tb_sel - 3'd1;
+        end
+    end
 
     // ========================================================
     // I2S マイク受信
@@ -129,6 +281,65 @@ module top (
     );
 
     // ========================================================
+    // FFT (128 点) + スペクトラム変換
+    //   FFT には移動平均を通さない生サンプルを入力する。
+    //   移動平均 (N = 8) は Fs / N 付近から減衰し始めるため、
+    //   Fs = 20 kHz では 8 kHz 以上の成分が落ちてしまう。
+    //   Hann 窓は fft128 の内部で掛ける。
+    // ========================================================
+    logic [6:0]  mag_addr;
+    logic [33:0] mag2;
+    logic        mag_we;
+    logic [7:0]  fft_frame;
+    logic        fft_done;
+    logic        fft_busy;
+
+    fft128 #(
+        .N      (FFT_N),
+        .DEC_N  (FFT_DEC_N),
+        .OUT_SH (8)
+    ) u_fft128 (
+        .clk         (clk),
+        .rst_n       (rst_n),
+        .din         (sample),        // 生サンプル (移動平均前)
+        .din_valid   (sample_valid),
+        .mag_addr    (mag_addr),
+        .mag2        (mag2),
+        .mag_we      (mag_we),
+        .frame_index (fft_frame),
+        .frame_done  (fft_done),
+        .busy        (fft_busy)
+    );
+
+    logic [5:0] bar_addr;
+    logic [7:0] bar_data;
+    logic       sp_busy;
+    logic       bar_fresh;
+
+    spectrum #(
+        .N_BINS    (FFT_HALF),
+        .START_BIN (SP_START),
+        .MAX_VAL   (SP_MAX),
+        .LOG_MIN   (SP_LOG_MIN),
+        .LOG_MUL   (SP_LOG_MUL),
+        .LOG_SH    (SP_LOG_SH),
+        .DECAY     (0),                // 0 = ピークホールド
+        .SIG_TH    (SP_SIG_TH),
+        .BAR_LIFE  (BAR_LIFE),
+        .SIL_FRAMES (SP_SIL_FRAMES)
+    ) u_spectrum (
+        .clk        (clk),
+        .rst_n      (rst_n),
+        .mag_addr   (mag_addr),
+        .mag2       (mag2),
+        .frame_done (fft_done),
+        .bar_addr   (bar_addr),
+        .bar_data   (bar_data),
+        .busy       (sp_busy),
+        .bar_fresh  (bar_fresh)
+    );
+
+    // ========================================================
     // LCD コントローラ + 波形描画
     // ========================================================
     logic init_done;
@@ -140,7 +351,14 @@ module top (
         .LCD_W          (320),
         .LCD_H          (240),
         .AMP_GAIN_SHIFT (AMP_GAIN_SHIFT),
-        .FRAME_WAIT     (2_500_000)   // 50 ms
+        .FRAME_WAIT     (2_500_000),   // 50 ms
+        .BAR_EN         (1'b1),
+        .BAR_W          (BAR_W),
+        .BAR_N          (BAR_N),
+        .BAR_HOLD       (BAR_HOLD),
+        .BAR_GAIN_SH    (BAR_GAIN_SH),
+        .TB_N           (TB_N),
+        .TB_SPP0        (TB_SPP0)
     ) u_lcd_wave (
         .clk        (clk),
         .rst_n      (rst_n),
@@ -151,6 +369,10 @@ module top (
         .rd_addr    (rd_addr),
         .rdata      (rdata),
         .wr_ptr     (wr_ptr),
+        .bar_addr   (bar_addr),
+        .bar_data   (bar_data),
+        .tb_sel     (tb_sel),
+        .bar_fresh  (bar_fresh),
         .init_done  (init_done),
         .frame_tick (frame_tick)
     );
@@ -160,6 +382,7 @@ module top (
     // ========================================================
     logic led_frame;
     logic led_sample;
+    logic led_fft;
     logic [22:0] mic_act_cnt;
 
     // フレーム描画ごとにトグル
@@ -174,6 +397,12 @@ module top (
         else if (sample_valid)  led_sample <= ~led_sample;
     end
 
+    // FFT フレーム完了ごとにトグル (スペクトラムが更新されている)
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (!rst_n)            led_fft <= 1'b0;
+        else if (fft_done)     led_fft <= ~led_fft;
+    end
+
     // マイク入力がある間点灯 (約 0.17 秒間保持)
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n)            mic_act_cnt <= '0;
@@ -184,7 +413,7 @@ module top (
     assign led  = led_frame;
     assign led0 = (mic_act_cnt != 23'h7FFFFF);
     assign led1 = led_sample;
-    assign led2 = 1'b0;
+    assign led2 = led_fft;
     assign led3 = init_done;
 
 endmodule

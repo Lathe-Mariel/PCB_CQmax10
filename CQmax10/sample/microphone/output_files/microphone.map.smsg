@@ -1,1 +1,5 @@
-Info (10281): Verilog HDL Declaration information at lcd_wave.sv(69): object "POWERON_CNT" differs only in case from object "poweron_cnt" in the same scope File: H:/git/PCB_CQmax10/CQmax10/sample/microphone/rtl/lcd_wave.sv Line: 69
+Info (10281): Verilog HDL Declaration information at spectrum.sv(87): object "BAR_LIFE" differs only in case from object "bar_life" in the same scope File: H:/git/PCB_CQmax10/CQmax10/sample/microphone/rtl/spectrum.sv Line: 87
+Info (10281): Verilog HDL Declaration information at lcd_wave.sv(63): object "TB_SEL" differs only in case from object "tb_sel" in the same scope File: H:/git/PCB_CQmax10/CQmax10/sample/microphone/rtl/lcd_wave.sv Line: 63
+Info (10281): Verilog HDL Declaration information at lcd_wave.sv(115): object "POWERON_CNT" differs only in case from object "poweron_cnt" in the same scope File: H:/git/PCB_CQmax10/CQmax10/sample/microphone/rtl/lcd_wave.sv Line: 115
+Info (10281): Verilog HDL Declaration information at lcd_wave.sv(62): object "BAR_HOLD" differs only in case from object "bar_hold" in the same scope File: H:/git/PCB_CQmax10/CQmax10/sample/microphone/rtl/lcd_wave.sv Line: 62
+Info (10281): Verilog HDL Declaration information at lcd_wave.sv(61): object "BAR_N" differs only in case from object "bar_n" in the same scope File: H:/git/PCB_CQmax10/CQmax10/sample/microphone/rtl/lcd_wave.sv Line: 61
