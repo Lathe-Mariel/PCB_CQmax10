@@ -13,6 +13,9 @@ module top #(
 
     output logic led,
     output logic led0,
+    output logic led1,
+    output logic led2,
+    output logic led3,
     output logic [7:0] leds
 );
 
@@ -187,7 +190,8 @@ module top #(
 
     logic [25:0] heartbeat_cnt;
     logic        heartbeat;
-    logic        char_toggle;
+    logic        led_key;
+    logic        led_event;
     logic [1:0]  typ_meta;
     logic [1:0]  typ_sync;
     logic        conerr_meta;
@@ -198,7 +202,6 @@ module top #(
         if (!rst_sys_n) begin
             heartbeat_cnt <= 26'd0;
             heartbeat     <= 1'b0;
-            char_toggle   <= 1'b0;
             typ_meta      <= 2'd0;
             typ_sync      <= 2'd0;
             conerr_meta   <= 1'b0;
@@ -217,15 +220,51 @@ module top #(
             end else begin
                 heartbeat_cnt <= heartbeat_cnt + 26'd1;
             end
-
-            if (sys_ascii_valid && sys_ascii_ready) begin
-                char_toggle <= ~char_toggle;
-            end
         end
     end
 
+    // HID keyboard key fields are only driven while a keyboard is attached
+    // (typ == 1), so any non-zero key1..key4 means a key is currently held.
+    // Gating on typ_sync also prevents a stale key value from leaving the LED
+    // stuck on after the keyboard is detached. These signals are asynchronous
+    // to clk; key_led_stretch synchronizes the level internally.
+    wire keyboard_present   = (typ_sync == 2'd1);
+    wire any_key_down_async = (key1 | key2 | key3 | key4) != 8'h00;
+
+    key_led_stretch #(
+        .CLK_HZ  (50_000_000),
+        .HOLD_MS (120)
+    ) u_key_led_stretch (
+        .clk            (clk),
+        .rst_n          (rst_sys_n),
+        .key_down_async (keyboard_present && any_key_down_async),
+        .led_key        (led_key),
+        .led_event      (led_event)
+    );
+
+    // Board LEDs D1-D4 on PIN_123/122/121/120. Each is wired as
+    //     +3V3 -> series R -> LED anode -> LED cathode -> FPGA pin
+    // (verified against the CQ-MAX10-A Pmod board netlist) so the FPGA pin must
+    // SINK current: drive LOW to light the LED, HIGH to turn it off. The signals
+    // below are kept active-high and inverted once, at the pin.
+    //
+    // led0 is the 1 Hz heartbeat: it proves the FPGA is powered and running.
+    // Use it as the first check when the design appears to stall - if led0 stops
+    // blinking, the cause is power (brown-out), not logic, because this design
+    // has no CPU and no self-reset mechanism.
+    wire led0_on = heartbeat;        // FPGA alive (1 Hz)
+    wire led1_on = led_key;          // a key is currently held on the keyboard
+    wire led2_on = led_event;        // a new key code arrived (120 ms stretched)
+    wire led3_on = keyboard_present; // USB keyboard detected (typ == 1)
+
+    assign led0 = ~led0_on;
+    assign led1 = ~led1_on;
+    assign led2 = ~led2_on;
+    assign led3 = ~led3_on;
+
+    // PIN_85 is not routed on the CQ-MAX10-A Pmod board, and leds[] sit on the
+    // Pmod port 2/4 sockets. Kept as status outputs; polarity not characterised.
     assign led     = heartbeat;
-    assign led0    = char_toggle;
     assign leds[0] = pll_locked;
     assign leds[1] = (typ_sync != 2'd0);
     assign leds[2] = (typ_sync == 2'd1);

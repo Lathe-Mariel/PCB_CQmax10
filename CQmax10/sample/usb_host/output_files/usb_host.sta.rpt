@@ -1,5 +1,5 @@
 Timing Analyzer report for usb_host
-Thu Sep 17 01:32:32 2026
+Mon Sep 21 20:00:57 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -95,13 +95,13 @@ on the Quartus Prime software download page.
 ; Number detected on machine ; 36          ;
 ; Maximum allowed            ; 16          ;
 ;                            ;             ;
-; Average used               ; 1.41        ;
+; Average used               ; 1.32        ;
 ; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   3.4%      ;
-;     Processors 3-16        ;   2.7%      ;
+;     Processor 2            ;   2.2%      ;
+;     Processors 3-16        ;   2.2%      ;
 +----------------------------+-------------+
 
 
@@ -110,7 +110,7 @@ on the Quartus Prime software download page.
 +---------------+--------+--------------------------+
 ; SDC File Path ; Status ; Read at                  ;
 +---------------+--------+--------------------------+
-; usb_host.sdc  ; OK     ; Thu Sep 17 01:32:29 2026 ;
+; usb_host.sdc  ; OK     ; Mon Sep 21 20:00:53 2026 ;
 +---------------+--------+--------------------------+
 
 
@@ -130,9 +130,9 @@ on the Quartus Prime software download page.
 +------------+-----------------+-----------------------------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                    ; Note ;
 +------------+-----------------+-----------------------------------------------+------+
-; 45.72 MHz  ; 45.72 MHz       ; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ;      ;
-; 121.12 MHz ; 121.12 MHz      ; altera_reserved_tck                           ;      ;
-; 163.83 MHz ; 163.83 MHz      ; clk                                           ;      ;
+; 49.87 MHz  ; 49.87 MHz       ; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ;      ;
+; 131.23 MHz ; 131.23 MHz      ; altera_reserved_tck                           ;      ;
+; 155.21 MHz ; 155.21 MHz      ; clk                                           ;      ;
 +------------+-----------------+-----------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -142,9 +142,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------------------------------------------+--------+---------------+
 ; Clock                                         ; Slack  ; End Point TNS ;
 +-----------------------------------------------+--------+---------------+
-; clk                                           ; -0.355 ; -0.476        ;
-; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 0.722  ; 0.000         ;
-; altera_reserved_tck                           ; 45.872 ; 0.000         ;
+; clk                                           ; 13.557 ; 0.000         ;
+; altera_reserved_tck                           ; 46.190 ; 0.000         ;
+; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 63.280 ; 0.000         ;
 +-----------------------------------------------+--------+---------------+
 
 
@@ -153,7 +153,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------------------------------------------+-------+---------------+
 ; Clock                                         ; Slack ; End Point TNS ;
 +-----------------------------------------------+-------+---------------+
-; clk                                           ; 0.275 ; 0.000         ;
+; clk                                           ; 0.319 ; 0.000         ;
 ; altera_reserved_tck                           ; 0.360 ; 0.000         ;
 ; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 0.360 ; 0.000         ;
 +-----------------------------------------------+-------+---------------+
@@ -164,9 +164,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------------------------------------------+--------+---------------+
 ; Clock                                         ; Slack  ; End Point TNS ;
 +-----------------------------------------------+--------+---------------+
-; clk                                           ; 16.916 ; 0.000         ;
-; altera_reserved_tck                           ; 47.839 ; 0.000         ;
-; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 80.300 ; 0.000         ;
+; clk                                           ; 16.253 ; 0.000         ;
+; altera_reserved_tck                           ; 47.932 ; 0.000         ;
+; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 79.673 ; 0.000         ;
 +-----------------------------------------------+--------+---------------+
 
 
@@ -175,9 +175,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------------------------------------------+-------+---------------+
 ; Clock                                         ; Slack ; End Point TNS ;
 +-----------------------------------------------+-------+---------------+
-; altera_reserved_tck                           ; 0.964 ; 0.000         ;
-; clk                                           ; 1.029 ; 0.000         ;
-; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 1.495 ; 0.000         ;
+; altera_reserved_tck                           ; 1.181 ; 0.000         ;
+; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 2.040 ; 0.000         ;
+; clk                                           ; 2.806 ; 0.000         ;
 +-----------------------------------------------+-------+---------------+
 
 
@@ -186,7 +186,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------------------------------------------+--------+---------------+
 ; Clock                                         ; Slack  ; End Point TNS ;
 +-----------------------------------------------+--------+---------------+
-; clk                                           ; 9.582  ; 0.000         ;
+; clk                                           ; 9.557  ; 0.000         ;
 ; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 41.394 ; 0.000         ;
 ; altera_reserved_tck                           ; 49.616 ; 0.000         ;
 +-----------------------------------------------+--------+---------------+
@@ -196,10 +196,10 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 ; Slow 1200mV 85C Model Metastability Summary ;
 -----------------------------------------------
 The design MTBF is not calculated because there are no specified synchronizers in the design.
-Number of Synchronizer Chains Found: 3
+Number of Synchronizer Chains Found: 18
 Shortest Synchronizer Chain: 2 Registers
 Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-Worst Case Available Settling Time: 18.886 ns
+Worst Case Available Settling Time: 18.856 ns
 
 
 
@@ -209,9 +209,9 @@ Worst Case Available Settling Time: 18.886 ns
 +------------+-----------------+-----------------------------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                    ; Note ;
 +------------+-----------------+-----------------------------------------------+------+
-; 48.1 MHz   ; 48.1 MHz        ; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ;      ;
-; 127.23 MHz ; 127.23 MHz      ; altera_reserved_tck                           ;      ;
-; 175.38 MHz ; 175.38 MHz      ; clk                                           ;      ;
+; 51.89 MHz  ; 51.89 MHz       ; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ;      ;
+; 136.84 MHz ; 136.84 MHz      ; altera_reserved_tck                           ;      ;
+; 161.68 MHz ; 161.68 MHz      ; clk                                           ;      ;
 +------------+-----------------+-----------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -221,9 +221,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------------------------------------------+--------+---------------+
 ; Clock                                         ; Slack  ; End Point TNS ;
 +-----------------------------------------------+--------+---------------+
-; clk                                           ; -0.130 ; -0.130        ;
-; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 0.772  ; 0.000         ;
-; altera_reserved_tck                           ; 46.070 ; 0.000         ;
+; clk                                           ; 13.815 ; 0.000         ;
+; altera_reserved_tck                           ; 46.346 ; 0.000         ;
+; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 64.063 ; 0.000         ;
 +-----------------------------------------------+--------+---------------+
 
 
@@ -232,9 +232,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------------------------------------------+-------+---------------+
 ; Clock                                         ; Slack ; End Point TNS ;
 +-----------------------------------------------+-------+---------------+
-; clk                                           ; 0.254 ; 0.000         ;
-; altera_reserved_tck                           ; 0.322 ; 0.000         ;
-; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 0.323 ; 0.000         ;
+; clk                                           ; 0.287 ; 0.000         ;
+; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 0.322 ; 0.000         ;
+; altera_reserved_tck                           ; 0.323 ; 0.000         ;
 +-----------------------------------------------+-------+---------------+
 
 
@@ -243,9 +243,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------------------------------------------+--------+---------------+
 ; Clock                                         ; Slack  ; End Point TNS ;
 +-----------------------------------------------+--------+---------------+
-; clk                                           ; 17.071 ; 0.000         ;
-; altera_reserved_tck                           ; 47.969 ; 0.000         ;
-; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 80.443 ; 0.000         ;
+; clk                                           ; 16.505 ; 0.000         ;
+; altera_reserved_tck                           ; 48.057 ; 0.000         ;
+; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 79.848 ; 0.000         ;
 +-----------------------------------------------+--------+---------------+
 
 
@@ -254,9 +254,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------------------------------------------+-------+---------------+
 ; Clock                                         ; Slack ; End Point TNS ;
 +-----------------------------------------------+-------+---------------+
-; altera_reserved_tck                           ; 0.888 ; 0.000         ;
-; clk                                           ; 0.955 ; 0.000         ;
-; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 1.340 ; 0.000         ;
+; altera_reserved_tck                           ; 1.052 ; 0.000         ;
+; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 1.824 ; 0.000         ;
+; clk                                           ; 2.535 ; 0.000         ;
 +-----------------------------------------------+-------+---------------+
 
 
@@ -265,9 +265,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------------------------------------------+--------+---------------+
 ; Clock                                         ; Slack  ; End Point TNS ;
 +-----------------------------------------------+--------+---------------+
-; clk                                           ; 9.600  ; 0.000         ;
-; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 41.401 ; 0.000         ;
-; altera_reserved_tck                           ; 49.630 ; 0.000         ;
+; clk                                           ; 9.572  ; 0.000         ;
+; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 41.400 ; 0.000         ;
+; altera_reserved_tck                           ; 49.632 ; 0.000         ;
 +-----------------------------------------------+--------+---------------+
 
 
@@ -275,10 +275,10 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 ; Slow 1200mV 0C Model Metastability Summary ;
 ----------------------------------------------
 The design MTBF is not calculated because there are no specified synchronizers in the design.
-Number of Synchronizer Chains Found: 3
+Number of Synchronizer Chains Found: 18
 Shortest Synchronizer Chain: 2 Registers
 Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-Worst Case Available Settling Time: 18.982 ns
+Worst Case Available Settling Time: 18.949 ns
 
 
 
@@ -288,9 +288,9 @@ Worst Case Available Settling Time: 18.982 ns
 +-----------------------------------------------+--------+---------------+
 ; Clock                                         ; Slack  ; End Point TNS ;
 +-----------------------------------------------+--------+---------------+
-; clk                                           ; 1.581  ; 0.000         ;
-; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 2.302  ; 0.000         ;
-; altera_reserved_tck                           ; 48.832 ; 0.000         ;
+; clk                                           ; 17.337 ; 0.000         ;
+; altera_reserved_tck                           ; 48.921 ; 0.000         ;
+; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 75.474 ; 0.000         ;
 +-----------------------------------------------+--------+---------------+
 
 
@@ -299,8 +299,8 @@ Worst Case Available Settling Time: 18.982 ns
 +-----------------------------------------------+-------+---------------+
 ; Clock                                         ; Slack ; End Point TNS ;
 +-----------------------------------------------+-------+---------------+
-; clk                                           ; 0.095 ; 0.000         ;
-; altera_reserved_tck                           ; 0.150 ; 0.000         ;
+; clk                                           ; 0.106 ; 0.000         ;
+; altera_reserved_tck                           ; 0.151 ; 0.000         ;
 ; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 0.151 ; 0.000         ;
 +-----------------------------------------------+-------+---------------+
 
@@ -310,9 +310,9 @@ Worst Case Available Settling Time: 18.982 ns
 +-----------------------------------------------+--------+---------------+
 ; Clock                                         ; Slack  ; End Point TNS ;
 +-----------------------------------------------+--------+---------------+
-; clk                                           ; 18.599 ; 0.000         ;
-; altera_reserved_tck                           ; 49.427 ; 0.000         ;
-; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 81.978 ; 0.000         ;
+; clk                                           ; 18.311 ; 0.000         ;
+; altera_reserved_tck                           ; 49.476 ; 0.000         ;
+; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 81.688 ; 0.000         ;
 +-----------------------------------------------+--------+---------------+
 
 
@@ -321,9 +321,9 @@ Worst Case Available Settling Time: 18.982 ns
 +-----------------------------------------------+-------+---------------+
 ; Clock                                         ; Slack ; End Point TNS ;
 +-----------------------------------------------+-------+---------------+
-; altera_reserved_tck                           ; 0.413 ; 0.000         ;
-; clk                                           ; 0.424 ; 0.000         ;
-; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 0.609 ; 0.000         ;
+; altera_reserved_tck                           ; 0.472 ; 0.000         ;
+; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 0.845 ; 0.000         ;
+; clk                                           ; 1.202 ; 0.000         ;
 +-----------------------------------------------+-------+---------------+
 
 
@@ -333,8 +333,8 @@ Worst Case Available Settling Time: 18.982 ns
 ; Clock                                         ; Slack  ; End Point TNS ;
 +-----------------------------------------------+--------+---------------+
 ; clk                                           ; 9.271  ; 0.000         ;
-; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 41.448 ; 0.000         ;
-; altera_reserved_tck                           ; 49.284 ; 0.000         ;
+; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 41.449 ; 0.000         ;
+; altera_reserved_tck                           ; 49.286 ; 0.000         ;
 +-----------------------------------------------+--------+---------------+
 
 
@@ -342,10 +342,10 @@ Worst Case Available Settling Time: 18.982 ns
 ; Fast 1200mV 0C Model Metastability Summary ;
 ----------------------------------------------
 The design MTBF is not calculated because there are no specified synchronizers in the design.
-Number of Synchronizer Chains Found: 3
+Number of Synchronizer Chains Found: 18
 Shortest Synchronizer Chain: 2 Registers
 Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-Worst Case Available Settling Time: 19.518 ns
+Worst Case Available Settling Time: 19.530 ns
 
 
 
@@ -355,13 +355,13 @@ Worst Case Available Settling Time: 19.518 ns
 +------------------------------------------------+--------+-------+----------+---------+---------------------+
 ; Clock                                          ; Setup  ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
 +------------------------------------------------+--------+-------+----------+---------+---------------------+
-; Worst-case Slack                               ; -0.355 ; 0.095 ; 16.916   ; 0.413   ; 9.271               ;
-;  altera_reserved_tck                           ; 45.872 ; 0.150 ; 47.839   ; 0.413   ; 49.284              ;
-;  clk                                           ; -0.355 ; 0.095 ; 16.916   ; 0.424   ; 9.271               ;
-;  u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 0.722  ; 0.151 ; 80.300   ; 0.609   ; 41.394              ;
-; Design-wide TNS                                ; -0.476 ; 0.0   ; 0.0      ; 0.0     ; 0.0                 ;
+; Worst-case Slack                               ; 13.557 ; 0.106 ; 16.253   ; 0.472   ; 9.271               ;
+;  altera_reserved_tck                           ; 46.190 ; 0.151 ; 47.932   ; 0.472   ; 49.286              ;
+;  clk                                           ; 13.557 ; 0.106 ; 16.253   ; 1.202   ; 9.271               ;
+;  u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 63.280 ; 0.151 ; 79.673   ; 0.845   ; 41.394              ;
+; Design-wide TNS                                ; 0.0    ; 0.0   ; 0.0      ; 0.0     ; 0.0                 ;
 ;  altera_reserved_tck                           ; 0.000  ; 0.000 ; 0.000    ; 0.000   ; 0.000               ;
-;  clk                                           ; -0.476 ; 0.000 ; 0.000    ; 0.000   ; 0.000               ;
+;  clk                                           ; 0.000  ; 0.000 ; 0.000    ; 0.000   ; 0.000               ;
 ;  u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 0.000  ; 0.000 ; 0.000    ; 0.000   ; 0.000               ;
 +------------------------------------------------+--------+-------+----------+---------+---------------------+
 
@@ -373,6 +373,9 @@ Worst Case Available Settling Time: 19.518 ns
 +---------------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
 ; led                 ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; led0                ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; led1                ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; led2                ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; led3                ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; leds[0]             ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; leds[1]             ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; leds[2]             ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
@@ -416,6 +419,9 @@ Worst Case Available Settling Time: 19.518 ns
 +---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 ; led                 ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.08e-08 V                   ; 3.19 V              ; -0.126 V            ; 0.218 V                              ; 0.383 V                              ; 4.51e-10 s                  ; 4.73e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 2.08e-08 V                  ; 3.19 V             ; -0.126 V           ; 0.218 V                             ; 0.383 V                             ; 4.51e-10 s                 ; 4.73e-10 s                 ; No                        ; No                        ;
 ; led0                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.08e-08 V                   ; 3.09 V              ; -0.0046 V           ; 0.291 V                              ; 0.287 V                              ; 4.58e-09 s                  ; 4.9e-09 s                   ; No                         ; No                         ; 3.08 V                      ; 2.08e-08 V                  ; 3.09 V             ; -0.0046 V          ; 0.291 V                             ; 0.287 V                             ; 4.58e-09 s                 ; 4.9e-09 s                  ; No                        ; No                        ;
+; led1                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.08e-08 V                   ; 3.19 V              ; -0.126 V            ; 0.218 V                              ; 0.383 V                              ; 4.51e-10 s                  ; 4.73e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 2.08e-08 V                  ; 3.19 V             ; -0.126 V           ; 0.218 V                             ; 0.383 V                             ; 4.51e-10 s                 ; 4.73e-10 s                 ; No                        ; No                        ;
+; led2                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.08e-08 V                   ; 3.19 V              ; -0.128 V            ; 0.216 V                              ; 0.383 V                              ; 4.51e-10 s                  ; 4.73e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 2.08e-08 V                  ; 3.19 V             ; -0.128 V           ; 0.216 V                             ; 0.383 V                             ; 4.51e-10 s                 ; 4.73e-10 s                 ; No                        ; No                        ;
+; led3                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.08e-08 V                   ; 3.19 V              ; -0.126 V            ; 0.218 V                              ; 0.383 V                              ; 4.51e-10 s                  ; 4.73e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 2.08e-08 V                  ; 3.19 V             ; -0.126 V           ; 0.218 V                             ; 0.383 V                             ; 4.51e-10 s                 ; 4.73e-10 s                 ; No                        ; No                        ;
 ; leds[0]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.08e-08 V                   ; 3.18 V              ; -0.116 V            ; 0.266 V                              ; 0.229 V                              ; 4.69e-10 s                  ; 6.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 2.08e-08 V                  ; 3.18 V             ; -0.116 V           ; 0.266 V                             ; 0.229 V                             ; 4.69e-10 s                 ; 6.38e-10 s                 ; No                        ; No                        ;
 ; leds[1]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.08e-08 V                   ; 3.18 V              ; -0.116 V            ; 0.266 V                              ; 0.229 V                              ; 4.69e-10 s                  ; 6.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 2.08e-08 V                  ; 3.18 V             ; -0.116 V           ; 0.266 V                             ; 0.229 V                             ; 4.69e-10 s                 ; 6.38e-10 s                 ; No                        ; No                        ;
 ; leds[2]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.08e-08 V                   ; 3.18 V              ; -0.116 V            ; 0.266 V                              ; 0.229 V                              ; 4.69e-10 s                  ; 6.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 2.08e-08 V                  ; 3.18 V             ; -0.116 V           ; 0.266 V                             ; 0.229 V                             ; 4.69e-10 s                 ; 6.38e-10 s                 ; No                        ; No                        ;
@@ -424,10 +430,10 @@ Worst Case Available Settling Time: 19.518 ns
 ; leds[5]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.07e-08 V                   ; 3.18 V              ; -0.115 V            ; 0.266 V                              ; 0.229 V                              ; 4.69e-10 s                  ; 6.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 2.07e-08 V                  ; 3.18 V             ; -0.115 V           ; 0.266 V                             ; 0.229 V                             ; 4.69e-10 s                 ; 6.38e-10 s                 ; No                        ; No                        ;
 ; leds[6]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.07e-08 V                   ; 3.18 V              ; -0.115 V            ; 0.266 V                              ; 0.229 V                              ; 4.69e-10 s                  ; 6.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 2.07e-08 V                  ; 3.18 V             ; -0.115 V           ; 0.266 V                             ; 0.229 V                             ; 4.69e-10 s                 ; 6.38e-10 s                 ; No                        ; No                        ;
 ; leds[7]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.08e-08 V                   ; 3.18 V              ; -0.116 V            ; 0.266 V                              ; 0.229 V                              ; 4.69e-10 s                  ; 6.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 2.08e-08 V                  ; 3.18 V             ; -0.116 V           ; 0.266 V                             ; 0.229 V                             ; 4.69e-10 s                 ; 6.38e-10 s                 ; No                        ; No                        ;
-; usb_u1_dp           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.07e-08 V                   ; 3.18 V              ; -0.115 V            ; 0.266 V                              ; 0.229 V                              ; 4.69e-10 s                  ; 6.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 2.07e-08 V                  ; 3.18 V             ; -0.115 V           ; 0.266 V                             ; 0.229 V                             ; 4.69e-10 s                 ; 6.38e-10 s                 ; No                        ; No                        ;
-; usb_u1_dm           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.08e-08 V                   ; 3.18 V              ; -0.116 V            ; 0.266 V                              ; 0.229 V                              ; 4.69e-10 s                  ; 6.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 2.08e-08 V                  ; 3.18 V             ; -0.116 V           ; 0.266 V                             ; 0.229 V                             ; 4.69e-10 s                 ; 6.38e-10 s                 ; No                        ; No                        ;
-; usb_u2_dp           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.07e-08 V                   ; 3.18 V              ; -0.115 V            ; 0.266 V                              ; 0.229 V                              ; 4.69e-10 s                  ; 6.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 2.07e-08 V                  ; 3.18 V             ; -0.115 V           ; 0.266 V                             ; 0.229 V                             ; 4.69e-10 s                 ; 6.38e-10 s                 ; No                        ; No                        ;
-; usb_u2_dm           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.07e-08 V                   ; 3.18 V              ; -0.115 V            ; 0.266 V                              ; 0.229 V                              ; 4.69e-10 s                  ; 6.38e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 2.07e-08 V                  ; 3.18 V             ; -0.115 V           ; 0.266 V                             ; 0.229 V                             ; 4.69e-10 s                 ; 6.38e-10 s                 ; No                        ; No                        ;
+; usb_u1_dp           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.08e-08 V                   ; 3.19 V              ; -0.128 V            ; 0.216 V                              ; 0.383 V                              ; 4.51e-10 s                  ; 4.73e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 2.08e-08 V                  ; 3.19 V             ; -0.128 V           ; 0.216 V                             ; 0.383 V                             ; 4.51e-10 s                 ; 4.73e-10 s                 ; No                        ; No                        ;
+; usb_u1_dm           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.08e-08 V                   ; 3.19 V              ; -0.128 V            ; 0.216 V                              ; 0.383 V                              ; 4.51e-10 s                  ; 4.73e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 2.08e-08 V                  ; 3.19 V             ; -0.128 V           ; 0.216 V                             ; 0.383 V                             ; 4.51e-10 s                 ; 4.73e-10 s                 ; No                        ; No                        ;
+; usb_u2_dp           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.08e-08 V                   ; 3.19 V              ; -0.126 V            ; 0.218 V                              ; 0.383 V                              ; 4.51e-10 s                  ; 4.73e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 2.08e-08 V                  ; 3.19 V             ; -0.126 V           ; 0.218 V                             ; 0.383 V                             ; 4.51e-10 s                 ; 4.73e-10 s                 ; No                        ; No                        ;
+; usb_u2_dm           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.08e-08 V                   ; 3.19 V              ; -0.126 V            ; 0.218 V                              ; 0.383 V                              ; 4.51e-10 s                  ; 4.73e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 2.08e-08 V                  ; 3.19 V             ; -0.126 V           ; 0.218 V                             ; 0.383 V                             ; 4.51e-10 s                 ; 4.73e-10 s                 ; No                        ; No                        ;
 ; altera_reserved_tdo ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.08e-08 V                   ; 3.19 V              ; -0.126 V            ; 0.218 V                              ; 0.383 V                              ; 4.51e-10 s                  ; 4.73e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 2.08e-08 V                  ; 3.19 V             ; -0.126 V           ; 0.218 V                             ; 0.383 V                             ; 4.51e-10 s                 ; 4.73e-10 s                 ; No                        ; No                        ;
 +---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 
@@ -439,6 +445,9 @@ Worst Case Available Settling Time: 19.518 ns
 +---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 ; led                 ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.3e-06 V                    ; 3.15 V              ; -0.0682 V           ; 0.279 V                              ; 0.237 V                              ; 4.81e-10 s                  ; 6.4e-10 s                   ; Yes                        ; No                         ; 3.08 V                      ; 1.3e-06 V                   ; 3.15 V             ; -0.0682 V          ; 0.279 V                             ; 0.237 V                             ; 4.81e-10 s                 ; 6.4e-10 s                  ; Yes                       ; No                        ;
 ; led0                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.3e-06 V                    ; 3.09 V              ; -0.0026 V           ; 0.276 V                              ; 0.251 V                              ; 5.46e-09 s                  ; 6.08e-09 s                  ; No                         ; Yes                        ; 3.08 V                      ; 1.3e-06 V                   ; 3.09 V             ; -0.0026 V          ; 0.276 V                             ; 0.251 V                             ; 5.46e-09 s                 ; 6.08e-09 s                 ; No                        ; Yes                       ;
+; led1                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.3e-06 V                    ; 3.15 V              ; -0.0682 V           ; 0.279 V                              ; 0.237 V                              ; 4.81e-10 s                  ; 6.4e-10 s                   ; Yes                        ; No                         ; 3.08 V                      ; 1.3e-06 V                   ; 3.15 V             ; -0.0682 V          ; 0.279 V                             ; 0.237 V                             ; 4.81e-10 s                 ; 6.4e-10 s                  ; Yes                       ; No                        ;
+; led2                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.3e-06 V                    ; 3.15 V              ; -0.0684 V           ; 0.28 V                               ; 0.237 V                              ; 4.81e-10 s                  ; 6.4e-10 s                   ; Yes                        ; No                         ; 3.08 V                      ; 1.3e-06 V                   ; 3.15 V             ; -0.0684 V          ; 0.28 V                              ; 0.237 V                             ; 4.81e-10 s                 ; 6.4e-10 s                  ; Yes                       ; No                        ;
+; led3                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.3e-06 V                    ; 3.15 V              ; -0.0682 V           ; 0.279 V                              ; 0.237 V                              ; 4.81e-10 s                  ; 6.4e-10 s                   ; Yes                        ; No                         ; 3.08 V                      ; 1.3e-06 V                   ; 3.15 V             ; -0.0682 V          ; 0.279 V                             ; 0.237 V                             ; 4.81e-10 s                 ; 6.4e-10 s                  ; Yes                       ; No                        ;
 ; leds[0]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.3e-06 V                    ; 3.15 V              ; -0.0638 V           ; 0.177 V                              ; 0.312 V                              ; 6.42e-10 s                  ; 6.7e-10 s                   ; No                         ; No                         ; 3.08 V                      ; 1.3e-06 V                   ; 3.15 V             ; -0.0638 V          ; 0.177 V                             ; 0.312 V                             ; 6.42e-10 s                 ; 6.7e-10 s                  ; No                        ; No                        ;
 ; leds[1]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.3e-06 V                    ; 3.15 V              ; -0.0638 V           ; 0.177 V                              ; 0.312 V                              ; 6.42e-10 s                  ; 6.7e-10 s                   ; No                         ; No                         ; 3.08 V                      ; 1.3e-06 V                   ; 3.15 V             ; -0.0638 V          ; 0.177 V                             ; 0.312 V                             ; 6.42e-10 s                 ; 6.7e-10 s                  ; No                        ; No                        ;
 ; leds[2]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.3e-06 V                    ; 3.15 V              ; -0.0638 V           ; 0.177 V                              ; 0.312 V                              ; 6.42e-10 s                  ; 6.7e-10 s                   ; No                         ; No                         ; 3.08 V                      ; 1.3e-06 V                   ; 3.15 V             ; -0.0638 V          ; 0.177 V                             ; 0.312 V                             ; 6.42e-10 s                 ; 6.7e-10 s                  ; No                        ; No                        ;
@@ -447,10 +456,10 @@ Worst Case Available Settling Time: 19.518 ns
 ; leds[5]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.3e-06 V                    ; 3.15 V              ; -0.0624 V           ; 0.177 V                              ; 0.312 V                              ; 6.42e-10 s                  ; 6.7e-10 s                   ; No                         ; No                         ; 3.08 V                      ; 1.3e-06 V                   ; 3.15 V             ; -0.0624 V          ; 0.177 V                             ; 0.312 V                             ; 6.42e-10 s                 ; 6.7e-10 s                  ; No                        ; No                        ;
 ; leds[6]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.3e-06 V                    ; 3.15 V              ; -0.0624 V           ; 0.177 V                              ; 0.312 V                              ; 6.42e-10 s                  ; 6.7e-10 s                   ; No                         ; No                         ; 3.08 V                      ; 1.3e-06 V                   ; 3.15 V             ; -0.0624 V          ; 0.177 V                             ; 0.312 V                             ; 6.42e-10 s                 ; 6.7e-10 s                  ; No                        ; No                        ;
 ; leds[7]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.3e-06 V                    ; 3.15 V              ; -0.0638 V           ; 0.177 V                              ; 0.312 V                              ; 6.42e-10 s                  ; 6.7e-10 s                   ; No                         ; No                         ; 3.08 V                      ; 1.3e-06 V                   ; 3.15 V             ; -0.0638 V          ; 0.177 V                             ; 0.312 V                             ; 6.42e-10 s                 ; 6.7e-10 s                  ; No                        ; No                        ;
-; usb_u1_dp           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.3e-06 V                    ; 3.15 V              ; -0.0624 V           ; 0.177 V                              ; 0.312 V                              ; 6.42e-10 s                  ; 6.7e-10 s                   ; No                         ; No                         ; 3.08 V                      ; 1.3e-06 V                   ; 3.15 V             ; -0.0624 V          ; 0.177 V                             ; 0.312 V                             ; 6.42e-10 s                 ; 6.7e-10 s                  ; No                        ; No                        ;
-; usb_u1_dm           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.3e-06 V                    ; 3.15 V              ; -0.0638 V           ; 0.177 V                              ; 0.312 V                              ; 6.42e-10 s                  ; 6.7e-10 s                   ; No                         ; No                         ; 3.08 V                      ; 1.3e-06 V                   ; 3.15 V             ; -0.0638 V          ; 0.177 V                             ; 0.312 V                             ; 6.42e-10 s                 ; 6.7e-10 s                  ; No                        ; No                        ;
-; usb_u2_dp           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.3e-06 V                    ; 3.15 V              ; -0.0624 V           ; 0.177 V                              ; 0.312 V                              ; 6.42e-10 s                  ; 6.7e-10 s                   ; No                         ; No                         ; 3.08 V                      ; 1.3e-06 V                   ; 3.15 V             ; -0.0624 V          ; 0.177 V                             ; 0.312 V                             ; 6.42e-10 s                 ; 6.7e-10 s                  ; No                        ; No                        ;
-; usb_u2_dm           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.3e-06 V                    ; 3.15 V              ; -0.0624 V           ; 0.177 V                              ; 0.312 V                              ; 6.42e-10 s                  ; 6.7e-10 s                   ; No                         ; No                         ; 3.08 V                      ; 1.3e-06 V                   ; 3.15 V             ; -0.0624 V          ; 0.177 V                             ; 0.312 V                             ; 6.42e-10 s                 ; 6.7e-10 s                  ; No                        ; No                        ;
+; usb_u1_dp           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.3e-06 V                    ; 3.15 V              ; -0.0684 V           ; 0.28 V                               ; 0.237 V                              ; 4.81e-10 s                  ; 6.4e-10 s                   ; Yes                        ; No                         ; 3.08 V                      ; 1.3e-06 V                   ; 3.15 V             ; -0.0684 V          ; 0.28 V                              ; 0.237 V                             ; 4.81e-10 s                 ; 6.4e-10 s                  ; Yes                       ; No                        ;
+; usb_u1_dm           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.3e-06 V                    ; 3.15 V              ; -0.0684 V           ; 0.28 V                               ; 0.237 V                              ; 4.81e-10 s                  ; 6.4e-10 s                   ; Yes                        ; No                         ; 3.08 V                      ; 1.3e-06 V                   ; 3.15 V             ; -0.0684 V          ; 0.28 V                              ; 0.237 V                             ; 4.81e-10 s                 ; 6.4e-10 s                  ; Yes                       ; No                        ;
+; usb_u2_dp           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.3e-06 V                    ; 3.15 V              ; -0.0682 V           ; 0.279 V                              ; 0.237 V                              ; 4.81e-10 s                  ; 6.4e-10 s                   ; Yes                        ; No                         ; 3.08 V                      ; 1.3e-06 V                   ; 3.15 V             ; -0.0682 V          ; 0.279 V                             ; 0.237 V                             ; 4.81e-10 s                 ; 6.4e-10 s                  ; Yes                       ; No                        ;
+; usb_u2_dm           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.3e-06 V                    ; 3.15 V              ; -0.0682 V           ; 0.279 V                              ; 0.237 V                              ; 4.81e-10 s                  ; 6.4e-10 s                   ; Yes                        ; No                         ; 3.08 V                      ; 1.3e-06 V                   ; 3.15 V             ; -0.0682 V          ; 0.279 V                             ; 0.237 V                             ; 4.81e-10 s                 ; 6.4e-10 s                  ; Yes                       ; No                        ;
 ; altera_reserved_tdo ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.3e-06 V                    ; 3.15 V              ; -0.0682 V           ; 0.279 V                              ; 0.237 V                              ; 4.81e-10 s                  ; 6.4e-10 s                   ; Yes                        ; No                         ; 3.08 V                      ; 1.3e-06 V                   ; 3.15 V             ; -0.0682 V          ; 0.279 V                             ; 0.237 V                             ; 4.81e-10 s                 ; 6.4e-10 s                  ; Yes                       ; No                        ;
 +---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 
@@ -462,6 +471,9 @@ Worst Case Available Settling Time: 19.518 ns
 +---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 ; led                 ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.64 V              ; -0.0201 V           ; 0.391 V                              ; 0.088 V                              ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.64 V             ; -0.0201 V          ; 0.391 V                             ; 0.088 V                             ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
 ; led0                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.48 V              ; -0.00721 V          ; 0.333 V                              ; 0.329 V                              ; 3.62e-09 s                  ; 4.03e-09 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.48 V             ; -0.00721 V         ; 0.333 V                             ; 0.329 V                             ; 3.62e-09 s                 ; 4.03e-09 s                 ; No                        ; Yes                       ;
+; led1                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.64 V              ; -0.0201 V           ; 0.391 V                              ; 0.088 V                              ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.64 V             ; -0.0201 V          ; 0.391 V                             ; 0.088 V                             ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
+; led2                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.65 V              ; -0.0209 V           ; 0.391 V                              ; 0.09 V                               ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.65 V             ; -0.0209 V          ; 0.391 V                             ; 0.09 V                              ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
+; led3                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.64 V              ; -0.0201 V           ; 0.391 V                              ; 0.088 V                              ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.64 V             ; -0.0201 V          ; 0.391 V                             ; 0.088 V                             ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
 ; leds[0]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.63 V              ; -0.0264 V           ; 0.468 V                              ; 0.142 V                              ; 3.02e-10 s                  ; 4.42e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.63 V             ; -0.0264 V          ; 0.468 V                             ; 0.142 V                             ; 3.02e-10 s                 ; 4.42e-10 s                 ; No                        ; Yes                       ;
 ; leds[1]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.63 V              ; -0.0264 V           ; 0.468 V                              ; 0.142 V                              ; 3.02e-10 s                  ; 4.42e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.63 V             ; -0.0264 V          ; 0.468 V                             ; 0.142 V                             ; 3.02e-10 s                 ; 4.42e-10 s                 ; No                        ; Yes                       ;
 ; leds[2]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.63 V              ; -0.0264 V           ; 0.468 V                              ; 0.142 V                              ; 3.02e-10 s                  ; 4.42e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.63 V             ; -0.0264 V          ; 0.468 V                             ; 0.142 V                             ; 3.02e-10 s                 ; 4.42e-10 s                 ; No                        ; Yes                       ;
@@ -470,10 +482,10 @@ Worst Case Available Settling Time: 19.518 ns
 ; leds[5]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.63 V              ; -0.0257 V           ; 0.468 V                              ; 0.138 V                              ; 3.02e-10 s                  ; 4.44e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.63 V             ; -0.0257 V          ; 0.468 V                             ; 0.138 V                             ; 3.02e-10 s                 ; 4.44e-10 s                 ; No                        ; Yes                       ;
 ; leds[6]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.63 V              ; -0.0257 V           ; 0.468 V                              ; 0.138 V                              ; 3.02e-10 s                  ; 4.44e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.63 V             ; -0.0257 V          ; 0.468 V                             ; 0.138 V                             ; 3.02e-10 s                 ; 4.44e-10 s                 ; No                        ; Yes                       ;
 ; leds[7]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.63 V              ; -0.0264 V           ; 0.468 V                              ; 0.142 V                              ; 3.02e-10 s                  ; 4.42e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.63 V             ; -0.0264 V          ; 0.468 V                             ; 0.142 V                             ; 3.02e-10 s                 ; 4.42e-10 s                 ; No                        ; Yes                       ;
-; usb_u1_dp           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.63 V              ; -0.0257 V           ; 0.468 V                              ; 0.138 V                              ; 3.02e-10 s                  ; 4.44e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.63 V             ; -0.0257 V          ; 0.468 V                             ; 0.138 V                             ; 3.02e-10 s                 ; 4.44e-10 s                 ; No                        ; Yes                       ;
-; usb_u1_dm           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.63 V              ; -0.0264 V           ; 0.468 V                              ; 0.142 V                              ; 3.02e-10 s                  ; 4.42e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.63 V             ; -0.0264 V          ; 0.468 V                             ; 0.142 V                             ; 3.02e-10 s                 ; 4.42e-10 s                 ; No                        ; Yes                       ;
-; usb_u2_dp           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.63 V              ; -0.0257 V           ; 0.468 V                              ; 0.138 V                              ; 3.02e-10 s                  ; 4.44e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.63 V             ; -0.0257 V          ; 0.468 V                             ; 0.138 V                             ; 3.02e-10 s                 ; 4.44e-10 s                 ; No                        ; Yes                       ;
-; usb_u2_dm           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.63 V              ; -0.0257 V           ; 0.468 V                              ; 0.138 V                              ; 3.02e-10 s                  ; 4.44e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.63 V             ; -0.0257 V          ; 0.468 V                             ; 0.138 V                             ; 3.02e-10 s                 ; 4.44e-10 s                 ; No                        ; Yes                       ;
+; usb_u1_dp           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.65 V              ; -0.0209 V           ; 0.391 V                              ; 0.09 V                               ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.65 V             ; -0.0209 V          ; 0.391 V                             ; 0.09 V                              ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
+; usb_u1_dm           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.65 V              ; -0.0209 V           ; 0.391 V                              ; 0.09 V                               ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.65 V             ; -0.0209 V          ; 0.391 V                             ; 0.09 V                              ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
+; usb_u2_dp           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.64 V              ; -0.0201 V           ; 0.391 V                              ; 0.088 V                              ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.64 V             ; -0.0201 V          ; 0.391 V                             ; 0.088 V                             ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
+; usb_u2_dm           ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.64 V              ; -0.0201 V           ; 0.391 V                              ; 0.088 V                              ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.64 V             ; -0.0201 V          ; 0.391 V                             ; 0.088 V                             ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
 ; altera_reserved_tdo ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.64 V              ; -0.0201 V           ; 0.391 V                              ; 0.088 V                              ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.64 V             ; -0.0201 V          ; 0.391 V                             ; 0.088 V                             ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
 +---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 
@@ -486,10 +498,10 @@ Worst Case Available Settling Time: 19.518 ns
 ; altera_reserved_tck                           ; altera_reserved_tck                           ; 764        ; 0        ; 30       ; 1        ;
 ; clk                                           ; altera_reserved_tck                           ; false path ; 0        ; 0        ; 0        ;
 ; altera_reserved_tck                           ; clk                                           ; false path ; 0        ; 0        ; 0        ;
-; clk                                           ; clk                                           ; 1377       ; 0        ; 0        ; 0        ;
-; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; clk                                           ; 14         ; 0        ; 0        ; 0        ;
-; clk                                           ; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 1          ; 0        ; 0        ; 0        ;
-; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 3900152    ; 0        ; 0        ; 0        ;
+; clk                                           ; clk                                           ; 3308       ; 0        ; 0        ; 0        ;
+; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; clk                                           ; false path ; 0        ; 0        ; 0        ;
+; clk                                           ; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; false path ; 0        ; 0        ; 0        ;
+; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 3861200    ; 0        ; 0        ; 0        ;
 +-----------------------------------------------+-----------------------------------------------+------------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -502,10 +514,10 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 ; altera_reserved_tck                           ; altera_reserved_tck                           ; 764        ; 0        ; 30       ; 1        ;
 ; clk                                           ; altera_reserved_tck                           ; false path ; 0        ; 0        ; 0        ;
 ; altera_reserved_tck                           ; clk                                           ; false path ; 0        ; 0        ; 0        ;
-; clk                                           ; clk                                           ; 1377       ; 0        ; 0        ; 0        ;
-; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; clk                                           ; 14         ; 0        ; 0        ; 0        ;
-; clk                                           ; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 1          ; 0        ; 0        ; 0        ;
-; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 3900152    ; 0        ; 0        ; 0        ;
+; clk                                           ; clk                                           ; 3308       ; 0        ; 0        ; 0        ;
+; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; clk                                           ; false path ; 0        ; 0        ; 0        ;
+; clk                                           ; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; false path ; 0        ; 0        ; 0        ;
+; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 3861200    ; 0        ; 0        ; 0        ;
 +-----------------------------------------------+-----------------------------------------------+------------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -516,7 +528,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 ; From Clock                                    ; To Clock                                      ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +-----------------------------------------------+-----------------------------------------------+----------+----------+----------+----------+
 ; altera_reserved_tck                           ; altera_reserved_tck                           ; 51       ; 0        ; 1        ; 0        ;
-; clk                                           ; clk                                           ; 111      ; 0        ; 0        ; 0        ;
+; clk                                           ; clk                                           ; 162      ; 0        ; 0        ; 0        ;
 ; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 54       ; 0        ; 0        ; 0        ;
 +-----------------------------------------------+-----------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
@@ -528,7 +540,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 ; From Clock                                    ; To Clock                                      ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +-----------------------------------------------+-----------------------------------------------+----------+----------+----------+----------+
 ; altera_reserved_tck                           ; altera_reserved_tck                           ; 51       ; 0        ; 1        ; 0        ;
-; clk                                           ; clk                                           ; 111      ; 0        ; 0        ; 0        ;
+; clk                                           ; clk                                           ; 162      ; 0        ; 0        ; 0        ;
 ; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; u_usb_pll|u_altpll|auto_generated|pll1|clk[0] ; 54       ; 0        ; 0        ; 0        ;
 +-----------------------------------------------+-----------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
@@ -553,10 +565,10 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
-; Unconstrained Input Ports       ; 4     ; 4    ;
-; Unconstrained Input Port Paths  ; 41    ; 41   ;
-; Unconstrained Output Ports      ; 13    ; 13   ;
-; Unconstrained Output Port Paths ; 17    ; 17   ;
+; Unconstrained Input Ports       ; 2     ; 2    ;
+; Unconstrained Input Port Paths  ; 39    ; 39   ;
+; Unconstrained Output Ports      ; 4     ; 4    ;
+; Unconstrained Output Port Paths ; 38    ; 38   ;
 +---------------------------------+-------+------+
 
 
@@ -578,8 +590,6 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +---------------------+--------------------------------------------------------------------------------------+
 ; altera_reserved_tdi ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; altera_reserved_tms ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; usb_u1_dm           ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; usb_u1_dp           ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +---------------------+--------------------------------------------------------------------------------------+
 
 
@@ -589,18 +599,9 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Output Port         ; Comment                                                                               ;
 +---------------------+---------------------------------------------------------------------------------------+
 ; altera_reserved_tdo ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; led                 ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; led0                ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; leds[0]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; leds[1]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; leds[2]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; leds[3]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; leds[4]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; leds[5]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; leds[6]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; leds[7]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; usb_u1_dm           ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; usb_u1_dp           ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; led1                ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; led2                ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; led3                ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +---------------------+---------------------------------------------------------------------------------------+
 
 
@@ -611,8 +612,6 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +---------------------+--------------------------------------------------------------------------------------+
 ; altera_reserved_tdi ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; altera_reserved_tms ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; usb_u1_dm           ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; usb_u1_dp           ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +---------------------+--------------------------------------------------------------------------------------+
 
 
@@ -622,18 +621,9 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Output Port         ; Comment                                                                               ;
 +---------------------+---------------------------------------------------------------------------------------+
 ; altera_reserved_tdo ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; led                 ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; led0                ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; leds[0]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; leds[1]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; leds[2]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; leds[3]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; leds[4]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; leds[5]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; leds[6]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; leds[7]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; usb_u1_dm           ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; usb_u1_dp           ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; led1                ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; led2                ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; led3                ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +---------------------+---------------------------------------------------------------------------------------+
 
 
@@ -643,7 +633,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
-    Info: Processing started: Thu Sep 17 01:32:27 2026
+    Info: Processing started: Mon Sep 21 20:00:51 2026
 Info: Command: quartus_sta usb_host -c usb_host
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -716,43 +706,42 @@ Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Tim
 Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1200mV 85C Model
 Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
-Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -0.355
+Info (332146): Worst-case setup slack is 13.557
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.355              -0.476 clk 
-    Info (332119):     0.722               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
-    Info (332119):    45.872               0.000 altera_reserved_tck 
-Info (332146): Worst-case hold slack is 0.275
+    Info (332119):    13.557               0.000 clk 
+    Info (332119):    46.190               0.000 altera_reserved_tck 
+    Info (332119):    63.280               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
+Info (332146): Worst-case hold slack is 0.319
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.275               0.000 clk 
+    Info (332119):     0.319               0.000 clk 
     Info (332119):     0.360               0.000 altera_reserved_tck 
     Info (332119):     0.360               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
-Info (332146): Worst-case recovery slack is 16.916
+Info (332146): Worst-case recovery slack is 16.253
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    16.916               0.000 clk 
-    Info (332119):    47.839               0.000 altera_reserved_tck 
-    Info (332119):    80.300               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
-Info (332146): Worst-case removal slack is 0.964
+    Info (332119):    16.253               0.000 clk 
+    Info (332119):    47.932               0.000 altera_reserved_tck 
+    Info (332119):    79.673               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
+Info (332146): Worst-case removal slack is 1.181
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.964               0.000 altera_reserved_tck 
-    Info (332119):     1.029               0.000 clk 
-    Info (332119):     1.495               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
-Info (332146): Worst-case minimum pulse width slack is 9.582
+    Info (332119):     1.181               0.000 altera_reserved_tck 
+    Info (332119):     2.040               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
+    Info (332119):     2.806               0.000 clk 
+Info (332146): Worst-case minimum pulse width slack is 9.557
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     9.582               0.000 clk 
+    Info (332119):     9.557               0.000 clk 
     Info (332119):    41.394               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
     Info (332119):    49.616               0.000 altera_reserved_tck 
-Info (332114): Report Metastability: Found 3 synchronizer chains.
+Info (332114): Report Metastability: Found 18 synchronizer chains.
     Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
-    Info (332114): Number of Synchronizer Chains Found: 3
+    Info (332114): Number of Synchronizer Chains Found: 18
     Info (332114): Shortest Synchronizer Chain: 2 Registers
     Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-    Info (332114): Worst Case Available Settling Time: 18.886 ns
+    Info (332114): Worst Case Available Settling Time: 18.856 ns
     Info (332114): 
 Info: Analyzing Slow 1200mV 0C Model
 Info (334003): Started post-fitting delay annotation
@@ -760,91 +749,90 @@ Info (334004): Delay annotation completed successfully
 Info (332097): The following timing edges are non-unate.  The Timing Analyzer will assume pos-unate behavior for these edges in the clock network.
     Info (332098): Cell: altera_internal_jtag  from: tck  to: tckutap
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
-Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -0.130
+Info (332146): Worst-case setup slack is 13.815
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.130              -0.130 clk 
-    Info (332119):     0.772               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
-    Info (332119):    46.070               0.000 altera_reserved_tck 
-Info (332146): Worst-case hold slack is 0.254
+    Info (332119):    13.815               0.000 clk 
+    Info (332119):    46.346               0.000 altera_reserved_tck 
+    Info (332119):    64.063               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
+Info (332146): Worst-case hold slack is 0.287
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.254               0.000 clk 
-    Info (332119):     0.322               0.000 altera_reserved_tck 
-    Info (332119):     0.323               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
-Info (332146): Worst-case recovery slack is 17.071
+    Info (332119):     0.287               0.000 clk 
+    Info (332119):     0.322               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
+    Info (332119):     0.323               0.000 altera_reserved_tck 
+Info (332146): Worst-case recovery slack is 16.505
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    17.071               0.000 clk 
-    Info (332119):    47.969               0.000 altera_reserved_tck 
-    Info (332119):    80.443               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
-Info (332146): Worst-case removal slack is 0.888
+    Info (332119):    16.505               0.000 clk 
+    Info (332119):    48.057               0.000 altera_reserved_tck 
+    Info (332119):    79.848               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
+Info (332146): Worst-case removal slack is 1.052
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.888               0.000 altera_reserved_tck 
-    Info (332119):     0.955               0.000 clk 
-    Info (332119):     1.340               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
-Info (332146): Worst-case minimum pulse width slack is 9.600
+    Info (332119):     1.052               0.000 altera_reserved_tck 
+    Info (332119):     1.824               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
+    Info (332119):     2.535               0.000 clk 
+Info (332146): Worst-case minimum pulse width slack is 9.572
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     9.600               0.000 clk 
-    Info (332119):    41.401               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
-    Info (332119):    49.630               0.000 altera_reserved_tck 
-Info (332114): Report Metastability: Found 3 synchronizer chains.
+    Info (332119):     9.572               0.000 clk 
+    Info (332119):    41.400               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
+    Info (332119):    49.632               0.000 altera_reserved_tck 
+Info (332114): Report Metastability: Found 18 synchronizer chains.
     Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
-    Info (332114): Number of Synchronizer Chains Found: 3
+    Info (332114): Number of Synchronizer Chains Found: 18
     Info (332114): Shortest Synchronizer Chain: 2 Registers
     Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-    Info (332114): Worst Case Available Settling Time: 18.982 ns
+    Info (332114): Worst Case Available Settling Time: 18.949 ns
     Info (332114): 
 Info: Analyzing Fast 1200mV 0C Model
 Info (332097): The following timing edges are non-unate.  The Timing Analyzer will assume pos-unate behavior for these edges in the clock network.
     Info (332098): Cell: altera_internal_jtag  from: tck  to: tckutap
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
-Info (332146): Worst-case setup slack is 1.581
+Info (332146): Worst-case setup slack is 17.337
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     1.581               0.000 clk 
-    Info (332119):     2.302               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
-    Info (332119):    48.832               0.000 altera_reserved_tck 
-Info (332146): Worst-case hold slack is 0.095
+    Info (332119):    17.337               0.000 clk 
+    Info (332119):    48.921               0.000 altera_reserved_tck 
+    Info (332119):    75.474               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
+Info (332146): Worst-case hold slack is 0.106
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.095               0.000 clk 
-    Info (332119):     0.150               0.000 altera_reserved_tck 
+    Info (332119):     0.106               0.000 clk 
+    Info (332119):     0.151               0.000 altera_reserved_tck 
     Info (332119):     0.151               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
-Info (332146): Worst-case recovery slack is 18.599
+Info (332146): Worst-case recovery slack is 18.311
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    18.599               0.000 clk 
-    Info (332119):    49.427               0.000 altera_reserved_tck 
-    Info (332119):    81.978               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
-Info (332146): Worst-case removal slack is 0.413
+    Info (332119):    18.311               0.000 clk 
+    Info (332119):    49.476               0.000 altera_reserved_tck 
+    Info (332119):    81.688               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
+Info (332146): Worst-case removal slack is 0.472
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.413               0.000 altera_reserved_tck 
-    Info (332119):     0.424               0.000 clk 
-    Info (332119):     0.609               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
+    Info (332119):     0.472               0.000 altera_reserved_tck 
+    Info (332119):     0.845               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
+    Info (332119):     1.202               0.000 clk 
 Info (332146): Worst-case minimum pulse width slack is 9.271
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     9.271               0.000 clk 
-    Info (332119):    41.448               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
-    Info (332119):    49.284               0.000 altera_reserved_tck 
-Info (332114): Report Metastability: Found 3 synchronizer chains.
+    Info (332119):    41.449               0.000 u_usb_pll|u_altpll|auto_generated|pll1|clk[0] 
+    Info (332119):    49.286               0.000 altera_reserved_tck 
+Info (332114): Report Metastability: Found 18 synchronizer chains.
     Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
-    Info (332114): Number of Synchronizer Chains Found: 3
+    Info (332114): Number of Synchronizer Chains Found: 18
     Info (332114): Shortest Synchronizer Chain: 2 Registers
     Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-    Info (332114): Worst Case Available Settling Time: 19.518 ns
+    Info (332114): Worst Case Available Settling Time: 19.530 ns
     Info (332114): 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
-Info: Quartus Prime Timing Analyzer was successful. 0 errors, 18 warnings
-    Info: Peak virtual memory: 4962 megabytes
-    Info: Processing ended: Thu Sep 17 01:32:32 2026
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:06
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 16 warnings
+    Info: Peak virtual memory: 4960 megabytes
+    Info: Processing ended: Mon Sep 21 20:00:57 2026
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:05
 
 

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for usb_host
-Thu Sep 17 01:31:54 2026
+Mon Sep 21 20:02:11 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -38,17 +38,18 @@ Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
  30. Parameter Settings for User Entity Instance: jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart|altera_avalon_jtag_uart_scfifo_w:altera_avalon_jtag_uart_scfifo_w|scfifo:wfifo
  31. Parameter Settings for User Entity Instance: jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart|altera_avalon_jtag_uart_scfifo_r:altera_avalon_jtag_uart_scfifo_r
  32. Parameter Settings for User Entity Instance: jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart|altera_avalon_jtag_uart_scfifo_r:altera_avalon_jtag_uart_scfifo_r|scfifo:rfifo
- 33. altpll Parameter Settings by Entity Instance
- 34. scfifo Parameter Settings by Entity Instance
- 35. Port Connectivity Checks: "jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart|alt_jtag_atlantic:altera_avalon_jtag_uart_alt_jtag_atlantic"
- 36. Port Connectivity Checks: "jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart"
- 37. Port Connectivity Checks: "jtag_uart_tx:u_jtag_uart_tx"
- 38. Port Connectivity Checks: "cdc_byte_strobe:u_usb_to_sys_char"
- 39. Port Connectivity Checks: "usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp"
- 40. Port Connectivity Checks: "usb_hid_host:g_usb_ch1.u_usb_hid_host"
- 41. Post-Synthesis Netlist Statistics for Top Partition
- 42. Elapsed Time Per Partition
- 43. Analysis & Synthesis Messages
+ 33. Parameter Settings for User Entity Instance: key_led_stretch:u_key_led_stretch
+ 34. altpll Parameter Settings by Entity Instance
+ 35. scfifo Parameter Settings by Entity Instance
+ 36. Port Connectivity Checks: "jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart|alt_jtag_atlantic:altera_avalon_jtag_uart_alt_jtag_atlantic"
+ 37. Port Connectivity Checks: "jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart"
+ 38. Port Connectivity Checks: "jtag_uart_tx:u_jtag_uart_tx"
+ 39. Port Connectivity Checks: "cdc_byte_strobe:u_usb_to_sys_char"
+ 40. Port Connectivity Checks: "usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp"
+ 41. Port Connectivity Checks: "usb_hid_host:g_usb_ch1.u_usb_hid_host"
+ 42. Post-Synthesis Netlist Statistics for Top Partition
+ 43. Elapsed Time Per Partition
+ 44. Analysis & Synthesis Messages
 
 
 
@@ -75,16 +76,16 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Sep 17 01:31:54 2026           ;
+; Analysis & Synthesis Status        ; Successful - Mon Sep 21 20:02:11 2026           ;
 ; Quartus Prime Version              ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
 ; Revision Name                      ; usb_host                                        ;
 ; Top-level Entity Name              ; top                                             ;
 ; Family                             ; MAX 10                                          ;
-; Total logic elements               ; 1,338                                           ;
-;     Total combinational functions  ; 1,095                                           ;
-;     Dedicated logic registers      ; 568                                             ;
-; Total registers                    ; 568                                             ;
-; Total pins                         ; 16                                              ;
+; Total logic elements               ; 1,410                                           ;
+;     Total combinational functions  ; 1,165                                           ;
+;     Dedicated logic registers      ; 619                                             ;
+; Total registers                    ; 619                                             ;
+; Total pins                         ; 19                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 512                                             ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -214,6 +215,7 @@ on the Quartus Prime software download page.
 ; rtl/hid_keyboard_ascii.sv                                                                                                ; yes             ; User SystemVerilog HDL File                  ; H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/hid_keyboard_ascii.sv                                          ;             ;
 ; rtl/cdc_byte_strobe.sv                                                                                                   ; yes             ; User SystemVerilog HDL File                  ; H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/cdc_byte_strobe.sv                                             ;             ;
 ; rtl/jtag_uart_tx.sv                                                                                                      ; yes             ; User SystemVerilog HDL File                  ; H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/jtag_uart_tx.sv                                                ;             ;
+; rtl/key_led_stretch.sv                                                                                                   ; yes             ; User SystemVerilog HDL File                  ; H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/key_led_stretch.sv                                             ;             ;
 ; rtl/top.sv                                                                                                               ; yes             ; User SystemVerilog HDL File                  ; H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/top.sv                                                         ;             ;
 ; rtl/third_party/nand2mario/usb_hid_host.v                                                                                ; yes             ; User Verilog HDL File                        ; H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/third_party/nand2mario/usb_hid_host.v                          ;             ;
 ; rtl/third_party/nand2mario/usb_hid_host_rom.v                                                                            ; yes             ; User Verilog HDL File                        ; H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/third_party/nand2mario/usb_hid_host_rom.v                      ;             ;
@@ -259,23 +261,23 @@ on the Quartus Prime software download page.
 +---------------------------------------------+--------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                    ;
 +---------------------------------------------+--------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 1,338                                                                    ;
+; Estimated Total logic elements              ; 1,410                                                                    ;
 ;                                             ;                                                                          ;
-; Total combinational functions               ; 1095                                                                     ;
+; Total combinational functions               ; 1165                                                                     ;
 ; Logic element usage by number of LUT inputs ;                                                                          ;
-;     -- 4 input functions                    ; 658                                                                      ;
-;     -- 3 input functions                    ; 181                                                                      ;
-;     -- <=2 input functions                  ; 256                                                                      ;
+;     -- 4 input functions                    ; 674                                                                      ;
+;     -- 3 input functions                    ; 183                                                                      ;
+;     -- <=2 input functions                  ; 308                                                                      ;
 ;                                             ;                                                                          ;
 ; Logic elements by mode                      ;                                                                          ;
-;     -- normal mode                          ; 959                                                                      ;
-;     -- arithmetic mode                      ; 136                                                                      ;
+;     -- normal mode                          ; 983                                                                      ;
+;     -- arithmetic mode                      ; 182                                                                      ;
 ;                                             ;                                                                          ;
-; Total registers                             ; 568                                                                      ;
-;     -- Dedicated logic registers            ; 568                                                                      ;
+; Total registers                             ; 619                                                                      ;
+;     -- Dedicated logic registers            ; 619                                                                      ;
 ;     -- I/O registers                        ; 0                                                                        ;
 ;                                             ;                                                                          ;
-; I/O pins                                    ; 16                                                                       ;
+; I/O pins                                    ; 19                                                                       ;
 ; Total memory bits                           ; 512                                                                      ;
 ;                                             ;                                                                          ;
 ; Embedded Multiplier 9-bit elements          ; 0                                                                        ;
@@ -285,8 +287,8 @@ on the Quartus Prime software download page.
 ;                                             ;                                                                          ;
 ; Maximum fan-out node                        ; usb_pll_12mhz:u_usb_pll|altpll:u_altpll|altpll_6dr:auto_generated|clk[0] ;
 ; Maximum fan-out                             ; 353                                                                      ;
-; Total fan-out                               ; 5680                                                                     ;
-; Average fan-out                             ; 3.31                                                                     ;
+; Total fan-out                               ; 6113                                                                     ;
+; Average fan-out                             ; 3.32                                                                     ;
 +---------------------------------------------+--------------------------------------------------------------------------+
 
 
@@ -295,10 +297,10 @@ on the Quartus Prime software download page.
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
 ; Compilation Hierarchy Node                                                                                                              ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                                                                                                                                                                                                                                                                             ; Entity Name                       ; Library Name ;
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
-; |top                                                                                                                                    ; 1095 (54)           ; 568 (36)                  ; 512         ; 0          ; 0            ; 0       ; 0         ; 16   ; 0            ; 0          ; |top                                                                                                                                                                                                                                                                                                                                            ; top                               ; work         ;
+; |top                                                                                                                                    ; 1165 (57)           ; 619 (35)                  ; 512         ; 0          ; 0            ; 0       ; 0         ; 19   ; 0            ; 0          ; |top                                                                                                                                                                                                                                                                                                                                            ; top                               ; work         ;
 ;    |cdc_byte_strobe:u_usb_to_sys_char|                                                                                                  ; 5 (5)               ; 25 (25)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|cdc_byte_strobe:u_usb_to_sys_char                                                                                                                                                                                                                                                                                                          ; cdc_byte_strobe                   ; work         ;
-;    |hid_keyboard_ascii:u_hid_keyboard_ascii|                                                                                            ; 255 (255)           ; 42 (42)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|hid_keyboard_ascii:u_hid_keyboard_ascii                                                                                                                                                                                                                                                                                                    ; hid_keyboard_ascii                ; work         ;
-;    |jtag_uart_tx:u_jtag_uart_tx|                                                                                                        ; 108 (14)            ; 92 (12)                   ; 512         ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|jtag_uart_tx:u_jtag_uart_tx                                                                                                                                                                                                                                                                                                                ; jtag_uart_tx                      ; work         ;
+;    |hid_keyboard_ascii:u_hid_keyboard_ascii|                                                                                            ; 256 (256)           ; 42 (42)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|hid_keyboard_ascii:u_hid_keyboard_ascii                                                                                                                                                                                                                                                                                                    ; hid_keyboard_ascii                ; work         ;
+;    |jtag_uart_tx:u_jtag_uart_tx|                                                                                                        ; 106 (12)            ; 92 (12)                   ; 512         ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|jtag_uart_tx:u_jtag_uart_tx                                                                                                                                                                                                                                                                                                                ; jtag_uart_tx                      ; work         ;
 ;       |altera_avalon_jtag_uart:u_jtag_uart|                                                                                             ; 94 (11)             ; 80 (4)                    ; 512         ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart                                                                                                                                                                                                                                                                            ; altera_avalon_jtag_uart           ; work         ;
 ;          |alt_jtag_atlantic:altera_avalon_jtag_uart_alt_jtag_atlantic|                                                                  ; 47 (47)             ; 48 (48)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart|alt_jtag_atlantic:altera_avalon_jtag_uart_alt_jtag_atlantic                                                                                                                                                                                                                ; alt_jtag_atlantic                 ; work         ;
 ;          |altera_avalon_jtag_uart_scfifo_r:altera_avalon_jtag_uart_scfifo_r|                                                            ; 11 (0)              ; 8 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart|altera_avalon_jtag_uart_scfifo_r:altera_avalon_jtag_uart_scfifo_r                                                                                                                                                                                                          ; altera_avalon_jtag_uart_scfifo_r  ; work         ;
@@ -316,6 +318,7 @@ on the Quartus Prime software download page.
 ;                      |altsyncram_dtn1:FIFOram|                                                                                          ; 0 (0)               ; 0 (0)                     ; 512         ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart|altera_avalon_jtag_uart_scfifo_w:altera_avalon_jtag_uart_scfifo_w|scfifo:wfifo|scfifo_7131:auto_generated|a_dpfifo_bb01:dpfifo|altsyncram_dtn1:FIFOram                                                                                                                     ; altsyncram_dtn1                   ; work         ;
 ;                      |cntr_n2b:rd_ptr_count|                                                                                            ; 6 (6)               ; 6 (6)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart|altera_avalon_jtag_uart_scfifo_w:altera_avalon_jtag_uart_scfifo_w|scfifo:wfifo|scfifo_7131:auto_generated|a_dpfifo_bb01:dpfifo|cntr_n2b:rd_ptr_count                                                                                                                       ; cntr_n2b                          ; work         ;
 ;                      |cntr_n2b:wr_ptr|                                                                                                  ; 6 (6)               ; 6 (6)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart|altera_avalon_jtag_uart_scfifo_w:altera_avalon_jtag_uart_scfifo_w|scfifo:wfifo|scfifo_7131:auto_generated|a_dpfifo_bb01:dpfifo|cntr_n2b:wr_ptr                                                                                                                             ; cntr_n2b                          ; work         ;
+;    |key_led_stretch:u_key_led_stretch|                                                                                                  ; 67 (67)             ; 52 (52)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|key_led_stretch:u_key_led_stretch                                                                                                                                                                                                                                                                                                          ; key_led_stretch                   ; work         ;
 ;    |reset_sync:u_rst_sys|                                                                                                               ; 0 (0)               ; 2 (2)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|reset_sync:u_rst_sys                                                                                                                                                                                                                                                                                                                       ; reset_sync                        ; work         ;
 ;    |reset_sync:u_rst_usb|                                                                                                               ; 0 (0)               ; 2 (2)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|reset_sync:u_rst_usb                                                                                                                                                                                                                                                                                                                       ; reset_sync                        ; work         ;
 ;    |sld_hub:auto_hub|                                                                                                                   ; 118 (1)             ; 75 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|sld_hub:auto_hub                                                                                                                                                                                                                                                                                                                           ; sld_hub                           ; altera_sld   ;
@@ -326,7 +329,7 @@ on the Quartus Prime software download page.
 ;                   |sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|                                                                        ; 116 (77)            ; 70 (42)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub                           ; sld_jtag_hub                      ; work         ;
 ;                      |sld_rom_sr:hub_info_reg|                                                                                          ; 21 (21)             ; 9 (9)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|sld_rom_sr:hub_info_reg   ; sld_rom_sr                        ; work         ;
 ;                      |sld_shadow_jsm:shadow_jsm|                                                                                        ; 18 (18)             ; 19 (19)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|sld_shadow_jsm:shadow_jsm ; sld_shadow_jsm                    ; altera_sld   ;
-;    |usb_hid_host:g_usb_ch1.u_usb_hid_host|                                                                                              ; 554 (84)            ; 293 (133)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host                                                                                                                                                                                                                                                                                                      ; usb_hid_host                      ; work         ;
+;    |usb_hid_host:g_usb_ch1.u_usb_hid_host|                                                                                              ; 555 (85)            ; 293 (133)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host                                                                                                                                                                                                                                                                                                      ; usb_hid_host                      ; work         ;
 ;       |ukp:ukp|                                                                                                                         ; 470 (259)           ; 160 (156)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp                                                                                                                                                                                                                                                                                              ; ukp                               ; work         ;
 ;          |usb_hid_host_rom:ukprom|                                                                                                      ; 211 (211)           ; 4 (4)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|usb_hid_host_rom:ukprom                                                                                                                                                                                                                                                                      ; usb_hid_host_rom                  ; work         ;
 ;    |usb_pll_12mhz:u_usb_pll|                                                                                                            ; 1 (0)               ; 1 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|usb_pll_12mhz:u_usb_pll                                                                                                                                                                                                                                                                                                                    ; usb_pll_12mhz                     ; work         ;
@@ -461,12 +464,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 568   ;
-; Number of registers using Synchronous Clear  ; 54    ;
-; Number of registers using Synchronous Load   ; 11    ;
-; Number of registers using Asynchronous Clear ; 222   ;
+; Total registers                              ; 619   ;
+; Number of registers using Synchronous Clear  ; 70    ;
+; Number of registers using Synchronous Load   ; 43    ;
+; Number of registers using Asynchronous Clear ; 273   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 436   ;
+; Number of registers using Clock Enable       ; 467   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -492,29 +495,31 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                                   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |top|jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart|alt_jtag_atlantic:altera_avalon_jtag_uart_alt_jtag_atlantic|count[2]    ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|rcvct[1]                                                                                          ;
-; 3:1                ; 24 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|conct[8]                                                                                  ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |top|jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart|alt_jtag_atlantic:altera_avalon_jtag_uart_alt_jtag_atlantic|count[8]    ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|rcvct[2]                                                                                          ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |top|key_led_stretch:u_key_led_stretch|hold_cnt[26]                                                                                          ;
+; 3:1                ; 24 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|conct[0]                                                                                  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |top|key_led_stretch:u_key_led_stretch|settle_cnt[13]                                                                                        ;
 ; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|timing[0]                                                                                 ;
-; 4:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|bitadr[0]                                                                                 ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|nrzrxct[1]                                                                                ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |top|jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart|alt_jtag_atlantic:altera_avalon_jtag_uart_alt_jtag_atlantic|td_shift[9] ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|bitadr[1]                                                                                 ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|nrzrxct[0]                                                                                ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |top|jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart|alt_jtag_atlantic:altera_avalon_jtag_uart_alt_jtag_atlantic|td_shift[8] ;
 ; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|nrztxct[0]                                                                                ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|sadr[3]                                                                                   ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; Yes        ; |top|jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart|alt_jtag_atlantic:altera_avalon_jtag_uart_alt_jtag_atlantic|td_shift[3] ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |top|jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart|alt_jtag_atlantic:altera_avalon_jtag_uart_alt_jtag_atlantic|td_shift[1] ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|wk[4]                                                                                     ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|wk[3]                                                                                     ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|sadr[0]                                                                                   ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; Yes        ; |top|jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart|alt_jtag_atlantic:altera_avalon_jtag_uart_alt_jtag_atlantic|td_shift[4] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |top|jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart|alt_jtag_atlantic:altera_avalon_jtag_uart_alt_jtag_atlantic|td_shift[6] ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|wk[7]                                                                                     ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|wk[1]                                                                                     ;
 ; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|typ[1]                                                                                            ;
 ; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|pc[0]                                                                                     ;
 ; 7:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|pc[13]                                                                                    ;
-; 7:1                ; 8 bits    ; 32 LEs        ; 24 LEs               ; 8 LEs                  ; Yes        ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|pc[9]                                                                                     ;
+; 7:1                ; 8 bits    ; 32 LEs        ; 24 LEs               ; 8 LEs                  ; Yes        ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|pc[2]                                                                                     ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |top|hid_keyboard_ascii:u_hid_keyboard_ascii|Selector0                                                                                       ;
 ; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|state                                                                                     ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|mbit                                                                                      ;
 ; 8:1                ; 8 bits    ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|Mux8                                                                                              ;
 ; 16:1               ; 4 bits    ; 40 LEs        ; 16 LEs               ; 24 LEs                 ; No         ; |top|usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp|state                                                                                     ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; No         ; |top|hid_keyboard_ascii:u_hid_keyboard_ascii|new_key[3]                                                                                      ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; No         ; |top|hid_keyboard_ascii:u_hid_keyboard_ascii|new_key[4]                                                                                      ;
 ; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |top|jtag_uart_tx:u_jtag_uart_tx|Selector1                                                                                                   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
@@ -1092,6 +1097,17 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: key_led_stretch:u_key_led_stretch ;
++----------------+----------+----------------------------------------------------+
+; Parameter Name ; Value    ; Type                                               ;
++----------------+----------+----------------------------------------------------+
+; CLK_HZ         ; 50000000 ; Signed Integer                                     ;
+; HOLD_MS        ; 120      ; Signed Integer                                     ;
++----------------+----------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +-------------------------------------------------------------------------+
 ; altpll Parameter Settings by Entity Instance                            ;
 +-------------------------------+-----------------------------------------+
@@ -1216,33 +1232,35 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 28                          ;
-; cycloneiii_ff         ; 493                         ;
-;     CLR               ; 76                          ;
+; boundary_port         ; 31                          ;
+; cycloneiii_ff         ; 544                         ;
+;     CLR               ; 80                          ;
+;     CLR SCLR          ; 16                          ;
 ;     ENA               ; 232                         ;
-;     ENA CLR           ; 121                         ;
+;     ENA CLR           ; 120                         ;
 ;     ENA CLR SCLR      ; 3                           ;
+;     ENA CLR SLD       ; 32                          ;
 ;     ENA SCLR          ; 35                          ;
 ;     SCLR              ; 3                           ;
 ;     SCLR SLD          ; 1                           ;
 ;     SLD               ; 1                           ;
 ;     plain             ; 21                          ;
 ; cycloneiii_io_obuf    ; 4                           ;
-; cycloneiii_lcell_comb ; 976                         ;
-;     arith             ; 128                         ;
-;         2 data inputs ; 117                         ;
+; cycloneiii_lcell_comb ; 1051                        ;
+;     arith             ; 174                         ;
+;         2 data inputs ; 163                         ;
 ;         3 data inputs ; 11                          ;
-;     normal            ; 848                         ;
-;         0 data inputs ; 1                           ;
-;         1 data inputs ; 17                          ;
-;         2 data inputs ; 82                          ;
-;         3 data inputs ; 147                         ;
-;         4 data inputs ; 601                         ;
+;     normal            ; 877                         ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 22                          ;
+;         2 data inputs ; 87                          ;
+;         3 data inputs ; 149                         ;
+;         4 data inputs ; 617                         ;
 ; cycloneiii_pll        ; 1                           ;
 ; cycloneiii_ram_block  ; 8                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 17.00                       ;
-; Average LUT depth     ; 5.53                        ;
+; Max LUT depth         ; 15.00                       ;
+; Average LUT depth     ; 5.09                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1261,7 +1279,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
-    Info: Processing started: Thu Sep 17 01:30:59 2026
+    Info: Processing started: Mon Sep 21 20:01:29 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off usb_host -c usb_host
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -1275,6 +1293,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file rtl/cdc
     Info (12023): Found entity 1: cdc_byte_strobe File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/cdc_byte_strobe.sv Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file rtl/jtag_uart_tx.sv
     Info (12023): Found entity 1: jtag_uart_tx File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/jtag_uart_tx.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/key_led_stretch.sv
+    Info (12023): Found entity 1: key_led_stretch File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/key_led_stretch.sv Line: 21
 Info (12021): Found 1 design units, including 1 entities, in source file rtl/top.sv
     Info (12023): Found entity 1: top File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/top.sv Line: 3
 Info (12021): Found 2 design units, including 2 entities, in source file rtl/third_party/nand2mario/usb_hid_host.v
@@ -1289,7 +1309,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file /altera
 Info (12021): Found 1 design units, including 1 entities, in source file /altera_lite/25.1std/ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/altera_avalon_jtag_uart_scfifo_r.sv
     Info (12023): Found entity 1: altera_avalon_jtag_uart_scfifo_r File: H:/altera_lite/25.1std/ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/altera_avalon_jtag_uart_scfifo_r.sv Line: 22
 Info (12127): Elaborating entity "top" for the top level hierarchy
-Info (12128): Elaborating entity "usb_pll_12mhz" for hierarchy "usb_pll_12mhz:u_usb_pll" File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/top.sv Line: 27
+Info (12128): Elaborating entity "usb_pll_12mhz" for hierarchy "usb_pll_12mhz:u_usb_pll" File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/top.sv Line: 30
 Info (12128): Elaborating entity "altpll" for hierarchy "usb_pll_12mhz:u_usb_pll|altpll:u_altpll" File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/usb_pll_12mhz.sv Line: 50
 Info (12130): Elaborated megafunction instantiation "usb_pll_12mhz:u_usb_pll|altpll:u_altpll" File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/usb_pll_12mhz.sv Line: 50
 Info (12133): Instantiated megafunction "usb_pll_12mhz:u_usb_pll|altpll:u_altpll" with the following parameter: File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/usb_pll_12mhz.sv Line: 50
@@ -1304,8 +1324,8 @@ Info (12133): Instantiated megafunction "usb_pll_12mhz:u_usb_pll|altpll:u_altpll
 Info (12021): Found 1 design units, including 1 entities, in source file db/altpll_6dr.tdf
     Info (12023): Found entity 1: altpll_6dr File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/db/altpll_6dr.tdf Line: 28
 Info (12128): Elaborating entity "altpll_6dr" for hierarchy "usb_pll_12mhz:u_usb_pll|altpll:u_altpll|altpll_6dr:auto_generated" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/altpll.tdf Line: 898
-Info (12128): Elaborating entity "reset_sync" for hierarchy "reset_sync:u_rst_sys" File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/top.sv Line: 37
-Info (12128): Elaborating entity "usb_hid_host" for hierarchy "usb_hid_host:g_usb_ch1.u_usb_hid_host" File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/top.sv Line: 132
+Info (12128): Elaborating entity "reset_sync" for hierarchy "reset_sync:u_rst_sys" File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/top.sv Line: 40
+Info (12128): Elaborating entity "usb_hid_host" for hierarchy "usb_hid_host:g_usb_ch1.u_usb_hid_host" File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/top.sv Line: 135
 Warning (10230): Verilog HDL assignment warning at usb_hid_host.v(141): truncated value with size 32 to match size of target (4) File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/third_party/nand2mario/usb_hid_host.v Line: 141
 Warning (10230): Verilog HDL assignment warning at usb_hid_host.v(158): truncated value with size 32 to match size of target (2) File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/third_party/nand2mario/usb_hid_host.v Line: 158
 Info (12128): Elaborating entity "ukp" for hierarchy "usb_hid_host:g_usb_ch1.u_usb_hid_host|ukp:ukp" File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/third_party/nand2mario/usb_hid_host.v Line: 52
@@ -1326,9 +1346,9 @@ Info (12128): Elaborating entity "usb_hid_host_rom" for hierarchy "usb_hid_host:
 Warning (10030): Net "mem.data_a" at usb_hid_host_rom.v(6) has no driver or initial value, using a default initial value '0' File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/third_party/nand2mario/usb_hid_host_rom.v Line: 6
 Warning (10030): Net "mem.waddr_a" at usb_hid_host_rom.v(6) has no driver or initial value, using a default initial value '0' File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/third_party/nand2mario/usb_hid_host_rom.v Line: 6
 Warning (10030): Net "mem.we_a" at usb_hid_host_rom.v(6) has no driver or initial value, using a default initial value '0' File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/third_party/nand2mario/usb_hid_host_rom.v Line: 6
-Info (12128): Elaborating entity "hid_keyboard_ascii" for hierarchy "hid_keyboard_ascii:u_hid_keyboard_ascii" File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/top.sv Line: 151
-Info (12128): Elaborating entity "cdc_byte_strobe" for hierarchy "cdc_byte_strobe:u_usb_to_sys_char" File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/top.sv Line: 173
-Info (12128): Elaborating entity "jtag_uart_tx" for hierarchy "jtag_uart_tx:u_jtag_uart_tx" File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/top.sv Line: 186
+Info (12128): Elaborating entity "hid_keyboard_ascii" for hierarchy "hid_keyboard_ascii:u_hid_keyboard_ascii" File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/top.sv Line: 154
+Info (12128): Elaborating entity "cdc_byte_strobe" for hierarchy "cdc_byte_strobe:u_usb_to_sys_char" File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/top.sv Line: 176
+Info (12128): Elaborating entity "jtag_uart_tx" for hierarchy "jtag_uart_tx:u_jtag_uart_tx" File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/top.sv Line: 189
 Info (10264): Verilog HDL Case Statement information at jtag_uart_tx.sv(45): all case item expressions in this case statement are onehot File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/jtag_uart_tx.sv Line: 45
 Info (12128): Elaborating entity "altera_avalon_jtag_uart" for hierarchy "jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart" File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/jtag_uart_tx.sv Line: 127
 Info (12128): Elaborating entity "altera_avalon_jtag_uart_scfifo_w" for hierarchy "jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart|altera_avalon_jtag_uart_scfifo_w:altera_avalon_jtag_uart_scfifo_w" File: H:/altera_lite/25.1std/ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/altera_avalon_jtag_uart.sv Line: 133
@@ -1372,8 +1392,9 @@ Info (12133): Instantiated megafunction "jtag_uart_tx:u_jtag_uart_tx|altera_aval
     Info (12134): Parameter "SLD_AUTO_INSTANCE_INDEX" = "YES"
 Info (12128): Elaborating entity "sld_jtag_endpoint_adapter" for hierarchy "jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart|alt_jtag_atlantic:altera_avalon_jtag_uart_alt_jtag_atlantic|sld_jtag_endpoint_adapter:inst" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/alt_jtag_atlantic.v Line: 276
 Info (12128): Elaborating entity "sld_jtag_endpoint_adapter_impl" for hierarchy "jtag_uart_tx:u_jtag_uart_tx|altera_avalon_jtag_uart:u_jtag_uart|alt_jtag_atlantic:altera_avalon_jtag_uart_alt_jtag_atlantic|sld_jtag_endpoint_adapter:inst|sld_jtag_endpoint_adapter_impl:sld_jtag_endpoint_adapter_impl_inst" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter.vhd Line: 232
+Info (12128): Elaborating entity "key_led_stretch" for hierarchy "key_led_stretch:u_key_led_stretch" File: H:/git/PCB_CQmax10/CQmax10/sample/usb_host/rtl/top.sv Line: 243
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2026.09.17.01:31:27 Progress: Loading sld5af6716d/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2026.09.21.20:01:45 Progress: Loading sld5af6716d/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -1416,17 +1437,17 @@ Info (286031): Timing-Driven Synthesis is running on partition "Top"
 Info (17049): 29 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 1392 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1469 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 5 input pins
-    Info (21059): Implemented 11 output pins
+    Info (21059): Implemented 14 output pins
     Info (21060): Implemented 4 bidirectional pins
-    Info (21061): Implemented 1362 logic cells
+    Info (21061): Implemented 1436 logic cells
     Info (21064): Implemented 8 RAM segments
     Info (21065): Implemented 1 PLLs
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 30 warnings
-    Info: Peak virtual memory: 4924 megabytes
-    Info: Processing ended: Thu Sep 17 01:31:54 2026
-    Info: Elapsed time: 00:00:55
-    Info: Total CPU time (on all processors): 00:01:33
+    Info: Peak virtual memory: 4929 megabytes
+    Info: Processing ended: Mon Sep 21 20:02:11 2026
+    Info: Elapsed time: 00:00:42
+    Info: Total CPU time (on all processors): 00:01:18
 
 

@@ -61,7 +61,7 @@ set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
-set_location_assignment PIN_85 -to clk
+set_location_assignment PIN_88 -to clk
 set_location_assignment PIN_17 -to btn_rst
 set_location_assignment PIN_62 -to Button
 set_location_assignment PIN_81 -to lcd_cs

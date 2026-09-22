@@ -107,15 +107,15 @@ VCCA2                        : 34        : power  :                   : 3.0V/3.3
 VCCA1                        : 35        : power  :                   : 3.0V/3.3V :           :                
 VCC_ONE                      : 36        : power  :                   : 3.0V/3.3V :           :                
 VCC_ONE                      : 37        : power  :                   : 3.0V/3.3V :           :                
-usb_u2_dm                    : 38        : bidir  : 3.3-V LVTTL       :         : 3         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 38        :        :                   :         : 3         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 39        :        :                   :         : 3         :                
 VCCIO3                       : 40        : power  :                   : 3.3V    : 3         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 41        :        :                   :         : 3         :                
 GND                          : 42        : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 43        :        :                   :         : 3         :                
-usb_u1_dp                    : 44        : bidir  : 3.3-V LVTTL       :         : 3         : Y              
-usb_u1_dm                    : 45        : bidir  : 3.3-V LVTTL       :         : 3         : Y              
-usb_u2_dp                    : 46        : bidir  : 3.3-V LVTTL       :         : 3         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 44        :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : 45        :        :                   :         : 3         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : 46        :        :                   :         : 3         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 47        :        :                   :         : 3         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 48        :        :                   :         : 3         :                
 VCCIO3                       : 49        : power  :                   : 3.3V    : 3         :                
@@ -167,10 +167,10 @@ VCCIO6                       : 94        : power  :                   : 3.3V    
 GND                          : 95        : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 96        :        :                   :         : 6         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 97        :        :                   :         : 6         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 98        :        :                   :         : 6         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 99        :        :                   :         : 6         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 100       :        :                   :         : 6         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 101       :        :                   :         : 6         :                
+usb_u1_dp                    : 98        : bidir  : 3.3-V LVTTL       :         : 6         : Y              
+usb_u2_dp                    : 99        : bidir  : 3.3-V LVTTL       :         : 6         : Y              
+usb_u2_dm                    : 100       : bidir  : 3.3-V LVTTL       :         : 6         : Y              
+usb_u1_dm                    : 101       : bidir  : 3.3-V LVTTL       :         : 6         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : 102       :        :                   :         : 6         :                
 VCCIO6                       : 103       : power  :                   : 3.3V    : 6         :                
 GND                          : 104       : gnd    :                   :         :           :                
@@ -189,9 +189,9 @@ GND                          : 116       : gnd    :                   :         
 VCCIO7                       : 117       : power  :                   : 2.5V    : 7         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 118       :        :                   :         : 7         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 119       :        :                   :         : 7         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 120       :        :                   :         : 8         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 121       :        :                   :         : 8         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 122       :        :                   :         : 8         :                
+led3                         : 120       : output : 3.3-V LVTTL       :         : 8         : Y              
+led2                         : 121       : output : 3.3-V LVTTL       :         : 8         : Y              
+led1                         : 122       : output : 3.3-V LVTTL       :         : 8         : Y              
 led0                         : 123       : output : 3.3-V LVTTL       :         : 8         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : 124       :        :                   :         : 8         :                
 GND                          : 125       : gnd    :                   :         :           :                

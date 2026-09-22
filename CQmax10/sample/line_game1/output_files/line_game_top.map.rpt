@@ -1,5 +1,5 @@
 Analysis & Synthesis report for line_game_top
-Wed Sep  2 01:00:11 2026
+Wed Sep 23 05:43:59 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -18,27 +18,28 @@ Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
  10. State Machine - |line_game_top|lcd_ili9341_ctrl:u_lcd|ret_id
  11. State Machine - |line_game_top|lcd_ili9341_ctrl:u_lcd|state
  12. State Machine - |line_game_top|lcd_ili9341_ctrl:u_lcd|spi_byte_master:u_spi|state
- 13. State Machine - |line_game_top|game_core:u_game|state
- 14. Registers Removed During Synthesis
- 15. General Register Statistics
- 16. Registers Packed Into Inferred Megafunctions
- 17. Multiplexer Restructuring Statistics (Restructuring Performed)
- 18. Source assignments for game_core:u_game|altsyncram:collision_mem_rtl_0|altsyncram_9r71:auto_generated
- 19. Parameter Settings for User Entity Instance: reset_sync:u_reset
- 20. Parameter Settings for User Entity Instance: debounce:u_debounce
- 21. Parameter Settings for User Entity Instance: game_core:u_game
- 22. Parameter Settings for User Entity Instance: lcd_ili9341_ctrl:u_lcd
- 23. Parameter Settings for User Entity Instance: lcd_ili9341_ctrl:u_lcd|spi_byte_master:u_spi
- 24. Parameter Settings for Inferred Entity Instance: game_core:u_game|altsyncram:collision_mem_rtl_0
- 25. Parameter Settings for Inferred Entity Instance: lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult0
- 26. Parameter Settings for Inferred Entity Instance: lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult1
- 27. Parameter Settings for Inferred Entity Instance: game_core:u_game|lpm_mult:Mult0
- 28. altsyncram Parameter Settings by Entity Instance
- 29. lpm_mult Parameter Settings by Entity Instance
- 30. Post-Synthesis Netlist Statistics for Top Partition
- 31. Elapsed Time Per Partition
- 32. Analysis & Synthesis Messages
- 33. Analysis & Synthesis Suppressed Messages
+ 13. State Machine - |line_game_top|game_core:u_game|score_ret
+ 14. State Machine - |line_game_top|game_core:u_game|state
+ 15. Registers Removed During Synthesis
+ 16. General Register Statistics
+ 17. Registers Packed Into Inferred Megafunctions
+ 18. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 19. Source assignments for game_core:u_game|altsyncram:collision_mem_rtl_0|altsyncram_9r71:auto_generated
+ 20. Parameter Settings for User Entity Instance: reset_sync:u_reset
+ 21. Parameter Settings for User Entity Instance: debounce:u_debounce
+ 22. Parameter Settings for User Entity Instance: game_core:u_game
+ 23. Parameter Settings for User Entity Instance: lcd_ili9341_ctrl:u_lcd
+ 24. Parameter Settings for User Entity Instance: lcd_ili9341_ctrl:u_lcd|spi_byte_master:u_spi
+ 25. Parameter Settings for Inferred Entity Instance: game_core:u_game|altsyncram:collision_mem_rtl_0
+ 26. Parameter Settings for Inferred Entity Instance: lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult0
+ 27. Parameter Settings for Inferred Entity Instance: lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult1
+ 28. Parameter Settings for Inferred Entity Instance: game_core:u_game|lpm_mult:Mult0
+ 29. altsyncram Parameter Settings by Entity Instance
+ 30. lpm_mult Parameter Settings by Entity Instance
+ 31. Post-Synthesis Netlist Statistics for Top Partition
+ 32. Elapsed Time Per Partition
+ 33. Analysis & Synthesis Messages
+ 34. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -65,13 +66,13 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Sep  2 01:00:11 2026           ;
+; Analysis & Synthesis Status        ; Successful - Wed Sep 23 05:43:59 2026           ;
 ; Quartus Prime Version              ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
 ; Revision Name                      ; line_game_top                                   ;
 ; Top-level Entity Name              ; line_game_top                                   ;
 ; Family                             ; MAX 10                                          ;
-; Total logic elements               ; 999                                             ;
-;     Total combinational functions  ; 971                                             ;
+; Total logic elements               ; 1,041                                           ;
+;     Total combinational functions  ; 1,013                                           ;
 ;     Dedicated logic registers      ; 468                                             ;
 ; Total registers                    ; 468                                             ;
 ; Total pins                         ; 7                                               ;
@@ -185,9 +186,9 @@ on the Quartus Prime software download page.
 ;     Processor 1            ; 100.0%      ;
 ;     Processor 2            ;   0.1%      ;
 ;     Processor 3            ;   0.1%      ;
-;     Processor 4            ;   0.0%      ;
-;     Processor 5            ;   0.0%      ;
-;     Processor 6            ;   0.0%      ;
+;     Processor 4            ;   0.1%      ;
+;     Processor 5            ;   0.1%      ;
+;     Processor 6            ;   0.1%      ;
 ;     Processor 7            ;   0.0%      ;
 ;     Processor 8            ;   0.0%      ;
 ;     Processors 9-16        ;   0.0%      ;
@@ -248,16 +249,16 @@ on the Quartus Prime software download page.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 999       ;
+; Estimated Total logic elements              ; 1,041     ;
 ;                                             ;           ;
-; Total combinational functions               ; 971       ;
+; Total combinational functions               ; 1013      ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 403       ;
+;     -- 4 input functions                    ; 428       ;
 ;     -- 3 input functions                    ; 252       ;
-;     -- <=2 input functions                  ; 316       ;
+;     -- <=2 input functions                  ; 333       ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 712       ;
+;     -- normal mode                          ; 754       ;
 ;     -- arithmetic mode                      ; 259       ;
 ;                                             ;           ;
 ; Total registers                             ; 468       ;
@@ -271,8 +272,8 @@ on the Quartus Prime software download page.
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
 ; Maximum fan-out                             ; 476       ;
-; Total fan-out                               ; 4693      ;
-; Average fan-out                             ; 3.21      ;
+; Total fan-out                               ; 4841      ;
+; Average fan-out                             ; 3.22      ;
 +---------------------------------------------+-----------+
 
 
@@ -281,9 +282,9 @@ on the Quartus Prime software download page.
 +------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------+------------------+--------------+
 ; Compilation Hierarchy Node                     ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                                                                     ; Entity Name      ; Library Name ;
 +------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------+------------------+--------------+
-; |line_game_top                                 ; 971 (1)             ; 468 (0)                   ; 64000       ; 0          ; 1            ; 1       ; 0         ; 7    ; 0            ; 0          ; |line_game_top                                                                                                                          ; line_game_top    ; work         ;
+; |line_game_top                                 ; 1013 (1)            ; 468 (0)                   ; 64000       ; 0          ; 1            ; 1       ; 0         ; 7    ; 0            ; 0          ; |line_game_top                                                                                                                          ; line_game_top    ; work         ;
 ;    |debounce:u_debounce|                       ; 31 (31)             ; 23 (23)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|debounce:u_debounce                                                                                                      ; debounce         ; work         ;
-;    |game_core:u_game|                          ; 577 (549)           ; 300 (297)                 ; 64000       ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|game_core:u_game                                                                                                         ; game_core        ; work         ;
+;    |game_core:u_game|                          ; 621 (593)           ; 300 (297)                 ; 64000       ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|game_core:u_game                                                                                                         ; game_core        ; work         ;
 ;       |altsyncram:collision_mem_rtl_0|         ; 22 (0)              ; 3 (0)                     ; 64000       ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|game_core:u_game|altsyncram:collision_mem_rtl_0                                                                          ; altsyncram       ; work         ;
 ;          |altsyncram_9r71:auto_generated|      ; 22 (0)              ; 3 (3)                     ; 64000       ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|game_core:u_game|altsyncram:collision_mem_rtl_0|altsyncram_9r71:auto_generated                                           ; altsyncram_9r71  ; work         ;
 ;             |decode_aj9:rden_decode|           ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|game_core:u_game|altsyncram:collision_mem_rtl_0|altsyncram_9r71:auto_generated|decode_aj9:rden_decode                    ; decode_aj9       ; work         ;
@@ -291,7 +292,7 @@ on the Quartus Prime software download page.
 ;             |mux_q1b:mux2|                     ; 6 (6)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|game_core:u_game|altsyncram:collision_mem_rtl_0|altsyncram_9r71:auto_generated|mux_q1b:mux2                              ; mux_q1b          ; work         ;
 ;       |lpm_mult:Mult0|                         ; 6 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|game_core:u_game|lpm_mult:Mult0                                                                                          ; lpm_mult         ; work         ;
 ;          |multcore:mult_core|                  ; 6 (6)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|game_core:u_game|lpm_mult:Mult0|multcore:mult_core                                                                       ; multcore         ; work         ;
-;    |lcd_ili9341_ctrl:u_lcd|                    ; 362 (273)           ; 142 (123)                 ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|lcd_ili9341_ctrl:u_lcd                                                                                                   ; lcd_ili9341_ctrl ; work         ;
+;    |lcd_ili9341_ctrl:u_lcd|                    ; 360 (271)           ; 142 (123)                 ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|lcd_ili9341_ctrl:u_lcd                                                                                                   ; lcd_ili9341_ctrl ; work         ;
 ;       |lpm_mult:Mult0|                         ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult0                                                                                    ; lpm_mult         ; work         ;
 ;          |mult_2ls:auto_generated|             ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult0|mult_2ls:auto_generated                                                            ; mult_2ls         ; work         ;
 ;       |lpm_mult:Mult1|                         ; 59 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |line_game_top|lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult1                                                                                    ; lpm_mult         ; work         ;
@@ -381,38 +382,49 @@ Encoding Type:  One-Hot
 
 
 Encoding Type:  One-Hot
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |line_game_top|game_core:u_game|state                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ;
-+-------------------------------+-----------------------------+-------------------------------+------------------------+-------------------------+-------------------------+-------------------------+------------------------+-------------------+--------------------+-----------------------+------------------+-----------------------+-----------------------+---------------------+-----------------------+--------------------------+---------------------+---------------------+---------------------+-----------------------+------------------+--------------------------+---------------------+-------------------+-----------------------+------------------+
-; Name                          ; state.S_GAMEOVER_WAIT_PRESS ; state.S_GAMEOVER_WAIT_RELEASE ; state.S_GAMEOVER_DELAY ; state.S_SCORE_CELL_WAIT ; state.S_SCORE_CELL_DRAW ; state.S_SCORE_CELL_NEXT ; state.S_SCORE_BCD_ITER ; state.S_SCORE_BCD ; state.S_RUN_COMMIT ; state.S_RUN_DRAW_WAIT ; state.S_RUN_DRAW ; state.S_RUN_COLL_READ ; state.S_RUN_COLL_ADDR ; state.S_RUN_COMPUTE ; state.S_RUN_WAIT_TICK ; state.S_ORIGIN_DRAW_WAIT ; state.S_ORIGIN_DRAW ; state.S_ORIGIN_MARK ; state.S_ORIGIN_ADDR ; state.S_DIV_LINE_WAIT ; state.S_DIV_LINE ; state.S_FIELD_CLEAR_WAIT ; state.S_FIELD_CLEAR ; state.S_MEM_CLEAR ; state.S_LCD_INIT_WAIT ; state.S_LCD_INIT ;
-+-------------------------------+-----------------------------+-------------------------------+------------------------+-------------------------+-------------------------+-------------------------+------------------------+-------------------+--------------------+-----------------------+------------------+-----------------------+-----------------------+---------------------+-----------------------+--------------------------+---------------------+---------------------+---------------------+-----------------------+------------------+--------------------------+---------------------+-------------------+-----------------------+------------------+
-; state.S_LCD_INIT              ; 0                           ; 0                             ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 0                ;
-; state.S_LCD_INIT_WAIT         ; 0                           ; 0                             ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 1                     ; 1                ;
-; state.S_MEM_CLEAR             ; 0                           ; 0                             ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 1                 ; 0                     ; 1                ;
-; state.S_FIELD_CLEAR           ; 0                           ; 0                             ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 1                   ; 0                 ; 0                     ; 1                ;
-; state.S_FIELD_CLEAR_WAIT      ; 0                           ; 0                             ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 1                        ; 0                   ; 0                 ; 0                     ; 1                ;
-; state.S_DIV_LINE              ; 0                           ; 0                             ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 1                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
-; state.S_DIV_LINE_WAIT         ; 0                           ; 0                             ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 1                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
-; state.S_ORIGIN_ADDR           ; 0                           ; 0                             ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 1                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
-; state.S_ORIGIN_MARK           ; 0                           ; 0                             ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 1                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
-; state.S_ORIGIN_DRAW           ; 0                           ; 0                             ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 1                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
-; state.S_ORIGIN_DRAW_WAIT      ; 0                           ; 0                             ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 1                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
-; state.S_RUN_WAIT_TICK         ; 0                           ; 0                             ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 1                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
-; state.S_RUN_COMPUTE           ; 0                           ; 0                             ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 1                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
-; state.S_RUN_COLL_ADDR         ; 0                           ; 0                             ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 1                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
-; state.S_RUN_COLL_READ         ; 0                           ; 0                             ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 1                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
-; state.S_RUN_DRAW              ; 0                           ; 0                             ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 1                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
-; state.S_RUN_DRAW_WAIT         ; 0                           ; 0                             ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 1                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
-; state.S_RUN_COMMIT            ; 0                           ; 0                             ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 1                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
-; state.S_SCORE_BCD             ; 0                           ; 0                             ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 1                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
-; state.S_SCORE_BCD_ITER        ; 0                           ; 0                             ; 0                      ; 0                       ; 0                       ; 0                       ; 1                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
-; state.S_SCORE_CELL_NEXT       ; 0                           ; 0                             ; 0                      ; 0                       ; 0                       ; 1                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
-; state.S_SCORE_CELL_DRAW       ; 0                           ; 0                             ; 0                      ; 0                       ; 1                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
-; state.S_SCORE_CELL_WAIT       ; 0                           ; 0                             ; 0                      ; 1                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
-; state.S_GAMEOVER_DELAY        ; 0                           ; 0                             ; 1                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
-; state.S_GAMEOVER_WAIT_RELEASE ; 0                           ; 1                             ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
-; state.S_GAMEOVER_WAIT_PRESS   ; 1                           ; 0                             ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
-+-------------------------------+-----------------------------+-------------------------------+------------------------+-------------------------+-------------------------+-------------------------+------------------------+-------------------+--------------------+-----------------------+------------------+-----------------------+-----------------------+---------------------+-----------------------+--------------------------+---------------------+---------------------+---------------------+-----------------------+------------------+--------------------------+---------------------+-------------------+-----------------------+------------------+
++-----------------------------------------------------------+
+; State Machine - |line_game_top|game_core:u_game|score_ret ;
++----------------------------+------------------------------+
+; Name                       ; score_ret.S_GAMEOVER_DELAY   ;
++----------------------------+------------------------------+
+; score_ret.S_RUN_WAIT_TICK  ; 0                            ;
+; score_ret.S_GAMEOVER_DELAY ; 1                            ;
++----------------------------+------------------------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |line_game_top|game_core:u_game|state                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ;
++-----------------------------+-----------------------------+------------------------+------------------------+-------------------------+-------------------------+-------------------------+------------------------+-------------------+--------------------+-----------------------+------------------+-----------------------+-----------------------+---------------------+-----------------------+--------------------------+---------------------+---------------------+---------------------+-----------------------+------------------+--------------------------+---------------------+-------------------+-----------------------+------------------+
+; Name                        ; state.S_GAMEOVER_WAIT_PRESS ; state.S_GAMEOVER_DELAY ; state.S_GAMEOVER_ENTER ; state.S_SCORE_CELL_WAIT ; state.S_SCORE_CELL_DRAW ; state.S_SCORE_CELL_NEXT ; state.S_SCORE_BCD_ITER ; state.S_SCORE_BCD ; state.S_RUN_COMMIT ; state.S_RUN_DRAW_WAIT ; state.S_RUN_DRAW ; state.S_RUN_COLL_READ ; state.S_RUN_COLL_ADDR ; state.S_RUN_COMPUTE ; state.S_RUN_WAIT_TICK ; state.S_ORIGIN_DRAW_WAIT ; state.S_ORIGIN_DRAW ; state.S_ORIGIN_MARK ; state.S_ORIGIN_ADDR ; state.S_DIV_LINE_WAIT ; state.S_DIV_LINE ; state.S_FIELD_CLEAR_WAIT ; state.S_FIELD_CLEAR ; state.S_MEM_CLEAR ; state.S_LCD_INIT_WAIT ; state.S_LCD_INIT ;
++-----------------------------+-----------------------------+------------------------+------------------------+-------------------------+-------------------------+-------------------------+------------------------+-------------------+--------------------+-----------------------+------------------+-----------------------+-----------------------+---------------------+-----------------------+--------------------------+---------------------+---------------------+---------------------+-----------------------+------------------+--------------------------+---------------------+-------------------+-----------------------+------------------+
+; state.S_LCD_INIT            ; 0                           ; 0                      ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 0                ;
+; state.S_LCD_INIT_WAIT       ; 0                           ; 0                      ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 1                     ; 1                ;
+; state.S_MEM_CLEAR           ; 0                           ; 0                      ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 1                 ; 0                     ; 1                ;
+; state.S_FIELD_CLEAR         ; 0                           ; 0                      ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 1                   ; 0                 ; 0                     ; 1                ;
+; state.S_FIELD_CLEAR_WAIT    ; 0                           ; 0                      ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 1                        ; 0                   ; 0                 ; 0                     ; 1                ;
+; state.S_DIV_LINE            ; 0                           ; 0                      ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 1                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
+; state.S_DIV_LINE_WAIT       ; 0                           ; 0                      ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 1                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
+; state.S_ORIGIN_ADDR         ; 0                           ; 0                      ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 1                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
+; state.S_ORIGIN_MARK         ; 0                           ; 0                      ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 1                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
+; state.S_ORIGIN_DRAW         ; 0                           ; 0                      ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 1                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
+; state.S_ORIGIN_DRAW_WAIT    ; 0                           ; 0                      ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 1                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
+; state.S_RUN_WAIT_TICK       ; 0                           ; 0                      ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 1                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
+; state.S_RUN_COMPUTE         ; 0                           ; 0                      ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 1                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
+; state.S_RUN_COLL_ADDR       ; 0                           ; 0                      ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 1                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
+; state.S_RUN_COLL_READ       ; 0                           ; 0                      ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 1                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
+; state.S_RUN_DRAW            ; 0                           ; 0                      ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 1                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
+; state.S_RUN_DRAW_WAIT       ; 0                           ; 0                      ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 1                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
+; state.S_RUN_COMMIT          ; 0                           ; 0                      ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 1                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
+; state.S_SCORE_BCD           ; 0                           ; 0                      ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 1                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
+; state.S_SCORE_BCD_ITER      ; 0                           ; 0                      ; 0                      ; 0                       ; 0                       ; 0                       ; 1                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
+; state.S_SCORE_CELL_NEXT     ; 0                           ; 0                      ; 0                      ; 0                       ; 0                       ; 1                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
+; state.S_SCORE_CELL_DRAW     ; 0                           ; 0                      ; 0                      ; 0                       ; 1                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
+; state.S_SCORE_CELL_WAIT     ; 0                           ; 0                      ; 0                      ; 1                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
+; state.S_GAMEOVER_ENTER      ; 0                           ; 0                      ; 1                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
+; state.S_GAMEOVER_DELAY      ; 0                           ; 1                      ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
+; state.S_GAMEOVER_WAIT_PRESS ; 1                           ; 0                      ; 0                      ; 0                       ; 0                       ; 0                       ; 0                      ; 0                 ; 0                  ; 0                     ; 0                ; 0                     ; 0                     ; 0                   ; 0                     ; 0                        ; 0                   ; 0                   ; 0                   ; 0                     ; 0                ; 0                        ; 0                   ; 0                 ; 0                     ; 1                ;
++-----------------------------+-----------------------------+------------------------+------------------------+-------------------------+-------------------------+-------------------------+------------------------+-------------------+--------------------+-----------------------+------------------+-----------------------+-----------------------+---------------------+-----------------------+--------------------------+---------------------+---------------------+---------------------+-----------------------+------------------+--------------------------+---------------------+-------------------+-----------------------+------------------+
 
 
 +-------------------------------------------------------------------------------------------------------+
@@ -442,13 +454,17 @@ Encoding Type:  One-Hot
 ; lcd_ili9341_ctrl:u_lcd|state~10                 ; Lost fanout                                         ;
 ; lcd_ili9341_ctrl:u_lcd|state~11                 ; Lost fanout                                         ;
 ; lcd_ili9341_ctrl:u_lcd|state~12                 ; Lost fanout                                         ;
+; game_core:u_game|score_ret~5                    ; Lost fanout                                         ;
+; game_core:u_game|score_ret~6                    ; Lost fanout                                         ;
+; game_core:u_game|score_ret~7                    ; Lost fanout                                         ;
+; game_core:u_game|score_ret~8                    ; Lost fanout                                         ;
 ; game_core:u_game|state~28                       ; Lost fanout                                         ;
 ; game_core:u_game|state~29                       ; Lost fanout                                         ;
 ; game_core:u_game|state~30                       ; Lost fanout                                         ;
 ; game_core:u_game|state~31                       ; Lost fanout                                         ;
 ; game_core:u_game|state~32                       ; Lost fanout                                         ;
 ; lcd_ili9341_ctrl:u_lcd|init_idx[5]              ; Lost fanout                                         ;
-; Total Number of Removed Registers = 52          ;                                                     ;
+; Total Number of Removed Registers = 56          ;                                                     ;
 +-------------------------------------------------+-----------------------------------------------------+
 
 
@@ -458,8 +474,8 @@ Encoding Type:  One-Hot
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
 ; Total registers                              ; 468   ;
-; Number of registers using Synchronous Clear  ; 214   ;
-; Number of registers using Synchronous Load   ; 25    ;
+; Number of registers using Synchronous Clear  ; 182   ;
+; Number of registers using Synchronous Load   ; 48    ;
 ; Number of registers using Asynchronous Clear ; 3     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 364   ;
@@ -481,31 +497,32 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                            ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------+
-; 3:1                ; 19 bits   ; 38 LEs        ; 19 LEs               ; 19 LEs                 ; Yes        ; |line_game_top|game_core:u_game|digit[1][2]                           ;
+; 3:1                ; 19 bits   ; 38 LEs        ; 19 LEs               ; 19 LEs                 ; Yes        ; |line_game_top|game_core:u_game|digit[1][0]                           ;
 ; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |line_game_top|game_core:u_game|dd_sr[1]                              ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |line_game_top|game_core:u_game|clr_cnt[11]                           ;
-; 4:1                ; 19 bits   ; 38 LEs        ; 19 LEs               ; 19 LEs                 ; Yes        ; |line_game_top|debounce:u_debounce|cnt[17]                            ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |line_game_top|game_core:u_game|req_y[6]                              ;
-; 4:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; Yes        ; |line_game_top|game_core:u_game|req_x[7]                              ;
-; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |line_game_top|game_core:u_game|tick_cnt[26]                          ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |line_game_top|game_core:u_game|cell_col[0]                           ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |line_game_top|game_core:u_game|mem_addr[15]                          ;
-; 6:1                ; 12 bits   ; 48 LEs        ; 12 LEs               ; 36 LEs                 ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|delay_cnt[27]                   ;
-; 6:1                ; 20 bits   ; 80 LEs        ; 40 LEs               ; 40 LEs                 ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|delay_cnt[14]                   ;
-; 6:1                ; 17 bits   ; 68 LEs        ; 17 LEs               ; 51 LEs                 ; Yes        ; |line_game_top|game_core:u_game|score_shown[5]                        ;
-; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |line_game_top|game_core:u_game|cell_row[0]                           ;
-; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|spi_byte_master:u_spi|bitcnt[1] ;
-; 6:1                ; 7 bits    ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|spi_byte_master:u_spi|shreg[3]  ;
-; 6:1                ; 17 bits   ; 68 LEs        ; 34 LEs               ; 34 LEs                 ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|pix_left[6]                     ;
-; 7:1                ; 32 bits   ; 128 LEs       ; 32 LEs               ; 96 LEs                 ; Yes        ; |line_game_top|game_core:u_game|go_cnt[7]                             ;
-; 8:1                ; 6 bits    ; 30 LEs        ; 6 LEs                ; 24 LEs                 ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|init_idx[5]                     ;
-; 13:1               ; 3 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|spi_data[6]                     ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |line_game_top|game_core:u_game|clr_cnt[3]                            ;
+; 4:1                ; 19 bits   ; 38 LEs        ; 19 LEs               ; 19 LEs                 ; Yes        ; |line_game_top|debounce:u_debounce|cnt[6]                             ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |line_game_top|game_core:u_game|req_y[7]                              ;
+; 4:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; Yes        ; |line_game_top|game_core:u_game|req_x[8]                              ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |line_game_top|game_core:u_game|tick_cnt[18]                          ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |line_game_top|game_core:u_game|cell_col[2]                           ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |line_game_top|game_core:u_game|mem_addr[12]                          ;
+; 6:1                ; 12 bits   ; 48 LEs        ; 12 LEs               ; 36 LEs                 ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|delay_cnt[1]                    ;
+; 6:1                ; 20 bits   ; 80 LEs        ; 40 LEs               ; 40 LEs                 ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|delay_cnt[18]                   ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |line_game_top|game_core:u_game|cell_row[1]                           ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|spi_byte_master:u_spi|bitcnt[3] ;
+; 6:1                ; 7 bits    ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|spi_byte_master:u_spi|shreg[4]  ;
+; 6:1                ; 17 bits   ; 68 LEs        ; 34 LEs               ; 34 LEs                 ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|pix_left[13]                    ;
+; 7:1                ; 17 bits   ; 68 LEs        ; 34 LEs               ; 34 LEs                 ; Yes        ; |line_game_top|game_core:u_game|score_shown[13]                       ;
+; 8:1                ; 6 bits    ; 30 LEs        ; 6 LEs                ; 24 LEs                 ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|init_idx[0]                     ;
+; 13:1               ; 3 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |line_game_top|lcd_ili9341_ctrl:u_lcd|spi_data[4]                     ;
 ; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |line_game_top|game_core:u_game|cell_digit[0]                         ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |line_game_top|game_core:u_game|ndx[1]                                ;
 ; 8:1                ; 4 bits    ; 20 LEs        ; 16 LEs               ; 4 LEs                  ; No         ; |line_game_top|game_core:u_game|Mux3                                  ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |line_game_top|game_core:u_game|score_ret                             ;
 ; 7:1                ; 9 bits    ; 36 LEs        ; 18 LEs               ; 18 LEs                 ; No         ; |line_game_top|lcd_ili9341_ctrl:u_lcd|ret_id                          ;
 ; 7:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |line_game_top|lcd_ili9341_ctrl:u_lcd|spi_byte_master:u_spi|state     ;
-; 16:1               ; 5 bits    ; 50 LEs        ; 20 LEs               ; 30 LEs                 ; No         ; |line_game_top|game_core:u_game|state                                 ;
+; 14:1               ; 4 bits    ; 36 LEs        ; 16 LEs               ; 20 LEs                 ; No         ; |line_game_top|game_core:u_game|state                                 ;
+; 19:1               ; 2 bits    ; 24 LEs        ; 4 LEs                ; 20 LEs                 ; No         ; |line_game_top|game_core:u_game|state                                 ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------+
 
 
@@ -814,29 +831,29 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; boundary_port         ; 7                           ;
 ; cycloneiii_ff         ; 468                         ;
 ;     CLR               ; 3                           ;
-;     ENA               ; 196                         ;
-;     ENA SCLR          ; 149                         ;
-;     ENA SLD           ; 19                          ;
+;     ENA               ; 205                         ;
+;     ENA SCLR          ; 117                         ;
+;     ENA SLD           ; 42                          ;
 ;     SCLR              ; 64                          ;
 ;     SCLR SLD          ; 1                           ;
 ;     SLD               ; 5                           ;
 ;     plain             ; 31                          ;
-; cycloneiii_lcell_comb ; 971                         ;
+; cycloneiii_lcell_comb ; 1013                        ;
 ;     arith             ; 259                         ;
 ;         2 data inputs ; 209                         ;
 ;         3 data inputs ; 50                          ;
-;     normal            ; 712                         ;
+;     normal            ; 754                         ;
 ;         0 data inputs ; 3                           ;
 ;         1 data inputs ; 16                          ;
-;         2 data inputs ; 88                          ;
+;         2 data inputs ; 105                         ;
 ;         3 data inputs ; 202                         ;
-;         4 data inputs ; 403                         ;
+;         4 data inputs ; 428                         ;
 ; cycloneiii_mac_mult   ; 1                           ;
 ; cycloneiii_mac_out    ; 1                           ;
 ; cycloneiii_ram_block  ; 8                           ;
 ;                       ;                             ;
 ; Max LUT depth         ; 12.00                       ;
-; Average LUT depth     ; 3.87                        ;
+; Average LUT depth     ; 4.01                        ;
 +-----------------------+-----------------------------+
 
 
@@ -845,7 +862,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:04     ;
+; Top            ; 00:00:03     ;
 +----------------+--------------+
 
 
@@ -855,7 +872,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
-    Info: Processing started: Wed Sep  2 00:59:54 2026
+    Info: Processing started: Wed Sep 23 05:43:46 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off line_game -c line_game_top
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -868,7 +885,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file rtl/lin
 Info (12021): Found 1 design units, including 1 entities, in source file rtl/lcd_ili9341_ctrl.sv
     Info (12023): Found entity 1: lcd_ili9341_ctrl File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 20
 Info (12021): Found 1 design units, including 1 entities, in source file rtl/game_core.sv
-    Info (12023): Found entity 1: game_core File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 13
+    Info (12023): Found entity 1: game_core File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 14
 Info (12021): Found 1 design units, including 0 entities, in source file rtl/font5x7_pkg.sv
     Info (12022): Found design unit 1: font5x7_pkg (SystemVerilog) File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/font5x7_pkg.sv Line: 7
 Info (12021): Found 1 design units, including 1 entities, in source file rtl/debounce.sv
@@ -877,9 +894,9 @@ Info (12127): Elaborating entity "line_game_top" for the top level hierarchy
 Info (12128): Elaborating entity "reset_sync" for hierarchy "reset_sync:u_reset" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/line_game_top.sv Line: 29
 Info (12128): Elaborating entity "debounce" for hierarchy "debounce:u_debounce" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/line_game_top.sv Line: 40
 Info (12128): Elaborating entity "game_core" for hierarchy "game_core:u_game" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/line_game_top.sv Line: 69
-Warning (10230): Verilog HDL assignment warning at game_core.sv(61): truncated value with size 32 to match size of target (16) File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 61
-Warning (10230): Verilog HDL assignment warning at game_core.sv(337): truncated value with size 32 to match size of target (9) File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 337
-Warning (10230): Verilog HDL assignment warning at game_core.sv(338): truncated value with size 32 to match size of target (8) File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 338
+Warning (10230): Verilog HDL assignment warning at game_core.sv(62): truncated value with size 32 to match size of target (16) File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 62
+Warning (10230): Verilog HDL assignment warning at game_core.sv(335): truncated value with size 32 to match size of target (9) File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 335
+Warning (10230): Verilog HDL assignment warning at game_core.sv(336): truncated value with size 32 to match size of target (8) File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 336
 Info (12128): Elaborating entity "lcd_ili9341_ctrl" for hierarchy "lcd_ili9341_ctrl:u_lcd" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/line_game_top.sv Line: 91
 Info (10264): Verilog HDL Case Statement information at lcd_ili9341_ctrl.sv(158): all case item expressions in this case statement are onehot File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 158
 Info (12128): Elaborating entity "spi_byte_master" for hierarchy "lcd_ili9341_ctrl:u_lcd|spi_byte_master:u_spi" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 62
@@ -899,7 +916,7 @@ Info (19000): Inferred 1 megafunctions from design logic
 Info (278001): Inferred 3 megafunctions from design logic
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "lcd_ili9341_ctrl:u_lcd|Mult0" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 170
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "lcd_ili9341_ctrl:u_lcd|Mult1" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/lcd_ili9341_ctrl.sv Line: 197
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "game_core:u_game|Mult0" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 337
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "game_core:u_game|Mult0" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 335
 Info (12130): Elaborated megafunction instantiation "game_core:u_game|altsyncram:collision_mem_rtl_0"
 Info (12133): Instantiated megafunction "game_core:u_game|altsyncram:collision_mem_rtl_0" with the following parameter:
     Info (12134): Parameter "OPERATION_MODE" = "SINGLE_PORT"
@@ -950,8 +967,8 @@ Info (12131): Elaborated megafunction instantiation "lcd_ili9341_ctrl:u_lcd|lpm_
 Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_arg.tdf
     Info (12023): Found entity 1: add_sub_arg File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/db/add_sub_arg.tdf Line: 23
 Info (12131): Elaborated megafunction instantiation "lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult1|altshift:external_latency_ffs", which is child of megafunction instantiation "lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult1" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_mult.tdf Line: 352
-Info (12130): Elaborated megafunction instantiation "game_core:u_game|lpm_mult:Mult0" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 337
-Info (12133): Instantiated megafunction "game_core:u_game|lpm_mult:Mult0" with the following parameter: File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 337
+Info (12130): Elaborated megafunction instantiation "game_core:u_game|lpm_mult:Mult0" File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 335
+Info (12133): Instantiated megafunction "game_core:u_game|lpm_mult:Mult0" with the following parameter: File: H:/git/PCB_CQmax10/CQmax10/sample/line_game1/rtl/game_core.sv Line: 335
     Info (12134): Parameter "LPM_WIDTHA" = "3"
     Info (12134): Parameter "LPM_WIDTHB" = "5"
     Info (12134): Parameter "LPM_WIDTHP" = "8"
@@ -965,21 +982,21 @@ Info (12131): Elaborated megafunction instantiation "game_core:u_game|lpm_mult:M
 Info (12131): Elaborated megafunction instantiation "game_core:u_game|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder", which is child of megafunction instantiation "game_core:u_game|lpm_mult:Mult0" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/multcore.tdf Line: 229
 Info (12131): Elaborated megafunction instantiation "game_core:u_game|lpm_mult:Mult0|altshift:external_latency_ffs", which is child of megafunction instantiation "game_core:u_game|lpm_mult:Mult0" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_mult.tdf Line: 352
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 14 registers lost all their fanouts during netlist optimizations.
+Info (17049): 18 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file H:/git/PCB_CQmax10/CQmax10/sample/line_game1/output_files/line_game_top.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 1049 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1093 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 4 output pins
-    Info (21061): Implemented 1033 logic cells
+    Info (21061): Implemented 1077 logic cells
     Info (21064): Implemented 8 RAM segments
     Info (21062): Implemented 1 DSP elements
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 5 warnings
     Info: Peak virtual memory: 4866 megabytes
-    Info: Processing ended: Wed Sep  2 01:00:11 2026
-    Info: Elapsed time: 00:00:17
-    Info: Total CPU time (on all processors): 00:00:31
+    Info: Processing ended: Wed Sep 23 05:43:59 2026
+    Info: Elapsed time: 00:00:13
+    Info: Total CPU time (on all processors): 00:00:30
 
 
 +------------------------------------------+

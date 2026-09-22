@@ -28,11 +28,11 @@ https://github.com/nand2mario/usb_hid_host/tree/main/src
 ## Physical Constraint
 Pmod Port | FPGA Pin | function
 ---|---|---
-1 | 46 | U2P(USB channel2+)
-2 | 44 | U1P(USB channel1+)
-3 | 41 | none
-4 | 38 | U2N(USB channel2-)
-5 | 45 | U1N(USB channel1-)
-6 | 43 | none
-7 | 39 | none
-8 | 47 | none
+1 | 99 | U2P(USB channel2+)
+2 | 98 | U1P(USB channel1+)
+3 | 97 | none
+4 | 96 | none
+5 | 100 | U2N(USB channel2-)
+6 | 101 | U1N(USB channel1-)
+7 | 102 | none
+8 | 110 | none

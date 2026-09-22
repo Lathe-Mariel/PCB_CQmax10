@@ -3,8 +3,9 @@
 // While Button A is held, the line's Y direction flips to upward; released,
 // it goes downward. The line bounces off the left/right field edges.
 // Game over when the line touches Y=0/Y=FIELD_H edges from the inside, or
-// crosses a pixel it has already drawn. After game over: wait ~2s, then
-// wait for a fresh button press to restart.
+// crosses a pixel it has already drawn. After game over: the final score
+// is redrawn cleanly, then after ~2s any press (or already-held press) of
+// Button A restarts the game.
 //
 // Talks to lcd_ili9341_ctrl over the req_valid/req_ready FILL_RECT command
 // interface (a 1x1 FILL_RECT is used as the "draw pixel" primitive).
@@ -81,7 +82,6 @@ module game_core #(
         S_MEM_CLEAR,
         S_FIELD_CLEAR, S_FIELD_CLEAR_WAIT,
         S_DIV_LINE, S_DIV_LINE_WAIT,
-        S_INFO_CLEAR, S_INFO_CLEAR_WAIT,
         S_ORIGIN_ADDR, S_ORIGIN_MARK, S_ORIGIN_DRAW, S_ORIGIN_DRAW_WAIT,
         S_RUN_WAIT_TICK,
         S_RUN_COMPUTE,
@@ -90,12 +90,13 @@ module game_core #(
         S_RUN_COMMIT,
         S_SCORE_BCD, S_SCORE_BCD_ITER,
         S_SCORE_CELL_NEXT, S_SCORE_CELL_DRAW, S_SCORE_CELL_WAIT,
+        S_GAMEOVER_ENTER,
         S_GAMEOVER_DELAY,
-        S_GAMEOVER_WAIT_RELEASE,
         S_GAMEOVER_WAIT_PRESS
     } state_t;
 
     state_t state;
+    state_t score_ret;   // where to go once the score-refresh sequence finishes
 
     // position / direction
     logic [8:0]        pos_x;
@@ -115,9 +116,6 @@ module game_core #(
     // timers
     logic [31:0] tick_cnt;
     logic [31:0] go_cnt;
-
-    // button edge tracking for restart
-    logic btn_prev;
 
     // BCD conversion (double-dabble)
     logic [36:0] dd_sr;   // {20-bit BCD, 17-bit remaining binary}
@@ -181,7 +179,7 @@ module game_core #(
             pos_y       <= '0;
             digit[0]    <= 4'd0; digit[1] <= 4'd0; digit[2] <= 4'd0;
             digit[3]    <= 4'd0; digit[4] <= 4'd0;
-            btn_prev    <= 1'b0;
+            score_ret   <= S_RUN_WAIT_TICK;
             clr_cnt     <= '0;
         end else begin
             mem_we    <= 1'b0;
@@ -248,8 +246,9 @@ module game_core #(
                 state     <= S_ORIGIN_DRAW_WAIT;
             end
             S_ORIGIN_DRAW_WAIT: if (!req_valid && req_ready) begin
-                tick_cnt <= '0;
-                state    <= S_RUN_WAIT_TICK;
+                tick_cnt  <= '0;
+                score_ret <= S_RUN_WAIT_TICK;
+                state     <= S_SCORE_BCD;
             end
 
             // -------------------------- main run loop ------------------------
@@ -264,8 +263,7 @@ module game_core #(
 
             S_RUN_COMPUTE: begin
                 if (y_out_of_range) begin
-                    go_cnt <= '0;
-                    state  <= S_GAMEOVER_DELAY;
+                    state <= S_GAMEOVER_ENTER;
                 end else begin
                     lat_x    <= next_x;
                     lat_y    <= next_y;
@@ -277,8 +275,7 @@ module game_core #(
             S_RUN_COLL_ADDR: state <= S_RUN_COLL_READ; // 1 cycle for sync-read latency
             S_RUN_COLL_READ: begin
                 if (mem_rdata) begin
-                    go_cnt <= '0;
-                    state  <= S_GAMEOVER_DELAY;
+                    state <= S_GAMEOVER_ENTER;
                 end else begin
                     state <= S_RUN_DRAW;
                 end
@@ -301,6 +298,7 @@ module game_core #(
                 pos_y     <= lat_y;
                 dir_x     <= lat_dx;
                 score     <= score + 17'd1;
+                score_ret <= S_RUN_WAIT_TICK;
                 state     <= S_SCORE_BCD;
             end
 
@@ -323,7 +321,7 @@ module game_core #(
                     digit[2] <= bcd_adj[11:8];  digit[1] <= bcd_adj[7:4];
                     digit[0] <= bcd_adj[3:0];
                     cell_digit <= '0; cell_row <= '0; cell_col <= '0;
-                    state <= (score != score_shown) ? S_SCORE_CELL_DRAW : S_RUN_WAIT_TICK;
+                    state <= (score != score_shown) ? S_SCORE_CELL_DRAW : score_ret;
                     score_shown <= score;
                 end else begin
                     dd_iter <= dd_iter + 5'd1;
@@ -349,7 +347,7 @@ module game_core #(
                     if (cell_row == 3'd6) begin
                         cell_row <= '0;
                         if (cell_digit == DIGITS-1) begin
-                            state <= S_RUN_WAIT_TICK;
+                            state <= score_ret;
                         end else begin
                             cell_digit <= cell_digit + 3'd1;
                             state <= S_SCORE_CELL_DRAW;
@@ -365,15 +363,27 @@ module game_core #(
             end
 
             // -------------------------- game over ----------------------------
+            S_GAMEOVER_ENTER: begin
+                // Force a full, guaranteed-clean redraw of the final score
+                // before freezing the display (fixes stale/partial score
+                // readouts after game over).
+                score_shown <= ~score;
+                score_ret   <= S_GAMEOVER_DELAY;
+                go_cnt      <= '0;
+                state       <= S_SCORE_BCD;
+            end
             S_GAMEOVER_DELAY: begin
                 if (go_cnt == GAMEOVER_CYCLES - 1)
-                    state <= S_GAMEOVER_WAIT_RELEASE;
+                    state <= S_GAMEOVER_WAIT_PRESS;
                 else
                     go_cnt <= go_cnt + 1'b1;
             end
-            S_GAMEOVER_WAIT_RELEASE: if (!btn_level) state <= S_GAMEOVER_WAIT_PRESS;
+            // Any press (or already-held button) after the delay resets the
+            // game immediately -- no release-then-press requirement, since
+            // the button is very often still held from causing the game
+            // over in the first place.
             S_GAMEOVER_WAIT_PRESS: begin
-                if (btn_level && !btn_prev) begin
+                if (btn_level) begin
                     score_shown <= {17{1'b1}};
                     state <= S_MEM_CLEAR;
                 end
@@ -381,8 +391,6 @@ module game_core #(
 
             default: state <= S_LCD_INIT;
             endcase
-
-            btn_prev <= btn_level;
         end
     end
 

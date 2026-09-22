@@ -1,8 +1,14 @@
 m255
 K4
 z2
-!s12c _opt
+!s12c _opt2
 Z0 !s99 nomlopt
+!s12c _opt1
+R0
+Z1 !s12c _opt
+R0
+R1
+R0
 !s11f vlog 2025.2 2025.05, May 31 2025
 13
 !s112 1.1
@@ -10,70 +16,179 @@ Z0 !s99 nomlopt
 !i10e 25
 !i10f 100
 cModel Technology
-Z1 dH:/git/PCB_CQmax10/CQmax10/sample/usb_host/sim
+Z2 dH:/git/PCB_CQmax10/CQmax10/sample/usb_host/sim
 T_opt
 !i145 1
 !i144 0
-!s110 1789576103
-Va04MZCG2QnAO7ngKA5kDn0
+!s110 1789974336
+V7:SlhM8kPQijeNBl7O9Qc2
 04 21 4 work tb_hid_keyboard_ascii fast 0
-=1-9418827106c0-6aaac3a6-a2-4948
+=1-9418827106c0-6ab0d73e-311-28bc
 R0
-!s12f OEM100
-!s12b OEM100
-!s124 OEM10U2 
-!s135 nogc
-o-quiet -auto_acc_if_foreign -work work
-tCvgOpt 0 defaultOptions 1107585188
+Z3 !s12f OEM100
+Z4 !s12b OEM100
+Z5 !s124 OEM10U2 
+Z6 !s135 nogc
+Z7 o-quiet -auto_acc_if_foreign -work work
+Z8 tCvgOpt 0 defaultOptions 1107585188
 n@_opt
-OL;O;2025.2;82
+Z9 OL;O;2025.2;82
+R2
+T_opt1
+!i145 1
+!i144 0
+!s110 1789975660
+V0IM[H3IMoX;_?MeBI84L32
+04 18 4 work tb_key_led_stretch fast 0
+=1-9418827106c0-6ab0dc6b-dd-1a9c
+R0
+R3
+R4
+R5
+R6
+R7
+R8
+n@_opt1
+R9
+R2
+T_opt2
+!i145 1
+!i144 0
+!s110 1789980327
+VV4f_zRDmOW3>85`VU@B0C1
+04 15 4 work tb_led_polarity fast 0
+=1-9418827106c0-6ab0eea6-22d-2c54
+R0
+R3
+R4
+R5
+R6
+R7
+R8
+n@_opt2
+R9
 vhid_keyboard_ascii
-2../rtl/hid_keyboard_ascii.sv
-Z2 DXx6 sv_std 3 std 0 22 @5XbY]_OacJl=`ToSm<M^0
-!s110 1789576100
+Z10 2..\rtl\hid_keyboard_ascii.sv|..\rtl\key_led_stretch.sv|tb_hid_keyboard_ascii.sv|tb_key_led_stretch.sv
+Z11 DXx6 sv_std 3 std 0 22 @5XbY]_OacJl=`ToSm<M^0
+Z12 !s110 1789980299
 !i10b 1
 !s100 F<J5G_VX^Jf;JjFbn4?@92
-IU^JEI0f?`]WGW8?_XMPn40
+IZ^@[VnCFQ:fUhj8n;BX6N3
 S1
-R1
+R2
 w1789576086
-8../rtl/hid_keyboard_ascii.sv
-F../rtl/hid_keyboard_ascii.sv
-!i122 0
+8..\rtl\hid_keyboard_ascii.sv
+F..\rtl\hid_keyboard_ascii.sv
+!i122 5
 L0 3 157
-Z3 VDg1SIo80bB@j0V0VzS_@n1
-Z4 OL;L;2025.2;82
+Z13 VDg1SIo80bB@j0V0VzS_@n1
+Z14 OL;L;2025.2;82
 r1
 !s85 0
 31
-Z5 !s108 1789576100.000000
-!s107 ../rtl/hid_keyboard_ascii.sv|
-!s90 -sv|../rtl/hid_keyboard_ascii.sv|
+Z15 !s108 1789980299.000000
+Z16 !s107 tb_key_led_stretch.sv|tb_hid_keyboard_ascii.sv|..\\rtl\\key_led_stretch.sv|..\\rtl\\hid_keyboard_ascii.sv|
+Z17 !s90 -sv|..\rtl\hid_keyboard_ascii.sv|..\rtl\key_led_stretch.sv|tb_hid_keyboard_ascii.sv|tb_key_led_stretch.sv|
 !i113 0
-Z6 o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-Z7 tCvgOpt 0 defaultOptions 1085333592
-vtb_hid_keyboard_ascii
-2tb_hid_keyboard_ascii.sv
+Z18 o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z19 tCvgOpt 0 defaultOptions 1085333592
+vkey_led_stretch
+Z20 2..\rtl\key_led_stretch.sv|tb_led_polarity.sv
+R11
+Z21 !s110 1789980324
+!i10b 1
+!s100 3bY9WWU;9Rk<<;2dff[Rj3
+I=6b<T_NU3Oc8<CePe?>AZ1
+S1
 R2
-!s110 1789576101
+w1789975627
+8..\rtl\key_led_stretch.sv
+F..\rtl\key_led_stretch.sv
+!i122 6
+L0 21 68
+R13
+R14
+r1
+!s85 0
+31
+Z22 !s108 1789980324.000000
+Z23 !s107 tb_led_polarity.sv|..\\rtl\\key_led_stretch.sv|
+Z24 !s90 -sv|..\rtl\key_led_stretch.sv|tb_led_polarity.sv|
+!i113 0
+R18
+R19
+vtb_hid_keyboard_ascii
+R10
+R11
+R12
 !i10b 1
 !s100 F=6[Somi69Q1<PW66oH5C2
 IOPh85obeWhPgXW`Q32VPf2
 S1
-R1
+R2
 w1789575793
 8tb_hid_keyboard_ascii.sv
 Ftb_hid_keyboard_ascii.sv
-!i122 1
+!i122 5
 L0 4 102
-R3
-R4
+R13
+R14
 r1
 !s85 0
 31
-R5
-!s107 tb_hid_keyboard_ascii.sv|
-!s90 -sv|tb_hid_keyboard_ascii.sv|
+R15
+R16
+R17
 !i113 0
-R6
-R7
+R18
+R19
+vtb_key_led_stretch
+R10
+R11
+R12
+!i10b 1
+!s100 E:_hO9?o4IR<Il[FlI_cV2
+IWjLGM=:]hSAZc257ma2<Z3
+S1
+R2
+w1789975650
+8tb_key_led_stretch.sv
+Ftb_key_led_stretch.sv
+!i122 5
+L0 12 84
+R13
+R14
+r1
+!s85 0
+31
+R15
+R16
+R17
+!i113 0
+R18
+R19
+vtb_led_polarity
+R20
+R11
+R21
+!i10b 1
+!s100 Bf3c_l]ZUKdZzgb1N>Y9D1
+I?z91kFKS:bK<C92j9?j>T2
+S1
+R2
+w1789980315
+8tb_led_polarity.sv
+Ftb_led_polarity.sv
+!i122 6
+L0 17 92
+R13
+R14
+r1
+!s85 0
+31
+R22
+R23
+R24
+!i113 0
+R18
+R19

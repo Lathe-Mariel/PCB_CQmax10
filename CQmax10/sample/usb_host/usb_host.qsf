@@ -20,6 +20,7 @@ set_global_assignment -name SYSTEMVERILOG_FILE rtl/usb_pll_12mhz.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/hid_keyboard_ascii.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/cdc_byte_strobe.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/jtag_uart_tx.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/key_led_stretch.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/top.sv
 set_global_assignment -name VERILOG_FILE rtl/third_party/nand2mario/usb_hid_host.v
 set_global_assignment -name VERILOG_FILE rtl/third_party/nand2mario/usb_hid_host_rom.v
@@ -32,6 +33,11 @@ set_location_assignment PIN_88 -to clk
 set_location_assignment PIN_17 -to rst_n
 set_location_assignment PIN_85 -to led
 set_location_assignment PIN_123 -to led0
+# Board LEDs D1-D4 on PIN_123/122/121/120. Wired +3V3 -> R -> anode -> cathode
+# -> FPGA pin, so the pin sinks current: drive LOW to light, HIGH to turn off.
+set_location_assignment PIN_122 -to led1
+set_location_assignment PIN_121 -to led2
+set_location_assignment PIN_120 -to led3
 set_location_assignment PIN_52 -to leds[7]
 set_location_assignment PIN_57 -to leds[6]
 set_location_assignment PIN_55 -to leds[5]
@@ -41,15 +47,20 @@ set_location_assignment PIN_56 -to leds[2]
 set_location_assignment PIN_58 -to leds[1]
 set_location_assignment PIN_60 -to leds[0]
 
-set_location_assignment PIN_44 -to usb_u1_dp
-set_location_assignment PIN_45 -to usb_u1_dm
-set_location_assignment PIN_46 -to usb_u2_dp
-set_location_assignment PIN_38 -to usb_u2_dm
+# PMOD-USBHOST v1.0 on Pmod port 6 (CQ-MAX10-A)
+# Pmod pin 1 = U2P, 2 = U1P, 5 = U2N, 6 = U1N
+set_location_assignment PIN_99 -to usb_u2_dp
+set_location_assignment PIN_98 -to usb_u1_dp
+set_location_assignment PIN_100 -to usb_u2_dm
+set_location_assignment PIN_101 -to usb_u1_dm
 
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to clk
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rst_n
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led1
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led3
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to leds[0]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to leds[1]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to leds[2]
@@ -63,6 +74,9 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to usb_u1_dm
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to usb_u2_dp
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to usb_u2_dm
 
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 
 set_global_assignment -name LAST_QUARTUS_VERSION "25.1std.0 Lite Edition"
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
