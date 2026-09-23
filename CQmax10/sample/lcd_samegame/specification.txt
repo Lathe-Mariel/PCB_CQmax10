@@ -1,0 +1,62 @@
+
+## Application
+LCDを使ったビデオゲーム「さめがめ」
+タッチパネルで操作する
+
+
+FPGAデザインを作る
+## Hardware
+### FPGA
+10M08SCE144C8G(Altera)
+### Board
+CQ-MAX10-A(https://fpga.tokyo/wp-content/uploads/2024/07/CQ-MAX10-A_%E5%9B%9E%E8%B7%AF%E5%9B%B3_R0.pdf) + CQ-MAX10-A_Pmod Board(../../CQmax10.kicad_pro)
+### LCD
+PMOD-TFTLCD v1.1
+(ILI9341, 320x240) 
+
+## Software
+### 開発環境
+Quartus Prime Lite
+### Simulater
+Questa
+
+## Architecture
+### Frame buffer
+320x240のFrame bufferを作る（色深度は16ビット）
+LCDにはFrame bufferの内容を転送する
+GameControllerはFrame bufferに読み書きしてゲームを進める
+
+
+
+## Specification
+・画面は横向き（Landscape）に使う
+・ゲームフィールドは320×200
+・画面下側の320x40領域は，情報表示（Scoreなど）領域にする
+・画面は左右方向がX軸（右向きが＋），上下方向をY軸（下向きが＋）とする
+・ユーザ入力装置として，ボタンAを使う
+
+## 動作
+・上下左右に同じ種類のパネルがあるとき，接続されていると考える．
+・パネルの接続数が3を超えるときにタップすると，そのパネルを消去できる（接続されたパネルも消去）．
+・パネルが消去された場合，上に別のパネルがあれば，それが落下し，消去パネルがあった位置に移動する
+・ある列のパネルが全てなくなった場合，その列の右にある列が左に移動する
+
+
+
+## Physical contraints
+
+FPGA pin | register name | function
+---|---|---
+PIN_88 | clk | system clock
+PIN_17 | btn_rst | system reset(Active low)
+PIN_62 | sw1 | switch1(game botton)
+PIN_48 | sw2 | switch2
+PIN_81 | lcd_cs(Active low) | lcd chip select
+PIN_78 | lcd_mosi | lcd mosi
+PIN_75 | lcd_sck | lcd sclock
+PIN_77 | lcd_dc | lcd dc
+PIN_85 | led | led(Active low)
+PIN_122 | led0 | led(Active low)
+PIN_123 | led1 | led(Active low)
+PIN_120 | led2 | led(Active low)
+PIN_121 | led3 | led(Active low)

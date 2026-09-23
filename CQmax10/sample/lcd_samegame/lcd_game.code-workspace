@@ -1,0 +1,41 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"chat.tools.terminal.autoApprove": {
+			"/^cmd /c \"cd /d h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_game && H:\\\\altera_lite\\\\25\\.1std\\\\quartus\\\\bin64\\\\quartus_sh\\.exe --flow compile lcd_game > qbuild2\\.log 2>&1 & echo DONE\"$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^cmd /c \"cd /d h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_game && H:\\\\altera_lite\\\\25\\.1std\\\\quartus\\\\bin64\\\\quartus_sh\\.exe --flow compile lcd_game > qbuild\\.log 2>&1 & del /q qbuild2\\.log & echo DONE\"$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^cmd /c \"cd /d h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_game & dir /b /od output_files\\\\\\*\\.summary & echo --- & dir /b qbuild\\.log qbuild2\\.log 2>nul\"$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^cmd /c \"cd /d h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_game & for %A in \\(output_files\\\\lcd_game\\.fit\\.summary qbuild\\.log\\) do @echo %~tA %~zA %A\"$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^Start-Sleep -Seconds 40; cmd /c \"cd /d h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_game & for %A in \\(output_files\\\\lcd_game\\.fit\\.summary qbuild\\.log\\) do @echo %~tA %~zA %A\"$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"Get-Process": true,
+			"H:\\altera_lite\\25.1std\\quartus\\bin64\\quartus_sh.exe": true,
+			"/^cmd /c \"type h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_game\\\\qbuild\\.log\" \\| Select-Object -Last 6$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^cmd /c \"type h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_game\\\\qbuild\\.log\" \\| Where-Object \\{ \\$_ -match \"Warning \\\\\\(\" \\} \\| Select-Object -Unique$/": {
+				"approve": true,
+				"matchCommandLine": true
+			}
+		}
+	}
+}

@@ -1,0 +1,9 @@
+1 10 reset_sync 4 fast 65 H:/git/PCB_CQmax10/CQmax10/sample/lcd_game/simulation/questa/work 0 0 0 0 33 0
+1 8 debounce 4 fast 65 H:/git/PCB_CQmax10/CQmax10/sample/lcd_game/simulation/questa/work 0 0 131072 0 88 0
+1 11 framebuffer 4 fast 65 H:/git/PCB_CQmax10/CQmax10/sample/lcd_game/simulation/questa/work 0 0 0 0 86 0
+1 21 framebuffer_pixel_src 4 fast 65 H:/git/PCB_CQmax10/CQmax10/sample/lcd_game/simulation/questa/work 0 0 0 0 126 0
+1 15 spi_byte_master 4 fast 65 H:/git/PCB_CQmax10/CQmax10/sample/lcd_game/simulation/questa/work 0 0 0 0 167 0
+1 16 lcd_ili9341_ctrl 4 fast 65 H:/git/PCB_CQmax10/CQmax10/sample/lcd_game/simulation/questa/work 0 0 131072 0 722 0
+1 9 frame_seq 4 fast 65 H:/git/PCB_CQmax10/CQmax10/sample/lcd_game/simulation/questa/work 0 0 0 0 97 0
+1 12 lcd_test_top 4 fast 65 H:/git/PCB_CQmax10/CQmax10/sample/lcd_game/simulation/questa/work 0 0 262144 0 1340 0
+1 9 tb_orange 4 fast 65 H:/git/PCB_CQmax10/CQmax10/sample/lcd_game/simulation/questa/work 0 0 393216 0 2522 0
