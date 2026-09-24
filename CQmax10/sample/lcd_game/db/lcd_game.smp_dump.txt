@@ -1,55 +1,71 @@
 
 State Machine - |lcd_test_top|init_state
-Name init_state.I_GAME_BEGIN init_state.I_READY init_state.I_DRAW_GAP init_state.I_DRAW_WAIT init_state.I_DRAW_BUSY init_state.I_DRAW init_state.I_CLEAR_WAIT init_state.I_CLEAR 
-init_state.I_CLEAR 0 0 0 0 0 0 0 0 
-init_state.I_CLEAR_WAIT 0 0 0 0 0 0 1 1 
-init_state.I_DRAW 0 0 0 0 0 1 0 1 
-init_state.I_DRAW_BUSY 0 0 0 0 1 0 0 1 
-init_state.I_DRAW_WAIT 0 0 0 1 0 0 0 1 
-init_state.I_DRAW_GAP 0 0 1 0 0 0 0 1 
-init_state.I_READY 0 1 0 0 0 0 0 1 
-init_state.I_GAME_BEGIN 1 0 0 0 0 0 0 1 
+Name init_state.I_GAME_BEGIN init_state.I_READY init_state.I_DOTS_GAP init_state.I_DOTS_WAIT init_state.I_DOTS_BUSY init_state.I_DOTS init_state.I_DRAW_GAP init_state.I_DRAW_WAIT init_state.I_DRAW_BUSY init_state.I_DRAW init_state.I_FILL_GAP init_state.I_FILL_WAIT init_state.I_FILL_BUSY init_state.I_FILL init_state.I_CLEAR_WAIT init_state.I_CLEAR 
+init_state.I_CLEAR 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+init_state.I_CLEAR_WAIT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+init_state.I_FILL 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+init_state.I_FILL_BUSY 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+init_state.I_FILL_WAIT 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+init_state.I_FILL_GAP 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+init_state.I_DRAW 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+init_state.I_DRAW_BUSY 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+init_state.I_DRAW_WAIT 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+init_state.I_DRAW_GAP 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+init_state.I_DOTS 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+init_state.I_DOTS_BUSY 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+init_state.I_DOTS_WAIT 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+init_state.I_DOTS_GAP 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+init_state.I_READY 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+init_state.I_GAME_BEGIN 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
 
-State Machine - |lcd_test_top|frame_seq:u_fseq|state
-Name state.F_WAIT_INIT state.F_REQ state.F_RUN 
-state.F_WAIT_INIT 0 0 0 
-state.F_RUN 1 0 1 
-state.F_REQ 1 1 0 
+State Machine - |lcd_test_top|game_ctrl:u_game|state
+Name state.G_OVER state.G_STEP state.G_LCDW state.G_LCD state.G_DRAW state.G_WAIT state.G_TEST state.G_IDLE 
+state.G_IDLE 0 0 0 0 0 0 0 0 
+state.G_TEST 0 0 0 0 0 0 1 1 
+state.G_WAIT 0 0 0 0 0 1 0 1 
+state.G_DRAW 0 0 0 0 1 0 0 1 
+state.G_LCD 0 0 0 1 0 0 0 1 
+state.G_LCDW 0 0 1 0 0 0 0 1 
+state.G_STEP 0 1 0 0 0 0 0 1 
+state.G_OVER 1 0 0 0 0 0 0 1 
+
+State Machine - |lcd_test_top|dot_field:u_dots|state
+Name state.D_LCDW state.D_LCD state.D_WRITE state.D_WAIT state.D_READ state.D_Y state.D_X state.D_IDLE 
+state.D_IDLE 0 0 0 0 0 0 0 0 
+state.D_X 0 0 0 0 0 0 1 1 
+state.D_Y 0 0 0 0 0 1 0 1 
+state.D_READ 0 0 0 0 1 0 0 1 
+state.D_WAIT 0 0 0 1 0 0 0 1 
+state.D_WRITE 0 0 1 0 0 0 0 1 
+state.D_LCD 0 1 0 0 0 0 0 1 
+state.D_LCDW 1 0 0 0 0 0 0 1 
+
+State Machine - |lcd_test_top|line_draw:u_line|state
+Name state.L_LCDW state.L_LCD state.L_WRITE state.L_WAITDATA state.L_READ state.L_LOAD state.L_IDLE 
+state.L_IDLE 0 0 0 0 0 0 0 
+state.L_LOAD 0 0 0 0 0 1 1 
+state.L_READ 0 0 0 0 1 0 1 
+state.L_WAITDATA 0 0 0 1 0 0 1 
+state.L_WRITE 0 0 1 0 0 0 1 
+state.L_LCD 0 1 0 0 0 0 1 
+state.L_LCDW 1 0 0 0 0 0 1 
 
 State Machine - |lcd_test_top|lcd_ili9341_ctrl:u_lcd|state
-Name state.S_FRAME_END state.S_SCAN_TXW state.S_SCAN_TX state.S_SCAN_WAIT state.S_SCAN_REQ state.S_FRAME_HDR state.S_READY state.S_INIT_DELAY state.S_INIT_WAIT state.S_INIT_SEND state.S_INIT_STEP state.S_POWERON 
-state.S_POWERON 0 0 0 0 0 0 0 0 0 0 0 0 
-state.S_INIT_STEP 0 0 0 0 0 0 0 0 0 0 1 1 
-state.S_INIT_SEND 0 0 0 0 0 0 0 0 0 1 0 1 
-state.S_INIT_WAIT 0 0 0 0 0 0 0 0 1 0 0 1 
-state.S_INIT_DELAY 0 0 0 0 0 0 0 1 0 0 0 1 
-state.S_READY 0 0 0 0 0 0 1 0 0 0 0 1 
-state.S_FRAME_HDR 0 0 0 0 0 1 0 0 0 0 0 1 
-state.S_SCAN_REQ 0 0 0 0 1 0 0 0 0 0 0 1 
-state.S_SCAN_WAIT 0 0 0 1 0 0 0 0 0 0 0 1 
-state.S_SCAN_TX 0 0 1 0 0 0 0 0 0 0 0 1 
-state.S_SCAN_TXW 0 1 0 0 0 0 0 0 0 0 0 1 
-state.S_FRAME_END 1 0 0 0 0 0 0 0 0 0 0 1 
+Name state.S_END state.S_DATA_W state.S_DATA state.S_HDR_W state.S_HDR state.S_READY state.S_INIT_DELAY state.S_INIT_WAIT state.S_INIT_SEND state.S_INIT_STEP state.S_POWERON 
+state.S_POWERON 0 0 0 0 0 0 0 0 0 0 0 
+state.S_INIT_STEP 0 0 0 0 0 0 0 0 0 1 1 
+state.S_INIT_SEND 0 0 0 0 0 0 0 0 1 0 1 
+state.S_INIT_WAIT 0 0 0 0 0 0 0 1 0 0 1 
+state.S_INIT_DELAY 0 0 0 0 0 0 1 0 0 0 1 
+state.S_READY 0 0 0 0 0 1 0 0 0 0 1 
+state.S_HDR 0 0 0 0 1 0 0 0 0 0 1 
+state.S_HDR_W 0 0 0 1 0 0 0 0 0 0 1 
+state.S_DATA 0 0 1 0 0 0 0 0 0 0 1 
+state.S_DATA_W 0 1 0 0 0 0 0 0 0 0 1 
+state.S_END 1 0 0 0 0 0 0 0 0 0 1 
 
 State Machine - |lcd_test_top|lcd_ili9341_ctrl:u_lcd|spi_byte_master:u_spi|state
 Name state.S_IDLE state.S_HIGH state.S_LOW 
 state.S_IDLE 0 0 0 
 state.S_LOW 1 0 1 
 state.S_HIGH 1 1 0 
-
-State Machine - |lcd_test_top|game_ctrl:u_game|state
-Name state.G_OVER state.G_STEP state.G_DRAW state.G_WAIT state.G_TEST state.G_IDLE 
-state.G_IDLE 0 0 0 0 0 0 
-state.G_TEST 0 0 0 0 1 1 
-state.G_WAIT 0 0 0 1 0 1 
-state.G_DRAW 0 0 1 0 0 1 
-state.G_STEP 0 1 0 0 0 1 
-state.G_OVER 1 0 0 0 0 1 
-
-State Machine - |lcd_test_top|line_draw:u_line|state
-Name state.L_WAITDATA state.L_READ state.L_LOAD state.L_IDLE state.L_WRITE 
-state.L_IDLE 0 0 0 0 0 
-state.L_LOAD 0 0 1 1 0 
-state.L_READ 0 1 0 1 0 
-state.L_WAITDATA 1 0 0 1 0 
-state.L_WRITE 0 0 0 1 1 

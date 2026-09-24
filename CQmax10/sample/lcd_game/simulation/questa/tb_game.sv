@@ -92,9 +92,44 @@ module game_case #(
     assign fb_wr_addr = pre_wr_en ? pre_wr_addr : game_wr_addr;
     assign fb_wr_data = pre_wr_en ? pre_wr_data : game_wr_data;
 
-    logic [AW-1:0] rd_a_addr = '0;      // read port A unused in this test
+    logic [AW-1:0] rd_a_addr = '0;      // the DUT is the only read master now
     logic [31:0]   rd_a_data;
     logic          clr_start = 1'b0, clr_busy;
+
+    // ---- LCD dot request port ------------------------------------------
+    // Every dot the game draws is also sent to the panel as a 1x1 window.
+    logic        lcd_valid, lcd_ready;
+    logic [8:0]  lcd_x0, lcd_x1;
+    logic [7:0]  lcd_y0, lcd_y1;
+    logic [15:0] lcd_color;
+
+    localparam logic [15:0] COLOR_CASE = 16'hF800;
+
+    // accept immediately (the real controller's timing is covered by
+    // tb_rect_write); here only the request CONTENT matters
+    assign lcd_ready = 1'b1;
+
+    // capture each accepted dot request
+    localparam int MAX_LCD = 512;
+    int lcd_n = 0;
+    int lcd_x [0:MAX_LCD-1];
+    int lcd_y [0:MAX_LCD-1];
+    int lcd_w [0:MAX_LCD-1];      // width  = x1-x0+1
+    int lcd_h [0:MAX_LCD-1];      // height = y1-y0+1
+    int lcd_c [0:MAX_LCD-1];
+
+    always_ff @(posedge clk) begin
+        if (lcd_valid && lcd_ready) begin
+            if (lcd_n < MAX_LCD) begin
+                lcd_x[lcd_n] <= int'(lcd_x0);
+                lcd_y[lcd_n] <= int'(lcd_y0);
+                lcd_w[lcd_n] <= int'(lcd_x1) - int'(lcd_x0) + 1;
+                lcd_h[lcd_n] <= int'(lcd_y1) - int'(lcd_y0) + 1;
+                lcd_c[lcd_n] <= int'(lcd_color);
+            end
+            lcd_n <= lcd_n + 1;
+        end
+    end
 
     logic btn;
     int   dot_idx;                      // dots drawn so far, per the DUT
@@ -110,7 +145,8 @@ module game_case #(
         .AW           (AW),
         .START_X      (START_X),
         .START_Y      (START_Y),
-        .START_DIR_R  (START_DIR_R)
+        .START_DIR_R  (START_DIR_R),
+        .COLOR        (COLOR_CASE)
     ) dut (
         .clk       (clk),
         .rst       (rst),
@@ -124,7 +160,14 @@ module game_case #(
         .fb_wr_addr(game_wr_addr),
         .fb_wr_data(game_wr_data),
         .fb_rd_addr(fb_rd_addr),
-        .fb_rd_data(fb_rd_data)
+        .fb_rd_data(fb_rd_data),
+        .lcd_valid (lcd_valid),
+        .lcd_ready (lcd_ready),
+        .lcd_x0    (lcd_x0),
+        .lcd_y0    (lcd_y0),
+        .lcd_x1    (lcd_x1),
+        .lcd_y1    (lcd_y1),
+        .lcd_color (lcd_color)
     );
 
     framebuffer #(
@@ -132,8 +175,7 @@ module game_case #(
         .WORDS_PER_ROW(WORDS_PER_ROW), .AW(AW)
     ) fb (
         .clk(clk),
-        .rd_addr(rd_a_addr),   .rd_data(rd_a_data),
-        .rd2_addr(fb_rd_addr), .rd2_data(fb_rd_data),
+        .rd_addr(fb_rd_addr), .rd_data(fb_rd_data),
         .wr_en(fb_wr_en), .wr_addr(fb_wr_addr), .wr_data(fb_wr_data),
         .clr_start(clr_start), .clr_busy(clr_busy)
     );
@@ -378,13 +420,34 @@ module game_case #(
             end
         end
 
+        // ---- the LCD dot requests ---------------------------------
+        // The panel is written with one 1x1 window per drawn dot, in the same
+        // order as the trajectory, and the collision pixel must NOT be sent.
+        if (lcd_n !== exp_n) begin
+            if (errors < 8)
+                $display("  FAIL %0d LCD dot requests, expected %0d",
+                         lcd_n, exp_n);
+            errors++;
+        end
+        for (int k = 0; k < exp_n && k < lcd_n && k < MAX_LCD; k++) begin
+            if (lcd_x[k] !== exp_x[k] || lcd_y[k] !== exp_y[k] ||
+                lcd_w[k] !== 1 || lcd_h[k] !== 1 ||
+                lcd_c[k] !== int'(COLOR_CASE)) begin
+                if (errors < 8)
+                    $display("  FAIL LCD req %0d = (%0d,%0d) %0dx%0d col %04h, expected (%0d,%0d) 1x1 col %04h",
+                             k, lcd_x[k], lcd_y[k], lcd_w[k], lcd_h[k], lcd_c[k],
+                             exp_x[k], exp_y[k], COLOR_CASE);
+                errors++;
+            end
+        end
+
         if (errors == 0) begin
             if (collided)
-                $display("  OK   %0d dots then GAME OVER at (%0d,%0d) [field %0dx%0d]",
-                         exp_n, coll_x, coll_y, FIELD_W, FIELD_H);
+                $display("  OK   %0d dots then GAME OVER at (%0d,%0d) [field %0dx%0d, %0d LCD reqs]",
+                         exp_n, coll_x, coll_y, FIELD_W, FIELD_H, lcd_n);
             else
-                $display("  OK   %0d dots, no collision [field %0dx%0d]",
-                         exp_n, FIELD_W, FIELD_H);
+                $display("  OK   %0d dots, no collision [field %0dx%0d, %0d LCD reqs]",
+                         exp_n, FIELD_W, FIELD_H, lcd_n);
         end else begin
             $display("  FAIL %0d errors [field %0dx%0d]", errors, FIELD_W, FIELD_H);
         end

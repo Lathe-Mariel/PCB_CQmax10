@@ -1,0 +1,2 @@
+Info (10281): Verilog HDL Declaration information at lcd_test_top.sv(78): object "LINE_X0" differs only in case from object "line_x0" in the same scope File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_game/rtl/lcd_test_top.sv Line: 78
+Info (10281): Verilog HDL Declaration information at lcd_test_top.sv(79): object "LINE_X1" differs only in case from object "line_x1" in the same scope File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_game/rtl/lcd_test_top.sv Line: 79

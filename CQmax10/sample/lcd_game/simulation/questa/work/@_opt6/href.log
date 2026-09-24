@@ -1,5 +1,0 @@
-BEGIN 1:lcd_test_top:fast:work
-    game_over :  1:tb_orange:fast:work
-    dot_y :  1:tb_orange:fast:work
-    dot_x :  1:tb_orange:fast:work
-END 

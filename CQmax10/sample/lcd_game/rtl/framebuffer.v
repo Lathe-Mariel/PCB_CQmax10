@@ -1,21 +1,35 @@
 // framebuffer.v
 //
 // 320 x 240 x 1 bit frame buffer = 76800 bits, packed 32 pixels per M9K word
-// (2400 x 32). Simple dual port (one write port, two read ports):
-//   - write port : game logic / the start-up line drawer
-//   - read port A: LCD scan-out (runs continuously, every frame)
-//   - read port B: game logic, to test a pixel before drawing on it
+// (2400 x 32).
 //
-// Both read ports are SYNCHRONOUS: the data is registered, so it becomes
-// valid one clock after the address is sampled. An asynchronous read (assign
+// ---------------------------------------------------------------------------
+// WHAT THIS MEMORY IS FOR NOW
+// ---------------------------------------------------------------------------
+// The panel is no longer fed by scanning this buffer out. The ILI9341 keeps the
+// picture in its own GRAM and is driven by explicit rectangle writes (see
+// lcd_ili9341_ctrl.sv), so this buffer is used ONLY as the collision model:
+//
+//   * the playfield lines are written into it at start-up
+//   * the game writes each dot it draws into it
+//   * before drawing, the game reads the target pixel; if it is already set
+//     the game is over
+//
+// One read port + one write port is therefore enough, which is a plain simple
+// dual port M9K and needs only ONE memory block. (The previous design scanned
+// the buffer out to the panel as well, which needed a second read port and
+// made Quartus duplicate the whole RAM into a second M9K block.)
+//
+// The read port is SYNCHRONOUS: the data is registered, so it becomes valid
+// one clock after the address is sampled. An asynchronous read (assign
 // rd_data = mem[rd_addr]) stops Quartus inferring an M9K and it then tries to
 // build the whole buffer from registers, which does not fit on the 10M08.
 //
-// A 2-read-port + 1-write-port RAM is still a "simple dual port" for the M9K
-// (it has two independent read ports), so this stays one memory block.
-//
-// The write port has priority over the read ports (read-during-write returns
-// the new data), which is what the M9K does natively.
+// The read port is registered, so a read of an address that is written on the
+// same clock returns the OLD contents of that word (both are nonblocking
+// assignments: the read samples the memory before the write updates it). The
+// game never does this - it reads a pixel, and writes it in a later cycle - so
+// the behaviour only matters as documentation.
 //
 // Word address layout inside a row:
 //   word in row = x / 32      (WORDS_PER_ROW = 10 for a 320-wide screen)
@@ -30,15 +44,11 @@ module framebuffer #(
 )(
     input  logic             clk,
 
-    // read port A (LCD scan-out)
+    // read port (collision test)
     input  logic [AW-1:0]    rd_addr,
     output logic [31:0]      rd_data,
 
-    // read port B (game logic pixel test)
-    input  logic [AW-1:0]    rd2_addr,
-    output logic [31:0]      rd2_data,
-
-    // write port (game logic)
+    // write port (playfield / game)
     input  logic             wr_en,
     input  logic [AW-1:0]    wr_addr,
     input  logic [31:0]      wr_data,
@@ -61,10 +71,9 @@ module framebuffer #(
             mem[clr_addr] <= 32'h0000_0000;
     end
 
-    // synchronous read ports: data is valid one clock after the address
+    // synchronous read port: data is valid one clock after the address
     always_ff @(posedge clk) begin
-        rd_data  <= mem[rd_addr];
-        rd2_data <= mem[rd2_addr];
+        rd_data <= mem[rd_addr];
     end
 
     // clear FSM: walks the whole buffer, one word per cycle

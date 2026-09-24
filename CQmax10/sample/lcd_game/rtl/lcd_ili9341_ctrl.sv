@@ -8,26 +8,42 @@
 //
 // The controller initialises the panel on its own POWERON_WAIT_MS after reset
 // is released (the panel needs ~150 ms of VDD settling before the first
-// command), then accepts whole-frame requests:
+// command).
 //
-//   req_valid / req_ready / req_cmd = CMD_FRAME
-//       Sets a full-screen 320x240 CASET/PASET window, issues RAMWR and
-//       streams one entire frame, pixel by pixel, in row-major order
-//       (column fastest) - the order the ILI9341 expects.
+// ---------------------------------------------------------------------------
+// ARCHITECTURE: WINDOWED RECTANGLE WRITES, NOT FRAME STREAMING
+// ---------------------------------------------------------------------------
+// The ILI9341 keeps the picture in its OWN GRAM, so the FPGA does not have to
+// resend all 76800 pixels every frame. Instead this controller accepts
+// windowed rectangle writes:
 //
-// Each pixel is fetched over the `pix_*` port so the frame source can be
-// anything; here it is the 1-bit frame buffer plus a colour LUT.
+//   wr_valid / wr_ready + wr_x0,wr_y0,wr_x1,wr_y1 (inclusive) + wr_color
 //
-//   assert pix_req for one clk with pix_x/pix_y valid
-//   2 clk later pix_valid is asserted for one clk with pix_color valid
+// and for each one sends
+//
+//   CASET (x0..x1)   PASET (y0..y1)   RAMWR   followed by the window pixels
+//
+// The window can be anything from the whole screen down to a single pixel:
+//
+//   * whole screen  -> the initial background fill
+//   * one row span  -> one playfield line          ("行単位で描画")
+//   * one pixel     -> one dot of the moving line  ("ドット単位で描画")
+//
+// That is what removes the need for a frame-buffer scan-out: the panel holds
+// the image and the FPGA only writes what actually changed. The previous
+// design streamed 320x240x16 bits every frame, which kept the SPI link 100 %
+// busy and capped the design at ~6.7 fps; now the link is idle between
+// updates.
+//
+// A request must be held (wr_valid high, address/colour stable) until the
+// cycle where wr_ready is high. The window is then latched, so the caller may
+// change it as soon as it sees the accept.
+//
+// The pixels of a window are streamed in row-major order (column fastest),
+// which is the order the ILI9341 expects after CASET/PASET.
 //
 // Timing: SCK = clk * HALF_DEN / (2 * HALF_NUM). The defaults give
-// 50 MHz * 2 / (2*5) = 10 MHz, which is the ILI9341 datasheet write limit.
-// A pixel is 16 bits plus ~11 clocks of handshake: 16*bit_time + 11. That
-// matches the measured 115.2 ms (8.7 fps) at 12.5 MHz (bit 4 clk -> 75
-// clk/pixel) and gives 139.8 ms (7.2 fps) at the default 10 MHz (bit 5 clk ->
-// 91 clk/pixel). See README section 5. Lengthen the frame period at the top
-// level rather than trying to go faster.
+// 50 MHz * 2 / (2*5) = 10 MHz, the ILI9341 datasheet write limit.
 
 module lcd_ili9341_ctrl #(
     parameter int          SCLK_HALF_NUM   = 5,   // SCK half period = 5/2 clk
@@ -42,37 +58,27 @@ module lcd_ili9341_ctrl #(
     input  logic        clk,
     input  logic        rst,
 
-    input  logic        req_valid,
-    output logic        req_ready,
-    input  logic [1:0]  req_cmd,        // 2'b10 = FRAME
+    // ---- rectangle write request (valid/ready) --------------------------
+    input  logic        wr_valid,
+    output logic        wr_ready,
+    input  logic [8:0]  wr_x0,
+    input  logic [7:0]  wr_y0,
+    input  logic [8:0]  wr_x1,
+    input  logic [7:0]  wr_y1,
+    input  logic [15:0] wr_color,
 
-    // pixel source (frame buffer scan-out)
-    output logic        pix_req,
-    output logic [8:0]  pix_x,
-    output logic [7:0]  pix_y,
-    input  logic [15:0] pix_color,
-    input  logic        pix_valid,
-
-    output logic        active,         // 1 while a frame transfer is running
-    output logic        frame_done,     // 1-cycle pulse when a frame is finished
+    output logic        active,         // 1 while a write is running
+    output logic        wr_done,        // 1-cycle pulse when a write finished
 
     output logic        lcd_cs,
     output logic        lcd_sck,
     output logic        lcd_mosi,
     output logic        lcd_dc
 );
-    localparam logic [1:0] CMD_FRAME = 2'b10;
-
     localparam int COLS_LAST_I = SCREEN_W - 1;                 // 319
     localparam int ROWS_LAST_I = SCREEN_H - 1;                 // 239
-    localparam int NPIX_I      = SCREEN_W * SCREEN_H;          // 76800
     localparam logic [8:0]  COLS_LAST = COLS_LAST_I[8:0];
     localparam logic [7:0]  ROWS_LAST = ROWS_LAST_I[7:0];
-    localparam logic [16:0] NPIX      = NPIX_I[16:0];
-
-    // the CASET/PASET high bytes are only ever 0 or 1 for this panel
-    localparam logic [7:0] COLS_LAST_HI = (COLS_LAST[8]) ? 8'h01 : 8'h00;
-    localparam logic [7:0] ROWS_LAST_HI = (ROWS_LAST > 8'hFF) ? 8'h01 : 8'h00;
 
     localparam int MS_CYCLES = (CLK_FREQ_HZ / 1000) / MS_SCALE;
 
@@ -143,16 +149,20 @@ module lcd_ili9341_ctrl #(
     localparam logic [7:0] CMD_PASET = 8'h2B;
     localparam logic [7:0] CMD_RAMWR = 8'h2C;
 
+    // header = CASET(5) + PASET(5) + RAMWR(1) = 11 bytes, indices 0..10
+    localparam logic [3:0] HDR_LAST = 4'd10;
+
     // ------------------------------------------------------------------
     // FSM
     // ------------------------------------------------------------------
+    // 11 states, so 4 bits (a 3-bit enum cannot represent S_DATA onwards)
     typedef enum logic [3:0] {
         S_POWERON,
         S_INIT_STEP, S_INIT_SEND, S_INIT_WAIT, S_INIT_DELAY,
         S_READY,
-        S_FRAME_HDR,
-        S_SCAN_REQ, S_SCAN_WAIT, S_SCAN_TX, S_SCAN_TXW,
-        S_FRAME_END
+        S_HDR, S_HDR_W,
+        S_DATA, S_DATA_W,
+        S_END
     } state_t;
 
     state_t state;
@@ -165,17 +175,34 @@ module lcd_ili9341_ctrl #(
     logic [7:0]  gap_cnt;
 
     // CS must stay high for at least one SCK period between command trains
-    // so the panel can see the end of the frame and the start of the next one.
+    // so the panel can see the end of one write and the start of the next.
     localparam logic [7:0] CS_GAP_CYCLES = 8'd32;
 
-    logic [8:0]  col_cnt;
-    logic [7:0]  row_cnt;
-    logic [16:0] pix_left;
-    logic        byte_sel;
-    logic [15:0] cur_color;
+    // ---- latched request -------------------------------------------------
+    logic [8:0]  w_x0, w_x1;
+    logic [7:0]  w_y0, w_y1;
+    logic [15:0] w_color;
+    logic [16:0] pix_left;      // pixels still to send in this window
+    logic        byte_sel;      // 0 = high byte, 1 = low byte
 
-    // one-cycle strobe when the byte in spi_data has just been shifted out
     wire byte_done = spi_done;
+
+    // window dimensions (a valid window is at least 1x1)
+    wire [9:0] w_cnt = {1'b0, w_x1} - {1'b0, w_x0} + 10'd1;   // 1..320
+    wire [8:0] h_cnt = {1'b0, w_y1} - {1'b0, w_y0} + 9'd1;    // 1..240
+
+    // The product is held in a wide wire and then sliced: assigning a 19-bit
+    // expression straight to a 17-bit wire makes Quartus report a truncation
+    // (Warning 10230). Max is 320*240 = 76800, which fits in 17 bits.
+    wire [18:0] win_pix_w = w_cnt * h_cnt;
+    wire [16:0] win_pix   = win_pix_w[16:0];
+
+    // CASET/PASET high bytes: x can reach 319 (hi = 1), y only reaches 239
+    wire [7:0] x0_hi = {7'b000_0000, w_x0[8]};
+    wire [7:0] x1_hi = {7'b000_0000, w_x1[8]};
+
+    // a write is accepted only when the controller is idle after init
+    assign wr_ready = init_done && (state == S_READY) && !rst;
 
     always_ff @(posedge clk) begin
         if (rst) begin
@@ -189,19 +216,17 @@ module lcd_ili9341_ctrl #(
             init_done  <= 1'b0;
             hdr_step   <= 4'd0;
             gap_cnt    <= 8'd0;
-            col_cnt    <= 9'd0;
-            row_cnt    <= 8'd0;
+            w_x0       <= 9'd0;
+            w_x1       <= COLS_LAST;
+            w_y0       <= 8'd0;
+            w_y1       <= ROWS_LAST;
+            w_color    <= 16'h0000;
             pix_left   <= 17'd0;
             byte_sel   <= 1'b0;
-            cur_color  <= 16'h0000;
-            pix_req    <= 1'b0;
-            pix_x      <= 9'd0;
-            pix_y      <= 8'd0;
-            frame_done <= 1'b0;
+            wr_done    <= 1'b0;
         end else begin
-            spi_start  <= 1'b0;
-            pix_req    <= 1'b0;
-            frame_done <= 1'b0;
+            spi_start <= 1'b0;
+            wr_done   <= 1'b0;
 
             case (state)
             // ------------------------------------------------- power-on
@@ -262,23 +287,28 @@ module lcd_ili9341_ctrl #(
             end
 
             // ------------------------------------------------- idle
+            // Accept one rectangle write: latch the window and start the
+            // CASET/PASET/RAMWR header. The window is latched here, so the
+            // caller is free to change its request immediately.
             S_READY: begin
                 lcd_cs <= 1'b1;
-                if (req_valid && req_cmd == CMD_FRAME) begin
+                if (wr_valid && wr_ready) begin
+                    w_x0     <= wr_x0;
+                    w_x1     <= wr_x1;
+                    w_y0     <= wr_y0;
+                    w_y1     <= wr_y1;
+                    w_color  <= wr_color;
                     hdr_step <= 4'd0;
-                    col_cnt  <= 9'd0;
-                    row_cnt  <= 8'd0;
-                    pix_left <= NPIX;
                     byte_sel <= 1'b0;
                     lcd_cs   <= 1'b0;
-                    state    <= S_FRAME_HDR;
+                    state    <= S_HDR;
                 end
             end
 
-            // ------------------------------------- end of frame / CS gap
+            // ------------------------------------- end of write / CS gap
             // Keep CS high for a while so the panel sees a clean break
-            // between one frame's command train and the next one's.
-            S_FRAME_END: begin
+            // between one command train and the next.
+            S_END: begin
                 lcd_cs <= 1'b1;
                 if (gap_cnt == CS_GAP_CYCLES - 8'd1) begin
                     gap_cnt <= 8'd0;
@@ -290,81 +320,77 @@ module lcd_ili9341_ctrl #(
 
             // ------------------------------------------------- header
             // 2A x0h x0l x1h x1l  2B y0h y0l y1h y1l  2C
-            S_FRAME_HDR: begin
+            // The window bytes come from the LATCHED request, not the pins.
+            //
+            // hdr_step is advanced ONLY in S_HDR_W (after the byte is actually
+            // sent). Advancing it here as well would make it step by two,
+            // so it would never equal HDR_LAST at the check below and the
+            // header would repeat forever.
+            S_HDR: begin
                 if (!spi_busy && !spi_start) begin
                     case (hdr_step)
-                        4'd0: begin lcd_dc <= 1'b0; spi_data <= CMD_CASET;          end
-                        4'd1: begin lcd_dc <= 1'b1; spi_data <= 8'h00;              end
-                        4'd2: begin lcd_dc <= 1'b1; spi_data <= 8'h00;              end
-                        4'd3: begin lcd_dc <= 1'b1; spi_data <= COLS_LAST_HI;        end
-                        4'd4: begin lcd_dc <= 1'b1; spi_data <= COLS_LAST[7:0];     end
-                        4'd5: begin lcd_dc <= 1'b0; spi_data <= CMD_PASET;          end
-                        4'd6: begin lcd_dc <= 1'b1; spi_data <= 8'h00;              end
-                        4'd7: begin lcd_dc <= 1'b1; spi_data <= 8'h00;              end
-                        4'd8: begin lcd_dc <= 1'b1; spi_data <= ROWS_LAST_HI;        end
-                        4'd9: begin lcd_dc <= 1'b1; spi_data <= ROWS_LAST[7:0];     end
+                        4'd0: begin lcd_dc <= 1'b0; spi_data <= CMD_CASET; end
+                        4'd1: begin lcd_dc <= 1'b1; spi_data <= x0_hi;     end
+                        4'd2: begin lcd_dc <= 1'b1; spi_data <= w_x0[7:0]; end
+                        4'd3: begin lcd_dc <= 1'b1; spi_data <= x1_hi;     end
+                        4'd4: begin lcd_dc <= 1'b1; spi_data <= w_x1[7:0]; end
+                        4'd5: begin lcd_dc <= 1'b0; spi_data <= CMD_PASET; end
+                        4'd6: begin lcd_dc <= 1'b1; spi_data <= 8'h00;     end
+                        4'd7: begin lcd_dc <= 1'b1; spi_data <= w_y0;      end
+                        4'd8: begin lcd_dc <= 1'b1; spi_data <= 8'h00;     end
+                        4'd9: begin lcd_dc <= 1'b1; spi_data <= w_y1;      end
                         default: begin
                             lcd_dc   <= 1'b0;
                             spi_data <= CMD_RAMWR;
-                            state    <= S_SCAN_REQ;
                         end
                     endcase
                     spi_start <= 1'b1;
-                    hdr_step  <= hdr_step + 4'd1;
+                    state     <= S_HDR_W;
                 end
             end
 
-            // ------------------------------------------------- scan-out
-            S_SCAN_REQ: begin
-                if (pix_left == 17'd0) begin
-                    lcd_cs  <= 1'b1;
-                    gap_cnt <= 8'd0;
-                    state   <= S_FRAME_END;
-                end else begin
-                    pix_req <= 1'b1;               // 1-cycle request pulse
-                    pix_x   <= col_cnt;
-                    pix_y   <= row_cnt;
-                    state   <= S_SCAN_WAIT;
+            // wait for the header byte, then the next one (or the pixels)
+            S_HDR_W: begin
+                if (byte_done) begin
+                    if (hdr_step == HDR_LAST) begin
+                        // RAMWR has been sent: set up the pixel stream
+                        pix_left <= win_pix;
+                        byte_sel <= 1'b0;
+                        state    <= S_DATA;
+                    end else begin
+                        hdr_step <= hdr_step + 4'd1;
+                        state    <= S_HDR;
+                    end
                 end
             end
 
-            S_SCAN_WAIT: begin
-                if (pix_valid) begin
-                    cur_color <= pix_color;
-                    state     <= S_SCAN_TX;
-                end
-            end
-
-            S_SCAN_TX: begin
+            // ------------------------------------------------- pixel stream
+            // Every pixel of the window is the same colour, so only the
+            // window size matters - no memory read is needed per pixel.
+            S_DATA: begin
                 if (!spi_busy && !spi_start) begin
                     lcd_dc    <= 1'b1;
-                    spi_data  <= byte_sel ? cur_color[7:0] : cur_color[15:8];
+                    spi_data  <= byte_sel ? w_color[7:0] : w_color[15:8];
                     spi_start <= 1'b1;
-                    state     <= S_SCAN_TXW;
+                    state     <= S_DATA_W;
                 end
             end
 
-            S_SCAN_TXW: begin
+            S_DATA_W: begin
                 if (byte_done) begin
                     if (!byte_sel) begin
                         byte_sel <= 1'b1;          // send the low byte next
-                        state    <= S_SCAN_TX;
+                        state    <= S_DATA;
                     end else begin
                         byte_sel <= 1'b0;
                         pix_left <= pix_left - 17'd1;
-                        if (col_cnt == COLS_LAST) begin
-                            col_cnt <= 9'd0;
-                            row_cnt <= row_cnt + 8'd1;
-                        end else begin
-                            col_cnt <= col_cnt + 9'd1;
-                        end
                         if (pix_left == 17'd1) begin
-                            lcd_cs     <= 1'b1;    // last pixel of the frame
-                            frame_done <= 1'b1;
-                            gap_cnt    <= 8'd0;
-                            state      <= S_FRAME_END;
+                            lcd_cs  <= 1'b1;       // last pixel of the window
+                            wr_done <= 1'b1;
+                            gap_cnt <= 8'd0;
+                            state   <= S_END;
                         end else begin
-                            state <= S_SCAN_REQ;
+                            state <= S_DATA;
                         end
                     end
                 end
@@ -375,11 +401,7 @@ module lcd_ili9341_ctrl #(
         end
     end
 
-    assign req_ready = init_done && (state == S_READY) && !rst;
-    assign active    = (state == S_FRAME_HDR) ||
-                       (state == S_SCAN_REQ)  ||
-                       (state == S_SCAN_WAIT) ||
-                       (state == S_SCAN_TX)   ||
-                       (state == S_SCAN_TXW);
+    assign active = (state == S_HDR)  || (state == S_HDR_W) ||
+                    (state == S_DATA) || (state == S_DATA_W);
 
 endmodule

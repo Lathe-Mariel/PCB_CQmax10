@@ -1,74 +1,56 @@
 // game_ctrl.sv
 //
-// The moving line of the game (step 4). The static line table drawn during
-// start-up is the "playfield"; this module grows one dot at a time from
-// (START_X, START_Y) and stops as soon as it would touch anything already
-// drawn.
+// The game from prompt.txt #4: a one-pixel-wide line grows from (1,1).
 //
-// Rules implemented (prompt.txt #4):
-//   * the moving line starts at (1,1)
-//   * button (PIN_62) NOT pressed : one dot every STEP_MS, down-right
-//   * button pressed              : one dot every STEP_MS, up-right
-//   * hitting x = FIELD_W-1 (319) : reverse the horizontal direction
-//   * hitting x = 0               : reverse the horizontal direction
-//   * before drawing a dot, read the frame buffer. If the pixel is already
-//     set, that is GAME OVER and all processing stops.
+//   * button released : one dot every STEP_MS, down and to the right
+//   * button pressed  : one dot every STEP_MS, up and to the right
+//   * reaching x=319 or x=0 : the HORIZONTAL direction reverses
+//   * before drawing a dot, the frame buffer is checked; if the target pixel
+//     is already set the game is over and everything stops
 //
-// The moving line starts at (START_X, START_Y) - (1,1) by default - and that
-// first pixel IS part of the line: the FSM tests it and draws it before
-// moving on, so the "already drawn?" check covers the start position too.
+// The vertical direction never reverses (the button only chooses up or down),
+// so y clamps at the top and bottom edges; see "WHAT THIS GAME ACTUALLY DOES"
+// below.
 //
-// WHY A SECOND READ PORT: the LCD scans the frame buffer out continuously, so
-// its read port (A) is busy for most of every frame. The pixel test here needs
-// its own address in an unrelated cycle, so it uses read port B. Both ports are
-// synchronous, which is what lets Quartus keep the buffer in one M9K.
+// ---------------------------------------------------------------------------
+// TWO DESTINATIONS PER DOT
+// ---------------------------------------------------------------------------
+// Every accepted dot is written to BOTH:
 //
-// WHY A SECOND READ PORT: the LCD scans the frame buffer out continuously, so
-// its read port (A) is busy for most of every frame. The pixel test here needs
-// its own address in an unrelated cycle, so it uses read port B. Both ports are
-// synchronous, which is what lets Quartus keep the buffer in one M9K.
+//   1. the frame buffer, because it is the collision model. It holds the
+//      playfield lines and the trail of the moving line, so the next dot's
+//      read-before-write test is what detects a collision.
+//   2. the panel, as a single 1x1 rectangle write ("ドット単位で描画").
 //
-// The horizontal bounce is implemented by reversing AND stepping back one
-// pixel, so the head never leaves the screen (at 319 it moves to 318). The
-// trail is diagonal at every step because the vertical direction always
-// changes the row, so a bounce always lands on a fresh pixel rather than on
-// its own trail.
+// The panel is NOT a scan-out of the frame buffer any more: the ILI9341 keeps
+// its own GRAM, so a dot only has to be sent once, when it is drawn. That is
+// why this module requests one 1x1 window per dot instead of relying on the
+// whole buffer being streamed every frame.
 //
-// The vertical direction is never reversed by the rules. y is therefore
-// CLAMPED to the screen (0 .. FIELD_H-1) so the head cannot run off the top or
-// bottom. Note the consequence: while y is clamped, the head travels
-// horizontally, and bouncing then does retrace its own trail - which the
-// "already drawn" test correctly reports as GAME OVER. On a 320x240 field this
-// is what happens in practice: x and y advance at the same rate on a diagonal,
-// and the field is wider than it is tall, so y reaches an edge long before x
-// can travel from one side to the other.
-//
-// Dot rate: STEP_CYCLES + 3 clocks per dot. The 3 clocks are the TEST/WAIT/
-// DRAW states, i.e. 60 ns against a STEP_MS of tens of ms, so the rate is
-// STEP_MS per dot for any practical purpose.
-//
+// ---------------------------------------------------------------------------
 // FRAME SYNCHRONISATION (LOCK_TO_FRAME)
-// The panel only shows the frame buffer at FRAME_PERIOD_MS intervals, so a dot
-// that arrives mid-frame is not visible until the NEXT frame. If the dot period
-// is not a multiple of the frame period, the number of dots that appear per
-// frame keeps changing (e.g. 2, 3, 2, 3, ...) and the moving line looks jerky
-// even when nothing else is wrong.
-//
-// With LOCK_TO_FRAME set, STEP_MS becomes a MINIMUM and the period is rounded
-// UP to a whole number of frame periods:
+// ---------------------------------------------------------------------------
+// STEP_MS becomes a MINIMUM and the period is rounded UP to a whole number of
+// frame periods:
 //
 //   period = ceil(STEP_MS / FRAME_PERIOD_MS) * FRAME_PERIOD_MS
 //
-// Every displayed frame then shows exactly that many new dots, so the line
-// moves at a constant, regular speed - which reads as smooth far more than a
-// raw frame-rate increase does.
+// Without the rounding, the number of dots that land in one panel refresh
+// keeps changing (0, 0, 1, 0, 1, ...) and the line looks jerky even when
+// everything else is correct. The rounding is done at elaboration time from
+// integer parameters (no real arithmetic, which synthesis tools do not support
+// in parameter expressions).
 //
-// The rounding is done at elaboration time from integer parameters (no real
-// arithmetic, which synthesis tools do not support in parameter expressions),
-// and the frame period used here is the MINIMUM frame period. The real period
-// can be longer when the frame transfer itself is slower than FRAME_PERIOD_MS
-// (SPI-bound), in which case the dot rate simply follows the transfer and stays
-// in step anyway.
+// ---------------------------------------------------------------------------
+// WHAT THIS GAME ACTUALLY DOES (important)
+// ---------------------------------------------------------------------------
+// Starting at (1,1) moving right, the head reaches (25,25) first and stops
+// there: that is the first playfield line. The x=319 reversal DOES happen
+// (e.g. from (315,10)) but the head then retraces its own trail and stops
+// immediately. The x=0 reversal can never happen from (1,1) moving right,
+// because x and y advance together and the screen is wider (320) than it is
+// tall (240), so y hits an edge first; it exists for START_DIR_R = 0 and for
+// any future start position, and is covered by the unit tests.
 
 module game_ctrl #(
     parameter int CLK_FREQ_HZ   = 50_000_000,
@@ -77,7 +59,7 @@ module game_ctrl #(
 
     // round the dot period up to a whole number of frames (see the header)
     parameter bit LOCK_TO_FRAME = 1'b1,
-    parameter int FRAME_PERIOD_MS = 250,  // must match the frame_seq parameter
+    parameter int FRAME_PERIOD_MS = 250,  // must match the top-level frame period
 
     parameter int FIELD_W       = 320,
     parameter int FIELD_H       = 240,
@@ -91,7 +73,9 @@ module game_ctrl #(
     // (the head reaches x=319 first, bounces, and immediately retraces its own
     // trail), so this exists to exercise that branch in simulation and for any
     // future start position.
-    parameter bit START_DIR_R = 1'b1
+    parameter bit START_DIR_R = 1'b1,
+
+    parameter logic [15:0] COLOR = 16'hF800   // drawn dot colour (red)
 )(
     input  logic clk,
     input  logic rst,
@@ -108,14 +92,23 @@ module game_ctrl #(
     output logic [8:0] dot_x,
     output logic [7:0] dot_y,
 
-    // frame buffer write port
+    // frame buffer write port (collision model)
     output logic          fb_wr_en,
     output logic [AW-1:0] fb_wr_addr,
     output logic [31:0]   fb_wr_data,
 
-    // frame buffer read port B (pixel test)
+    // frame buffer read port (pixel test)
     output logic [AW-1:0] fb_rd_addr,
-    input  logic [31:0]   fb_rd_data
+    input  logic [31:0]   fb_rd_data,
+
+    // panel rectangle request: one 1x1 window per dot
+    output logic        lcd_valid,
+    input  logic        lcd_ready,
+    output logic [8:0]  lcd_x0,
+    output logic [7:0]  lcd_y0,
+    output logic [8:0]  lcd_x1,
+    output logic [7:0]  lcd_y1,
+    output logic [15:0] lcd_color
 );
     // ---- effective dot period --------------------------------------------
     // Integer ceiling division: (n + d - 1) / d, with d clamped to at least 1
@@ -195,11 +188,21 @@ module game_ctrl #(
     //
     //   G_TEST  (cycle 0) : present the address of the pixel to move to
     //   G_WAIT  (cycle 1) : data not valid yet
-    //   G_DRAW  (cycle 2) : data valid -> test the bit, then either set it or
-    //                       declare GAME OVER (address is unchanged, so the
-    //                       write targets the pixel that was tested)
-    //   G_STEP            : hold STEP_MS, then advance the head by one dot
-    typedef enum logic [2:0] {G_IDLE, G_TEST, G_WAIT, G_DRAW, G_STEP, G_OVER} st_t;
+    //   G_DRAW  (cycle 2) : data valid -> test the bit, then either set it
+    //                       (frame buffer write) or declare GAME OVER
+    //   G_LCD   : assert the 1x1 panel request
+    //   G_LCDW  : hold it until the panel controller accepts it
+    //   G_STEP  : hold STEP_MS, then advance the head by one dot
+    //
+    // G_LCD and G_LCDW exist as SEPARATE states because `lcd_valid` is
+    // registered: asserting it and clearing it in the same always block would
+    // leave it high for zero cycles (the later assignment wins), so the
+    // request would never be seen.
+    //
+    // The address is unchanged between G_TEST and G_DRAW, so the write targets
+    // exactly the pixel that was tested.
+    typedef enum logic [2:0] {G_IDLE, G_TEST, G_WAIT, G_DRAW, G_LCD, G_LCDW,
+                              G_STEP, G_OVER} st_t;
 
     st_t     state;
     logic [TW-1:0] step_cnt;
@@ -217,11 +220,18 @@ module game_ctrl #(
             fb_wr_addr <= '0;
             fb_wr_data <= 32'h0000_0000;
             fb_rd_addr <= '0;
+            lcd_valid  <= 1'b0;
+            lcd_x0     <= 9'd0;
+            lcd_y0     <= 8'd0;
+            lcd_x1     <= 9'd0;
+            lcd_y1     <= 8'd0;
+            lcd_color  <= COLOR;
         end else begin
             fb_wr_en <= 1'b0;
 
             case (state)
                 G_IDLE: begin
+                    lcd_valid <= 1'b0;
                     if (start) begin
                         x         <= SX;
                         y         <= SY;
@@ -248,16 +258,39 @@ module game_ctrl #(
                 G_DRAW: begin
                     if (fb_rd_data[cur_bit]) begin
                         // something is already drawn here: GAME OVER.
-                        // Nothing is written; the image stays on the panel.
+                        // Nothing is written and nothing is sent to the panel,
+                        // so the image on the LCD stays as it is.
                         running   <= 1'b0;
                         game_over <= 1'b1;
                         state     <= G_OVER;
                     end else begin
+                        // collision model: remember the trail
                         fb_wr_en   <= 1'b1;
                         fb_wr_addr <= cur_addr;
                         fb_wr_data <= fb_rd_data | (32'h0000_0001 << cur_bit);
-                        step_cnt   <= '0;
-                        state      <= G_STEP;
+                        state      <= G_LCD;
+                    end
+                end
+
+                // ---- draw the dot on the panel --------------------------
+                // One 1x1 window. The head coordinates are held for the whole
+                // state, so the request is stable while it waits to be taken.
+                G_LCD: begin
+                    lcd_valid <= 1'b1;
+                    lcd_x0    <= x;
+                    lcd_x1    <= x;
+                    lcd_y0    <= y[7:0];
+                    lcd_y1    <= y[7:0];
+                    lcd_color <= COLOR;
+                    state     <= G_LCDW;
+                end
+
+                // hold the request until the controller takes it
+                G_LCDW: begin
+                    if (lcd_ready) begin
+                        lcd_valid <= 1'b0;      // accepted
+                        step_cnt  <= '0;
+                        state     <= G_STEP;
                     end
                 end
 
@@ -274,9 +307,10 @@ module game_ctrl #(
                     end
                 end
 
-                // ---- frozen: wait for a reset --------------------------
+                // ---- frozen: wait for a reset ---------------------------
                 G_OVER: begin
-                    running <= 1'b0;
+                    running   <= 1'b0;
+                    lcd_valid <= 1'b0;
                 end
 
                 default: state <= G_IDLE;

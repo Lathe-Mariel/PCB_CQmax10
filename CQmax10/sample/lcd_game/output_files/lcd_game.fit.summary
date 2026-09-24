@@ -1,18 +1,18 @@
-Fitter Status : Successful - Wed Sep 23 20:39:09 2026
+Fitter Status : Successful - Fri Sep 25 04:02:50 2026
 Quartus Prime Version : 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 Revision Name : lcd_game
 Top-level Entity Name : lcd_test_top
 Family : MAX 10
 Device : 10M08SCE144C8G
 Timing Models : Final
-Total logic elements : 1,000 / 8,064 ( 12 % )
-    Total combinational functions : 981 / 8,064 ( 12 % )
-    Dedicated logic registers : 464 / 8,064 ( 6 % )
-Total registers : 464
+Total logic elements : 1,347 / 8,064 ( 17 % )
+    Total combinational functions : 1,326 / 8,064 ( 16 % )
+    Dedicated logic registers : 623 / 8,064 ( 8 % )
+Total registers : 623
 Total pins : 13 / 101 ( 13 % )
 Total virtual pins : 0
-Total memory bits : 153,600 / 387,072 ( 40 % )
-Embedded Multiplier 9-bit elements : 0 / 48 ( 0 % )
+Total memory bits : 76,800 / 387,072 ( 20 % )
+Embedded Multiplier 9-bit elements : 2 / 48 ( 4 % )
 Total PLLs : 0 / 1 ( 0 % )
 UFM blocks : 0 / 1 ( 0 % )
 ADC blocks : 0

@@ -58,31 +58,27 @@
 				"approve": true,
 				"matchCommandLine": true
 			},
-			"/^cmd\\.exe /c \"call h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_game\\\\simulation\\\\questa\\\\run_orange\\.bat\"$/": {
+			"/^cmd\\.exe /c \"call h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_game\\\\simulation\\\\questa\\\\run_all\\.bat.*\"$/": {
 				"approve": true,
 				"matchCommandLine": true
 			},
-			"/^cmd\\.exe /c \"call h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_game\\\\simulation\\\\questa\\\\run_one\\.bat orange\"$/": {
+			"/^cmd\\.exe /c \"call h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_game\\\\simulation\\\\questa\\\\run_one\\.bat tb_[a-z_]+\"$/": {
 				"approve": true,
 				"matchCommandLine": true
 			},
-			"/^cmd\\.exe /c \"type h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_game\\\\simulation\\\\questa\\\\_r_orange\\.txt\"$/": {
+			"/^cmd\\.exe /c \"call h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_game\\\\simulation\\\\questa\\\\_killsim\\.bat.*\"$/": {
 				"approve": true,
 				"matchCommandLine": true
 			},
-			"/^cmd\\.exe /c \"call h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_game\\\\simulation\\\\questa\\\\run_one\\.bat tb_orange\"$/": {
+			"/^cmd\\.exe /c \"call h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_game\\\\simulation\\\\questa\\\\_tidy\\.bat\"$/": {
 				"approve": true,
 				"matchCommandLine": true
 			},
-			"/^cmd\\.exe /c \"timeout /t 60 /nobreak >nul & type h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_game\\\\simulation\\\\questa\\\\_r_tb_orange\\.txt\"$/": {
+			"/^cmd\\.exe /c \"call h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_game\\\\build\\.bat\"$/": {
 				"approve": true,
 				"matchCommandLine": true
 			},
-			"/^cmd\\.exe /c \"timeout /t 180 /nobreak >nul & type h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_game\\\\simulation\\\\questa\\\\_r_tb_orange\\.txt\"$/": {
-				"approve": true,
-				"matchCommandLine": true
-			},
-			"/^cmd\\.exe /c \"call h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_game\\\\simulation\\\\questa\\\\run_one\\.bat tb_fps > h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_game\\\\simulation\\\\questa\\\\_fps_run\\.txt 2>&1\"$/": {
+			"/^cmd\\.exe /c \"type h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_game\\\\simulation\\\\questa\\\\_.*\\.txt\"$/": {
 				"approve": true,
 				"matchCommandLine": true
 			}

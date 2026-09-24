@@ -1,13 +1,23 @@
 // line_draw.sv
 //
-// Writes a LIST of horizontal lines into the 1-bit frame buffer:
+// Writes a LIST of horizontal lines into the 1-bit frame buffer AND asks the
+// LCD to draw the same lines on the panel:
 //   for each i :  (LINE_X0[i], LINE_Y[i]) - (LINE_X1[i], LINE_Y[i])   inclusive
 //
 // A single `start` pulse draws every line of the table, one line after the
-// other, and then leaves the frame buffer alone. `busy` stays high until the
-// whole list is done. Nothing is erased: whatever the caller wants gone must
-// be cleared first (the frame buffer's `clr_start` does that).
+// other, and then leaves everything alone. `busy` stays high until both the
+// frame buffer and the panel are done. Nothing is erased: whatever the caller
+// wants gone must be cleared first (the frame buffer's `clr_start` does that,
+// and the panel is filled by the caller before `start`).
 //
+// WHY BOTH
+// The panel must show the lines ("行単位で描画" - row/segment units), and the
+// frame buffer must still contain them because it is the collision model: a
+// moving dot that reaches a playfield line is GAME OVER. The framebuffer is no
+// longer scanned out to the panel, so the two destinations are independent and
+// both are needed.
+//
+// FRAME BUFFER SIDE
 // The frame buffer stores 32 horizontally adjacent pixels per 32-bit word, so
 // the fastest way to draw a horizontal line is one read-modify-write per word
 // instead of one per pixel:
@@ -23,6 +33,15 @@
 // and using the data. For the words whose mask is all ones the read data is
 // irrelevant, but reading them anyway keeps the FSM uniform.
 //
+// PANEL SIDE
+// The panel needs one rectangle write per line, not per word: the whole span
+// of the line is a single row window (x0..x1, y..y), and the ILI9341 fills it
+// with one colour. Those requests are handed to lcd_ili9341_ctrl over the
+// `lcd_*` valid/ready port, one line at a time.
+//
+// The two sides run one after the other for each line (buffer first, then
+// panel), which keeps a single counter and a single set of states.
+//
 // The line table is a set of constant parameter arrays, so the geometry of a
 // line is looked up with the running line counter (a small mux) and the bit
 // masks are computed with two variable shifts. That keeps the module at one
@@ -30,16 +49,13 @@
 //
 // Limit: the line counter is 4 bits, so N_LINES must be <= 16. The word index
 // inside a row is 4 bits, so FIELD_W must be <= 512.
-//
-// Draw time: ~3 clocks per word, i.e. up to ~30 clocks (0.6 us) per 320-wide
-// line and ~5 us for nine of them. The first frame is scanned out ~150 ms
-// after power-on (panel init), so the lines are in place long before that; no
-// double buffering or tear handling is needed.
 
 module line_draw #(
     parameter int FIELD_W       = 320,
     parameter int WORDS_PER_ROW = 10,     // FIELD_W / 32
     parameter int AW            = 14,     // word address width
+
+    parameter logic [15:0] COLOR = 16'hF800,   // red
 
     // the lines to draw, (LINE_X0[i], LINE_Y[i]) - (LINE_X1[i], LINE_Y[i])
     parameter int N_LINES = 2,
@@ -60,7 +76,16 @@ module line_draw #(
 
     // frame buffer read port (to read back the partial first/last words)
     output logic [AW-1:0] fb_rd_addr,
-    input  logic [31:0]   fb_rd_data
+    input  logic [31:0]   fb_rd_data,
+
+    // panel rectangle request (one per line)
+    output logic          lcd_valid,
+    input  logic          lcd_ready,
+    output logic [8:0]    lcd_x0,
+    output logic [7:0]    lcd_y0,
+    output logic [8:0]    lcd_x1,
+    output logic [7:0]    lcd_y1,
+    output logic [15:0]   lcd_color
 );
     localparam int LAST_LINE_I = (N_LINES > 0) ? N_LINES - 1 : 0;
     localparam logic [3:0] LAST_LINE = LAST_LINE_I[3:0];
@@ -132,11 +157,23 @@ module line_draw #(
     wire [31:0] mask_c   = m_lo & m_hi;
 
     // ---- FSM ------------------------------------------------------------
+    // Each line is done in two passes:
+    //   buffer pass : L_READ/L_WAITDATA/L_WRITE, one word per step
+    //   panel pass  : L_LCD, one rectangle write for the whole span
+    //
     // L_LOAD     : latch the geometry of line `li`, start at its first word
     // L_READ     : present the word address, latch its mask
     // L_WAITDATA : wait for the frame buffer's registered read to return
-    // L_WRITE    : write rd_data | mask, then step to the next word or line
-    typedef enum logic [2:0] {L_IDLE, L_LOAD, L_READ, L_WAITDATA, L_WRITE} state_t;
+    // L_WRITE    : write rd_data | mask, then step to the next word
+    // L_LCD      : assert the panel line request
+    // L_LCDW     : hold it until the panel controller accepts it
+    //
+    // L_LCD and L_LCDW are SEPARATE states because `lcd_valid` is registered:
+    // asserting it and clearing it in the same always block would leave it high
+    // for zero cycles (the later assignment wins) and the request would never
+    // be seen.
+    typedef enum logic [2:0] {L_IDLE, L_LOAD, L_READ, L_WAITDATA, L_WRITE,
+                              L_LCD, L_LCDW} state_t;
     state_t state;
 
     logic [31:0] mask;            // mask for the word being written
@@ -156,11 +193,18 @@ module line_draw #(
             wx         <= 8'd0;
             mask       <= 32'h0000_0000;
             last_word  <= 1'b0;
+            lcd_valid  <= 1'b0;
+            lcd_x0     <= 9'd0;
+            lcd_x1     <= 9'd0;
+            lcd_y0     <= 8'd0;
+            lcd_y1     <= 8'd0;
+            lcd_color  <= COLOR;
         end else begin
             fb_wr_en <= 1'b0;
 
             case (state)
                 L_IDLE: begin
+                    lcd_valid <= 1'b0;
                     if (start) begin
                         li    <= 4'd0;
                         state <= L_LOAD;
@@ -205,16 +249,36 @@ module line_draw #(
                     fb_wr_data <= fb_rd_data | mask;
 
                     if (last_word) begin
-                        // end of this line: stop only if it was the last one
+                        state <= L_LCD;      // buffer done, now the panel
+                    end else begin
+                        wx    <= wx + 8'd1;
+                        state <= L_READ;
+                    end
+                end
+
+                // ---- panel line --------------------------------------
+                // The span is the row window (x0..x1, y..y) held in one
+                // colour; the panel fills it by itself.
+                L_LCD: begin
+                    lcd_valid <= 1'b1;
+                    lcd_x0    <= x0_c;
+                    lcd_x1    <= x1_c;
+                    lcd_y0    <= y_c;
+                    lcd_y1    <= y_c;
+                    lcd_color <= COLOR;
+                    state     <= L_LCDW;
+                end
+
+                // hold the request until the controller takes it
+                L_LCDW: begin
+                    if (lcd_ready) begin
+                        lcd_valid <= 1'b0;   // accepted
                         if (li == LAST_LINE) begin
                             state <= L_IDLE;
                         end else begin
                             li    <= li + 4'd1;
                             state <= L_LOAD;
                         end
-                    end else begin
-                        wx    <= wx + 8'd1;
-                        state <= L_READ;
                     end
                 end
 
