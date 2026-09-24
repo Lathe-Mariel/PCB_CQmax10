@@ -1,0 +1,490 @@
+FPGA版「さめがめ」仕様書
+
+# 1. 概要
+## 1.1 目的
+
+本システムはパズルゲーム「さめがめ」をFPGA上に実装する。
+
+ユーザはタッチパネル付きLCDを用いてブロックを選択し、同種のブロック群を消去する。
+
+ゲームロジック、描画処理、アニメーション処理をハードウェア（SystemVerilog）で実装可能な構成とする。
+
+# 2. Hardware
+## 2.1 LCD
+PMOD-TFTLCD v1.1
+(ILI9341, 320x240) 
+
+### 仕様
+解像度      : 320 × 240 pixel
+表示色      : RGB565
+フレームレート : 6 fps
+表示方向    : 横長
+
+## 2.2 Touch Panel
+### Interface
+SPI
+### 入力情報
+タッチX座標
+タッチY座標
+TouchDownイベント
+TouchUpイベント
+
+## 2.3 FPGA
+10M08SCE144C8G(Altera)
+### Board
+CQ-MAX10-A(https://fpga.tokyo/wp-content/uploads/2024/07/CQ-MAX10-A_%E5%9B%9E%E8%B7%AF%E5%9B%B3_R0.pdf) + CQ-MAX10-A_Pmod Board(../../CQmax10.kicad_pro)
+
+### Physical contraints
+
+FPGA pin | register name | function
+---|---|---
+PIN_88 | clk | system clock
+PIN_17 | btn_rst | system reset(Active low)
+PIN_62 | sw1 | switch1(game botton)
+PIN_48 | sw2 | switch2
+PIN_81 | lcd_cs(Active low) | lcd chip select
+PIN_78 | lcd_mosi | lcd mosi
+PIN_75 | lcd_sck | lcd sclock
+PIN_77 | lcd_dc | lcd dc
+PIN_85 | led | led(Active low)
+PIN_122 | led0 | led(Active low)
+PIN_123 | led1 | led(Active low)
+PIN_120 | led2 | led(Active low)
+PIN_121 | led3 | led(Active low)
+
+### 開発環境
+Quartus Prime Lite
+### Simulater
+Questa
+
+
+# 3. ゲーム仕様
+## 3.1 ゲームルール
+
+プレイヤーはブロックをタップする。
+
+タップしたブロックと同種類のブロックが上下左右に2個以上連結している場合、そのグループを消去する。
+
+単独ブロックは消去できない。
+
+## 3.2 ブロック種類
+
+ブロックは色ではなくロゴ画像で区別する。
+
+### 使用ロゴ数
+5種類
+
+### ブロックID
+0 : Logo0
+1 : Logo1
+2 : Logo2
+3 : Logo3
+4 : Logo4
+7 : Empty
+
+
+接続判定はロゴ画像ではなくブロックIDの一致により行う。
+
+## 3.3 Field Size
+### 盤面
+16列 × 12行
+
+### Block Size
+20 × 20 pixel
+
+### LCDとの対応
+16 × 20 = 320 pixel
+12 × 20 = 240 pixel
+
+
+盤面がLCD全体を占有する。
+
+# 4. ゲーム状態遷移
+[INIT]
+ ↓
+[GENERATE_BOARD]
+ ↓
+[PLAY]
+ ↓
+[FLOODFILL]
+ ↓
+[ERASE_EFFECT]
+ ↓
+[ERASE_COMMIT]
+ ↓
+[FALL_ANIMATION]
+ ↓
+[COLUMN_SHIFT_ANIMATION]
+ ↓
+[PLAY]
+
+
+ゲーム継続不能時
+
+[GAMEOVER]
+
+
+へ遷移する。
+
+# 5. 操作仕様
+## タッチ座標変換
+cell_x = touch_x / 20
+cell_y = touch_y / 20
+
+### タップ処理
+
+タッチされたセル座標を取得する。
+(cell_x, cell_y)
+
+
+をFlood Fillエンジンへ入力する。
+
+# 6. 盤面メモリ仕様
+## セル構成
+
+1セルあたり
+
+3bit
+
+
+を使用する。
+
+000 : Logo0
+001 : Logo1
+010 : Logo2
+011 : Logo3
+100 : Logo4
+111 : Empty
+
+## メモリ容量
+16 × 12 = 192セル
+
+
+必要容量
+
+192 × 3 = 576 bit
+
+# 7. ロゴROM仕様
+## ロゴ画像
+### サイズ
+20 × 20 pixel
+
+### 色形式
+RGB565
+
+## ROMファイル
+logo_rom.hex
+
+
+### ロゴデータ格納順序
+Logo0
+Logo1
+Logo2
+Logo3
+Logo4
+
+### 容量
+
+1ロゴ：20 × 20 = 400 pixel
+
+
+5ロゴ：400 × 5 = 2000 pixel
+
+
+必要容量：2000 × 16 bit = 32000 bit(4000 byte)
+
+## アドレス生成
+address = block_id * 400 + logo_y * 20 + logo_x
+
+## 範囲
+block_id : 0～4
+logo_x   : 0～19
+logo_y   : 0～19
+
+## ROM初期化
+$readmemh("logo_rom.hex", rom);
+
+
+# 8. 初期盤面生成
+
+ゲーム開始時に乱数を使用して盤面を生成する。
+
+生成値：0 ～ 4
+
+
+Emptyは生成しない。
+
+# 9. 消去判定
+## 接続条件
+
+上下左右の4近傍接続とする。
+
+上
+下
+左
+右
+
+
+斜め接続は無効。
+
+## アルゴリズム
+
+FIFOを用いたFlood Fill方式を採用する。
+
+再帰処理は禁止する。
+
+## 消去条件
+group_count >= 2
+
+
+の場合のみ消去する。
+
+# 10. 消去エフェクト
+## 基本方針
+
+ブロック選択表示は行わない。
+
+ハイライト表示は行わない。
+
+タップ後、消去可能な場合は即座に消去シーケンスへ移行する。
+
+## 表示時間
+1秒(フレーム数は6fpsなので6フレームの間継続)
+
+## 表示内容
+
+対象ブロックを点滅させる。
+
+表示
+消灯
+表示
+消灯
+表示
+消灯
+
+を繰り返す。
+
+## 消去タイミング
+
+6フレーム経過後に
+
+Empty
+
+へ書き換える。
+
+# 11. 重力処理
+## 実行タイミング
+[ERASE_COMMIT]
+
+完了後に実行する。
+
+## 処理内容
+
+各列を独立に圧縮する。
+
+例
+
+A
+Empty
+B
+C
+
+
+↓
+
+Empty
+A
+B
+C
+
+# 12. 落下アニメーション
+## 移動速度
+5 pixel/frame
+
+## Block Size
+20 pixel
+
+## 1マス移動時間
+20 / 5 = 4 frame
+
+(約0.67秒で1マス移動)
+
+## 管理情報
+
+各ブロックについて
+
+current_y
+target_y
+
+を保持する。
+
+## 毎フレーム処理
+current_y += 5
+
+ただし、
+
+current_y > target_y
+
+にならないよう制限する。
+
+## 終了条件
+
+全ブロックについて
+
+current_y == target_y
+
+となった時点で完了。
+
+# 13. 列圧縮
+## 実行順序
+消去
+↓
+落下
+↓
+列圧縮
+
+とする。
+
+落下と列圧縮は同時には実行しない。
+
+## 空列判定
+
+列内の全12セルが
+
+Empty である場合に空列とする。
+
+## 判定ビット
+column_empty[15:0]
+
+を生成する。
+
+## 圧縮方法
+
+左から右へ走査し、
+
+非空列のみを左へ詰める。
+
+例
+
+A B Empty C D Empty
+
+
+↓
+
+A B C D Empty Empty
+
+## target_column生成
+new_col = 0
+
+左から順に走査。
+
+非空列を発見したら
+
+target_col = new_col
+
+new_col++
+
+とする。
+
+# 14. 列移動アニメーション
+## 移動方向
+右 → 左
+
+## 移動速度
+5 pixel/frame
+
+## 管理情報
+
+各列について
+current_x
+target_x
+を保持する。
+
+## 毎フレーム処理
+current_x -= 5
+
+ただし目標位置を超えないこと。
+
+## 終了条件
+
+全列について
+
+current_x == target_x
+
+になった時点で完了。
+
+# 15. 描画仕様
+## 描画座標変換
+cell_x = pixel_x / 20
+cell_y = pixel_y / 20
+
+logo_x = pixel_x % 20
+logo_y = pixel_y % 20
+
+## 描画手順
+表示座標からセル座標取得
+盤面メモリからblock_id取得
+ロゴROM参照
+RGB565画素出力
+
+## Emptyセル
+block_id == 7
+
+の場合は背景色を表示する。
+
+# 16. スコア
+## 加算方式
+
+消去数を n とした場合
+
+score += n × n
+
+とする。
+
+## データ幅
+16bit
+
+
+# 17. RTLモジュール構成
+samegame_top
+
+game_fsm
+
+touch_controller
+
+board_memory
+
+rng_generator
+
+floodfill_engine
+
+erase_engine
+
+gravity_engine
+
+column_shift_engine
+
+score_manager
+
+lcd_renderer
+
+logo_rom
+
+# 18. 性能目標
+LCD更新            : 6fps
+タッチ応答         : 100ms以内
+ゲームロジック処理 : 1フレーム以内
+FPGAクロック       : 50MHz以上
+
+# 19. AIへの実装指示
+・SystemVerilogで実装すること
+・ロゴROMは logo_rom.hex を使用すること
+・Flood FillはFIFO方式で実装すること
+・再帰処理は禁止
+・ロゴ数は5種類固定
+・盤面サイズは16×12固定
+・ブロックサイズは20×20固定
+・消去対象の事前選択表示は行わない
+・消去時は6フレームの点滅エフェクトを実行する
+・重力処理完了後に列圧縮を実行する
+・落下および列移動速度は5pixel/frameとする

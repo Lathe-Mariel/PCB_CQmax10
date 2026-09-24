@@ -1,0 +1,372 @@
+// game_fsm.sv
+//
+// Top-level game state machine for "さめがめ".  It owns the game-state
+// transitions, the board write port, the score, and the animation control
+// passed to the renderer.
+//
+// State flow (spec section 4):
+//   INIT -> GENERATE_BOARD -> PLAY -> FLOODFILL -> ERASE_EFFECT ->
+//   ERASE_COMMIT -> FALL_ANIMATION -> COLUMN_SHIFT_ANIMATION -> PLAY
+//   ... and GAMEOVER when the board can no longer be cleared.
+//
+// `frame_tick` is a one-cycle pulse per frame (from the LCD frame timer).
+// The 6-frame blink and the 5px/frame animations advance on it.  Board updates
+// (gravity / column-shift commit) run as fast back-to-back cycles, hidden by
+// the animation overlays; the FSM holds the renderer in the matching animation
+// mode until those animations finish.
+//
+// Touch: a `touch_down` during PLAY latches the touched cell, runs the flood
+// fill, and (if group >= 2) enters the erase sequence; a group of 1 returns to
+// PLAY.
+
+module game_fsm #(
+    parameter int COLS = 16,
+    parameter int ROWS = 12,
+    parameter int CELLS = COLS * ROWS,      // 192
+    parameter int AW   = 8,
+    parameter int BLINK_FRAMES = 6
+)(
+    input  logic        clk,
+    input  logic        rst,
+
+    input  logic        frame_tick,    // 1-cycle pulse per frame
+
+    // touch input
+    input  logic        touch_valid,
+    input  logic [8:0]  touch_x,
+    input  logic [7:0]  touch_y,
+    input  logic        touch_down,
+    input  logic        touch_up,
+
+    // board cell read B (driven by the flood-fill engine)
+    output logic [AW-1:0] ff_rd_addr,
+    input  logic [2:0]    ff_rd_data,
+
+    // board write port
+    output logic        board_wr_en,
+    output logic [AW-1:0] board_wr_addr,
+    output logic [2:0]  board_wr_data,
+
+    // board column read (shared by gravity/shift; one is active at a time)
+    output logic [3:0]  col_rd_col,
+    input  logic [35:0] col_rd_data,
+
+    // score
+    output logic [15:0] score,
+
+    // renderer animation control
+    output logic [1:0]   anim_mode,
+    output logic [CELLS-1:0] blink_mask,
+    output logic            blink_on,
+    output logic [8:0]   fall_px,
+    output logic [CELLS*4-1:0] fall_dist,
+    output logic [8:0]   shift_px,
+    output logic [COLS*4-1:0] shift_dist,
+
+    // status
+    output logic        game_over
+);
+    localparam logic [2:0] EMPTY = 3'b111;
+
+    typedef enum logic [3:0] {
+        S_INIT, S_GENERATE, S_CHECK, S_CHECK_WAIT, S_PLAY, S_FLOODFILL,
+        S_ERASE_EFFECT, S_FALL_ANIM, S_SHIFT_ANIM, S_GAMEOVER
+    } state_t;
+    state_t state;
+
+    // ---- random generator ----
+    logic        rng_next;
+    logic [15:0] rng_val;
+    rng_generator u_rng (
+        .clk(clk), .rst(rst), .seed(1'b0), .next(rng_next), .rng(rng_val)
+    );
+
+    // ---- generation / animation registers (declared early: used in the
+    //      flood-fill instantiation below) ----
+    logic [7:0] gen_idx;
+    logic [3:0] tap_x, tap_y;
+    logic [8:0] fall_px_r, shift_px_r;
+    logic [3:0] fall_frame, shift_frame;
+
+    // game-over scan: run flood fill on every non-empty cell and see if any
+    // group has size >= 2
+    logic [7:0] scan_idx;
+    logic       scan_start;
+    logic       any_movable;
+
+    // ---- flood fill ----
+    logic        ff_start, ff_done, ff_busy;
+    logic [7:0]  ff_count;
+    logic        ff_target_empty;
+    logic [CELLS-1:0] ff_mask;
+    floodfill_engine u_ff (
+        .clk(clk), .rst(rst),
+        .start        (ff_start),
+        .start_x      (tap_x),
+        .start_y      (tap_y),
+        .board_rd_addr(ff_rd_addr),
+        .board_rd_data(ff_rd_data),
+        .done         (ff_done),
+        .count        (ff_count),
+        .mask         (ff_mask),
+        .target_empty (ff_target_empty),
+        .busy         (ff_busy)
+    );
+
+    // ---- erase ----
+    logic        erase_start, erase_done, erase_busy;
+    logic        erase_wr_en;
+    logic [AW-1:0] erase_wr_addr;
+    logic [2:0]  erase_wr_data;
+    erase_engine #(.CELLS(CELLS), .AW(AW), .BLINK_FRAMES(BLINK_FRAMES)) u_erase (
+        .clk(clk), .rst(rst),
+        .start      (erase_start),
+        .erase_mask (ff_mask),
+        .frame_tick (frame_tick),
+        .done       (erase_done),
+        .busy       (erase_busy),
+        .blink_on   (blink_on),
+        .wr_en      (erase_wr_en),
+        .wr_addr    (erase_wr_addr),
+        .wr_data    (erase_wr_data)
+    );
+
+    // ---- gravity ----
+    logic        grav_start, grav_done, grav_busy;
+    logic        grav_wr_en;
+    logic [AW-1:0] grav_wr_addr;
+    logic [2:0]  grav_wr_data;
+    logic [3:0]  grav_rd_col;
+    logic [CELLS*4-1:0] grav_fall_dist;
+    gravity_engine u_grav (
+        .clk(clk), .rst(rst),
+        .start(grav_start), .done(grav_done), .busy(grav_busy),
+        .wr_en(grav_wr_en), .wr_addr(grav_wr_addr), .wr_data(grav_wr_data),
+        .rd_col(grav_rd_col), .col_data(col_rd_data),
+        .fall_dist(grav_fall_dist)
+    );
+
+    // ---- column shift ----
+    logic        shift_start, shift_done, shift_busy;
+    logic        shift_wr_en;
+    logic [AW-1:0] shift_wr_addr;
+    logic [2:0]  shift_wr_data;
+    logic [3:0]  shift_rd_col;
+    logic [COLS-1:0] column_empty;
+    logic [COLS*4-1:0] shift_dist_i;
+    column_shift_engine u_shift (
+        .clk(clk), .rst(rst),
+        .start(shift_start), .done(shift_done), .busy(shift_busy),
+        .wr_en(shift_wr_en), .wr_addr(shift_wr_addr), .wr_data(shift_wr_data),
+        .rd_col(shift_rd_col), .col_data(col_rd_data),
+        .column_empty(column_empty),
+        .shift_dist(shift_dist_i)
+    );
+
+    // ---- score ----
+    logic score_add, score_reset;
+    score_manager u_score (
+        .clk(clk), .rst(rst),
+        .add(score_add), .n(ff_count),
+        .reset_score(score_reset), .score(score)
+    );
+
+    // ---- generation / animation registers ----
+    // (moved above the flood-fill instantiation)
+
+    // ------------------------------------------------------------------
+    // main FSM
+    // ------------------------------------------------------------------
+    always_ff @(posedge clk) begin
+        if (rst) begin
+            state       <= S_INIT;
+            gen_idx     <= 8'd0;
+            tap_x       <= 4'd0;
+            tap_y       <= 4'd0;
+            scan_idx    <= 8'd0;
+            any_movable <= 1'b0;
+            rng_next    <= 1'b0;
+            ff_start    <= 1'b0;
+            erase_start <= 1'b0;
+            grav_start  <= 1'b0;
+            shift_start <= 1'b0;
+            score_add   <= 1'b0;
+            score_reset <= 1'b0;
+            fall_px_r   <= 9'd0;
+            shift_px_r  <= 9'd0;
+            fall_frame  <= 4'd0;
+            shift_frame <= 4'd0;
+            game_over   <= 1'b0;
+        end else begin
+            rng_next    <= 1'b0;
+            ff_start    <= 1'b0;
+            erase_start <= 1'b0;
+            grav_start  <= 1'b0;
+            shift_start <= 1'b0;
+            score_add   <= 1'b0;
+            score_reset <= 1'b0;
+
+            case (state)
+            S_INIT: begin
+                score_reset <= 1'b1;
+                gen_idx     <= 8'd0;
+                state       <= S_GENERATE;
+            end
+
+            S_GENERATE: begin
+                rng_next    <= 1'b1;
+                if (gen_idx == 8'(CELLS-1)) begin
+                    scan_idx    <= 8'd0;
+                    any_movable <= 1'b0;
+                    state       <= S_CHECK;
+                end else begin
+                    gen_idx <= gen_idx + 8'd1;
+                end
+            end
+
+            S_CHECK: begin
+                // scan every cell for a group of size >= 2 using the flood
+                // fill engine; if none, the game is over.
+                tap_x    <= scan_idx[3:0];
+                tap_y    <= scan_idx[7:4];
+                ff_start <= 1'b1;
+                state    <= S_CHECK_WAIT;
+            end
+
+            S_CHECK_WAIT: begin
+                if (ff_done) begin
+                    if (ff_count >= 8'd2 && !ff_target_empty)
+                        any_movable <= 1'b1;
+                    if (scan_idx == 8'(CELLS-1)) begin
+                        if (any_movable) state <= S_PLAY;
+                        else             state <= S_GAMEOVER;
+                    end else begin
+                        scan_idx <= scan_idx + 8'd1;
+                        state    <= S_CHECK;
+                    end
+                end
+            end
+
+            S_PLAY: begin
+                if (touch_down) begin
+                    tap_x    <= touch_x[7:4];   // touch_x / 20
+                    tap_y    <= touch_y[7:4];   // touch_y / 20
+                    ff_start <= 1'b1;
+                    state    <= S_FLOODFILL;
+                end
+            end
+
+            S_FLOODFILL: begin
+                if (ff_done) begin
+                    if (ff_count >= 8'd2) begin
+                        erase_start <= 1'b1;
+                        state       <= S_ERASE_EFFECT;
+                    end else begin
+                        state <= S_PLAY;      // single block: nothing to erase
+                    end
+                end
+            end
+
+            S_ERASE_EFFECT: begin
+                // erase_engine blinks for BLINK_FRAMES frames then commits the
+                // EMPTY writes and pulses done.
+                if (erase_done) begin
+                    score_add  <= 1'b1;      // score += n*n
+                    grav_start <= 1'b1;
+                    fall_px_r  <= 9'd0;
+                    fall_frame <= 4'd0;
+                    state      <= S_FALL_ANIM;
+                end
+            end
+
+            S_FALL_ANIM: begin
+                // gravity commits immediately (grav_done within a few cycles);
+                // the fall animation plays over the settled board + fall_dist.
+                if (frame_tick) begin
+                    if (fall_px_r >= 9'(ROWS*20)) begin
+                        // fall animation finished -> column shift
+                        shift_start <= 1'b1;
+                        shift_px_r  <= 9'd0;
+                        shift_frame <= 4'd0;
+                        state       <= S_SHIFT_ANIM;
+                    end else begin
+                        fall_px_r <= fall_px_r + 9'd5;
+                    end
+                end
+            end
+
+            S_SHIFT_ANIM: begin
+                if (frame_tick) begin
+                    if (shift_px_r >= 9'(COLS*20)) begin
+                        // done; re-scan for a possible move
+                        scan_idx    <= 8'd0;
+                        any_movable <= 1'b0;
+                        state       <= S_CHECK;
+                    end else begin
+                        shift_px_r <= shift_px_r + 9'd5;
+                    end
+                end
+            end
+
+            S_GAMEOVER: begin
+                game_over <= 1'b1;
+                if (touch_down) state <= S_INIT;
+            end
+
+            default: state <= S_INIT;
+            endcase
+        end
+    end
+
+    // ------------------------------------------------------------------
+    // board write arbitration (single writer at a time)
+    // ------------------------------------------------------------------
+    always_comb begin
+        board_wr_en   = 1'b0;
+        board_wr_addr = '0;
+        board_wr_data = EMPTY;
+
+        if (state == S_GENERATE) begin
+            board_wr_en   = 1'b1;
+            board_wr_addr = gen_idx;
+            board_wr_data = (rng_val[2:0] < 3'd5) ? rng_val[2:0] : 3'd0;
+        end else if (grav_busy) begin
+            board_wr_en   = grav_wr_en;
+            board_wr_addr = grav_wr_addr;
+            board_wr_data = grav_wr_data;
+        end else if (shift_busy) begin
+            board_wr_en   = shift_wr_en;
+            board_wr_addr = shift_wr_addr;
+            board_wr_data = shift_wr_data;
+        end else if (erase_busy) begin
+            board_wr_en   = erase_wr_en;
+            board_wr_addr = erase_wr_addr;
+            board_wr_data = erase_wr_data;
+        end
+    end
+
+    // ------------------------------------------------------------------
+    // renderer animation control
+    // ------------------------------------------------------------------
+    always_comb begin
+        case (state)
+        S_ERASE_EFFECT: anim_mode = 2'd1;   // blink
+        S_FALL_ANIM:    anim_mode = 2'd2;   // fall
+        S_SHIFT_ANIM:   anim_mode = 2'd3;   // shift
+        default:        anim_mode = 2'd0;   // static
+        endcase
+    end
+
+    assign blink_mask = ff_mask;
+    assign fall_px    = fall_px_r;
+    assign shift_px   = shift_px_r;
+    assign fall_dist  = grav_fall_dist;
+    assign shift_dist = shift_dist_i;
+
+    // ---- board read B (flood fill) and column reads are wired at top level ----
+    // The game_fsm only needs to expose ff_rd_data (board[ff_rd_addr]) and the
+    // column word; those are connected in samegame_top to board_memory.
+    // The gravity and shift engines never run concurrently, so their column
+    // read requests are muxed onto the single board column read port.
+    assign col_rd_col = grav_busy ? grav_rd_col : shift_rd_col;
+endmodule
