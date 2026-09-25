@@ -5,9 +5,14 @@
 // top cells become EMPTY.
 //
 // The board is written cell-by-cell through the board_memory single-cell write
-// port.  The engine iterates over the 16 columns; for each column it reads the
-// packed column word (36 bit = 12 rows x 3 bit) through the column read port,
-// builds the compacted word, and writes the changed rows back.
+// port.  To keep the logic small, compaction is done *sequentially* (one cell
+// per cycle) instead of with a wide combinational priority encoder:
+//
+//   For each column:
+//     1. clear all ROWS cells to EMPTY (sequential)
+//     2. scan rows bottom-to-top; for each non-EMPTY cell write it to the
+//        current destination row (starting at the bottom) and record its fall
+//        distance (dst - src), then move the destination up one row.
 //
 // It also emits `fall_dist`: for each *target* cell (col, dst_row), the number
 // of rows it fell (0 for cells that do not move).  The renderer uses this to
@@ -43,44 +48,26 @@ module gravity_engine #(
 );
     localparam logic [2:0] EMPTY = 3'b111;
 
-    typedef enum logic [1:0] {S_IDLE, S_READ, S_WRITE, S_DONE} state_t;
+    typedef enum logic [2:0] {
+        S_IDLE, S_LATCH, S_CLEAR, S_SCAN, S_NEXT, S_DONE
+    } state_t;
     state_t state;
 
     logic [3:0]  col;          // current column 0..COLS-1
-    logic [3:0]  row;          // current write row 0..ROWS-1
-    logic [35:0] compacted;    // latched rebuilt column
-    logic [35:0] compacted_c;  // combinational rebuilt column
-    logic [ROWS*4-1:0] fd_c;   // fall distances for current column (combinational)
+    logic [3:0]  row;          // current row 0..ROWS-1 (clear / scan pointer)
+    logic [3:0]  dst;          // destination row (moves up as cells are placed)
+    logic [35:0] col_latch;    // original column word (captured before clear)
 
     assign rd_col = col;
 
-    // build the compacted column + fall distances combinationally from col_data
-    logic [2:0] cell_val;
-    always_comb begin
-        logic [3:0] k;
-        compacted_c = {12{EMPTY}};
-        fd_c        = '0;
-        k = 4'd0;
-        // iterate bottom-to-top so the bottom-most non-empty cell keeps the
-        // bottom row (preserves vertical order while everything falls down)
-        for (int r = ROWS-1; r >= 0; r--) begin
-            cell_val = col_data[3*r +: 3];
-            if (cell_val != EMPTY) begin
-                compacted_c[3*(ROWS-1-k) +: 3] = cell_val;
-                // this cell falls from row r to row (ROWS-1-k)
-                fd_c[4*(ROWS-1-k) +: 4] = 4'((ROWS-1-k) - r);
-                k = k + 4'd1;
-            end
-        end
-    end
-
     always_ff @(posedge clk) begin
         if (rst) begin
-            state     <= S_IDLE;
-            col       <= 4'd0;
-            row       <= 4'd0;
-            wr_en     <= 1'b0;
-            done      <= 1'b0;
+            state <= S_IDLE;
+            col   <= 4'd0;
+            row   <= 4'd0;
+            dst   <= 4'd0;
+            wr_en <= 1'b0;
+            done  <= 1'b0;
         end else begin
             wr_en <= 1'b0;
             done  <= 1'b0;
@@ -89,33 +76,56 @@ module gravity_engine #(
             S_IDLE: begin
                 if (start) begin
                     col   <= 4'd0;
-                    state <= S_READ;
+                    state <= S_LATCH;
                 end
             end
 
-            // latch the compacted column + fall distances, then start writing
-            S_READ: begin
-                compacted <= compacted_c;
-                fall_dist[4*(col*ROWS) +: 4*ROWS] <= fd_c;
+            // capture the column word before we overwrite the board
+            S_LATCH: begin
+                col_latch <= col_data;
                 row       <= 4'd0;
-                state     <= S_WRITE;
+                dst       <= 4'(ROWS-1);
+                state     <= S_CLEAR;
             end
 
-            S_WRITE: begin
+            // clear the whole column to EMPTY
+            S_CLEAR: begin
                 wr_en   <= 1'b1;
                 wr_addr <= AW'(row)*COLS + AW'(col);
-                wr_data <= compacted[3*row +: 3];
-
+                wr_data <= EMPTY;
                 if (row == 4'(ROWS-1)) begin
-                    if (col == 4'(COLS-1)) begin
-                        done  <= 1'b1;
-                        state <= S_DONE;
-                    end else begin
-                        col   <= col + 4'd1;
-                        state <= S_READ;
-                    end
+                    row   <= 4'(ROWS-1);   // scan bottom-to-top
+                    state <= S_SCAN;
                 end else begin
                     row <= row + 4'd1;
+                end
+            end
+
+            // scan rows bottom-to-top; write non-EMPTY cells into `dst`
+            S_SCAN: begin
+                if (col_latch[3*row +: 3] != EMPTY) begin
+                    wr_en   <= 1'b1;
+                    wr_addr <= AW'(dst)*COLS + AW'(col);
+                    wr_data <= col_latch[3*row +: 3];
+                    fall_dist[4*(col*ROWS + dst) +: 4] <= 4'(dst - row);
+                    if (dst != 4'd0)
+                        dst <= dst - 4'd1;
+                end
+
+                if (row == 4'd0) begin
+                    state <= S_NEXT;
+                end else begin
+                    row <= row - 4'd1;
+                end
+            end
+
+            S_NEXT: begin
+                if (col == 4'(COLS-1)) begin
+                    done  <= 1'b1;
+                    state <= S_DONE;
+                end else begin
+                    col   <= col + 4'd1;
+                    state <= S_LATCH;
                 end
             end
 

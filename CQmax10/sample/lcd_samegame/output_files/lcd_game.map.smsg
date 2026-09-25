@@ -1,0 +1,1 @@
+Info (10281): Verilog HDL Declaration information at column_shift_engine.sv(23): object "COLS" differs only in case from object "cols" in the same scope File: C:/Git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/column_shift_engine.sv Line: 23

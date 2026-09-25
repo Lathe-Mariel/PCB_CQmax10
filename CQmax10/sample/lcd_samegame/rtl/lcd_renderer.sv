@@ -69,21 +69,15 @@ module lcd_renderer #(
     logic [4:0] lx, ly;
 
     // ---- divide pixel coords by 20 (combinational) ----
+    // Reciprocal multiply: floor(x/20) = (x*410) >> 13, exact for 0..319.
+    //   cx = pix_x/20   lx = pix_x - cx*20
+    //   cy = pix_y/20   ly = pix_y - cy*20
+    // cx*20 = cx*16 + cx*4 (shift-and-add, no multiplier).
     always_comb begin
-        cx = 4'd0; lx = 5'd0;
-        for (int c = 0; c < COLS; c++) begin
-            if (pix_x >= c*20 && pix_x < (c+1)*20) begin
-                cx = c[3:0];
-                lx = pix_x - c*20;
-            end
-        end
-        cy = 4'd0; ly = 5'd0;
-        for (int r = 0; r < ROWS; r++) begin
-            if (pix_y >= r*20 && pix_y < (r+1)*20) begin
-                cy = r[3:0];
-                ly = pix_y - r*20;
-            end
-        end
+        cx = (({3'd0, pix_x} * 13'd410) >> 13);
+        lx = pix_x - (cx * 5'd20);
+        cy = (({4'd0, pix_y} * 13'd410) >> 13);
+        ly = pix_y - (cy * 5'd20);
     end
 
     // ---- resolve the source cell + logo coords for this pixel ----

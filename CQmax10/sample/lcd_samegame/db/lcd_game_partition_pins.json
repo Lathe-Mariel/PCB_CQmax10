@@ -20,6 +20,18 @@
 					"strict" : false
 				},
 				{
+					"name" : "touch_cs",
+					"strict" : false
+				},
+				{
+					"name" : "touch_mosi",
+					"strict" : false
+				},
+				{
+					"name" : "touch_sck",
+					"strict" : false
+				},
+				{
 					"name" : "led",
 					"strict" : false
 				},
@@ -40,10 +52,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "sw2",
-					"strict" : false
-				},
-				{
 					"name" : "clk",
 					"strict" : false
 				},
@@ -52,7 +60,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "sw1",
+					"name" : "touch_miso",
 					"strict" : false
 				}
 			]

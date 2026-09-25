@@ -1,16 +1,16 @@
-Analysis & Synthesis Status : Successful - Wed Sep 23 16:06:57 2026
-Quartus Prime Version : 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+Analysis & Synthesis Status : Successful - Fri Sep 25 18:10:59 2026
+Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 Revision Name : lcd_game
-Top-level Entity Name : lcd_test_top
+Top-level Entity Name : samegame_top
 Family : MAX 10
-Total logic elements : 461
-    Total combinational functions : 458
-    Dedicated logic registers : 196
-Total registers : 196
-Total pins : 13
+Total logic elements : 7,738
+    Total combinational functions : 6,302
+    Dedicated logic registers : 2,607
+Total registers : 2607
+Total pins : 17
 Total virtual pins : 0
-Total memory bits : 0
-Embedded Multiplier 9-bit elements : 0
+Total memory bits : 34,816
+Embedded Multiplier 9-bit elements : 6
 Total PLLs : 0
-UFM blocks : 0
+UFM blocks : 1
 ADC blocks : 0

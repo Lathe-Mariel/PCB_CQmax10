@@ -1,0 +1,5 @@
+v1
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,touch_controller:u_touch|lpm_mult:Mult0|mult_sps:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,touch_controller:u_touch|lpm_mult:Mult1|mult_3qs:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,touch_controller:u_touch|lpm_mult:Mult1|mult_3qs:auto_generated|mac_out4,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,touch_controller:u_touch|lpm_mult:Mult0|mult_sps:auto_generated|mac_out4,

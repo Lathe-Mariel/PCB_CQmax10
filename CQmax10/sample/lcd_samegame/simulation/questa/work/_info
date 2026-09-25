@@ -1,296 +1,297 @@
 m255
 K4
 z2
-!s12c _opt3
-Z0 !s99 nomlopt
-Z1 !s12c _opt2
+Z0 !s12c _opt3
+Z1 !s99 nomlopt
 R0
 R1
+!s11f MIXED_VERSIONS
 R0
 R1
-R0
+Z2 !s12c _opt2
 R1
-R0
-Z2 !s12c _opt1
-R0
+R2
 R1
-R0
 R2
-R0
-Z3 !s12c _opt
-R0
 R1
-R0
 R2
-R0
+R1
+Z3 !s12c _opt1
+R1
 R2
-R0
-R2
-R0
-R2
-R0
-R2
-R0
-R2
-R0
+R1
 R3
-R0
-R2
-R0
 R1
-R0
+Z4 !s12c _opt
+R1
 R2
-R0
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R4
+R1
+R3
+R1
 R2
-R0
+R1
 R3
-R0
+R1
 R3
-R0
-R3
-R0
-!s11f vlog 2025.2 2025.05, May 31 2025
+R1
+R4
+R1
+R4
+R1
+R4
+R1
 13
 !s112 1.1
 !i10d 8192
 !i10e 25
 !i10f 100
 cModel Technology
-Z4 dH:/git/PCB_CQmax10/CQmax10/sample/lcd_game/simulation/questa
+Z5 dH:/git/PCB_CQmax10/CQmax10/sample/lcd_game/simulation/questa
 T_opt
 !i145 1
 !i144 0
 !s110 1790145045
 VF6XgdH7C2VSJ>;lLJ:PiP0
-Z5 04 9 4 work tb_orange fast 0
+Z6 04 9 4 work tb_orange fast 0
 =1-9418827106c0-6ab37214-48-4ef8
-R0
-Z6 !s12f OEM100
-Z7 !s12b OEM100
-Z8 !s124 OEM10U9 
-Z9 !s135 nogc
-Z10 o-quiet -auto_acc_if_foreign -work work
-Z11 tCvgOpt 0 defaultOptions 1107585188
+R1
+Z7 !s12f OEM100
+Z8 !s12b OEM100
+Z9 !s124 OEM10U9 
+Z10 !s135 nogc
+Z11 o-quiet -auto_acc_if_foreign -work work
+Z12 tCvgOpt 0 defaultOptions 1107585188
 n@_opt
-Z12 OL;O;2025.2;82
-R4
+Z13 OL;O;2025.2;82
+R5
 T_opt1
 !i145 1
 !i144 0
 !s110 1790145913
 Vk?fzN^UPckYfcIkWb9fJ@1
-R5
-=1-9418827106c0-6ab37578-29a-4684
-R0
 R6
+=1-9418827106c0-6ab37578-29a-4684
+R1
 R7
 R8
 R9
 R10
 R11
-n@_opt1
 R12
-R4
+n@_opt1
+R13
+R5
 T_opt2
 !i145 1
 !i144 0
 !s110 1790146911
 VJAihak?hR2ji0;dJinA;R2
-R5
+R6
 =1-9418827106c0-6ab3795e-21e-8
-R0
-R6
+R1
 R7
 R8
 R9
 R10
 R11
+R12
 n@_opt2
-R12
-R4
-T_opt3
-!i145 1
-!i144 0
-!s110 1790146995
-V3Gb0BJY?zTDcWoPQOW8TM2
+R13
 R5
-=1-9418827106c0-6ab379b2-272-76bc
-R0
-R6
+T_opt3
+!s110 1790327286
+VnePDNAHLI7HQ9JKDW>D6E2
+04 11 4 work tb_samegame fast 0
+=1-6c3c8c3e09b4-6ab639f6-d0-4cc8
+R1
 R7
 R8
-R9
+!s124 OEM10U5 
 R10
 R11
+Z14 tCvgOpt 0
 n@_opt3
-R12
-R4
+OL;O;2024.3;79
 vboard_memory
-Z13 2../../rtl/board_memory.sv|../../rtl/column_shift_engine.sv|../../rtl/debounce.sv|../../rtl/erase_engine.sv|../../rtl/floodfill_engine.sv|../../rtl/framebuffer_pixel_src.sv|../../rtl/frame_seq.sv|../../rtl/game_fsm.sv|../../rtl/gravity_engine.sv|../../rtl/lcd_ili9341_ctrl.sv|../../rtl/lcd_renderer.sv|../../rtl/lcd_test_top.sv|../../rtl/logo_rom.sv|../../rtl/reset_sync.sv|../../rtl/rng_generator.sv|../../rtl/samegame_pkg.sv|../../rtl/samegame_top.sv|../../rtl/score_manager.sv|../../rtl/spi_byte_master.sv|../../rtl/touch_controller.sv
-Z14 DXx6 sv_std 3 std 0 22 @5XbY]_OacJl=`ToSm<M^0
-Z15 !s110 1790251484
+Z15 2../../rtl/board_memory.sv|../../rtl/floodfill_engine.sv|../../rtl/gravity_engine.sv|../../rtl/column_shift_engine.sv|tb_samegame.sv
+Z16 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z17 !s110 1790327283
 !i10b 1
 !s100 L^79fdaIF@S6EN?g>[XAT2
-I__J6;DL=SMkz0XMOR?VDo1
+I>Q<M?lGLhNflWJ82Xfn]B0
 S1
-Z16 dC:/Git/PCB_CQmax10/CQmax10/sample/lcd_samegame/simulation/questa
+Z18 dC:/Git/PCB_CQmax10/CQmax10/sample/lcd_samegame/simulation/questa
 w1790249850
 8../../rtl/board_memory.sv
 F../../rtl/board_memory.sv
-!i122 24
+!i122 26
 L0 19 74
-Z17 VDg1SIo80bB@j0V0VzS_@n1
-Z18 OL;L;2025.2;82
+Z19 VDg1SIo80bB@j0V0VzS_@n1
+Z20 OL;L;2024.3;79
 r1
 !s85 0
 31
-Z19 !s108 1790251484.000000
-!s107 ../../rtl/touch_controller.sv|../../rtl/spi_byte_master.sv|../../rtl/score_manager.sv|../../rtl/samegame_top.sv|../../rtl/samegame_pkg.sv|../../rtl/rng_generator.sv|../../rtl/reset_sync.sv|../../rtl/logo_rom.sv|../../rtl/lcd_test_top.sv|../../rtl/lcd_renderer.sv|../../rtl/lcd_ili9341_ctrl.sv|../../rtl/gravity_engine.sv|../../rtl/game_fsm.sv|../../rtl/frame_seq.sv|../../rtl/framebuffer_pixel_src.sv|../../rtl/floodfill_engine.sv|../../rtl/erase_engine.sv|../../rtl/debounce.sv|../../rtl/column_shift_engine.sv|../../rtl/board_memory.sv|
-Z20 !s90 -sv|../../rtl/board_memory.sv|../../rtl/column_shift_engine.sv|../../rtl/debounce.sv|../../rtl/erase_engine.sv|../../rtl/floodfill_engine.sv|../../rtl/framebuffer_pixel_src.sv|../../rtl/frame_seq.sv|../../rtl/game_fsm.sv|../../rtl/gravity_engine.sv|../../rtl/lcd_ili9341_ctrl.sv|../../rtl/lcd_renderer.sv|../../rtl/lcd_test_top.sv|../../rtl/logo_rom.sv|../../rtl/reset_sync.sv|../../rtl/rng_generator.sv|../../rtl/samegame_pkg.sv|../../rtl/samegame_top.sv|../../rtl/score_manager.sv|../../rtl/spi_byte_master.sv|../../rtl/touch_controller.sv|
+Z21 !s108 1790327283.000000
+Z22 !s107 tb_samegame.sv|../../rtl/column_shift_engine.sv|../../rtl/gravity_engine.sv|../../rtl/floodfill_engine.sv|../../rtl/board_memory.sv|
+Z23 !s90 -sv|../../rtl/board_memory.sv|../../rtl/floodfill_engine.sv|../../rtl/gravity_engine.sv|../../rtl/column_shift_engine.sv|tb_samegame.sv|
 !i113 0
-Z21 o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-Z22 tCvgOpt 0 defaultOptions 1085333592
-vcolumn_shift_engine
-R13
+Z24 o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R14
+vcolumn_shift_engine
 R15
+R16
+R17
 !i10b 1
 !s100 hSfl=X9o`15WXSOXGALHj2
-IbHc=d9ke0n515@01ZUcEe1
+IogDRH5]3WzbcDdQFLYIDL0
 S1
-R16
-Z23 w1790250319
+R18
+Z25 w1790250319
 8../../rtl/column_shift_engine.sv
 F../../rtl/column_shift_engine.sv
-!i122 24
+!i122 26
 L0 22 163
-R17
-R18
+R19
+R20
 r1
 !s85 0
 31
-R19
-Z24 !s107 ../../rtl/touch_controller.sv|../../rtl/spi_byte_master.sv|../../rtl/score_manager.sv|../../rtl/samegame_top.sv|../../rtl/samegame_pkg.sv|../../rtl/rng_generator.sv|../../rtl/reset_sync.sv|../../rtl/logo_rom.sv|../../rtl/lcd_test_top.sv|../../rtl/lcd_renderer.sv|../../rtl/lcd_ili9341_ctrl.sv|../../rtl/gravity_engine.sv|../../rtl/game_fsm.sv|../../rtl/frame_seq.sv|../../rtl/framebuffer_pixel_src.sv|../../rtl/floodfill_engine.sv|../../rtl/erase_engine.sv|../../rtl/debounce.sv|../../rtl/column_shift_engine.sv|../../rtl/board_memory.sv|
-R20
-!i113 0
 R21
 R22
-vdebounce
-R13
+R23
+!i113 0
+R24
 R14
-R15
+vdebounce
+Z26 2../../rtl/board_memory.sv|../../rtl/column_shift_engine.sv|../../rtl/debounce.sv|../../rtl/erase_engine.sv|../../rtl/floodfill_engine.sv|../../rtl/framebuffer_pixel_src.sv|../../rtl/frame_seq.sv|../../rtl/game_fsm.sv|../../rtl/gravity_engine.sv|../../rtl/lcd_ili9341_ctrl.sv|../../rtl/lcd_renderer.sv|../../rtl/lcd_test_top.sv|../../rtl/logo_rom.sv|../../rtl/reset_sync.sv|../../rtl/rng_generator.sv|../../rtl/samegame_pkg.sv|../../rtl/samegame_top.sv|../../rtl/score_manager.sv|../../rtl/spi_byte_master.sv|../../rtl/touch_controller.sv|tb_samegame.sv
+R16
+Z27 !s110 1790317857
 !i10b 1
 !s100 ^JGHmQIooiB;=n8mXPLXV2
-II3oWacbz_T[^]EiSM@fFO2
+I8UMi92NIfOJM_k<`jgddY1
 S1
-R16
-Z25 w1790235516
+R18
+Z28 w1790235516
 8../../rtl/debounce.sv
 F../../rtl/debounce.sv
-!i122 24
+!i122 25
 L0 6 49
-R17
-R18
+R19
+R20
 r1
 !s85 0
 31
-R19
-R24
-R20
+Z29 !s108 1790317857.000000
+Z30 !s107 tb_samegame.sv|../../rtl/touch_controller.sv|../../rtl/spi_byte_master.sv|../../rtl/score_manager.sv|../../rtl/samegame_top.sv|../../rtl/samegame_pkg.sv|../../rtl/rng_generator.sv|../../rtl/reset_sync.sv|../../rtl/logo_rom.sv|../../rtl/lcd_test_top.sv|../../rtl/lcd_renderer.sv|../../rtl/lcd_ili9341_ctrl.sv|../../rtl/gravity_engine.sv|../../rtl/game_fsm.sv|../../rtl/frame_seq.sv|../../rtl/framebuffer_pixel_src.sv|../../rtl/floodfill_engine.sv|../../rtl/erase_engine.sv|../../rtl/debounce.sv|../../rtl/column_shift_engine.sv|../../rtl/board_memory.sv|
+Z31 !s90 -sv|../../rtl/board_memory.sv|../../rtl/column_shift_engine.sv|../../rtl/debounce.sv|../../rtl/erase_engine.sv|../../rtl/floodfill_engine.sv|../../rtl/framebuffer_pixel_src.sv|../../rtl/frame_seq.sv|../../rtl/game_fsm.sv|../../rtl/gravity_engine.sv|../../rtl/lcd_ili9341_ctrl.sv|../../rtl/lcd_renderer.sv|../../rtl/lcd_test_top.sv|../../rtl/logo_rom.sv|../../rtl/reset_sync.sv|../../rtl/rng_generator.sv|../../rtl/samegame_pkg.sv|../../rtl/samegame_top.sv|../../rtl/score_manager.sv|../../rtl/spi_byte_master.sv|../../rtl/touch_controller.sv|tb_samegame.sv|
 !i113 0
-R21
-R22
-verase_engine
-R13
+R24
 R14
-R15
+verase_engine
+R26
+R16
+R27
 !i10b 1
 !s100 R^h9d5ATQZ62TC<>?F1J?3
-IQ0:ofW201QgPO71I`bHNU1
+IR`kWZA4=J<TF@`8ER>a?Z1
 S1
-R16
-R23
+R18
+R25
 8../../rtl/erase_engine.sv
 F../../rtl/erase_engine.sv
-!i122 24
+!i122 25
 L0 13 96
-R17
-R18
+R19
+R20
 r1
 !s85 0
 31
-R19
-R24
-R20
+R29
+R30
+R31
 !i113 0
-R21
-R22
-vfloodfill_engine
-R13
+R24
 R14
+vfloodfill_engine
 R15
+R16
+R17
 !i10b 1
 !s100 2hOdZ@HQMn3m[J;5Tb8o32
-ICNW<[5z]HKne@oGK<6Y2D1
+IaPn^3^3joDSb`[O:IFa::3
 S1
-R16
-R23
+R18
+R25
 8../../rtl/floodfill_engine.sv
 F../../rtl/floodfill_engine.sv
-!i122 24
+!i122 26
 L0 18 161
-R17
-R18
+R19
+R20
 r1
 !s85 0
 31
-R19
-R24
-R20
-!i113 0
 R21
 R22
-vframe_seq
-R13
+R23
+!i113 0
+R24
 R14
-R15
+vframe_seq
+R26
+R16
+R27
 !i10b 1
 !s100 jn9<o8[0m6]F5VRf2:5EM0
-II`f>lS_TKGWabBnI2_[i41
+IZAO6Ve5^[55Cb3OkRobNO1
 S1
-R16
-R25
+R18
+R28
 8../../rtl/frame_seq.sv
 F../../rtl/frame_seq.sv
-!i122 24
+!i122 25
 L0 7 61
-R17
-R18
+R19
+R20
 r1
 !s85 0
 31
-R19
-R24
-R20
+R29
+R30
+R31
 !i113 0
-R21
-R22
+R24
+R14
 vframebuffer
 2..\..\rtl\spi_byte_master.sv|..\..\rtl\reset_sync.sv|..\..\rtl\debounce.sv|..\..\rtl\framebuffer.v|..\..\rtl\framebuffer_pixel_src.sv|..\..\rtl\frame_seq.sv|..\..\rtl\lcd_ili9341_ctrl.sv|..\..\rtl\lcd_test_top.sv|tb_framebuffer.sv|tb_orange.sv
-R14
+Z32 DXx6 sv_std 3 std 0 22 @5XbY]_OacJl=`ToSm<M^0
 !s110 1790142340
 !i10b 1
 !s100 <bJE>A?HllH`E>1gW?ZiK1
 ISzf;?O1HK3K_fBmcF]he;1
 S1
-R4
+R5
 w1790142320
 8..\..\rtl\framebuffer.v
 F..\..\rtl\framebuffer.v
 !i122 0
 L0 10 51
-R17
-R18
+R19
+Z33 OL;L;2025.2;82
 r1
 !s85 0
 31
@@ -298,430 +299,430 @@ r1
 !s107 tb_orange.sv|tb_framebuffer.sv|..\\..\\rtl\\lcd_test_top.sv|..\\..\\rtl\\lcd_ili9341_ctrl.sv|..\\..\\rtl\\frame_seq.sv|..\\..\\rtl\\framebuffer_pixel_src.sv|..\\..\\rtl\\framebuffer.v|..\\..\\rtl\\debounce.sv|..\\..\\rtl\\reset_sync.sv|..\\..\\rtl\\spi_byte_master.sv|
 !s90 -sv|..\..\rtl\spi_byte_master.sv|..\..\rtl\reset_sync.sv|..\..\rtl\debounce.sv|..\..\rtl\framebuffer.v|..\..\rtl\framebuffer_pixel_src.sv|..\..\rtl\frame_seq.sv|..\..\rtl\lcd_ili9341_ctrl.sv|..\..\rtl\lcd_test_top.sv|tb_framebuffer.sv|tb_orange.sv|
 !i113 0
-R21
-R22
+R24
+Z34 tCvgOpt 0 defaultOptions 1085333592
 vframebuffer_pixel_src
-R13
-R14
-R15
+R26
+R16
+R27
 !i10b 1
 !s100 c]<lIQMdz@l1P2Fh6NO[Z2
-I[i>C]4VkY^YcoIAJ7nGSV1
+I:zWmK^glG4[A0n]iM5OL10
 S1
-R16
-R25
+R18
+R28
 8../../rtl/framebuffer_pixel_src.sv
 F../../rtl/framebuffer_pixel_src.sv
-!i122 24
+!i122 25
 L0 20 80
-R17
-R18
+R19
+R20
 r1
 !s85 0
 31
-R19
-R24
-R20
+R29
+R30
+R31
 !i113 0
-R21
-R22
-vgame_fsm
-R13
+R24
 R14
-R15
+vgame_fsm
+R26
+R16
+R27
 !i10b 1
 !s100 Ja:a3:zCk6hD@j@k8_fCV2
-ITW`jT<Bz97?aki>GfgjfE0
+I?J]WX>32cG3m;LP6B5FW11
 S1
-R16
+R18
 w1790250339
 8../../rtl/game_fsm.sv
 F../../rtl/game_fsm.sv
-!i122 24
+!i122 25
 L0 22 351
-R17
-R18
+R19
+R20
 r1
 !s85 0
 31
-R19
-R24
-R20
+R29
+R30
+R31
 !i113 0
-R21
-R22
-vgravity_engine
-R13
+R24
 R14
+vgravity_engine
 R15
-!i10b 1
-!s100 B?UVXCU6NNd340ATY;`MJ2
-ImmT1:TD3AI4L;dYch4A@S0
-S1
 R16
-w1790250963
+R17
+!i10b 1
+!s100 AXOWkB[HW52mXY^B=Qo7j2
+INnGPX3X:?2@EiiKQU^FI80
+S1
+R18
+w1790326814
 8../../rtl/gravity_engine.sv
 F../../rtl/gravity_engine.sv
-!i122 24
-L0 19 112
-R17
-R18
+!i122 26
+L0 24 117
+R19
+R20
 r1
 !s85 0
 31
-R19
-R24
-R20
-!i113 0
 R21
 R22
-vlcd_ili9341_ctrl
-R13
+R23
+!i113 0
+R24
 R14
-R15
+vlcd_ili9341_ctrl
+R26
+R16
+R27
 !i10b 1
 !s100 27RjZZ9h^HP4`bU^9kjLm3
-InaA3CadVkhfae4h<PkLNP2
+IC9dfKAoQfcmAQ33dU9SzZ2
 S1
-R16
-R25
+R18
+R28
 8../../rtl/lcd_ili9341_ctrl.sv
 F../../rtl/lcd_ili9341_ctrl.sv
-!i122 24
+!i122 25
 L0 29 353
-R17
-R18
+R19
+R20
 r1
 !s85 0
 31
-R19
-R24
-R20
+R29
+R30
+R31
 !i113 0
-R21
-R22
-vlcd_renderer
-R13
+R24
 R14
-R15
+vlcd_renderer
+R26
+R16
+R27
 !i10b 1
 !s100 7;Tgkf7JZZB:ElJcUM4dJ1
-I<o2<j6jX_n>8B?Y1g@zO=1
+ISfYdN06K9Xhf1S035a[Je0
 S1
-R16
+R18
 w1790250050
 8../../rtl/lcd_renderer.sv
 F../../rtl/lcd_renderer.sv
-!i122 24
+!i122 25
 L0 30 183
-R17
-R18
+R19
+R20
 r1
 !s85 0
 31
-R19
-R24
-R20
+R29
+R30
+R31
 !i113 0
-R21
-R22
-vlcd_test_top
-R13
+R24
 R14
-R15
+vlcd_test_top
+R26
+R16
+R27
 !i10b 1
 !s100 W<cL_czHR=AFo^4`4ThQj1
-IU;V^QaY;S538;?gmQg9ZZ2
+I4ZdMVAJ2A^UN]ZzMllUA10
 S1
-R16
-R25
+R18
+R28
 8../../rtl/lcd_test_top.sv
 F../../rtl/lcd_test_top.sv
-!i122 24
+!i122 25
 L0 21 195
-R17
-R18
+R19
+R20
 r1
 !s85 0
 31
-R19
-R24
-R20
+R29
+R30
+R31
 !i113 0
-R21
-R22
-vlogo_rom
-R13
+R24
 R14
-R15
+vlogo_rom
+R26
+R16
+R27
 !i10b 1
 !s100 >9iTmP?i>C5L0j:jSQoEh1
-IeaA1m]ci1<`[JR4GaUe5J3
+I5U_8PF_o`bdU6lz0RN`0`1
 S1
-R16
+R18
 w1790248722
 8../../rtl/logo_rom.sv
 F../../rtl/logo_rom.sv
-!i122 24
+!i122 25
 L0 13 18
-R17
-R18
+R19
+R20
 r1
 !s85 0
 31
-R19
-R24
-R20
+R29
+R30
+R31
 !i113 0
-R21
-R22
-vreset_sync
-R13
+R24
 R14
-R15
+vreset_sync
+R26
+R16
+R27
 !i10b 1
 !s100 hoGD1FPcnfeNMTmfTC9^11
-Ic??V;ROnUTEAOPCLWL9Sk0
+I7;_`ozfPf65ZnHW;8GjmD1
 S1
-R16
-R25
+R18
+R28
 8../../rtl/reset_sync.sv
 F../../rtl/reset_sync.sv
-!i122 24
+!i122 25
 L0 6 18
-R17
-R18
+R19
+R20
 r1
 !s85 0
 31
-R19
-R24
-R20
+R29
+R30
+R31
 !i113 0
-R21
-R22
-vrng_generator
-R13
+R24
 R14
-R15
+vrng_generator
+R26
+R16
+R27
 !i10b 1
 !s100 Ko4PL@JU<ghA;j5OA1>@53
-IzaHhfleO8lMz7hMEP<UQI3
+I[iAGn1QTMZ4?T11>gK9Z>0
 S1
-R16
+R18
 w1790248702
 8../../rtl/rng_generator.sv
 F../../rtl/rng_generator.sv
-!i122 24
+!i122 25
 L0 13 23
-R17
-R18
+R19
+R20
 r1
 !s85 0
 31
-R19
-R24
-R20
+R29
+R30
+R31
 !i113 0
-R21
-R22
-Xsamegame_pkg
-R13
+R24
 R14
-R15
+Xsamegame_pkg
+R26
+R16
+R27
 !i10b 1
 !s100 40dNAHX65jlRlF1ieoChT2
-In]jbF3GlikPhBP]_CN2FF0
+ICL1o8:g;AMNX?2j6ngK@T3
 S1
-R16
+R18
 w1790248683
 8../../rtl/samegame_pkg.sv
 F../../rtl/samegame_pkg.sv
-!i122 24
+!i122 25
 L0 7 0
-Vn]jbF3GlikPhBP]_CN2FF0
-R18
+VCL1o8:g;AMNX?2j6ngK@T3
+R20
 r1
 !s85 0
 31
-R19
-R24
-R20
+R29
+R30
+R31
 !i113 0
-R21
-R22
-vsamegame_top
-R13
+R24
 R14
-R15
+vsamegame_top
+R26
+R16
+R27
 !i10b 1
 !s100 i>XXVPQ5U_W<;_a5K]Jj^3
-IWIC7252^4nI<gYnKV6<_X0
+I>z4T0SPIlPUG;c@[GDB9c3
 S1
-R16
+R18
 w1790250192
 8../../rtl/samegame_top.sv
 F../../rtl/samegame_top.sv
-!i122 24
+!i122 25
 L0 27 193
-R17
-R18
+R19
+R20
 r1
 !s85 0
 31
-R19
-R24
-R20
+R29
+R30
+R31
 !i113 0
-R21
-R22
-vscore_manager
-R13
+R24
 R14
-R15
+vscore_manager
+R26
+R16
+R27
 !i10b 1
 !s100 @MbG4lo>_1``^J9ADlaIK1
-IhHFFAMI>C3aOzAHiJllWP3
+IJXcnRAHFD:eXNUNbH7z<g3
 S1
-R16
+R18
 w1790249385
 8../../rtl/score_manager.sv
 F../../rtl/score_manager.sv
-!i122 24
+!i122 25
 L0 7 28
-R17
-R18
+R19
+R20
 r1
 !s85 0
 31
-R19
-R24
-R20
+R29
+R30
+R31
 !i113 0
-R21
-R22
-vspi_byte_master
-R13
+R24
 R14
-R15
+vspi_byte_master
+R26
+R16
+R27
 !i10b 1
 !s100 @^2JnTlK:Fadzo7mMkM4g1
-IODU2l[BC1Kk5ghfz6=F9F3
+I`F[ZiVADTgVKBGYM;jdZh3
 S1
-R16
-R25
+R18
+R28
 8../../rtl/spi_byte_master.sv
 F../../rtl/spi_byte_master.sv
-!i122 24
+!i122 25
 L0 5 89
-R17
-R18
+R19
+R20
 r1
 !s85 0
 31
-R19
-R24
-R20
+R29
+R30
+R31
 !i113 0
-R21
-R22
-vtb_framebuffer
-Z26 2..\..\rtl\spi_byte_master.sv|..\..\rtl\lcd_ili9341_ctrl.sv|..\..\rtl\lcd_test_top.sv|tb_framebuffer.sv|tb_orange.sv
+R24
 R14
-Z27 !s110 1790146858
+vtb_framebuffer
+Z35 2..\..\rtl\spi_byte_master.sv|..\..\rtl\lcd_ili9341_ctrl.sv|..\..\rtl\lcd_test_top.sv|tb_framebuffer.sv|tb_orange.sv
+R32
+Z36 !s110 1790146858
 !i10b 1
 !s100 YO_iP<eHZm8JbHY@^gZiT1
 IHz9J4@N4_zS71hFWdP@d=0
 S1
-R4
+R5
 w1790142364
 8tb_framebuffer.sv
 Ftb_framebuffer.sv
 !i122 20
 L0 10 160
-R17
-R18
+R19
+R33
 r1
 !s85 0
 31
-Z28 !s108 1790146858.000000
-Z29 !s107 tb_orange.sv|tb_framebuffer.sv|..\\..\\rtl\\lcd_test_top.sv|..\\..\\rtl\\lcd_ili9341_ctrl.sv|..\\..\\rtl\\spi_byte_master.sv|
-Z30 !s90 -sv|-quiet|..\..\rtl\spi_byte_master.sv|..\..\rtl\lcd_ili9341_ctrl.sv|..\..\rtl\lcd_test_top.sv|tb_framebuffer.sv|tb_orange.sv|
+Z37 !s108 1790146858.000000
+Z38 !s107 tb_orange.sv|tb_framebuffer.sv|..\\..\\rtl\\lcd_test_top.sv|..\\..\\rtl\\lcd_ili9341_ctrl.sv|..\\..\\rtl\\spi_byte_master.sv|
+Z39 !s90 -sv|-quiet|..\..\rtl\spi_byte_master.sv|..\..\rtl\lcd_ili9341_ctrl.sv|..\..\rtl\lcd_test_top.sv|tb_framebuffer.sv|tb_orange.sv|
 !i113 0
-Z31 o-quiet -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-R22
+Z40 o-quiet -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R34
 vtb_orange
-R26
-R14
-R27
+R35
+R32
+R36
 !i10b 1
 !s100 [J14=EM>1_:>a9[a4Vj3T2
 ISW=YJ<j3^enF>7Iof6OAi3
 S1
-R4
+R5
 w1790144519
 8tb_orange.sv
 Ftb_orange.sv
 !i122 20
 L0 20 335
-R17
-R18
+R19
+R33
 r1
 !s85 0
 31
-R28
-R29
-R30
+R37
+R38
+R39
 !i113 0
-R31
-R22
+R40
+R34
 vtb_samegame
-2../../rtl/board_memory.sv|../../rtl/column_shift_engine.sv|../../rtl/debounce.sv|../../rtl/erase_engine.sv|../../rtl/floodfill_engine.sv|../../rtl/framebuffer_pixel_src.sv|../../rtl/frame_seq.sv|../../rtl/game_fsm.sv|../../rtl/gravity_engine.sv|../../rtl/lcd_ili9341_ctrl.sv|../../rtl/lcd_renderer.sv|../../rtl/lcd_test_top.sv|../../rtl/logo_rom.sv|../../rtl/reset_sync.sv|../../rtl/rng_generator.sv|../../rtl/samegame_pkg.sv|../../rtl/samegame_top.sv|../../rtl/score_manager.sv|../../rtl/spi_byte_master.sv|../../rtl/touch_controller.sv|tb_samegame.sv
-R14
-!s110 1790250500
-!i10b 1
-!s100 2XKz<bZe7HSe2PiI8PgkK2
-Idz;6bDD=5lEhm<gl:6;L02
-S1
+R15
 R16
-w1790250494
+R17
+!i10b 1
+!s100 dM`5nO1V^`MI]mP7h@]371
+IRdcT<>YJSdZgdSkbiOb513
+S1
+R18
+w1790251474
 8tb_samegame.sv
 Ftb_samegame.sv
-!i122 23
-L0 16 270
-R17
-R18
+!i122 26
+L0 16 273
+R19
+R20
 r1
 !s85 0
 31
-!s108 1790250500.000000
-!s107 tb_samegame.sv|../../rtl/touch_controller.sv|../../rtl/spi_byte_master.sv|../../rtl/score_manager.sv|../../rtl/samegame_top.sv|../../rtl/samegame_pkg.sv|../../rtl/rng_generator.sv|../../rtl/reset_sync.sv|../../rtl/logo_rom.sv|../../rtl/lcd_test_top.sv|../../rtl/lcd_renderer.sv|../../rtl/lcd_ili9341_ctrl.sv|../../rtl/gravity_engine.sv|../../rtl/game_fsm.sv|../../rtl/frame_seq.sv|../../rtl/framebuffer_pixel_src.sv|../../rtl/floodfill_engine.sv|../../rtl/erase_engine.sv|../../rtl/debounce.sv|../../rtl/column_shift_engine.sv|../../rtl/board_memory.sv|
-!s90 -sv|../../rtl/board_memory.sv|../../rtl/column_shift_engine.sv|../../rtl/debounce.sv|../../rtl/erase_engine.sv|../../rtl/floodfill_engine.sv|../../rtl/framebuffer_pixel_src.sv|../../rtl/frame_seq.sv|../../rtl/game_fsm.sv|../../rtl/gravity_engine.sv|../../rtl/lcd_ili9341_ctrl.sv|../../rtl/lcd_renderer.sv|../../rtl/lcd_test_top.sv|../../rtl/logo_rom.sv|../../rtl/reset_sync.sv|../../rtl/rng_generator.sv|../../rtl/samegame_pkg.sv|../../rtl/samegame_top.sv|../../rtl/score_manager.sv|../../rtl/spi_byte_master.sv|../../rtl/touch_controller.sv|tb_samegame.sv|
-!i113 0
 R21
 R22
-vtouch_controller
-R13
+R23
+!i113 0
+R24
 R14
-R15
+vtouch_controller
+R26
+R16
+R27
 !i10b 1
 !s100 Z[azR_i]:`_31>;0^>ZEz0
-Izg97od0G2aA?^g9_MzHdG2
+Ilfaz0=OT12HL0]0KY35mS3
 S1
-R16
+R18
 w1790249405
 8../../rtl/touch_controller.sv
 F../../rtl/touch_controller.sv
-!i122 24
+!i122 25
 L0 36 267
-R17
-R18
+R19
+R20
 r1
 !s85 0
 31
-R19
-R24
-R20
+R29
+R30
+R31
 !i113 0
-R21
-R22
+R24
+R14

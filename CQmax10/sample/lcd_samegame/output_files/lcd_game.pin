@@ -65,7 +65,7 @@
  -- Pin directions (input, output or bidir) are based on device operating in user mode.
  ---------------------------------------------------------------------------------
 
-Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 CHIP  "lcd_game"  ASSIGNED TO AN: 10M08SCE144C8G
 
 Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
@@ -199,12 +199,12 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : 126       :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : 127       :        :                   :         : 8         :                
 VCCIO8                       : 128       : power  :                   : 3.3V    : 8         :                
 ~ALTERA_nCONFIG~ / RESERVED_INPUT : 129       : input  : 3.3 V Schmitt Trigger :         : 8         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : 130       :        :                   :         : 8         :                
+touch_sck                    : 130       : output : 3.3-V LVCMOS      :         : 8         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : 131       :        :                   :         : 8         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 132       :        :                   :         : 8         :                
+touch_miso                   : 132       : input  : 3.3-V LVCMOS      :         : 8         : Y              
 GND                          : 133       : gnd    :                   :         :           :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 134       :        :                   :         : 8         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 135       :        :                   :         : 8         :                
+touch_cs                     : 134       : output : 3.3-V LVCMOS      :         : 8         : Y              
+touch_mosi                   : 135       : output : 3.3-V LVCMOS      :         : 8         : Y              
 ~ALTERA_nSTATUS~ / RESERVED_INPUT : 136       : input  : 3.3 V Schmitt Trigger :         : 8         : N              
 GND                          : 137       : gnd    :                   :         :           :                
 ~ALTERA_CONF_DONE~ / RESERVED_INPUT : 138       : input  : 3.3 V Schmitt Trigger :         : 8         : N              

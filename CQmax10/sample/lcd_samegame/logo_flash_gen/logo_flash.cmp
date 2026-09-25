@@ -1,0 +1,20 @@
+	component logo_flash is
+		port (
+			ufm_clock_clk          : in  std_logic                     := 'X';             -- clk
+			ufm_csr_address        : in  std_logic                     := 'X';             -- address
+			ufm_csr_read           : in  std_logic                     := 'X';             -- read
+			ufm_csr_writedata      : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			ufm_csr_write          : in  std_logic                     := 'X';             -- write
+			ufm_csr_readdata       : out std_logic_vector(31 downto 0);                    -- readdata
+			ufm_data_address       : in  std_logic_vector(12 downto 0) := (others => 'X'); -- address
+			ufm_data_read          : in  std_logic                     := 'X';             -- read
+			ufm_data_writedata     : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			ufm_data_write         : in  std_logic                     := 'X';             -- write
+			ufm_data_readdata      : out std_logic_vector(31 downto 0);                    -- readdata
+			ufm_data_waitrequest   : out std_logic;                                        -- waitrequest
+			ufm_data_readdatavalid : out std_logic;                                        -- readdatavalid
+			ufm_data_burstcount    : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- burstcount
+			ufm_reset_reset_n      : in  std_logic                     := 'X'              -- reset_n
+		);
+	end component logo_flash;
+

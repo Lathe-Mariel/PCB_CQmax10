@@ -1,0 +1,136 @@
+
+State Machine - |samegame_top|game_fsm:u_game|state
+Name state.S_GAMEOVER state.S_SHIFT_ANIM state.S_FALL_ANIM state.S_ERASE_EFFECT state.S_FLOODFILL state.S_PLAY state.S_CHECK_WAIT state.S_CHECK state.S_GENERATE state.S_INIT 
+state.S_INIT 0 0 0 0 0 0 0 0 0 0 
+state.S_GENERATE 0 0 0 0 0 0 0 0 1 1 
+state.S_CHECK 0 0 0 0 0 0 0 1 0 1 
+state.S_CHECK_WAIT 0 0 0 0 0 0 1 0 0 1 
+state.S_PLAY 0 0 0 0 0 1 0 0 0 1 
+state.S_FLOODFILL 0 0 0 0 1 0 0 0 0 1 
+state.S_ERASE_EFFECT 0 0 0 1 0 0 0 0 0 1 
+state.S_FALL_ANIM 0 0 1 0 0 0 0 0 0 1 
+state.S_SHIFT_ANIM 0 1 0 0 0 0 0 0 0 1 
+state.S_GAMEOVER 1 0 0 0 0 0 0 0 0 1 
+
+State Machine - |samegame_top|game_fsm:u_game|column_shift_engine:u_shift|state
+Name state.S_DONE state.S_WRITE state.S_CLEAR state.S_SCANW state.S_SCAN state.S_IDLE 
+state.S_IDLE 0 0 0 0 0 0 
+state.S_SCAN 0 0 0 0 1 1 
+state.S_SCANW 0 0 0 1 0 1 
+state.S_CLEAR 0 0 1 0 0 1 
+state.S_WRITE 0 1 0 0 0 1 
+state.S_DONE 1 0 0 0 0 1 
+
+State Machine - |samegame_top|game_fsm:u_game|gravity_engine:u_grav|state
+Name state.S_DONE state.S_NEXT state.S_SCAN state.S_CLEAR state.S_LATCH state.S_IDLE 
+state.S_IDLE 0 0 0 0 0 0 
+state.S_LATCH 0 0 0 0 1 1 
+state.S_CLEAR 0 0 0 1 0 1 
+state.S_SCAN 0 0 1 0 0 1 
+state.S_NEXT 0 1 0 0 0 1 
+state.S_DONE 1 0 0 0 0 1 
+
+State Machine - |samegame_top|game_fsm:u_game|erase_engine:u_erase|state
+Name state.S_DONE state.S_COMMIT state.S_BLINK state.S_IDLE 
+state.S_IDLE 0 0 0 0 
+state.S_BLINK 0 0 1 1 
+state.S_COMMIT 0 1 0 1 
+state.S_DONE 1 0 0 1 
+
+State Machine - |samegame_top|game_fsm:u_game|floodfill_engine:u_ff|state
+Name state.S_DONE state.S_PROBE3 state.S_PROBE2 state.S_PROBE1 state.S_PROBE0 state.S_POP state.S_SEED state.S_IDLE 
+state.S_IDLE 0 0 0 0 0 0 0 0 
+state.S_SEED 0 0 0 0 0 0 1 1 
+state.S_POP 0 0 0 0 0 1 0 1 
+state.S_PROBE0 0 0 0 0 1 0 0 1 
+state.S_PROBE1 0 0 0 1 0 0 0 1 
+state.S_PROBE2 0 0 1 0 0 0 0 1 
+state.S_PROBE3 0 1 0 0 0 0 0 1 
+state.S_DONE 1 0 0 0 0 0 0 1 
+
+State Machine - |samegame_top|logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_data_controller:avmm_data_controller|avmm_read_valid_state
+Name avmm_read_valid_state.READ_VALID_IDLE avmm_read_valid_state.READ_VALID_PRE_READING avmm_read_valid_state.READ_VALID_READING 
+avmm_read_valid_state.READ_VALID_IDLE 0 0 0 
+avmm_read_valid_state.READ_VALID_READING 1 0 1 
+avmm_read_valid_state.READ_VALID_PRE_READING 1 1 0 
+
+State Machine - |samegame_top|logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_data_controller:avmm_data_controller|read_state
+Name read_state.READ_STATE_PULSE_SE read_state.READ_STATE_CLEAR read_state.READ_STATE_FINAL read_state.READ_STATE_READY read_state.READ_STATE_DUMMY read_state.READ_STATE_SETUP read_state.READ_STATE_ADDR read_state.READ_STATE_IDLE 
+read_state.READ_STATE_IDLE 0 0 0 0 0 0 0 0 
+read_state.READ_STATE_ADDR 0 0 0 0 0 0 1 1 
+read_state.READ_STATE_SETUP 0 0 0 0 0 1 0 1 
+read_state.READ_STATE_DUMMY 0 0 0 0 1 0 0 1 
+read_state.READ_STATE_READY 0 0 0 1 0 0 0 1 
+read_state.READ_STATE_FINAL 0 0 1 0 0 0 0 1 
+read_state.READ_STATE_CLEAR 0 1 0 0 0 0 0 1 
+read_state.READ_STATE_PULSE_SE 1 0 0 0 0 0 0 1 
+
+State Machine - |samegame_top|logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_data_controller:avmm_data_controller|erase_state
+Name erase_state.ERASE_STATE_ERROR erase_state.ERASE_STATE_RESET erase_state.ERASE_STATE_WAIT_DONE erase_state.ERASE_STATE_WAIT_BUSY erase_state.ERASE_STATE_ADDR erase_state.ERASE_STATE_IDLE 
+erase_state.ERASE_STATE_IDLE 0 0 0 0 0 0 
+erase_state.ERASE_STATE_ADDR 0 0 0 0 1 1 
+erase_state.ERASE_STATE_WAIT_BUSY 0 0 0 1 0 1 
+erase_state.ERASE_STATE_WAIT_DONE 0 0 1 0 0 1 
+erase_state.ERASE_STATE_RESET 0 1 0 0 0 1 
+erase_state.ERASE_STATE_ERROR 1 0 0 0 0 1 
+
+State Machine - |samegame_top|logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_data_controller:avmm_data_controller|write_state
+Name write_state.WRITE_STATE_ERROR write_state.WRITE_STATE_RESET write_state.WRITE_STATE_WAIT_DONE write_state.WRITE_STATE_WAIT_BUSY write_state.WRITE_STATE_WRITE write_state.WRITE_STATE_ADDR write_state.WRITE_STATE_IDLE 
+write_state.WRITE_STATE_IDLE 0 0 0 0 0 0 0 
+write_state.WRITE_STATE_ADDR 0 0 0 0 0 1 1 
+write_state.WRITE_STATE_WRITE 0 0 0 0 1 0 1 
+write_state.WRITE_STATE_WAIT_BUSY 0 0 0 1 0 0 1 
+write_state.WRITE_STATE_WAIT_DONE 0 0 1 0 0 0 1 
+write_state.WRITE_STATE_RESET 0 1 0 0 0 0 1 
+write_state.WRITE_STATE_ERROR 1 0 0 0 0 0 1 
+
+State Machine - |samegame_top|ufm_bootloader:u_boot|state
+Name state.S_DONE state.S_NEXT state.S_WRITE state.S_DATA state.S_READ_WAIT state.S_READ_REQ state.S_IDLE 
+state.S_IDLE 0 0 0 0 0 0 0 
+state.S_READ_REQ 0 0 0 0 0 1 1 
+state.S_READ_WAIT 0 0 0 0 1 0 1 
+state.S_DATA 0 0 0 1 0 0 1 
+state.S_WRITE 0 0 1 0 0 0 1 
+state.S_NEXT 0 1 0 0 0 0 1 
+state.S_DONE 1 0 0 0 0 0 1 
+
+State Machine - |samegame_top|touch_controller:u_touch|state
+Name state.S_NO_TOUCH state.S_MEDIAN state.S_STORE state.S_Y_WAIT state.S_Y_START state.S_X_WAIT state.S_X_START state.S_Z1_CHECK state.S_Z1_WAIT state.S_Z1_START state.S_IDLE 
+state.S_IDLE 0 0 0 0 0 0 0 0 0 0 0 
+state.S_Z1_START 0 0 0 0 0 0 0 0 0 1 1 
+state.S_Z1_WAIT 0 0 0 0 0 0 0 0 1 0 1 
+state.S_Z1_CHECK 0 0 0 0 0 0 0 1 0 0 1 
+state.S_X_START 0 0 0 0 0 0 1 0 0 0 1 
+state.S_X_WAIT 0 0 0 0 0 1 0 0 0 0 1 
+state.S_Y_START 0 0 0 0 1 0 0 0 0 0 1 
+state.S_Y_WAIT 0 0 0 1 0 0 0 0 0 0 1 
+state.S_STORE 0 0 1 0 0 0 0 0 0 0 1 
+state.S_MEDIAN 0 1 0 0 0 0 0 0 0 0 1 
+state.S_NO_TOUCH 1 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |samegame_top|frame_seq:u_fseq|state
+Name state.F_WAIT_INIT state.F_REQ state.F_WAIT_PERIOD 
+state.F_WAIT_INIT 0 0 0 
+state.F_WAIT_PERIOD 1 0 1 
+state.F_REQ 1 1 0 
+
+State Machine - |samegame_top|lcd_ili9341_ctrl:u_lcd|state
+Name state.S_FRAME_END state.S_SCAN_TXW state.S_SCAN_TX state.S_SCAN_WAIT state.S_SCAN_REQ state.S_FRAME_HDR state.S_READY state.S_INIT_DELAY state.S_INIT_WAIT state.S_INIT_SEND state.S_INIT_STEP state.S_POWERON 
+state.S_POWERON 0 0 0 0 0 0 0 0 0 0 0 0 
+state.S_INIT_STEP 0 0 0 0 0 0 0 0 0 0 1 1 
+state.S_INIT_SEND 0 0 0 0 0 0 0 0 0 1 0 1 
+state.S_INIT_WAIT 0 0 0 0 0 0 0 0 1 0 0 1 
+state.S_INIT_DELAY 0 0 0 0 0 0 0 1 0 0 0 1 
+state.S_READY 0 0 0 0 0 0 1 0 0 0 0 1 
+state.S_FRAME_HDR 0 0 0 0 0 1 0 0 0 0 0 1 
+state.S_SCAN_REQ 0 0 0 0 1 0 0 0 0 0 0 1 
+state.S_SCAN_WAIT 0 0 0 1 0 0 0 0 0 0 0 1 
+state.S_SCAN_TX 0 0 1 0 0 0 0 0 0 0 0 1 
+state.S_SCAN_TXW 0 1 0 0 0 0 0 0 0 0 0 1 
+state.S_FRAME_END 1 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |samegame_top|lcd_ili9341_ctrl:u_lcd|spi_byte_master:u_spi|state
+Name state.S_IDLE state.S_HIGH state.S_LOW 
+state.S_IDLE 0 0 0 
+state.S_LOW 1 0 1 
+state.S_HIGH 1 1 0 

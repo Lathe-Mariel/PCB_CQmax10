@@ -1,8 +1,16 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="de0fee893135bd877d88"/>
+    <hash md5_digest_80b="1225cba3f4da535ea4c5"/>
   </project>
   <file_info>
     <file device="10M08SCE144C8G" path="lcd_game.sof" usercode="0xFFFFFFFF"/>
   </file_info>
+  <sld_infos>
+    <sld_info hpath="logo_flash:u_ufm" name="u_ufm">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME logo_flash HAS_SOPCINFO 1 GENERATION_ID 1790325429"/>
+      </assignment_values>
+      <parameters/>
+    </sld_info>
+  </sld_infos>
 </sld_project_info>

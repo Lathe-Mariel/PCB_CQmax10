@@ -35,7 +35,10 @@
 			"/^cmd /c \"type h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_game\\\\qbuild\\.log\" \\| Where-Object \\{ \\$_ -match \"Warning \\\\\\(\" \\} \\| Select-Object -Unique$/": {
 				"approve": true,
 				"matchCommandLine": true
-			}
+			},
+			"Test-Path": true,
+			"&": true,
+			"Move-Item": true
 		}
 	}
 }

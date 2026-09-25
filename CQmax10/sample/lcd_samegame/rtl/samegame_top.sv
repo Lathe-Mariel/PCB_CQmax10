@@ -151,11 +151,55 @@ module samegame_top #(
         .rd_col(col_rd_col), .col_data(col_rd_data)
     );
 
-    // ---- logo ROM ----
+    // ---- logo store : UFM (On-Chip Flash) -> bootloader -> writable M9K RAM ----
     logic [RA_W-1:0] rom_addr;
     logic [15:0] rom_data;
-    logo_rom #(.ROM_DEPTH(2000), .AW(RA_W)) u_rom (
-        .clk(clk), .rd_addr(rom_addr), .rd_data(rom_data)
+
+    // logo_ram write port (driven by bootloader)
+    logic           ram_wr_en;
+    logic [RA_W-1:0] ram_wr_addr;
+    logic [15:0]    ram_wr_data;
+
+    logo_ram #(.ROM_DEPTH(2000), .MEM_DEPTH(2048), .AW(RA_W), .DW(16)) u_ram (
+        .clk(clk),
+        .rd_addr(rom_addr), .rd_data(rom_data),
+        .wr_en(ram_wr_en), .wr_addr(ram_wr_addr), .wr_data(ram_wr_data)
+    );
+
+    // UFM Avalon-MM data slave signals (master side)
+    logic        flash_read;
+    logic [12:0] flash_addr;
+    logic        flash_waitrequest;
+    logic        flash_readdatavalid;
+    logic [31:0] flash_readdata;
+    logic        boot_done;
+
+    ufm_bootloader #(.PIXELS(2000), .RAM_AW(RA_W), .RAM_DW(16)) u_boot (
+        .clk(clk), .rst(rst),
+        .flash_read(flash_read), .flash_addr(flash_addr),
+        .flash_waitrequest(flash_waitrequest),
+        .flash_readdatavalid(flash_readdatavalid),
+        .flash_readdata(flash_readdata),
+        .ram_wr_en(ram_wr_en), .ram_wr_addr(ram_wr_addr), .ram_wr_data(ram_wr_data),
+        .boot_done(boot_done)
+    );
+
+    logo_flash u_ufm (
+        .ufm_clock_clk          (clk),
+        .ufm_reset_reset_n      (~rst),
+        .ufm_data_address       (flash_addr),
+        .ufm_data_read          (flash_read),
+        .ufm_data_writedata     (32'd0),
+        .ufm_data_write         (1'b0),
+        .ufm_data_readdata      (flash_readdata),
+        .ufm_data_waitrequest   (flash_waitrequest),
+        .ufm_data_readdatavalid (flash_readdatavalid),
+        .ufm_data_burstcount    (4'd1),
+        .ufm_csr_address        (1'b0),
+        .ufm_csr_read           (1'b0),
+        .ufm_csr_writedata      (32'd0),
+        .ufm_csr_write          (1'b0),
+        .ufm_csr_readdata       ()
     );
 
     // ---- game FSM ----
@@ -169,8 +213,13 @@ module samegame_top #(
     logic [COLS*4-1:0] shift_dist;
     logic        game_over;
 
+    // Hold the game logic in reset until the logos are resident in RAM, so the
+    // renderer never scans uninitialised logo memory.
+    logic game_rst;
+    assign game_rst = rst | ~boot_done;
+
     game_fsm #(.COLS(COLS), .ROWS(ROWS), .CELLS(CELLS), .AW(AW)) u_game (
-        .clk(clk), .rst(rst),
+        .clk(clk), .rst(game_rst),
         .frame_tick(frame_tick),
         .touch_valid(touch_valid), .touch_x(touch_x), .touch_y(touch_y),
         .touch_down(touch_down), .touch_up(touch_up),
