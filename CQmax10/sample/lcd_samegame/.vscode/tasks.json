@@ -1,0 +1,119 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "verify-regress",
+			"type": "shell",
+			"command": "cmd /c \"timeout /t 1 > nul & echo PROBE > h:\\git\\PCB_CQmax10\\CQmax10\\sample\\lcd_samegame\\probe_out.txt\"",
+			"problemMatcher": []
+		},
+		{
+			"label": "regress-now",
+			"type": "shell",
+			"command": "cmd /c \"set PATH=%PATH%;H:\\altera_lite\\25.1std\\questa_fse\\win64&& cd /d h:\\git\\PCB_CQmax10\\CQmax10\\sample\\lcd_samegame&& taskkill /F /IM vsim.exe /IM vish.exe /IM vopt.exe /IM vlog.exe > nul 2>&1&& call run_tests.bat > regress.log 2>&1\"",
+			"problemMatcher": []
+		},
+		{
+			"label": "regress2",
+			"type": "shell",
+			"command": "h:\\git\\PCB_CQmax10\\CQmax10\\sample\\lcd_samegame\\run_regress_now.bat",
+			"problemMatcher": []
+		},
+		{
+			"label": "regress3",
+			"type": "shell",
+			"command": "h:\\git\\PCB_CQmax10\\CQmax10\\sample\\lcd_samegame\\run_regress_now.bat",
+			"problemMatcher": []
+		},
+		{
+			"label": "build1",
+			"type": "shell",
+			"command": "h:\\git\\PCB_CQmax10\\CQmax10\\sample\\lcd_samegame\\run_build_now.bat",
+			"problemMatcher": []
+		},
+		{
+			"label": "build2",
+			"type": "shell",
+			"command": "h:\\git\\PCB_CQmax10\\CQmax10\\sample\\lcd_samegame\\run_build_now.bat",
+			"problemMatcher": []
+		},
+		{
+			"label": "regress4",
+			"type": "shell",
+			"command": "h:\\git\\PCB_CQmax10\\CQmax10\\sample\\lcd_samegame\\run_regress_now.bat",
+			"problemMatcher": []
+		},
+		{
+			"label": "build3",
+			"type": "shell",
+			"command": "h:\\git\\PCB_CQmax10\\CQmax10\\sample\\lcd_samegame\\run_build_now.bat",
+			"problemMatcher": []
+		},
+		{
+			"label": "regress5",
+			"type": "shell",
+			"command": "h:\\git\\PCB_CQmax10\\CQmax10\\sample\\lcd_samegame\\run_regress_now.bat",
+			"problemMatcher": []
+		},
+		{
+			"label": "build4",
+			"type": "shell",
+			"command": "h:\\git\\PCB_CQmax10\\CQmax10\\sample\\lcd_samegame\\run_build_now.bat",
+			"problemMatcher": []
+		},
+		{
+			"label": "regress6",
+			"type": "shell",
+			"command": "h:\\git\\PCB_CQmax10\\CQmax10\\sample\\lcd_samegame\\run_regress_now.bat",
+			"problemMatcher": []
+		},
+		{
+			"label": "regress7",
+			"type": "shell",
+			"command": "h:\\git\\PCB_CQmax10\\CQmax10\\sample\\lcd_samegame\\run_regress_now.bat",
+			"problemMatcher": []
+		},
+		{
+			"label": "build5",
+			"type": "shell",
+			"command": "h:\\git\\PCB_CQmax10\\CQmax10\\sample\\lcd_samegame\\run_build_now.bat",
+			"problemMatcher": []
+		},
+		{
+			"label": "regress8",
+			"type": "shell",
+			"command": "h:\\git\\PCB_CQmax10\\CQmax10\\sample\\lcd_samegame\\run_regress_now.bat",
+			"problemMatcher": []
+		},
+		{
+			"label": "build6",
+			"type": "shell",
+			"command": "h:\\git\\PCB_CQmax10\\CQmax10\\sample\\lcd_samegame\\run_build_now.bat",
+			"problemMatcher": []
+		},
+		{
+			"label": "regress9",
+			"type": "shell",
+			"command": "h:\\git\\PCB_CQmax10\\CQmax10\\sample\\lcd_samegame\\run_regress_now.bat",
+			"problemMatcher": []
+		},
+		{
+			"label": "regress10",
+			"type": "shell",
+			"command": "h:\\git\\PCB_CQmax10\\CQmax10\\sample\\lcd_samegame\\run_regress_now.bat",
+			"problemMatcher": []
+		},
+		{
+			"label": "build7",
+			"type": "shell",
+			"command": "h:\\git\\PCB_CQmax10\\CQmax10\\sample\\lcd_samegame\\run_build_now.bat",
+			"problemMatcher": []
+		},
+		{
+			"label": "build8",
+			"type": "shell",
+			"command": "h:\\git\\PCB_CQmax10\\CQmax10\\sample\\lcd_samegame\\run_build_now.bat",
+			"problemMatcher": []
+		}
+	]
+}

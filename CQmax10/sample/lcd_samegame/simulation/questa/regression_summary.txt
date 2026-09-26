@@ -1,0 +1,38 @@
+ running tb_samegame
+#   checks=216 errors=0
+#   ALL PASS
+ running tb_renderer
+vlog -sv ..\..\rtl\board_memory.sv ..\..\rtl\logo_ram.sv ..\..\rtl\lcd_renderer.sv tb_renderer.sv 
+-- Compiling module logo_ram
+#     checks=76801 errors=0
+#     checks=153602 errors=0
+#     checks=230403 errors=0
+#     checks=307204 errors=0
+#     checks=384005 errors=0
+#   checks=384005 errors=0
+#   ALL PASS
+ running tb_game_fsm
+#   checks=51 errors=0
+#   ALL PASS
+ running tb_ufm_boot
+vlog -sv ..\..\rtl\ufm_bootloader.sv ..\..\rtl\logo_ram.sv tb_ufm_boot.sv 
+-- Compiling module logo_ram
+# [1] UFM -> logo_ram boot
+#     A: boot_done=1 writes=2000   (readdatavalid BEFORE waitrequest)
+#     B: boot_done=1 writes=2000   (readdatavalid AFTER  waitrequest)
+#     checks=4006 errors=0
+#     C: boot_done=1 boot_fail=1 writes=0 (cycles=1174000)
+#     D: boot_done=1 boot_fail=0 writes=2000 (cycles=0)
+# [5] erased flash (every word 0xFFFFFFFF) -> boot_blank
+#     E: boot_done=1 boot_fail=0 boot_blank=1 writes=2000 (cycles=0)
+#   checks=4019 errors=0
+#   ALL PASS
+ running tb_samegame_top (integration)
+vlog -sv -work work_top tb_samegame_top.sv logo_flash_tb.sv ..\..\rtl\samegame_pkg.sv ..\..\rtl\reset_sync.sv ..\..\rtl\debounce.sv ..\..\rtl\spi_byte_master.sv ..\..\rtl\lcd_ili9341_ctrl.sv ..\..\rtl\frame_seq.sv ..\..\rtl\board_memory.sv ..\..\rtl\floodfill_engine.sv ..\..\rtl\erase_engine.sv ..\..\rtl\gravity_engine.sv ..\..\rtl\column_shift_engine.sv ..\..\rtl\score_manager.sv ..\..\rtl\rng_generator.sv ..\..\rtl\game_fsm.sv ..\..\rtl\logo_ram.sv ..\..\rtl\lcd_renderer.sv ..\..\rtl\ufm_bootloader.sv ..\..\rtl\touch_controller.sv ..\..\rtl\samegame_top.sv 
+-- Compiling module logo_ram
+#     boot_done=1 after 26005 cycles
+#     logo_ram mismatches = 0 / 2000
+#     pixels captured=806394  non-background=779162  (cycles=0)
+#   ok   non-background pixels > 0 = 1
+#   ALL PASS
+ ALL TESTBENCHES PASSED

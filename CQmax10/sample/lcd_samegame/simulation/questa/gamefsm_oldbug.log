@@ -1,0 +1,63 @@
+Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+Start time: 03:51:49 on Sep 26,2026
+vlog -sv ..\..\rtl\board_memory.sv ..\..\rtl\rng_generator.sv ..\..\rtl\floodfill_engine.sv ..\..\rtl\erase_engine.sv ..\..\rtl\gravity_engine.sv ..\..\rtl\column_shift_engine.sv ..\..\rtl\score_manager.sv ..\..\rtl\game_fsm.sv tb_game_fsm.sv 
+** Note: (vlog-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+-- Compiling module board_memory
+-- Compiling module rng_generator
+-- Compiling module floodfill_engine
+-- Compiling module erase_engine
+-- Compiling module gravity_engine
+-- Compiling module column_shift_engine
+-- Compiling module score_manager
+-- Compiling module game_fsm
+-- Compiling module tb_game_fsm
+
+Top level modules:
+	tb_game_fsm
+End time: 03:51:49 on Sep 26,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2025.2
+
+# ** Note: (vsim-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# vsim -c -do "run -all; quit -f" tb_game_fsm 
+# Start time: 03:51:51 on Sep 26,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# //  Questa Altera Starter FPGA Edition-64
+# //  Version 2025.2 win64 May 31 2025
+# //
+# // Unpublished work. Copyright 2025 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading sv_std.std
+# Loading work.tb_game_fsm(fast)
+# run -all
+# [1] board generation after reset
+# [2] tap a 2x2 group -> erase + fall + shift, score += 4^2
+# [3] tap an isolated cell (group of 1) -> nothing happens
+# [4] tap an EMPTY cell -> nothing happens
+# [5] animation mode sequence = blink, fall, shift
+#     anim_mode sequence: 1230
+# [6] no dead-lock over many random taps
+#     10 taps issued, final state=S_GAMEOVER score=96
+# [7] generated board uses all five logos
+#     logo histogram: 35 38 39 44 36
+# [8] game-over scan includes the last cell
+# ================================
+#   checks=51 errors=0
+#   ALL PASS
+# ================================
+# ** Note: $finish    : tb_game_fsm.sv(483)
+#    Time: 4293520 ns  Iteration: 1  Instance: /tb_game_fsm
+# End time: 03:51:56 on Sep 26,2026, Elapsed time: 0:00:05
+# Errors: 0, Warnings: 0

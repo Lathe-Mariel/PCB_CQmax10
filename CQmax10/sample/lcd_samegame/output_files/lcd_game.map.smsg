@@ -1,1 +1,2 @@
-Info (10281): Verilog HDL Declaration information at column_shift_engine.sv(23): object "COLS" differs only in case from object "cols" in the same scope File: C:/Git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/column_shift_engine.sv Line: 23
+Info (10281): Verilog HDL Declaration information at column_shift_engine.sv(23): object "COLS" differs only in case from object "cols" in the same scope File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/column_shift_engine.sv Line: 23
+Warning (10268): Verilog HDL information at lcd_renderer.sv(258): always construct contains both blocking and non-blocking assignments File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/lcd_renderer.sv Line: 258

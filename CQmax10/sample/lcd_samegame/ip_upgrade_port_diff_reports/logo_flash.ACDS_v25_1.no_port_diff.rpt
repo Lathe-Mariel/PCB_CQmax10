@@ -1,0 +1,23 @@
+IP Ports Diff Report for logo_flash
+Sat Sep 26 00:51:07 2026
+Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. IP Information
+
+
+
++----------------------------------------------------------+
+; IP Information                                           ;
++----------------------+-----------------------------------+
+; IP Variation Name    ; logo_flash                        ;
+; Prior Version        ; ACDS_v24.1                        ;
+; New Version          ; ACDS_v25.1                        ;
+; New File             ; logo_flash/synthesis/logo_flash.v ;
+; Has Port Differences ; No                                ;
++----------------------+-----------------------------------+
+
+

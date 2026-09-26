@@ -1,0 +1,79 @@
+m255
+K4
+z2
+!s12c _opt
+Z0 !s99 nomlopt
+!s11f vlog 2025.2 2025.05, May 31 2025
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z1 dH:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/simulation/questa/scratch
+T_opt
+!i145 1
+!i144 0
+!s110 1790362447
+VnI2cVW^N7P2;_mknS_4P=0
+04 10 4 work probe_grav fast 0
+=1-9418827106c0-6ab6c34e-19-8844
+R0
+!s12f OEM100
+!s12b OEM100
+!s124 OEM10U2 
+!s135 nogc
+o-quiet -auto_acc_if_foreign -work work
+tCvgOpt 0 defaultOptions 1107585188
+n@_opt
+OL;O;2025.2;82
+vgravity_engine
+Z2 2..\..\..\rtl\gravity_engine.sv|probe_grav.sv
+Z3 DXx6 sv_std 3 std 0 22 @5XbY]_OacJl=`ToSm<M^0
+Z4 !s110 1790362443
+!i10b 1
+!s100 AXOWkB[HW52mXY^B=Qo7j2
+IAYlEVd_]FXd505CHO;TK70
+S1
+R1
+w1790362438
+8..\..\..\rtl\gravity_engine.sv
+F..\..\..\rtl\gravity_engine.sv
+!i122 0
+L0 24 117
+Z5 VDg1SIo80bB@j0V0VzS_@n1
+Z6 OL;L;2025.2;82
+r1
+!s85 0
+31
+Z7 !s108 1790362443.000000
+Z8 !s107 probe_grav.sv|..\\..\\..\\rtl\\gravity_engine.sv|
+Z9 !s90 -sv|..\..\..\rtl\gravity_engine.sv|probe_grav.sv|
+!i113 0
+Z10 o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z11 tCvgOpt 0 defaultOptions 1085333592
+vprobe_grav
+R2
+R3
+R4
+!i10b 1
+!s100 l3b;49]Z`ELTTSNAPDCDL2
+I_e@eS3Eg4MPYAe@8SD]QH3
+S1
+R1
+w1790362423
+8probe_grav.sv
+Fprobe_grav.sv
+!i122 0
+L0 12 81
+R5
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R11

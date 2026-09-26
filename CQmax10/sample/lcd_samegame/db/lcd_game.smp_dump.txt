@@ -1,4 +1,14 @@
 
+State Machine - |samegame_top|lcd_renderer:u_render|st
+Name st.R_EMIT st.R_LW st.R_LOGO st.R_WAIT st.R_SCAN st.R_CELL st.R_IDLE 
+st.R_IDLE 0 0 0 0 0 0 0 
+st.R_CELL 0 0 0 0 0 1 1 
+st.R_SCAN 0 0 0 0 1 0 1 
+st.R_WAIT 0 0 0 1 0 0 1 
+st.R_LOGO 0 0 1 0 0 0 1 
+st.R_LW 0 1 0 0 0 0 1 
+st.R_EMIT 1 0 0 0 0 0 1 
+
 State Machine - |samegame_top|game_fsm:u_game|state
 Name state.S_GAMEOVER state.S_SHIFT_ANIM state.S_FALL_ANIM state.S_ERASE_EFFECT state.S_FLOODFILL state.S_PLAY state.S_CHECK_WAIT state.S_CHECK state.S_GENERATE state.S_INIT 
 state.S_INIT 0 0 0 0 0 0 0 0 0 0 
@@ -85,14 +95,15 @@ write_state.WRITE_STATE_RESET 0 1 0 0 0 0 1
 write_state.WRITE_STATE_ERROR 1 0 0 0 0 0 1 
 
 State Machine - |samegame_top|ufm_bootloader:u_boot|state
-Name state.S_DONE state.S_NEXT state.S_WRITE state.S_DATA state.S_READ_WAIT state.S_READ_REQ state.S_IDLE 
-state.S_IDLE 0 0 0 0 0 0 0 
-state.S_READ_REQ 0 0 0 0 0 1 1 
-state.S_READ_WAIT 0 0 0 0 1 0 1 
-state.S_DATA 0 0 0 1 0 0 1 
-state.S_WRITE 0 0 1 0 0 0 1 
-state.S_NEXT 0 1 0 0 0 0 1 
-state.S_DONE 1 0 0 0 0 0 1 
+Name state.S_DONE state.S_ABORT state.S_NEXT state.S_WRITE state.S_DATA state.S_REQ2 state.S_REQ state.S_IDLE 
+state.S_IDLE 0 0 0 0 0 0 0 0 
+state.S_REQ 0 0 0 0 0 0 1 1 
+state.S_REQ2 0 0 0 0 0 1 0 1 
+state.S_DATA 0 0 0 0 1 0 0 1 
+state.S_WRITE 0 0 0 1 0 0 0 1 
+state.S_NEXT 0 0 1 0 0 0 0 1 
+state.S_ABORT 0 1 0 0 0 0 0 1 
+state.S_DONE 1 0 0 0 0 0 0 1 
 
 State Machine - |samegame_top|touch_controller:u_touch|state
 Name state.S_NO_TOUCH state.S_MEDIAN state.S_STORE state.S_Y_WAIT state.S_Y_START state.S_X_WAIT state.S_X_START state.S_Z1_CHECK state.S_Z1_WAIT state.S_Z1_START state.S_IDLE 

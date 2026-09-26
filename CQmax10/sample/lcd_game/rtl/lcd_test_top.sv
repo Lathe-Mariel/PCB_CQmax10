@@ -88,7 +88,7 @@ module lcd_test_top #(
     // else is correct.
     parameter int STEP_MS  = 40,   // minimum dot period in ms
     parameter bit LOCK_TO_FRAME = 1'b1,
-    parameter int FRAME_PERIOD_MS = 250,  // panel refresh period used for the lock
+    parameter int FRAME_PERIOD_MS = 50,  // panel refresh period used for the lock
     parameter int START_X  = 1,    // start position of the moving line
     parameter int START_Y  = 1,
 
@@ -96,13 +96,13 @@ module lcd_test_top #(
     // DOT_H, scattered over (DOT_X_MIN,DOT_Y_MIN)-(DOT_X_MAX,DOT_Y_MAX).
     // The Y limit is clamped to the panel height inside dot_field.
     parameter int DOT_N    = 20,
-    parameter int DOT_W    = 2,
-    parameter int DOT_H    = 2,
+    parameter int DOT_W    = 4,
+    parameter int DOT_H    = 4,
     parameter int DOT_X_MIN = 2,
     parameter int DOT_X_MAX = 318,
     parameter int DOT_Y_MIN = 2,
     parameter int DOT_Y_MAX = 318,
-    parameter logic [31:0] DOT_SEED = 32'hACE1_2345,  // must be non-zero
+    parameter logic [31:0] DOT_SEED = 32'hACE1_2347,  // must be non-zero
 
     // colours (RGB565). Background is drawn on the panel only; the frame
     // buffer is 1 bit and does not store colours at all.

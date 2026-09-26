@@ -10,6 +10,176 @@ set_global_assignment -name FAMILY "MAX 10"
 set_global_assignment -name DEVICE 10M08SCE144C8G
 set_global_assignment -name TOP_LEVEL_ENTITY samegame_top
 
+
+# On-Chip Flash (UFM) IP — holds the logo pixels in user flash
+
+set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
+
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
+set_global_assignment -name EDA_SIMULATION_TOOL "<None>"
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_timing
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
+
+# ------------------------------------------------------------------ #
+# Pin assignments (see prompt specification)
+# ------------------------------------------------------------------ #
+set_location_assignment PIN_88 -to clk
+set_location_assignment PIN_17 -to btn_rst
+set_location_assignment PIN_62 -to sw1
+set_location_assignment PIN_48 -to sw2
+set_location_assignment PIN_81 -to lcd_cs
+set_location_assignment PIN_78 -to lcd_mosi
+set_location_assignment PIN_75 -to lcd_sck
+set_location_assignment PIN_77 -to lcd_dc
+
+# ------------------------------------------------------------------ #
+# Touch panel (XPT2046 on the PMOD-TFTLCD module).
+#
+# On the MODULE the LCD and the touch controller are on TWO SEPARATE PMOD
+# connectors.  Its schematic (wuxx/icesugar: schematic/pmod-tftlcd-v1.1.pdf)
+# netlist is
+#     TFT_SPI_CS   = module J2 pin 1      TFT_SPI_MOSI = module J2 pin 2
+#     TFT_RS (DC)  = module J2 pin 10     TFT_SPI_CLK  = module J2 pin 4
+#     TP_SPI_CS    = module J3 pin 1      TP_SPI_MOSI  = module J3 pin 2
+#     TP_SPI_MISO  = module J3 pin 3      TP_SPI_CLK   = module J3 pin 4
+# so the touch controller is a self-contained 4-signal group in the order
+# CS, MOSI, MISO, CLK.  BOTH module connectors must be plugged into the board.
+#
+# ---------------------------------------------------------------------------
+# CORRECTION (an earlier version of this comment was WRONG)
+# ---------------------------------------------------------------------------
+# An earlier note claimed that PIN_60/58/56/50 "belong to TWO DIFFERENT PMOD
+# connectors and could never work".  That is FALSE.  Re-deriving the connector
+# pin table from CQmax10.kicad_sch gives, for every 12-pin PMOD socket, a
+# self-consistent group at pins 7,8,9,10 that sits in the same (1,2,3,4) row as
+# the LCD's pins (it is the second physical row of the 2x6 connector):
+#
+#     J2 : pins 7,8,9,10 = PIN_60, 58, 56, 50   <- currently assigned to TOUCH
+#     J5 : pins 7,8,9,10 = PIN_81, 78, 74, 75   <- LCD, verified working
+#
+# The LCD therefore occupies pin 7 (CS), 8 (MOSI) and 10 (CLK) of its socket,
+# which means the module's LCD connector mates with the board socket's
+# LOWER-numbered row - and the touch connector of the same module must then
+# land on the equivalent row of whatever socket it is plugged into.  That is
+# exactly what PIN_60/58/56/50 are for socket J2, so the assignment below is
+# self-consistent and is retained.
+#
+# CAUTION WHEN CHANGING THESE: the touch CS and its MOSI/MISO/CLK must always be
+# four pins from ONE socket's 7,8,9,10 row.  A mixed assignment cannot work.
+# ---------------------------------------------------------------------------
+# --------------------------------------------------------------------------- #
+# THE PINS THE PROJECT SHIPPED WITH - and why they are back
+# --------------------------------------------------------------------------- #
+# These are the ORIGINAL assignments from the first commit of this project
+# (git: f57857d, "samegame 1st version done").  They are J6 pads 1,2,3,4.
+#
+# An intermediate version of this comment replaced them with J2 pads 7,8,9,10
+# (60/58/56/50), arguing that was "derived from the netlist".  That was WRONG
+# and cost many builds: MEASURED on the board, EVERY socket's 7,8,9,10 row was
+# dead (each conversion read 12'hFFF and the MISO pad never went low in a whole
+# 24-clock transfer), while the project's own original choice was a 1,2,3,4 row.
+#
+# The reason is the module's pinout.  From its schematic (pmod-tftlcd-v1.1.pdf):
+#     LCD   connector J2 : CS=1  MOSI=2   CLK=4   DC=10
+#     TOUCH connector J3 : CS=1  MOSI=2   MISO=3  CLK=4
+# i.e. BOTH connectors put their signals on the module connector's pins 1..4
+# and 10.  On this board the sockets expose those as:
+#     pad 1..4   -> the socket's LOW row
+#     pad 7..10  -> the socket's HIGH row
+# The known-good LCD on socket J5 uses pads 3 (DC), 7 (CS), 8 (MOSI), 10 (CLK),
+# so its connector sits ACROSS the two rows - which means the touch connector,
+# wired the same way on the module, also needs BOTH rows, and the row it lands
+# on is a property of the module's mechanical layout, NOT of any netlist.
+#
+# So this build goes back to the original row and probes the OTHER sockets' low
+# rows (J2 and J4) at the same time, with the read path AUTO-SELECTING whichever
+# socket answers.  One of these is where the touch controller is.
+# --------------------------------------------------------------------------- #
+set_location_assignment PIN_134 -to touch_cs
+set_location_assignment PIN_135 -to touch_mosi
+set_location_assignment PIN_132 -to touch_miso
+set_location_assignment PIN_130 -to touch_sck
+
+# ------------------------------------------------------------------ #
+# SECOND candidate pad for MISO, read simultaneously with touch_miso so ONE
+# build can answer "which pad is the touch chip actually driving?".
+#
+# WHY: on the board every conversion returned 12'hFFF, which means the MISO
+# input sat at a constant 1 - the pad being read was never driven.  Re-deriving
+# the pin order from the schematics keeps giving a self-consistent answer, so
+# the question is settled by MEASUREMENT instead: two pads are watched at the
+# same instants and the bring-up LEDs report which one ever went LOW.
+#
+# PIN_55 is board socket J2 pad 3.  Reasoning for trying it: the LCD of the
+# SAME module uses its socket's pads 3 (DC), 7 (CS), 8 (MOSI) and 10 (CLK) -
+# note the four signals map to pads 3,7,8,10, NOT to 7,8,9,10.  If the module
+# wires its touch connector the same way then the fourth touch signal (MISO)
+# lands on pad 3 as well, and pad 9 - which touch_miso currently uses - is not
+# connected at all.  That is exactly the observed symptom.
+#
+# This is a DIAGNOSTIC pin.  Once the answer is known, touch_miso should be
+# moved to whichever pad the LEDs identified and this input removed.
+# ------------------------------------------------------------------ #
+# socket J2 LOW row : CS=59 MOSI=57 MISO=55 SCK=52
+set_location_assignment PIN_59 -to alt_cs
+set_location_assignment PIN_57 -to alt_mosi
+set_location_assignment PIN_55 -to touch_miso_alt
+set_location_assignment PIN_52 -to alt_sck
+
+# socket J4 LOW row : CS=98 MOSI=99 MISO=96 SCK=97
+set_location_assignment PIN_98 -to fr_cs
+set_location_assignment PIN_99 -to fr_mosi
+set_location_assignment PIN_96 -to touch_miso_fr
+set_location_assignment PIN_97 -to fr_sck
+
+set_location_assignment PIN_85 -to led
+set_location_assignment PIN_122 -to led0
+set_location_assignment PIN_123 -to led1
+set_location_assignment PIN_120 -to led2
+set_location_assignment PIN_121 -to led3
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to clk
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to btn_rst
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to sw1
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to sw2
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lcd_cs
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lcd_mosi
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lcd_sck
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lcd_dc
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to touch_cs
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to touch_mosi
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to touch_miso
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to touch_miso_alt
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to touch_miso_fr
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to alt_cs
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to alt_mosi
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to alt_sck
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to fr_cs
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to fr_mosi
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to fr_sck
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to touch_sck
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led0
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led1
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led2
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led3
+
+# Buttons/switches are assumed to have external pull-ups on the board.
+# Uncomment if yours do not:
+#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to btn_rst
+#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to sw1
+#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to sw2
+
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+
+set_global_assignment -name LAST_QUARTUS_VERSION "25.1std.0 Lite Edition"
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/samegame_top.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/game_fsm.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/board_memory.sv
@@ -28,71 +198,6 @@ set_global_assignment -name SYSTEMVERILOG_FILE rtl/spi_byte_master.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/frame_seq.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/reset_sync.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/debounce.sv
-
-# On-Chip Flash (UFM) IP — holds the logo pixels in user flash
-set_global_assignment -name QIP_FILE logo_flash_gen/synthesis/logo_flash.qip
-
+set_global_assignment -name QIP_FILE logo_flash/synthesis/logo_flash.qip
 set_global_assignment -name SDC_FILE lcd_game.sdc
-set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
-
-set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
-set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
-set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
-set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
-set_global_assignment -name EDA_SIMULATION_TOOL "<None>"
-set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_timing
-set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
-set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
-set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
-
-# ------------------------------------------------------------------ #
-# Pin assignments (see prompt specification)
-# ------------------------------------------------------------------ #
-set_location_assignment PIN_88  -to clk
-set_location_assignment PIN_17  -to btn_rst
-set_location_assignment PIN_62  -to sw1
-set_location_assignment PIN_48  -to sw2
-set_location_assignment PIN_81  -to lcd_cs
-set_location_assignment PIN_78  -to lcd_mosi
-set_location_assignment PIN_75  -to lcd_sck
-set_location_assignment PIN_77  -to lcd_dc
-set_location_assignment PIN_134 -to touch_cs
-set_location_assignment PIN_135 -to touch_mosi
-set_location_assignment PIN_132 -to touch_miso
-set_location_assignment PIN_130 -to touch_sck
-set_location_assignment PIN_85  -to led
-set_location_assignment PIN_122 -to led0
-set_location_assignment PIN_123 -to led1
-set_location_assignment PIN_120 -to led2
-set_location_assignment PIN_121 -to led3
-
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to clk
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to btn_rst
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to sw1
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to sw2
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lcd_cs
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lcd_mosi
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lcd_sck
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lcd_dc
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to touch_cs
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to touch_mosi
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to touch_miso
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to touch_sck
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led0
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led1
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led2
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led3
-
-# Buttons/switches are assumed to have external pull-ups on the board.
-# Uncomment if yours do not:
-#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to btn_rst
-#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to sw1
-#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to sw2
-
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-
-set_global_assignment -name LAST_QUARTUS_VERSION "24.1std.0 Lite Edition"

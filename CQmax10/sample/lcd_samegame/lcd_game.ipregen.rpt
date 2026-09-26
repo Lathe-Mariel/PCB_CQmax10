@@ -1,0 +1,127 @@
+IP Upgrade report for lcd_game
+Sat Sep 26 00:51:07 2026
+Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. IP Upgrade Summary
+  3. Successfully Upgraded IP Components
+  4. IP Upgrade Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++--------------------------------------------------------------------------------+
+; IP Upgrade Summary                                                             ;
++------------------------------+-------------------------------------------------+
+; IP Components Upgrade Status ; Passed - Sat Sep 26 00:51:07 2026               ;
+; Quartus Prime Version        ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
+; Revision Name                ; lcd_game                                        ;
+; Top-level Entity Name        ; samegame_top                                    ;
+; Family                       ; MAX 10                                          ;
++------------------------------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Successfully Upgraded IP Components                                                                                                                     ;
++-------------+----------------+---------+-----------------------------------------+----------------------+-------------------------------------+---------+
+; Entity Name ; Component Name ; Version ; Original Source File                    ; Generation File Path ; New Source File                     ; Message ;
++-------------+----------------+---------+-----------------------------------------+----------------------+-------------------------------------+---------+
+; logo_flash  ; Qsys           ; 24.1    ; logo_flash_gen/synthesis/logo_flash.qip ; logo_flash.qsys      ; logo_flash/synthesis/logo_flash.qip ;         ;
++-------------+----------------+---------+-----------------------------------------+----------------------+-------------------------------------+---------+
+
+
++---------------------+
+; IP Upgrade Messages ;
++---------------------+
+Info (11902): Backing up file "logo_flash.qsys" to "logo_flash.BAK.qsys"
+Info (11902): Backing up file "logo_flash_gen/synthesis/logo_flash.v" to "logo_flash.BAK.v"
+Info (11837): Started upgrading IP component Qsys with file "logo_flash.qsys"
+Info: 2026.09.26.00:50:43 Info: Starting to upgrade the IP cores in the Platform Designer system
+Info: 2026.09.26.00:50:43 Info: Finished upgrading the ip cores
+Info: 2026.09.26.00:50:50 Info: Saving generation log to H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash
+Info: 2026.09.26.00:50:50 Info: Starting: Create simulation model
+Info: 2026.09.26.00:50:50 Info: qsys-generate H:\git\PCB_CQmax10\CQmax10\sample\lcd_samegame\logo_flash.qsys --simulation=VERILOG --allow-mixed-language-simulation --output-directory=H:\git\PCB_CQmax10\CQmax10\sample\lcd_samegame\logo_flash\simulation --family="MAX 10" --part=10M08SCE144C8G
+Info: 2026.09.26.00:50:50 Info: Loading lcd_samegame
+Info: 2026.09.26.00:50:51 Info: Reading input file
+Info: 2026.09.26.00:50:51 Info: Adding ufm [altera_onchip_flash 25.1]
+Info: 2026.09.26.00:50:51 Info: Parameterizing module ufm
+Info: 2026.09.26.00:50:51 Info: Building connections
+Info: 2026.09.26.00:50:51 Info: Parameterizing connections
+Info: 2026.09.26.00:50:51 Info: Validating
+Info: 2026.09.26.00:50:51 Info: Done reading input file
+Info: 2026.09.26.00:50:53 Info: logo_flash: Generating "logo_flash" for SIM_VERILOG
+Info: 2026.09.26.00:50:56 Info: ufm: "logo_flash" instantiated altera_onchip_flash "ufm"
+Info: 2026.09.26.00:50:56 Info: logo_flash: Done "logo_flash" with 2 modules, 5 files
+Info: 2026.09.26.00:50:56 Info: qsys-generate succeeded.
+Info: 2026.09.26.00:50:56 Info: Finished: Create simulation model
+Info: 2026.09.26.00:50:56 Info: Starting: Create Modelsim Project.
+Info: 2026.09.26.00:50:56 Info: sim-script-gen --spd=H:\git\PCB_CQmax10\CQmax10\sample\lcd_samegame\logo_flash\logo_flash.spd --output-directory=H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/simulation
+Info: 2026.09.26.00:50:56 Info: Doing: ip-make-simscript --spd=H:\git\PCB_CQmax10\CQmax10\sample\lcd_samegame\logo_flash\logo_flash.spd --output-directory=H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/simulation
+Info: 2026.09.26.00:50:57 Info: Generating the following file(s) for MODELSIM simulator in H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/simulation
+Info: 2026.09.26.00:50:57 Info:     mentor
+Info: 2026.09.26.00:50:57 Info: Generating the following file(s) for RIVIERA simulator in H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/simulation
+Info: 2026.09.26.00:50:57 Info:     aldec
+Info: 2026.09.26.00:50:57 Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/simulation
+Info: 2026.09.26.00:50:57 Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info: 2026.09.26.00:50:57 Info: Finished: Create Modelsim Project.
+Info: 2026.09.26.00:50:57 Info: Starting: Create block symbol file (.bsf)
+Info: 2026.09.26.00:50:57 Info: qsys-generate H:\git\PCB_CQmax10\CQmax10\sample\lcd_samegame\logo_flash.qsys --block-symbol-file --output-directory=H:\git\PCB_CQmax10\CQmax10\sample\lcd_samegame\logo_flash --family="MAX 10" --part=10M08SCE144C8G
+Info: 2026.09.26.00:50:57 Info: Loading lcd_samegame
+Info: 2026.09.26.00:50:59 Info: Reading input file
+Info: 2026.09.26.00:50:59 Info: Adding ufm [altera_onchip_flash 25.1]
+Info: 2026.09.26.00:50:59 Info: Parameterizing module ufm
+Info: 2026.09.26.00:50:59 Info: Building connections
+Info: 2026.09.26.00:50:59 Info: Parameterizing connections
+Info: 2026.09.26.00:50:59 Info: Validating
+Info: 2026.09.26.00:50:59 Info: Done reading input file
+Info: 2026.09.26.00:51:01 Info: qsys-generate succeeded.
+Info: 2026.09.26.00:51:01 Info: Finished: Create block symbol file (.bsf)
+Info: 2026.09.26.00:51:01 Info:
+Info: 2026.09.26.00:51:01 Info: Starting: Create HDL design files for synthesis
+Info: 2026.09.26.00:51:01 Info: qsys-generate H:\git\PCB_CQmax10\CQmax10\sample\lcd_samegame\logo_flash.qsys --synthesis=VERILOG --output-directory=H:\git\PCB_CQmax10\CQmax10\sample\lcd_samegame\logo_flash\synthesis --family="MAX 10" --part=10M08SCE144C8G
+Info: 2026.09.26.00:51:01 Info: Loading lcd_samegame
+Info: 2026.09.26.00:51:02 Info: Reading input file
+Info: 2026.09.26.00:51:02 Info: Adding ufm [altera_onchip_flash 25.1]
+Info: 2026.09.26.00:51:02 Info: Parameterizing module ufm
+Info: 2026.09.26.00:51:02 Info: Building connections
+Info: 2026.09.26.00:51:02 Info: Parameterizing connections
+Info: 2026.09.26.00:51:02 Info: Validating
+Info: 2026.09.26.00:51:02 Info: Done reading input file
+Info: 2026.09.26.00:51:04 Info: logo_flash: Generating "logo_flash" for QUARTUS_SYNTH
+Info: 2026.09.26.00:51:06 Info: ufm: Generating top-level entity altera_onchip_flash
+Info: 2026.09.26.00:51:07 Info: ufm: "logo_flash" instantiated altera_onchip_flash "ufm"
+Info: 2026.09.26.00:51:07 Info: logo_flash: Done "logo_flash" with 2 modules, 7 files
+Info: 2026.09.26.00:51:07 Info: qsys-generate succeeded.
+Info: 2026.09.26.00:51:07 Info: Finished: Create HDL design files for synthesis
+Info (11131): Completed upgrading IP component Qsys with file "logo_flash.qsys"
+Info (23030): Evaluation of Tcl script h:/altera_lite/25.1std/quartus/common/tcl/internal/ip_regen/ip_regen.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 4907 megabytes
+    Info: Processing ended: Sat Sep 26 00:51:07 2026
+    Info: Elapsed time: 00:00:42
+    Info: Total CPU time (on all processors): 00:01:30
+
+

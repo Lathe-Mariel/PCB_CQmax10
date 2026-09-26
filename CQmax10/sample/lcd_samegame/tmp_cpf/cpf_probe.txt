@@ -1,0 +1,75 @@
+=== sof - conversion === 
+Info: *******************************************************************
+Info: Running Quartus Prime Convert_programming_file
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Copyright (C) 2025  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Sat Sep 26 11:31:05 2026
+Info: Command: quartus_cpf -c -d 10M08SCE144C8G output_files\lcd_game.sof tmp_cpf\from_sof.pof
+Error (213035): Configuration device 10M08SCE144C8G is illegal -- specify a legal configuration device
+Error: Quartus Prime Convert_programming_file was unsuccessful. 1 error, 0 warnings
+    Error: Peak virtual memory: 4450 megabytes
+    Error: Processing ended: Sat Sep 26 11:31:06 2026
+    Error: Elapsed time: 00:00:01
+    Error: Total CPU time (on all processors): 00:00:01
+cpf exit=3 
+ 
+=== list of generated files === 
+cpf_probe.bat
+cpf_probe.txt
+note.txt
+ 
+=== hexout: sof - (a UFM-style image?) === 
+
+Topic: hexout
+
+To generate a Hexadecimal (Intel-Format) Output File (.hexout), 
+specify the input file name and output file name. Make sure 
+the file extension of the output file is .hexout. The input 
+file can be either an SRAM Object File (.sof) or a Programmer 
+Object File (.pof). 
+
+You can use optional arguments to specify the data start 
+address and count direction. These arguments are not legal 
+if you are trying to convert an enhanced configuration device 
+.pof to a .hexout.
+
+Optional arguments are as follows:
+
+-u | --count_dir        Specifies the count direction for 
+                        the data.
+
+-a | --start_address    Specifies the start address of the 
+                        data. Make sure to enter the address
+                        as a hexadecimal number.
+
+---------
+Examples:
+---------
+
+# To convert a .sof or .pof to .hexout
+quartus_cpf -c <input_file> <output_hexout_file>
+
+#start address = 0x200, data count direction = up
+quartus_cpf -c -u up -a 0x200 <input_file> <output_hexout_file>
+
+#start address = 0x0fffff, data count direction = down
+quartus_cpf -c -u down -a 0x0fffff <input_file> <output_hexout_file>
+
+# To use a Conversion Setup File (.cof) created with 
+# the Convert Programming Files dialog box in the UI
+quartus_cpf -c <input_cof_file>
+
+DONE 

@@ -1,0 +1,86 @@
+=== UFM signature probe ===
+mem words = 2000
+--- built .sof ---
+    size=736469  sigA@=415625  sigB@=419625
+--- built .pof ---
+    size=321804  sigA@=-1  sigB@=-1
+=== cpf -c lcd_game.sof from_sof.pof ===
+Info: *******************************************************************
+Info: Running Quartus Prime Convert_programming_file
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Copyright (C) 2025  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Sat Sep 26 11:31:39 2026
+Info: Command: quartus_cpf -c h:\git\PCB_CQmax10\CQmax10\sample\lcd_samegame\output_files\lcd_game.sof h:\git\PCB_CQmax10\CQmax10\sample\lcd_samegame\tmp_cpf\from_sof.pof
+Info: Quartus Prime Convert_programming_file was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 4447 megabytes
+    Info: Processing ended: Sat Sep 26 11:31:39 2026
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:01
+
+--- from_sof.pof ---
+    size=321804  sigA@=-1  sigB@=-1
+=== cpf --help=pof ===
+
+Topic: pof
+
+To convert an SRAM Object File (.sof) to a Programmer Object 
+File (.pof), specify the input file name, configuration device 
+name and output file name. Make sure the file extension of the 
+output file is .pof. You can also generate a .pof using a 
+Conversion Setup File (.cof) created with the Convert 
+Programming Files dialog box in the UI. A .cof contains all 
+the options for the configuration device along with the 
+output .pof name.
+
+Alternatively, you can change configuration device options  
+using an ASCII text option file. Refer to the help for the 
+"-o" option for more information about the option file. 
+If you do not specify an option file and a .cof, default 
+values are used, or values are read from a .cof.
+
+---------
+Examples:
+---------
+
+# To convert .sof to .pof
+quartus_cpf -c -d <config_device_name> <input_sof_file> <output_pof_file>
+
+# To use option file
+quartus_cpf -c -o <option_file> -d <config_device_name> <input_sof_file> <output_pof_file>
+
+# To use .cof
+quartus_cpf -c <input_cof_file>
+
+
+=== cpf --help=isc ===
+
+Topic: isc
+
+To generate an In System Configuration File (.isc), specify 
+the input file name and output file name. The ISC File is 
+generated for IEEE-1532 compliant or compatible devices. 
+Make sure the file extension of the output file is .isc. 
+The input file can be either a Programmer Object File (.pof) 
+or a Chain Description File (.cdf).
+
+---------
+Examples:
+---------
+
+quartus_cpf -c <input_pof_file> <output_isc_file>
+quartus_cpf -c <input_cdf_file> <output_isc_file> 
+
+

@@ -1,0 +1,336 @@
+=== UFM initialisation data in the programming files ===
+pattern (hex): EA 00 00 00 EA 00 00 00 EA 00 00 00 88 00 00 00 0A 09 00 00 B2 63 00 00 19 BE 00 00 7E EF 00 00
+
+lcd_game.pof : NOT FOUND (searched 321804 bytes)
+lcd_game.sof : FOUND at byte offset 415625 (of 736469)
+
+=== a run of at least 16 identical 0x000000EA words (64 bytes) ===
+pof : NOT FOUND (searched 321804 bytes)
+
+=== ASCII strings found in the .pof (first 400) ===
+Quartus Prime Programmer Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+10M08SCE144
+Untitled
+wwwww
+wwwwwwww
+,$,,,$$$,$,$$$$$
+^^^^^^^^^^^^^^^^
+GGOGOOOG
+OGOGGG
+EDEEEDDDEDEDDDDD
+XXYXYYYX
+YXYXXX
+[Z[[[ZZZ[Z[ZZZZZ
+I6d[[d$
+=?Mlv
+(xpELLE
+O~^Z>
+^??~_
+*|THHB
+XP( 4,
+~n{__}9:
+:PdtJR
+xzrz:x9]
+pphJV
+"Tn8Xp
+Q+:E1:
+XBr}"
+i0 $P8
+@ @@)pl
+p\rH@Bp
+v~~~6
+sz73vv~~
+]~?/o/]Z;3{__~?
+R>RL(7q&<
+da;Z"TZ;o0r
+TB6tt:
+E*2{T"{wW+:}WWm
+i/ge?6b
+>f,RaoW
+uu??~~V
+/o~~]
+Ya}}__gw
+4aiV6*trQ
+YSm0r
+z]M"6'd>2wWC0y
+"@PI8  
+PP $Dd 
+  $$$$
+@2P4I
+vvwo~~~~
+v||~n66W
+7DUwrxxN&
+TV~dxL
+*8T>:\l.*
+dbvlt""v
+*.\8z
+ D(H@
+``"Xt
+Vb"&&
+h^:8x
+PL:<tLh
+rIM,p
+\thn0
+H#@H(\p
+(8(( 
+GoLo]
+k]{'3
+HZHz8
+!/0^\fM_
+@ @L0m 
+>5P5P5
+0geM^
+H]H7i
+eA$C!
+N4f `
+4E.T"5
+8QhQ,
+V%JI9
+@F` b
+`6a7A
+6.3g`ka
+@=@?@
+Qj o`BCOCI
+(~(tFuF
+AF@ BP
+V%ZI)
+V%JK-
+0( (T
+HdVD*
+8o:|8
+hi"d&
+^;:=2?
+(h%pO
+JMXMV
+TM Gl98+XMT^
+DYIDXP
+H%@8Z
+OJ[X|
+zIiz9i
+BJD<B
+ Xbll
+V%JI9
+,H00L
+,@@B(
+oP&Y2
+H;*l:M
+/d7l8
+k>:<*@
+<|M]E
+*w)w(
+a|0H ^P
+&$!0 
+@=@chY-EnH
+y]LUEQE
+V%ZI)
+V%JK-
+bR@RH
+@I01i
+"v}\.8
+2]l\L
+DdUnp
+.3(x$,2:
+l8|%#
+rU~q|24
+$l5|5w
+-+l3m
++?.?n6;v2
+4H8P^T^PVDpT|0|
+isDQ@Z(
+1H9!;
+h!@ :
+X%8!"
+ X%:H
+<DtP0
+p\~P0
+T@aH`
+V%JI9
+T@4D 
+@t 0 
+ @(`S
+ P 0@
+ @@ `
+@ (@F
+H&Pa 
+1(`pH
+qLtl4
+XdqfvZl:Hf
+&X]h[|&|7?I&Yv6s6
+Z3ll6M
+<l0-4
+eZ@rZvO\
+<{^n^o`;h8
+nR}N2X
+H1T5\
+-h0H&
+G0b  
+!H9N5
+V%ZI)
+V%JK-
+  @@$ "0"
+A (0B
+e!% D
+lhL,2
+b.[6_
+9nYlX|
+Y|a~E>
+Ym]oE
+:Q8Q:
+@( 2(
+V%JI9
+nd2Y?
+Yl^L8
+yeY::
+x.[`73>
+M4klwy2MO4M
+Md%l6
+-NYlz^
+*k82nP
+v!n#~U
+l\FP8
+aI!@T
+#H'J2
+V%ZI9
+V%JK-
+"@"$(HHH
+[(@$@
+*v#d"
+&6(61M3M,W
+28M4L
+CD'Ll
+\Lxl?
+/GOGM
+]wlum
+~(O(G
+Lea7LUI
+51-1yI
+Ah|^I
+V%JI9
+ m K"@
+2XL:d'
+ZeZpf
+|n|Oz
+|0|(JZFZ~
+>%>-/'
+,[AZQzH>\'H
+j*L*`
+'&/SAQI
+XnE~Ew
+*,j0l""p&
+!?`]9
+"+'/%(
+'H'p5(
+X'U3@D
+ `@ T
+V%ZI)
+V%JK-
+fE@A,
+H$2A2
+Ozd:fJ
+zpzCJI*I
+(/#/ 
+G8$r&t@V
+ rcrp
+BL"D<
+M`&B 
+V%ZI)
+V%JK-
+20" !@
+\wHoQ
+bnCb$
+b@nT;
+DLD,e3(.hlClbR`
+dvbrgtNtM
+&tc~N
+PRxH.P|
+9@!H Y
+,$I$Xl
+!l:`,hJmfa0
+dGNj.hT
+p*I@AUD
+hPx@\
+L)e@CI
+PDt@4
+1(M"p
+V%JI9
+R/NI)
+|O}HPH"L"HBJ
+ @ @0h
+Q"YhX
+R\@hP
+EZiJ#R
+lI`IZ
+bArAT
+#TcZ#
+jL>H|
+;&j(lB9
+@K(CL
+$`" @@d
+V%ZI)
+V%JK-
+IuIM.OF
+Al'l"
+M\"m#
+[nOlM_UoQ
+~K~MzAnG.R*P
+)ik|ONI
+DfPDP
+@hIBD"
+@J@jPLP
+.P.P_@
+ L`W@
+@AAXn
+@P@5@
+Telb@
+V%JI9
+R/NI)
+UUUTUU
+xTrM2
+t.03`K
+1 B (
+V%JI9
+pJdB CT
+n#b"B
+B( @A
+H Y"IEU
+V%ZI)
+V%JK-
+k"+B<
+Y0I,4
+$2|28M
+LsLl2$62,[
+atetr
+-8=BcZe
+,=.]"W0:
+*0}`3lU,U,i3
+'cpgrCd
+`H`@(]2]
+DdpaPaPa
+V8<8.
+(AzUx[$O6AvCfq|qt4
+4b) 1
+f4uEe
+UDYFED(
+RaJaL0
+%* d"6
+V%JI9
+p!X9P!
+@`@q@1A1
+H X8E
+Tup HcH
+@Xp(PxP Ht@8
+""DL@@
+P & T
+HtIL$<
+h!<!>
+D!~ v
+<#Z"Z
+B=F%V
+Vps K
+V9B0z)n)4
+.$Z5B+V6i
+V%ZI)
+V%JK-
+BK J$
+bICB 00000000 00004000;mCFM0 0001D000 0018C000;tUFM 00000800 00040000;
+DONE

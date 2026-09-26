@@ -1,5 +1,5 @@
 Flow report for night_rider
-Wed Aug 26 01:34:57 2026
+Sat Sep 26 14:43:39 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -41,7 +41,7 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Wed Aug 26 01:34:53 2026           ;
+; Flow Status                        ; Successful - Sat Sep 26 14:43:35 2026           ;
 ; Quartus Prime Version              ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
 ; Revision Name                      ; night_rider                                     ;
 ; Top-level Entity Name              ; night_rider_top                                 ;
@@ -67,7 +67,7 @@ on the Quartus Prime software download page.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 08/26/2026 01:34:29 ;
+; Start date & time ; 09/26/2026 14:43:08 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; night_rider         ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ on the Quartus Prime software download page.
 +-------------------------------------+----------------------------------------+---------------+-----------------+----------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name     ; Section Id     ;
 +-------------------------------------+----------------------------------------+---------------+-----------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 91768935357.178767566917352            ; --            ; --              ; --             ;
+; COMPILER_SIGNATURE_ID               ; 91767795489.179040138830780            ; --            ; --              ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; None                                   ; --            ; --              ; eda_simulation ;
 ; FLOW_ENABLE_POWER_ANALYZER          ; On                                     ; Off           ; --              ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --              ; --             ;
@@ -102,11 +102,11 @@ on the Quartus Prime software download page.
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Analysis & Synthesis ; 00:00:11     ; 1.0                     ; 4848 MB             ; 00:00:27                           ;
-; Fitter               ; 00:00:07     ; 1.2                     ; 6525 MB             ; 00:00:13                           ;
+; Fitter               ; 00:00:07     ; 1.2                     ; 6546 MB             ; 00:00:13                           ;
 ; Assembler            ; 00:00:01     ; 1.0                     ; 4694 MB             ; 00:00:01                           ;
-; Power Analyzer       ; 00:00:02     ; 1.2                     ; 4964 MB             ; 00:00:02                           ;
-; Timing Analyzer      ; 00:00:02     ; 1.2                     ; 4904 MB             ; 00:00:03                           ;
-; Total                ; 00:00:23     ; --                      ; --                  ; 00:00:46                           ;
+; Power Analyzer       ; 00:00:05     ; 1.1                     ; 4958 MB             ; 00:00:04                           ;
+; Timing Analyzer      ; 00:00:03     ; 1.1                     ; 4901 MB             ; 00:00:03                           ;
+; Total                ; 00:00:27     ; --                      ; --                  ; 00:00:48                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

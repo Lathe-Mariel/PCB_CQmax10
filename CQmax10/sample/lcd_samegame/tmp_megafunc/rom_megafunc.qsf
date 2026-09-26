@@ -1,0 +1,6 @@
+set_global_assignment -name FAMILY "MAX 10"
+set_global_assignment -name DEVICE 10M08SCE144C8G
+set_global_assignment -name TOP_LEVEL_ENTITY rom_megafunc
+set_global_assignment -name VERILOG_FILE rom_megafunc.v
+
+set_global_assignment -name LAST_QUARTUS_VERSION "25.1std.0 Lite Edition"

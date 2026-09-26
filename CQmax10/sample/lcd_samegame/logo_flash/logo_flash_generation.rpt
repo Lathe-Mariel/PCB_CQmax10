@@ -1,0 +1,54 @@
+Info: Starting: Create simulation model
+Info: qsys-generate H:\git\PCB_CQmax10\CQmax10\sample\lcd_samegame\logo_flash.qsys --simulation=VERILOG --allow-mixed-language-simulation --output-directory=H:\git\PCB_CQmax10\CQmax10\sample\lcd_samegame\logo_flash\simulation --family="MAX 10" --part=10M08SCE144C8G
+Progress: Loading lcd_samegame/logo_flash.qsys
+Progress: Reading input file
+Progress: Adding ufm [altera_onchip_flash 25.1]
+Progress: Parameterizing module ufm
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: logo_flash: Generating "logo_flash" for SIM_VERILOG
+Info: ufm: "logo_flash" instantiated altera_onchip_flash "ufm"
+Info: logo_flash: Done "logo_flash" with 2 modules, 5 files
+Info: qsys-generate succeeded.
+Info: Finished: Create simulation model
+Info: Starting: Create Modelsim Project.
+Info: sim-script-gen --spd=H:\git\PCB_CQmax10\CQmax10\sample\lcd_samegame\logo_flash\logo_flash.spd --output-directory=H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/simulation/ --use-relative-paths=true
+Info: Doing: ip-make-simscript --spd=H:\git\PCB_CQmax10\CQmax10\sample\lcd_samegame\logo_flash\logo_flash.spd --output-directory=H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/simulation/ --use-relative-paths=true
+Info: Generating the following file(s) for MODELSIM simulator in H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/simulation/ directory:
+Info: 	mentor/msim_setup.tcl
+Info: Generating the following file(s) for RIVIERA simulator in H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/simulation/ directory:
+Info: 	aldec/rivierapro_setup.tcl
+Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/simulation/.
+Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info: Finished: Create Modelsim Project.
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate H:\git\PCB_CQmax10\CQmax10\sample\lcd_samegame\logo_flash.qsys --block-symbol-file --output-directory=H:\git\PCB_CQmax10\CQmax10\sample\lcd_samegame\logo_flash --family="MAX 10" --part=10M08SCE144C8G
+Progress: Loading lcd_samegame/logo_flash.qsys
+Progress: Reading input file
+Progress: Adding ufm [altera_onchip_flash 25.1]
+Progress: Parameterizing module ufm
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate H:\git\PCB_CQmax10\CQmax10\sample\lcd_samegame\logo_flash.qsys --synthesis=VERILOG --output-directory=H:\git\PCB_CQmax10\CQmax10\sample\lcd_samegame\logo_flash\synthesis --family="MAX 10" --part=10M08SCE144C8G
+Progress: Loading lcd_samegame/logo_flash.qsys
+Progress: Reading input file
+Progress: Adding ufm [altera_onchip_flash 25.1]
+Progress: Parameterizing module ufm
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: logo_flash: Generating "logo_flash" for QUARTUS_SYNTH
+Info: ufm: Generating top-level entity altera_onchip_flash
+Info: ufm: "logo_flash" instantiated altera_onchip_flash "ufm"
+Info: logo_flash: Done "logo_flash" with 2 modules, 7 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

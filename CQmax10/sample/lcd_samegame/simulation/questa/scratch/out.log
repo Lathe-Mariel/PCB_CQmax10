@@ -1,0 +1,346 @@
+Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+Start time: 03:36:59 on Sep 26,2026
+vlog -sv width_probe.sv 
+** Note: (vlog-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+-- Compiling module width_probe
+
+Top level modules:
+	width_probe
+End time: 03:37:00 on Sep 26,2026, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2025.2
+
+# ** Note: (vsim-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# vsim -c -do "run -all; quit -f" width_probe 
+# Start time: 03:37:03 on Sep 26,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# //  Questa Altera Starter FPGA Edition-64
+# //  Version 2025.2 win64 May 31 2025
+# //
+# // Unpublished work. Copyright 2025 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading sv_std.std
+# Loading work.width_probe(fast)
+# run -all
+# == divide/multiply by 20 ==
+#   FAIL A div20_as_written(20)       got 0 expected 1
+#   FAIL A div20_as_written(21)       got 0 expected 1
+#   FAIL A div20_as_written(22)       got 0 expected 1
+#   FAIL A div20_as_written(23)       got 0 expected 1
+#   FAIL A div20_as_written(24)       got 0 expected 1
+#   FAIL A div20_as_written(25)       got 0 expected 1
+#   FAIL A div20_as_written(26)       got 0 expected 1
+#   FAIL A div20_as_written(27)       got 0 expected 1
+#   FAIL A div20_as_written(28)       got 0 expected 1
+#   FAIL A div20_as_written(29)       got 0 expected 1
+#   FAIL A div20_as_written(30)       got 0 expected 1
+#   FAIL A div20_as_written(31)       got 0 expected 1
+#   FAIL A div20_as_written(32)       got 0 expected 1
+#   FAIL A div20_as_written(33)       got 0 expected 1
+#   FAIL A div20_as_written(34)       got 0 expected 1
+#   FAIL A div20_as_written(35)       got 0 expected 1
+#   FAIL A div20_as_written(36)       got 0 expected 1
+#   FAIL A div20_as_written(37)       got 0 expected 1
+#   FAIL A div20_as_written(38)       got 0 expected 1
+#   FAIL A div20_as_written(39)       got 0 expected 1
+#   FAIL A div20_as_written(40)       got 0 expected 2
+#   FAIL A div20_as_written(41)       got 0 expected 2
+#   FAIL A div20_as_written(42)       got 0 expected 2
+#   FAIL A div20_as_written(43)       got 0 expected 2
+#   FAIL A div20_as_written(44)       got 0 expected 2
+#   FAIL A div20_as_written(45)       got 0 expected 2
+#   FAIL A div20_as_written(46)       got 0 expected 2
+#   FAIL A div20_as_written(47)       got 0 expected 2
+#   FAIL A div20_as_written(48)       got 0 expected 2
+#   FAIL A div20_as_written(49)       got 0 expected 2
+#   FAIL A div20_as_written(50)       got 0 expected 2
+#   FAIL A div20_as_written(51)       got 0 expected 2
+#   FAIL A div20_as_written(52)       got 0 expected 2
+#   FAIL A div20_as_written(53)       got 0 expected 2
+#   FAIL A div20_as_written(54)       got 0 expected 2
+#   FAIL A div20_as_written(55)       got 0 expected 2
+#   FAIL A div20_as_written(56)       got 0 expected 2
+#   FAIL A div20_as_written(57)       got 0 expected 2
+#   FAIL A div20_as_written(58)       got 0 expected 2
+#   FAIL A div20_as_written(59)       got 0 expected 2
+#   FAIL A div20_as_written(60)       got 0 expected 3
+#   FAIL A div20_as_written(61)       got 0 expected 3
+#   FAIL A div20_as_written(62)       got 0 expected 3
+#   FAIL A div20_as_written(63)       got 0 expected 3
+#   FAIL A div20_as_written(64)       got 0 expected 3
+#   FAIL A div20_as_written(65)       got 0 expected 3
+#   FAIL A div20_as_written(66)       got 0 expected 3
+#   FAIL A div20_as_written(67)       got 0 expected 3
+#   FAIL A div20_as_written(68)       got 0 expected 3
+#   FAIL A div20_as_written(69)       got 0 expected 3
+#   FAIL A div20_as_written(70)       got 0 expected 3
+#   FAIL A div20_as_written(71)       got 0 expected 3
+#   FAIL A div20_as_written(72)       got 0 expected 3
+#   FAIL A div20_as_written(73)       got 0 expected 3
+#   FAIL A div20_as_written(74)       got 0 expected 3
+#   FAIL A div20_as_written(75)       got 0 expected 3
+#   FAIL A div20_as_written(76)       got 0 expected 3
+#   FAIL A div20_as_written(77)       got 0 expected 3
+#   FAIL A div20_as_written(78)       got 0 expected 3
+#   FAIL A div20_as_written(79)       got 0 expected 3
+#   FAIL A div20_as_written(80)       got 0 expected 4
+#   FAIL A div20_as_written(81)       got 0 expected 4
+#   FAIL A div20_as_written(82)       got 0 expected 4
+#   FAIL A div20_as_written(83)       got 0 expected 4
+#   FAIL A div20_as_written(84)       got 0 expected 4
+#   FAIL A div20_as_written(85)       got 0 expected 4
+#   FAIL A div20_as_written(86)       got 0 expected 4
+#   FAIL A div20_as_written(87)       got 0 expected 4
+#   FAIL A div20_as_written(88)       got 0 expected 4
+#   FAIL A div20_as_written(89)       got 0 expected 4
+#   FAIL A div20_as_written(90)       got 0 expected 4
+#   FAIL A div20_as_written(91)       got 0 expected 4
+#   FAIL A div20_as_written(92)       got 0 expected 4
+#   FAIL A div20_as_written(93)       got 0 expected 4
+#   FAIL A div20_as_written(94)       got 0 expected 4
+#   FAIL A div20_as_written(95)       got 0 expected 4
+#   FAIL A div20_as_written(96)       got 0 expected 4
+#   FAIL A div20_as_written(97)       got 0 expected 4
+#   FAIL A div20_as_written(98)       got 0 expected 4
+#   FAIL A div20_as_written(99)       got 0 expected 4
+#   FAIL A div20_as_written(100)      got 0 expected 5
+#   FAIL A div20_as_written(101)      got 0 expected 5
+#   FAIL A div20_as_written(102)      got 0 expected 5
+#   FAIL A div20_as_written(103)      got 0 expected 5
+#   FAIL A div20_as_written(104)      got 0 expected 5
+#   FAIL A div20_as_written(105)      got 0 expected 5
+#   FAIL A div20_as_written(106)      got 0 expected 5
+#   FAIL A div20_as_written(107)      got 0 expected 5
+#   FAIL A div20_as_written(108)      got 0 expected 5
+#   FAIL A div20_as_written(109)      got 0 expected 5
+#   FAIL A div20_as_written(110)      got 0 expected 5
+#   FAIL A div20_as_written(111)      got 0 expected 5
+#   FAIL A div20_as_written(112)      got 0 expected 5
+#   FAIL A div20_as_written(113)      got 0 expected 5
+#   FAIL A div20_as_written(114)      got 0 expected 5
+#   FAIL A div20_as_written(115)      got 0 expected 5
+#   FAIL A div20_as_written(116)      got 0 expected 5
+#   FAIL A div20_as_written(117)      got 0 expected 5
+#   FAIL A div20_as_written(118)      got 0 expected 5
+#   FAIL A div20_as_written(119)      got 0 expected 5
+#   FAIL A div20_as_written(120)      got 0 expected 6
+#   FAIL A div20_as_written(121)      got 0 expected 6
+#   FAIL A div20_as_written(122)      got 0 expected 6
+#   FAIL A div20_as_written(123)      got 0 expected 6
+#   FAIL A div20_as_written(124)      got 0 expected 6
+#   FAIL A div20_as_written(125)      got 0 expected 6
+#   FAIL A div20_as_written(126)      got 0 expected 6
+#   FAIL A div20_as_written(127)      got 0 expected 6
+#   FAIL A div20_as_written(128)      got 0 expected 6
+#   FAIL A div20_as_written(129)      got 0 expected 6
+#   FAIL A div20_as_written(130)      got 0 expected 6
+#   FAIL A div20_as_written(131)      got 0 expected 6
+#   FAIL A div20_as_written(132)      got 0 expected 6
+#   FAIL A div20_as_written(133)      got 0 expected 6
+#   FAIL A div20_as_written(134)      got 0 expected 6
+#   FAIL A div20_as_written(135)      got 0 expected 6
+#   FAIL A div20_as_written(136)      got 0 expected 6
+#   FAIL A div20_as_written(137)      got 0 expected 6
+#   FAIL A div20_as_written(138)      got 0 expected 6
+#   FAIL A div20_as_written(139)      got 0 expected 6
+#   FAIL A div20_as_written(140)      got 0 expected 7
+#   FAIL A div20_as_written(141)      got 0 expected 7
+#   FAIL A div20_as_written(142)      got 0 expected 7
+#   FAIL A div20_as_written(143)      got 0 expected 7
+#   FAIL A div20_as_written(144)      got 0 expected 7
+#   FAIL A div20_as_written(145)      got 0 expected 7
+#   FAIL A div20_as_written(146)      got 0 expected 7
+#   FAIL A div20_as_written(147)      got 0 expected 7
+#   FAIL A div20_as_written(148)      got 0 expected 7
+#   FAIL A div20_as_written(149)      got 0 expected 7
+#   FAIL A div20_as_written(150)      got 0 expected 7
+#   FAIL A div20_as_written(151)      got 0 expected 7
+#   FAIL A div20_as_written(152)      got 0 expected 7
+#   FAIL A div20_as_written(153)      got 0 expected 7
+#   FAIL A div20_as_written(154)      got 0 expected 7
+#   FAIL A div20_as_written(155)      got 0 expected 7
+#   FAIL A div20_as_written(156)      got 0 expected 7
+#   FAIL A div20_as_written(157)      got 0 expected 7
+#   FAIL A div20_as_written(158)      got 0 expected 7
+#   FAIL A div20_as_written(159)      got 0 expected 7
+#   FAIL A div20_as_written(160)      got 0 expected 8
+#   FAIL A div20_as_written(161)      got 0 expected 8
+#   FAIL A div20_as_written(162)      got 0 expected 8
+#   FAIL A div20_as_written(163)      got 0 expected 8
+#   FAIL A div20_as_written(164)      got 0 expected 8
+#   FAIL A div20_as_written(165)      got 0 expected 8
+#   FAIL A div20_as_written(166)      got 0 expected 8
+#   FAIL A div20_as_written(167)      got 0 expected 8
+#   FAIL A div20_as_written(168)      got 0 expected 8
+#   FAIL A div20_as_written(169)      got 0 expected 8
+#   FAIL A div20_as_written(170)      got 0 expected 8
+#   FAIL A div20_as_written(171)      got 0 expected 8
+#   FAIL A div20_as_written(172)      got 0 expected 8
+#   FAIL A div20_as_written(173)      got 0 expected 8
+#   FAIL A div20_as_written(174)      got 0 expected 8
+#   FAIL A div20_as_written(175)      got 0 expected 8
+#   FAIL A div20_as_written(176)      got 0 expected 8
+#   FAIL A div20_as_written(177)      got 0 expected 8
+#   FAIL A div20_as_written(178)      got 0 expected 8
+#   FAIL A div20_as_written(179)      got 0 expected 8
+#   FAIL A div20_as_written(180)      got 0 expected 9
+#   FAIL A div20_as_written(181)      got 0 expected 9
+#   FAIL A div20_as_written(182)      got 0 expected 9
+#   FAIL A div20_as_written(183)      got 0 expected 9
+#   FAIL A div20_as_written(184)      got 0 expected 9
+#   FAIL A div20_as_written(185)      got 0 expected 9
+#   FAIL A div20_as_written(186)      got 0 expected 9
+#   FAIL A div20_as_written(187)      got 0 expected 9
+#   FAIL A div20_as_written(188)      got 0 expected 9
+#   FAIL A div20_as_written(189)      got 0 expected 9
+#   FAIL A div20_as_written(190)      got 0 expected 9
+#   FAIL A div20_as_written(191)      got 0 expected 9
+#   FAIL A div20_as_written(192)      got 0 expected 9
+#   FAIL A div20_as_written(193)      got 0 expected 9
+#   FAIL A div20_as_written(194)      got 0 expected 9
+#   FAIL A div20_as_written(195)      got 0 expected 9
+#   FAIL A div20_as_written(196)      got 0 expected 9
+#   FAIL A div20_as_written(197)      got 0 expected 9
+#   FAIL A div20_as_written(198)      got 0 expected 9
+#   FAIL A div20_as_written(199)      got 0 expected 9
+#   FAIL A div20_as_written(200)      got 0 expected 10
+#   FAIL A div20_as_written(201)      got 0 expected 10
+#   FAIL A div20_as_written(202)      got 0 expected 10
+#   FAIL A div20_as_written(203)      got 0 expected 10
+#   FAIL A div20_as_written(204)      got 0 expected 10
+#   FAIL A div20_as_written(205)      got 0 expected 10
+#   FAIL A div20_as_written(206)      got 0 expected 10
+#   FAIL A div20_as_written(207)      got 0 expected 10
+#   FAIL A div20_as_written(208)      got 0 expected 10
+#   FAIL A div20_as_written(209)      got 0 expected 10
+#   FAIL A div20_as_written(210)      got 0 expected 10
+#   FAIL A div20_as_written(211)      got 0 expected 10
+#   FAIL A div20_as_written(212)      got 0 expected 10
+#   FAIL A div20_as_written(213)      got 0 expected 10
+#   FAIL A div20_as_written(214)      got 0 expected 10
+#   FAIL A div20_as_written(215)      got 0 expected 10
+#   FAIL A div20_as_written(216)      got 0 expected 10
+#   FAIL A div20_as_written(217)      got 0 expected 10
+#   FAIL A div20_as_written(218)      got 0 expected 10
+#   FAIL A div20_as_written(219)      got 0 expected 10
+#   FAIL A div20_as_written(220)      got 0 expected 11
+#   FAIL A div20_as_written(221)      got 0 expected 11
+#   FAIL A div20_as_written(222)      got 0 expected 11
+#   FAIL A div20_as_written(223)      got 0 expected 11
+#   FAIL A div20_as_written(224)      got 0 expected 11
+#   FAIL A div20_as_written(225)      got 0 expected 11
+#   FAIL A div20_as_written(226)      got 0 expected 11
+#   FAIL A div20_as_written(227)      got 0 expected 11
+#   FAIL A div20_as_written(228)      got 0 expected 11
+#   FAIL A div20_as_written(229)      got 0 expected 11
+#   FAIL A div20_as_written(230)      got 0 expected 11
+#   FAIL A div20_as_written(231)      got 0 expected 11
+#   FAIL A div20_as_written(232)      got 0 expected 11
+#   FAIL A div20_as_written(233)      got 0 expected 11
+#   FAIL A div20_as_written(234)      got 0 expected 11
+#   FAIL A div20_as_written(235)      got 0 expected 11
+#   FAIL A div20_as_written(236)      got 0 expected 11
+#   FAIL A div20_as_written(237)      got 0 expected 11
+#   FAIL A div20_as_written(238)      got 0 expected 11
+#   FAIL A div20_as_written(239)      got 0 expected 11
+#   FAIL A div20_as_written(240)      got 0 expected 12
+#   FAIL A div20_as_written(241)      got 0 expected 12
+#   FAIL A div20_as_written(242)      got 0 expected 12
+#   FAIL A div20_as_written(243)      got 0 expected 12
+#   FAIL A div20_as_written(244)      got 0 expected 12
+#   FAIL A div20_as_written(245)      got 0 expected 12
+#   FAIL A div20_as_written(246)      got 0 expected 12
+#   FAIL A div20_as_written(247)      got 0 expected 12
+#   FAIL A div20_as_written(248)      got 0 expected 12
+#   FAIL A div20_as_written(249)      got 0 expected 12
+#   FAIL A div20_as_written(250)      got 0 expected 12
+#   FAIL A div20_as_written(251)      got 0 expected 12
+#   FAIL A div20_as_written(252)      got 0 expected 12
+#   FAIL A div20_as_written(253)      got 0 expected 12
+#   FAIL A div20_as_written(254)      got 0 expected 12
+#   FAIL A div20_as_written(255)      got 0 expected 12
+#   FAIL A div20_as_written(256)      got 0 expected 12
+#   FAIL A div20_as_written(257)      got 0 expected 12
+#   FAIL A div20_as_written(258)      got 0 expected 12
+#   FAIL A div20_as_written(259)      got 0 expected 12
+#   FAIL A div20_as_written(260)      got 0 expected 13
+#   FAIL A div20_as_written(261)      got 0 expected 13
+#   FAIL A div20_as_written(262)      got 0 expected 13
+#   FAIL A div20_as_written(263)      got 0 expected 13
+#   FAIL A div20_as_written(264)      got 0 expected 13
+#   FAIL A div20_as_written(265)      got 0 expected 13
+#   FAIL A div20_as_written(266)      got 0 expected 13
+#   FAIL A div20_as_written(267)      got 0 expected 13
+#   FAIL A div20_as_written(268)      got 0 expected 13
+#   FAIL A div20_as_written(269)      got 0 expected 13
+#   FAIL A div20_as_written(270)      got 0 expected 13
+#   FAIL A div20_as_written(271)      got 0 expected 13
+#   FAIL A div20_as_written(272)      got 0 expected 13
+#   FAIL A div20_as_written(273)      got 0 expected 13
+#   FAIL A div20_as_written(274)      got 0 expected 13
+#   FAIL A div20_as_written(275)      got 0 expected 13
+#   FAIL A div20_as_written(276)      got 0 expected 13
+#   FAIL A div20_as_written(277)      got 0 expected 13
+#   FAIL A div20_as_written(278)      got 0 expected 13
+#   FAIL A div20_as_written(279)      got 0 expected 13
+#   FAIL A div20_as_written(280)      got 0 expected 14
+#   FAIL A div20_as_written(281)      got 0 expected 14
+#   FAIL A div20_as_written(282)      got 0 expected 14
+#   FAIL A div20_as_written(283)      got 0 expected 14
+#   FAIL A div20_as_written(284)      got 0 expected 14
+#   FAIL A div20_as_written(285)      got 0 expected 14
+#   FAIL A div20_as_written(286)      got 0 expected 14
+#   FAIL A div20_as_written(287)      got 0 expected 14
+#   FAIL A div20_as_written(288)      got 0 expected 14
+#   FAIL A div20_as_written(289)      got 0 expected 14
+#   FAIL A div20_as_written(290)      got 0 expected 14
+#   FAIL A div20_as_written(291)      got 0 expected 14
+#   FAIL A div20_as_written(292)      got 0 expected 14
+#   FAIL A div20_as_written(293)      got 0 expected 14
+#   FAIL A div20_as_written(294)      got 0 expected 14
+#   FAIL A div20_as_written(295)      got 0 expected 14
+#   FAIL A div20_as_written(296)      got 0 expected 14
+#   FAIL A div20_as_written(297)      got 0 expected 14
+#   FAIL A div20_as_written(298)      got 0 expected 14
+#   FAIL A div20_as_written(299)      got 0 expected 14
+#   FAIL A div20_as_written(300)      got 0 expected 15
+#   FAIL A div20_as_written(301)      got 0 expected 15
+#   FAIL A div20_as_written(302)      got 0 expected 15
+#   FAIL A div20_as_written(303)      got 0 expected 15
+#   FAIL A div20_as_written(304)      got 0 expected 15
+#   FAIL A div20_as_written(305)      got 0 expected 15
+#   FAIL A div20_as_written(306)      got 0 expected 15
+#   FAIL A div20_as_written(307)      got 0 expected 15
+#   FAIL A div20_as_written(308)      got 0 expected 15
+#   FAIL A div20_as_written(309)      got 0 expected 15
+#   FAIL A div20_as_written(310)      got 0 expected 15
+#   FAIL A div20_as_written(311)      got 0 expected 15
+#   FAIL A div20_as_written(312)      got 0 expected 15
+#   FAIL A div20_as_written(313)      got 0 expected 15
+#   FAIL A div20_as_written(314)      got 0 expected 15
+#   FAIL A div20_as_written(315)      got 0 expected 15
+#   FAIL A div20_as_written(316)      got 0 expected 15
+#   FAIL A div20_as_written(317)      got 0 expected 15
+#   FAIL A div20_as_written(318)      got 0 expected 15
+#   FAIL A div20_as_written(319)      got 0 expected 15
+# == modulo 20 ==
+# == logo rom address ==
+# ==========================================
+#   width_probe: 300 FAILURES
+# ==========================================
+# ** Note: $finish    : width_probe.sv(86)
+#    Time: 0 ps  Iteration: 0  Instance: /width_probe
+# End time: 03:37:06 on Sep 26,2026, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 0

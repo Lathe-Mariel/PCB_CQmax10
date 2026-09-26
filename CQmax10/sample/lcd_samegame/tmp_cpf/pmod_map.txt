@@ -1,0 +1,39 @@
+Pmod_Socket library pins: 12
+   pin 1   offset x=   -5.08 y=    5.08
+   pin 2   offset x=   -5.08 y=    2.54
+   pin 3   offset x=   -5.08 y=       0
+   pin 4   offset x=   -5.08 y=   -2.54
+   pin 5   offset x=   -5.08 y=   -5.08
+   pin 6   offset x=   -5.08 y=   -7.62
+   pin 7   offset x=    7.62 y=    5.08
+   pin 8   offset x=    7.62 y=    2.54
+   pin 9   offset x=    7.62 y=       0
+   pin 10  offset x=    7.62 y=   -2.54
+   pin 11  offset x=    7.62 y=   -5.08
+   pin 12  offset x=    7.62 y=   -7.62
+
+PMOD connector instances: 6
+   J6    at (264.795, 41.275)
+   J1    at (55.88, 41.275)
+   J5    at (135.255, 41.275)
+   J3    at (184.785, 41.275)
+   J4    at (224.155, 41.275)
+   J2    at (95.25, 41.275)
+
+distinct IOPIN labels: 82
+   J6    avg distance to the 4 LCD labels = 175.9
+   J1    avg distance to the 4 LCD labels = 143.5
+   J5    avg distance to the 4 LCD labels = 68.3
+   J3    avg distance to the 4 LCD labels = 95.9
+   J4    avg distance to the 4 LCD labels = 135.3
+   J2    avg distance to the 4 LCD labels = 104.1
+
+>>> closest PMOD connector to the LCD pins: J5 at (135.255, 41.275)
+--- labels close to that connector ---
+   IOPIN11      at (  176.53,   38.735)  d=43.8
+   IOPIN56      at ( 106.045,   41.275)  d=29.2
+   IOPIN58      at ( 106.045,   38.735)  d=31.8
+   IOPIN75      at (  146.05,   43.815)  d=13.3
+   IOPIN76      at (     127,   43.815)  d=10.8
+   IOPIN77      at (     127,   41.275)  d=8.3
+   IOPIN79      at (     127,   38.735)  d=10.8

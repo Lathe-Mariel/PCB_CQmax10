@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Sat Sep 26 11:17:58 2026
+Quartus Prime Version : 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+Revision Name : romtest
+Top-level Entity Name : romtest
+Family : MAX 10
+Total logic elements : 2,601
+    Total combinational functions : 2,601
+    Dedicated logic registers : 16
+Total registers : 16
+Total pins : 28
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
+UFM blocks : 0
+ADC blocks : 0

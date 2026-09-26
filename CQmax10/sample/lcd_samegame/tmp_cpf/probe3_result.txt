@@ -1,0 +1,85 @@
+=== generated full-page UFM hex ===
+    h:\git\PCB_CQmax10\CQmax10\sample\lcd_samegame\tmp_cpf\logo_ufm_8192.hex
+    words=8192  bytes=32768  lines=1026
+=== A: cpf -o ufm_source=Page_0 -o ufm_source_file=<full hex> (no -d) ===
+Error (213035): Configuration device  is illegal -- specify a legal configuration device
+Error: Quartus Prime Convert_programming_file was unsuccessful. 1 error, 0 warnings
+    Error: Peak virtual memory: 4450 megabytes
+    Error: Processing ended: Sat Sep 26 11:34:47 2026
+    Error: Elapsed time: 00:00:00
+    Error: Total CPU time (on all processors): 00:00:01
+=== B: same WITH -d 10M08SCE144C8G ===
+Error (213035): Configuration device 10M08SCE144C8G is illegal -- specify a legal configuration device
+Error: Quartus Prime Convert_programming_file was unsuccessful. 1 error, 0 warnings
+    Error: Peak virtual memory: 4450 megabytes
+    Error: Processing ended: Sat Sep 26 11:34:48 2026
+    Error: Elapsed time: 00:00:00
+    Error: Total CPU time (on all processors): 00:00:01
+=== C: quartus_cpf -w (auto option file) ===
+Info: *******************************************************************
+Info: Running Quartus Prime Convert_programming_file
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Copyright (C) 2025  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Sat Sep 26 11:34:48 2026
+Info: Command: quartus_cpf -w h:\git\PCB_CQmax10\CQmax10\sample\lcd_samegame\tmp_cpf\auto_option.txt
+Please select the Configuration Device:
+ 1 EPC1441                   2 EPC1441L20               
+ 3 EPC1441P8                 4 EPC1441T32               
+ 5 EPC16                     6 EPC16Q100                
+ 7 EPC16U88                  8 EPC1                     
+ 9 EPC1L20                  10 EPC1P8                   
+11 EPC2                     12 EPC2L20                  
+13 EPC2T32                  14 EPC4                     
+15 EPC4Q100                 16 EPC8                     
+17 EPC8Q100                 18 EPCE16                   
+19 EPCE16Q100               20 EPCE16Q88                
+21 EPCE16U88                22 EPCE4                    
+23 EPCE4Q100                24 EPCE8                    
+25 EPCE8Q100                26 EPCQ128A                 
+27 EPCQ128                  28 EPCQ16A                  
+29 EPCQ16                   30 EPCQ256                  
+31 EPCQ32A                  32 EPCQ32                   
+33 EPCQ4A                   34 EPCQ512                  
+35 EPCQ64A                  36 EPCQ64                   
+37 EPCQL1024                38 EPCQL256                 
+39 EPCQL512                 40 EPCS128                  
+41 EPCS16                   42 EPCS1                    
+43 EPCS4                    44 EPCS64                   
+45 MT25QL01G                46 MT25QL02G                
+47 MT25QL128                48 MT25QL256                
+49 MT25QL512                50 MT25QU01G                
+51 MT25QU02G                52 MT25QU128                
+53 MT25QU256                54 MT25QU512                
+55 MX25L128                 56 MX25L256                 
+57 MX25L512                 58 MX25U128                 
+59 MX25U256                 60 MX25U512                 
+61 MX66U1G                  62 MX66U2G                  
+63 MX66U512                 64 S25FL128                 
+65 S25FL256                 66 S25FL512                 
+
+
+Please enter the selection number:Invalid selection: 0
+
+Error: Quartus Prime Convert_programming_file was unsuccessful. 0 errors, 0 warnings
+    Error: Peak virtual memory: 4462 megabytes
+    Error: Processing ended: Sat Sep 26 11:35:02 2026
+    Error: Elapsed time: 00:00:14
+    Error: Total CPU time (on all processors): 00:00:10
+
+=== hashes ===
+    output_files\lcd_game.pof  size=321804    sha=4155F38B248E721F886C819E
+    tmp_cpf\ufmA.pof           MISSING
+    tmp_cpf\ufmB.pof           MISSING

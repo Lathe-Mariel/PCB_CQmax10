@@ -1,0 +1,23 @@
+=== 1. bogus ufm_source_file (does cpf notice?) ===
+Error (213009): File name "NO_SUCH_FILE.hex" does not exist or can't be read
+Error (213035): Configuration device  is illegal -- specify a legal configuration device
+Error: Quartus Prime Convert_programming_file was unsuccessful. 2 errors, 0 warnings
+    Error: Peak virtual memory: 4450 megabytes
+    Error: Processing ended: Sat Sep 26 11:33:23 2026
+    Error: Elapsed time: 00:00:00
+    Error: Total CPU time (on all processors): 00:00:01
+=== 2. generated full-depth hex ===
+    file=h:\git\PCB_CQmax10\CQmax10\sample\lcd_samegame\tmp_cpf\logo_ufm_full.hex  words=32768  lines=4098
+=== 3. cpf with full-depth UFM hex ===
+Error (213035): Configuration device  is illegal -- specify a legal configuration device
+Error: Quartus Prime Convert_programming_file was unsuccessful. 1 error, 0 warnings
+    Error: Peak virtual memory: 4450 megabytes
+    Error: Processing ended: Sat Sep 26 11:33:29 2026
+    Error: Elapsed time: 00:00:01
+    Error: Total CPU time (on all processors): 00:00:01
+=== 4. hash comparison ===
+    output_files\lcd_game.pof      size=321804    sha=4155F38B248E721F886C819E
+    tmp_cpf\from_sof.pof           size=321804    sha=4155F38B248E721F886C819E
+    tmp_cpf\bogus.pof              size=-         sha=MISSING
+    tmp_cpf\full_ufm.pof           size=-         sha=MISSING
+    output_files\lcd_game.sof      size=736469    sha=0BE5F4F4D4B975A826596A52

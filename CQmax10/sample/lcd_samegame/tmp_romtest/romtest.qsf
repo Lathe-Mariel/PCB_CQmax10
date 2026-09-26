@@ -1,0 +1,5 @@
+set_global_assignment -name FAMILY "MAX 10"
+set_global_assignment -name DEVICE 10M08SCE144C8G
+set_global_assignment -name TOP_LEVEL_ENTITY romtest
+set_global_assignment -name VERILOG_FILE romtest.v
+set_global_assignment -name INTERNAL_FLASH_UPDATE_MODE "SINGLE UNCOMPRESSED IMAGE WITH MEMORY INITIALIZATION"

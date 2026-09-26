@@ -32,6 +32,30 @@
 					"strict" : false
 				},
 				{
+					"name" : "alt_cs",
+					"strict" : false
+				},
+				{
+					"name" : "alt_mosi",
+					"strict" : false
+				},
+				{
+					"name" : "alt_sck",
+					"strict" : false
+				},
+				{
+					"name" : "fr_cs",
+					"strict" : false
+				},
+				{
+					"name" : "fr_mosi",
+					"strict" : false
+				},
+				{
+					"name" : "fr_sck",
+					"strict" : false
+				},
+				{
 					"name" : "led",
 					"strict" : false
 				},
@@ -56,11 +80,19 @@
 					"strict" : false
 				},
 				{
-					"name" : "btn_rst",
+					"name" : "touch_miso",
 					"strict" : false
 				},
 				{
-					"name" : "touch_miso",
+					"name" : "touch_miso_fr",
+					"strict" : false
+				},
+				{
+					"name" : "touch_miso_alt",
+					"strict" : false
+				},
+				{
+					"name" : "btn_rst",
 					"strict" : false
 				}
 			]

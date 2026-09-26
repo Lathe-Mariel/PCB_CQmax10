@@ -1,0 +1,55 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Copyright (C) 2025  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Sat Sep 26 10:47:28 2026
+Info: Command: quartus_sta -t simulation\questa\report_paths.tcl lcd_game
+Info: Quartus(args): lcd_game
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Info (332164): Evaluating HDL-embedded SDC commands
+    Info (332165): Entity altera_std_synchronizer
+        Info (332166): set_false_path -to [get_keepers {*altera_std_synchronizer:*|din_s1}]
+Warning (332174): Ignored filter at report_paths.tcl(10): *altera_std_synchronizer:*|din_s1 could not be matched with a keeper File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/simulation/questa/report_paths.tcl Line: 10
+Warning (332049): Ignored set_false_path at report_paths.tcl(10): Argument <to> is an empty collection File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/simulation/questa/report_paths.tcl Line: 10
+    Info (332050): read_sdc File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/simulation/questa/report_paths.tcl Line: 10
+Info (332104): Reading SDC File: 'logo_flash/synthesis/submodules/altera_onchip_flash.sdc'
+Warning (332174): Ignored filter at altera_onchip_flash.sdc(120): *|flash_busy_reg could not be matched with a register File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash.sdc Line: 120
+Warning (332049): Ignored set_false_path at altera_onchip_flash.sdc(120): Argument <to> is an empty collection File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash.sdc Line: 120
+    Info (332050): set_false_path -to [get_registers {*|flash_busy_reg}] File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash.sdc Line: 120
+Warning (332174): Ignored filter at altera_onchip_flash.sdc(122): *|flash_busy_clear_reg could not be matched with a register File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash.sdc Line: 122
+Warning (332049): Ignored set_false_path at altera_onchip_flash.sdc(122): Argument <to> is an empty collection File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash.sdc Line: 122
+    Info (332050): set_false_path -to [get_registers {*|flash_busy_clear_reg}] File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash.sdc Line: 122
+Info (332104): Reading SDC File: 'lcd_game.sdc'
+Info (332151): Clock uncertainty is not calculated until you update the timing netlist.
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Info (332115): Report Timing: Found 20 setup paths (20 violated).  Worst case slack is -0.733
+    Info (332115): -setup
+    Info (332115): -npaths 20
+    Info (332115): -detail path_only
+    Info (332115): -file {worst_setup.rpt}
+Info (332115): Report Timing: Found 10 hold paths (0 violated).  Worst case slack is 0.359
+    Info (332115): -hold
+    Info (332115): -npaths 10
+    Info (332115): -detail path_only
+    Info (332115): -file {worst_hold.rpt}
+Info (23030): Evaluation of Tcl script simulation\questa\report_paths.tcl was successful
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 6 warnings
+    Info: Peak virtual memory: 4774 megabytes
+    Info: Processing ended: Sat Sep 26 10:47:30 2026
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02

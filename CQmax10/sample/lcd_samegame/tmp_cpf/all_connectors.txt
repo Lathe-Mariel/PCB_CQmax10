@@ -1,0 +1,97 @@
+=== J1  at (55.88, 41.275) ===
+   pin  1 : IOPIN46   
+   pin  2 : IOPIN44   
+   pin  3 : IOPIN41   
+   pin  4 : IOPIN38   
+   pin  5 : IOPIN38   
+   pin  6 : IOPIN38   
+   pin  7 : IOPIN45   
+   pin  8 : IOPIN43   
+   pin  9 : IOPIN39   
+   pin 10 : IOPIN47   
+   pin 11 : IOPIN47   
+   pin 12 : IOPIN47   
+
+=== J2  at (95.25, 41.275) ===
+   pin  1 : IOPIN59   
+   pin  2 : IOPIN57   
+   pin  3 : IOPIN55   
+   pin  4 : IOPIN52   
+   pin  5 : IOPIN52   
+   pin  6 : IOPIN52   
+   pin  7 : IOPIN60   
+   pin  8 : IOPIN58   
+   pin  9 : IOPIN56   
+   pin 10 : IOPIN50   
+   pin 11 : IOPIN50   
+   pin 12 : IOPIN50   
+
+=== J3  at (184.785, 41.275) ===
+   pin  1 : IOPIN13   
+   pin  2 : IOPIN11   
+   pin  3 : IOPIN8    
+   pin  4 : IOPIN6    
+   pin  5 : IOPIN6    
+   pin  6 : IOPIN6    
+   pin  7 : IOPIN14   
+   pin  8 : IOPIN12   
+   pin  9 : IOPIN10   
+   pin 10 : IOPIN7    
+   pin 11 : IOPIN7    
+   pin 12 : IOPIN7    
+
+=== J4  at (224.155, 41.275) ===
+   pin  1 : IOPIN98   
+   pin  2 : IOPIN99   
+   pin  3 : IOPIN96   
+   pin  4 : IOPIN97   
+   pin  5 : IOPIN97   
+   pin  6 : IOPIN97   
+   pin  7 : IOPIN101  
+   pin  8 : IOPIN100  
+   pin  9 : IOPIN105  
+   pin 10 : IOPIN106  
+   pin 11 : IOPIN106  
+   pin 12 : IOPIN106  
+
+=== J5  at (135.255, 41.275) ===
+   pin  1 : IOPIN80   
+   pin  2 : IOPIN79   
+   pin  3 : IOPIN77      <- lcd_dc
+   pin  4 : IOPIN76   
+   pin  5 : IOPIN76   
+   pin  6 : IOPIN76   
+   pin  7 : IOPIN81      <- lcd_cs
+   pin  8 : IOPIN78      <- lcd_mosi
+   pin  9 : IOPIN74   
+   pin 10 : IOPIN75      <- lcd_sck
+   pin 11 : IOPIN75      <- lcd_sck
+   pin 12 : IOPIN75      <- lcd_sck
+
+=== J6  at (264.795, 41.275) ===
+   pin  1 : IOPIN134  
+   pin  2 : IOPIN135  
+   pin  3 : IOPIN132  
+   pin  4 : IOPIN130  
+   pin  5 : IOPIN130  
+   pin  6 : IOPIN130  
+   pin  7 : IOPIN141  
+   pin  8 : IOPIN140  
+   pin  9 : IOPIN131  
+   pin 10 : IOPIN127  
+   pin 11 : IOPIN127  
+   pin 12 : IOPIN127  
+
+=== positions of the pins mentioned in the RTL / QSF ===
+   IOPIN74   at (   160.7,  144.1)  nearest connector J3 (d=127.0)
+   IOPIN76   at (   127.0,   43.8)  nearest connector J5 (d=10.8)
+   IOPIN79   at (   127.0,   38.7)  nearest connector J5 (d=10.8)
+   IOPIN80   at (   160.7,  151.8)  nearest connector J3 (d=134.6)
+   IOPIN50   at (   160.7,  121.3)  nearest connector J3 (d=104.1)
+   IOPIN56   at (   106.0,   41.3)  nearest connector J2 (d=10.8)
+   IOPIN58   at (   106.0,   38.7)  nearest connector J2 (d=13.3)
+   IOPIN60   at (   160.7,  131.4)  nearest connector J3 (d=114.3)
+   IOPIN130  at (   212.1,  113.7)  nearest connector J4 (d=84.5)
+   IOPIN132  at (   257.2,   41.3)  nearest connector J6 (d=7.6)
+   IOPIN134  at (   249.6,  108.6)  nearest connector J6 (d=82.6)
+   IOPIN135  at (   266.1,  108.6)  nearest connector J6 (d=68.6)

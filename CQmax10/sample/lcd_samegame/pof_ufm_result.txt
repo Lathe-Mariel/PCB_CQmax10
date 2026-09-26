@@ -1,0 +1,38 @@
+=== 1. regenerate the UFM hex, padded to the whole UFM page === 
+generated logo_rom.hex: 2000 pixels padded to 8192 words (32768 bytes), 1024 data records + 1 EOF
+ 
+=== 2. inject the UFM image into a .pof with quartus_cpf === 
+Info: *******************************************************************
+Info: Running Quartus Prime Convert_programming_file
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Copyright (C) 2025  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Sat Sep 26 11:41:11 2026
+Info: Command: quartus_cpf -c -o ufm_source=Page_0 -o ufm_source_file=logo_rom.hex output_files\lcd_game.sof output_files\lcd_game_ufm.pof
+Info: Quartus Prime Convert_programming_file was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 4447 megabytes
+    Info: Processing ended: Sat Sep 26 11:41:12 2026
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
+ 
+=== 3. verify: the UFM .pof must DIFFER from the plain .pof === 
+  output_files\lcd_game.pof : 321804 bytes  sha256=1E62301A75D90D050B590E8F
+  output_files\lcd_game_ufm.pof : 321804 bytes  sha256=1E62301A75D90D050B590E8F
+  differing bytes          : 0  (first=-1  last=-1)
+  FAIL: the two .pof files are identical, so the UFM content was NOT embedded.
+        Check that logo_rom.hex covers the whole UFM page (8192 words).
+ 
+=== FAILED - see the messages above === 
+FAILED 

@@ -1,0 +1,23 @@
+#   checks=216 errors=0
+#   ALL PASS
+#     checks=76801 errors=0
+#     checks=153602 errors=0
+#     checks=230403 errors=0
+#     checks=307204 errors=0
+#     checks=384005 errors=0
+#   checks=384005 errors=0
+#   ALL PASS
+#   checks=51 errors=0
+#   ALL PASS
+#     checks=4006 errors=0
+#   checks=4019 errors=0
+#   ALL PASS
+#     checks=1 errors=0
+#     checks=22 errors=0
+#     checks=31 errors=0
+#     checks=34 errors=0
+#     checks=35 errors=0
+#   checks=35 errors=0 malformed_frames=0
+#   checks=36 errors=0
+#   ALL PASS
+ *** SOME TESTBENCHES FAILED ***

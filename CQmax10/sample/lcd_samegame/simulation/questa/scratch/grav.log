@@ -1,0 +1,47 @@
+Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+Start time: 03:53:50 on Sep 26,2026
+vlog -sv ..\..\..\rtl\gravity_engine.sv probe_grav.sv 
+** Note: (vlog-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+-- Compiling module gravity_engine
+-- Compiling module probe_grav
+
+Top level modules:
+	probe_grav
+End time: 03:53:50 on Sep 26,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2025.2
+
+# ** Note: (vsim-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# vsim -c -do "run -all; quit -f" probe_grav 
+# Start time: 03:53:52 on Sep 26,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# //  Questa Altera Starter FPGA Edition-64
+# //  Version 2025.2 win64 May 31 2025
+# //
+# // Unpublished work. Copyright 2025 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading sv_std.std
+# Loading work.probe_grav(fast)
+# run -all
+# run 1: fall_dist(0,11)=7 (expect 7)
+# run 2: fall_dist(0,11)=0 (expect 0)
+#        fall_dist(0,10)=0 (expect 0)
+# ==========================================
+#   probe_grav: ALL PASS
+# ==========================================
+# ** Note: $finish    : probe_grav.sv(90)
+#    Time: 16890 ns  Iteration: 1  Instance: /probe_grav
+# End time: 03:53:54 on Sep 26,2026, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0

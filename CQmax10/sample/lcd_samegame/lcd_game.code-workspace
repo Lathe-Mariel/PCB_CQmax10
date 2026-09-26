@@ -38,7 +38,30 @@
 			},
 			"Test-Path": true,
 			"&": true,
-			"Move-Item": true
+			"Move-Item": true,
+			"/^cmd /c \"H:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_samegame\\\\simulation\\\\questa\\\\run_all_to_log\\.bat\"$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"H:\\git\\PCB_CQmax10\\CQmax10\\sample\\lcd_samegame\\run_tests.bat": true,
+			"H:\\git\\PCB_CQmax10\\CQmax10\\sample\\lcd_samegame\\build.bat": true,
+			"H:\\git\\PCB_CQmax10\\CQmax10\\sample\\lcd_samegame\\report_paths.bat": true,
+			"Out-File": true,
+			"/^cmd /c \"taskkill /F /IM vsim\\.exe /IM vish\\.exe /IM vopt\\.exe /IM vlog\\.exe 2>nul & del /q h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_samegame\\\\simulation\\\\questa\\\\ascii_out\\.log & h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_samegame\\\\run_tests\\.bat\"$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^powershell -NoProfile -ExecutionPolicy Bypass -File h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_samegame\\\\gen_minfix2\\.ps1 2>&1 \\| Out-File h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_samegame\\\\gen2\\.log -Encoding ascii; Get-Content h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_samegame\\\\gen2\\.log$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^cmd /c \"h:\\\\git\\\\PCB_CQmax10\\\\CQmax10\\\\sample\\\\lcd_samegame\\\\full_build\\.bat\"$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"Copy-Item": true,
+			"Out-Null": true,
+			"ForEach-Object": true
 		}
 	}
 }

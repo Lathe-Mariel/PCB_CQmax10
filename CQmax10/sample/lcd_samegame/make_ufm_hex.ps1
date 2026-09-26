@@ -6,19 +6,36 @@
 #   ':'  LL  AAAA  TT  [DD...]  CC
 #   LL = byte count, AAAA = 16-bit address, TT = 00 (data) / 01 (EOF),
 #   DD = data bytes, CC = two's-complement checksum of all preceding bytes.
+#
+# ---------------------------------------------------------------------------
+# WHY THE FILE IS PADDED TO THE WHOLE UFM PAGE - do not shrink it back
+# ---------------------------------------------------------------------------
+# The UFM data page on the 10M08SC is 32,768 BYTES = 8,192 32-bit words.  A
+# .hex that only covers the 2,000 pixels used to produce
+#     Critical Warning (18094): Memory depth (8000) in the Memory
+#     Initialization File "logo_rom.hex" is less than the flash memory depth
+#     (32768).
+# from quartus_cpf when the flash content is loaded with
+#     ufm_source=Page_0 / ufm_source_file=logo_rom.hex
+# and the content was then NOT included.  Writing the whole page removes the
+# ambiguity and makes the file layout match what the IP expects.
+# ---------------------------------------------------------------------------
 
 $src = Get-Content logo_rom.mem
-$wordCount = $src.Count
+$pixelCount = ($src | Where-Object { $_ -match '\S' }).Count
+
+# 32-bit words in one whole UFM page (8,192 words = 32,768 bytes)
+$pageWords = 8192
+
 $bytesPerWord = 4
 $wordsPerRecord = 8
 $bytesPerRecord = $bytesPerWord * $wordsPerRecord   # 32
 
 $out = New-Object System.Text.StringBuilder
 
-for ($recStart = 0; $recStart -lt $wordCount; $recStart += $wordsPerRecord) {
-    $recWords = [Math]::Min($wordsPerRecord, $wordCount - $recStart)
+for ($recStart = 0; $recStart -lt $pageWords; $recStart += $wordsPerRecord) {
     $addr = $recStart * $bytesPerWord          # byte address of this record
-    $recBytes = $recWords * $bytesPerWord
+    $recBytes = $bytesPerRecord
 
     $sb = New-Object System.Text.StringBuilder
     [void]$sb.Append(':{0:X2}' -f $recBytes)
@@ -26,8 +43,15 @@ for ($recStart = 0; $recStart -lt $wordCount; $recStart += $wordsPerRecord) {
     [void]$sb.Append('00')                      # record type = data
     $sum = $recBytes + (($addr -shr 8) -band 0xFF) + ($addr -band 0xFF)
 
-    for ($j = 0; $j -lt $recWords; $j++) {
-        $pix = [Convert]::ToInt32($src[$recStart + $j].Trim(), 16)
+    for ($j = 0; $j -lt $wordsPerRecord; $j++) {
+        $idx = $recStart + $j
+        if ($idx -lt $pixelCount) {
+            $pix = [Convert]::ToInt32($src[$idx].Trim(), 16)
+        } elseif ($idx -lt 2048) {
+            $pix = 0            # the 48 padding words of the 2048-deep logo_ram
+        } else {
+            $pix = 0xFFFF       # unused flash stays in the erased state
+        }
         # little-endian 32-bit word: low byte, high byte, 0, 0
         $b0 = $pix -band 0xFF
         $b1 = ($pix -shr 8) -band 0xFF
@@ -47,4 +71,5 @@ for ($recStart = 0; $recStart -lt $wordCount; $recStart += $wordsPerRecord) {
 [void]$out.AppendLine(':00000001FF')
 
 Set-Content -Path logo_rom.hex -Value $out.ToString() -NoNewline
-Write-Output "generated logo_rom.hex: $wordCount words, $([Math]::Ceiling($wordCount / $wordsPerRecord)) data records + 1 EOF"
+Write-Output "generated logo_rom.hex: $pixelCount pixels padded to $pageWords words ($($pageWords*4) bytes), $([Math]::Ceiling($pageWords / $wordsPerRecord)) data records + 1 EOF"
+

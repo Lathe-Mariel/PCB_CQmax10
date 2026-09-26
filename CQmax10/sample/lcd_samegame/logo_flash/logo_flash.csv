@@ -1,0 +1,21 @@
+# system info logo_flash on 2026.09.26.00:50:56
+system_info:
+name,value
+DEVICE,10M08SCE144C8G
+DEVICE_FAMILY,MAX 10
+GENERATION_ID,1790351453
+#
+#
+# Files generated for logo_flash on 2026.09.26.00:50:56
+files:
+filepath,kind,attributes,module,is_top
+simulation/logo_flash.v,VERILOG,,logo_flash,true
+simulation/submodules/altera_onchip_flash_util.v,VERILOG,,altera_onchip_flash,false
+simulation/submodules/altera_onchip_flash.v,VERILOG,,altera_onchip_flash,false
+simulation/submodules/altera_onchip_flash_avmm_data_controller.v,VERILOG,,altera_onchip_flash,false
+simulation/submodules/altera_onchip_flash_avmm_csr_controller.v,VERILOG,,altera_onchip_flash,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+logo_flash.ufm,altera_onchip_flash

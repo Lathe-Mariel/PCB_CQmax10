@@ -1,0 +1,15 @@
+BEGIN 1:samegame_top:fast:work_top
+    pix_req :  1:tb_samegame_top:fast:work_top
+    boot_done :  1:tb_samegame_top:fast:work_top
+    pix_valid :  1:tb_samegame_top:fast:work_top
+    lcd_ready :  1:tb_samegame_top:fast:work_top
+END 
+BEGIN 1:board_memory:fast:work_top
+    cells :  1:tb_samegame_top:fast:work_top
+END 
+BEGIN 1:logo_ram:fast:work_top
+    mem :  1:tb_samegame_top:fast:work_top
+END 
+BEGIN_UNRESOLVED_HREF
+ 1:tb_samegame_top:fast:work_top
+END_UNRESOLVED_HREF

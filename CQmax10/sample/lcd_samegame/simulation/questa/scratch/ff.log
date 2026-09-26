@@ -1,0 +1,47 @@
+Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+Start time: 03:47:30 on Sep 26,2026
+vlog -sv ..\..\..\rtl\floodfill_engine.sv probe_ff.sv 
+** Note: (vlog-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+-- Compiling module floodfill_engine
+-- Compiling module probe_ff
+
+Top level modules:
+	probe_ff
+End time: 03:47:30 on Sep 26,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2025.2
+
+# ** Note: (vsim-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# vsim -c -do "run -all; quit -f" probe_ff 
+# Start time: 03:47:32 on Sep 26,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# //  Questa Altera Starter FPGA Edition-64
+# //  Version 2025.2 win64 May 31 2025
+# //
+# // Unpublished work. Copyright 2025 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading sv_std.std
+# Loading work.probe_ff(fast)
+# run -all
+# seed(0,0) id=0 done=1 after 63 cycles count=12 tgt_empty=0
+# seed(1,1) id=3 done=1 after 63 cycles count=12 tgt_empty=0
+# seed(2,2) id=1 done=1 after 63 cycles count=12 tgt_empty=0
+# seed(3,3) id=4 done=1 after 63 cycles count=12 tgt_empty=0
+# seed(4,4) id=2 done=1 after 63 cycles count=12 tgt_empty=0
+# seed(5,5) id=0 done=1 after 63 cycles count=12 tgt_empty=0
+# ** Note: $finish    : probe_ff.sv(39)
+#    Time: 7930 ns  Iteration: 1  Instance: /probe_ff
+# End time: 03:47:34 on Sep 26,2026, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0

@@ -1,0 +1,56 @@
+Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+Start time: 10:44:12 on Sep 26,2026
+vlog -sv ..\..\rtl\ufm_bootloader.sv ..\..\rtl\logo_ram.sv tb_ufm_boot.sv 
+** Note: (vlog-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+-- Compiling module ufm_bootloader
+-- Compiling module logo_ram
+-- Compiling module ufm_model
+-- Compiling module tb_ufm_boot
+
+Top level modules:
+	tb_ufm_boot
+End time: 10:44:12 on Sep 26,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2025.2
+
+# ** Note: (vsim-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# vsim -c -do "run -all; quit -f" tb_ufm_boot 
+# Start time: 10:44:14 on Sep 26,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# //  Questa Altera Starter FPGA Edition-64
+# //  Version 2025.2 win64 May 31 2025
+# //
+# // Unpublished work. Copyright 2025 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading sv_std.std
+# Loading work.tb_ufm_boot(fast)
+# run -all
+# [1] UFM -> logo_ram boot
+#     A: boot_done=1 writes=2000   (readdatavalid BEFORE waitrequest)
+#     B: boot_done=1 writes=2000   (readdatavalid AFTER  waitrequest)
+# [2] copied image contents
+#     checks=4006 errors=0
+# [3] dead UFM slave (watchdog / retry / boot_fail)
+#     C: boot_done=1 boot_fail=1 writes=0 (cycles=1174000)
+# [4] flash in its internal reset at start (waitrequest held high)
+#     D: boot_done=1 boot_fail=0 writes=2000 (cycles=0)
+# ================================
+#   checks=4013 errors=0
+#   ALL PASS
+# ================================
+# ** Note: $finish    : tb_ufm_boot.sv(413)
+#    Time: 24320171 ns  Iteration: 0  Instance: /tb_ufm_boot
+# End time: 10:44:24 on Sep 26,2026, Elapsed time: 0:00:10
+# Errors: 0, Warnings: 0

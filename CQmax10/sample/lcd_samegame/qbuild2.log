@@ -1,0 +1,427 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Shell
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Copyright (C) 2025  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Sat Sep 26 03:55:20 2026
+Info: Command: quartus_sh --flow compile lcd_game
+Info: Quartus(args): compile lcd_game
+Info: Project Name = H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/lcd_game
+Info: Revision Name = lcd_game
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Processing started: Sat Sep 26 03:55:21 2026
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lcd_game -c lcd_game
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/samegame_top.sv
+    Info (12023): Found entity 1: samegame_top File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/samegame_top.sv Line: 27
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/game_fsm.sv
+    Info (12023): Found entity 1: game_fsm File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/game_fsm.sv Line: 22
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/board_memory.sv
+    Info (12023): Found entity 1: board_memory File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/board_memory.sv Line: 19
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/floodfill_engine.sv
+    Info (12023): Found entity 1: floodfill_engine File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/floodfill_engine.sv Line: 18
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/erase_engine.sv
+    Info (12023): Found entity 1: erase_engine File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/erase_engine.sv Line: 13
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/gravity_engine.sv
+    Info (12023): Found entity 1: gravity_engine File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/gravity_engine.sv Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/column_shift_engine.sv
+    Info (12023): Found entity 1: column_shift_engine File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/column_shift_engine.sv Line: 22
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/score_manager.sv
+    Info (12023): Found entity 1: score_manager File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/score_manager.sv Line: 7
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/rng_generator.sv
+    Info (12023): Found entity 1: rng_generator File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/rng_generator.sv Line: 13
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/touch_controller.sv
+    Info (12023): Found entity 1: touch_controller File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/touch_controller.sv Line: 41
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/logo_ram.sv
+    Info (12023): Found entity 1: logo_ram File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/logo_ram.sv Line: 20
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/ufm_bootloader.sv
+    Info (12023): Found entity 1: ufm_bootloader File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/ufm_bootloader.sv Line: 16
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/lcd_renderer.sv
+    Info (12023): Found entity 1: lcd_renderer File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/lcd_renderer.sv Line: 52
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/lcd_ili9341_ctrl.sv
+    Info (12023): Found entity 1: lcd_ili9341_ctrl File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/lcd_ili9341_ctrl.sv Line: 29
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/spi_byte_master.sv
+    Info (12023): Found entity 1: spi_byte_master File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/spi_byte_master.sv Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/frame_seq.sv
+    Info (12023): Found entity 1: frame_seq File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/frame_seq.sv Line: 7
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/reset_sync.sv
+    Info (12023): Found entity 1: reset_sync File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/reset_sync.sv Line: 6
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/debounce.sv
+    Info (12023): Found entity 1: debounce File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/debounce.sv Line: 6
+Info (12021): Found 1 design units, including 1 entities, in source file logo_flash/synthesis/logo_flash.v
+    Info (12023): Found entity 1: logo_flash File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/logo_flash.v Line: 6
+Info (12021): Found 7 design units, including 7 entities, in source file logo_flash/synthesis/submodules/altera_onchip_flash_util.v
+    Info (12023): Found entity 1: altera_onchip_flash_address_range_check File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_util.v Line: 38
+    Info (12023): Found entity 2: altera_onchip_flash_address_write_protection_check File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_util.v Line: 55
+    Info (12023): Found entity 3: altera_onchip_flash_s_address_write_protection_check File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_util.v Line: 109
+    Info (12023): Found entity 4: altera_onchip_flash_a_address_write_protection_check File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_util.v Line: 147
+    Info (12023): Found entity 5: altera_onchip_flash_convert_address File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_util.v Line: 197
+    Info (12023): Found entity 6: altera_onchip_flash_convert_sector File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_util.v Line: 219
+    Info (12023): Found entity 7: altera_onchip_flash_counter File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_util.v Line: 244
+Info (12021): Found 1 design units, including 1 entities, in source file logo_flash/synthesis/submodules/altera_onchip_flash.v
+    Info (12023): Found entity 1: altera_onchip_flash File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash.v Line: 38
+Info (12021): Found 1 design units, including 1 entities, in source file logo_flash/synthesis/submodules/altera_onchip_flash_avmm_data_controller.v
+    Info (12023): Found entity 1: altera_onchip_flash_avmm_data_controller File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_avmm_data_controller.v Line: 38
+Info (12021): Found 1 design units, including 1 entities, in source file logo_flash/synthesis/submodules/altera_onchip_flash_avmm_csr_controller.v
+    Info (12023): Found entity 1: altera_onchip_flash_avmm_csr_controller File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_avmm_csr_controller.v Line: 38
+Info (12021): Found 1 design units, including 1 entities, in source file logo_flash/synthesis/submodules/rtl/altera_onchip_flash_block.v
+    Info (12023): Found entity 1: altera_onchip_flash_block File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/rtl/altera_onchip_flash_block.v Line: 38
+Info (12127): Elaborating entity "samegame_top" for the top level hierarchy
+Info (12128): Elaborating entity "reset_sync" for hierarchy "reset_sync:u_reset" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/samegame_top.sv Line: 66
+Info (12128): Elaborating entity "debounce" for hierarchy "debounce:u_sw1" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/samegame_top.sv Line: 71
+Info (12128): Elaborating entity "lcd_ili9341_ctrl" for hierarchy "lcd_ili9341_ctrl:u_lcd" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/samegame_top.sv Line: 98
+Info (12128): Elaborating entity "spi_byte_master" for hierarchy "lcd_ili9341_ctrl:u_lcd|spi_byte_master:u_spi" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/lcd_ili9341_ctrl.sv Line: 90
+Info (12128): Elaborating entity "frame_seq" for hierarchy "frame_seq:u_fseq" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/samegame_top.sv Line: 108
+Info (12128): Elaborating entity "touch_controller" for hierarchy "touch_controller:u_touch" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/samegame_top.sv Line: 126
+Info (12128): Elaborating entity "board_memory" for hierarchy "board_memory:u_board" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/samegame_top.sv Line: 152
+Warning (10027): Verilog HDL or VHDL warning at the board_memory.sv(72): index expression is not wide enough to address all of the elements in the array File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/board_memory.sv Line: 72
+Info (12128): Elaborating entity "logo_ram" for hierarchy "logo_ram:u_ram" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/samegame_top.sv Line: 167
+Info (12128): Elaborating entity "ufm_bootloader" for hierarchy "ufm_bootloader:u_boot" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/samegame_top.sv Line: 185
+Info (12128): Elaborating entity "logo_flash" for hierarchy "logo_flash:u_ufm" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/samegame_top.sv Line: 203
+Info (12128): Elaborating entity "altera_onchip_flash" for hierarchy "logo_flash:u_ufm|altera_onchip_flash:ufm" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/logo_flash.v Line: 87
+Info (12128): Elaborating entity "altera_onchip_flash_avmm_csr_controller" for hierarchy "logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_csr_controller:avmm_csr_controller" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash.v Line: 203
+Info (12128): Elaborating entity "altera_onchip_flash_avmm_data_controller" for hierarchy "logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_data_controller:avmm_data_controller" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash.v Line: 282
+Info (12128): Elaborating entity "altera_std_synchronizer" for hierarchy "logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_data_controller:avmm_data_controller|altera_std_synchronizer:stdsync_busy" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_avmm_data_controller.v Line: 569
+Info (12130): Elaborated megafunction instantiation "logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_data_controller:avmm_data_controller|altera_std_synchronizer:stdsync_busy" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_avmm_data_controller.v Line: 569
+Info (12133): Instantiated megafunction "logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_data_controller:avmm_data_controller|altera_std_synchronizer:stdsync_busy" with the following parameter: File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_avmm_data_controller.v Line: 569
+    Info (12134): Parameter "depth" = "2"
+Info (12128): Elaborating entity "lpm_shiftreg" for hierarchy "logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_data_controller:avmm_data_controller|lpm_shiftreg:ufm_data_shiftreg" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_avmm_data_controller.v Line: 1182
+Info (12130): Elaborated megafunction instantiation "logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_data_controller:avmm_data_controller|lpm_shiftreg:ufm_data_shiftreg" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_avmm_data_controller.v Line: 1182
+Info (12133): Instantiated megafunction "logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_data_controller:avmm_data_controller|lpm_shiftreg:ufm_data_shiftreg" with the following parameter: File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_avmm_data_controller.v Line: 1182
+    Info (12134): Parameter "lpm_type" = "LPM_SHIFTREG"
+    Info (12134): Parameter "lpm_width" = "32"
+    Info (12134): Parameter "lpm_direction" = "LEFT"
+Info (12128): Elaborating entity "altera_onchip_flash_address_range_check" for hierarchy "logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_data_controller:avmm_data_controller|altera_onchip_flash_address_range_check:address_range_checker" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_avmm_data_controller.v Line: 1192
+Info (12128): Elaborating entity "altera_onchip_flash_convert_address" for hierarchy "logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_data_controller:avmm_data_controller|altera_onchip_flash_convert_address:address_convertor" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_avmm_data_controller.v Line: 1203
+Info (12128): Elaborating entity "altera_onchip_flash_a_address_write_protection_check" for hierarchy "logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_data_controller:avmm_data_controller|altera_onchip_flash_a_address_write_protection_check:access_address_write_protection_checker" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_avmm_data_controller.v Line: 1245
+Info (12128): Elaborating entity "altera_onchip_flash_s_address_write_protection_check" for hierarchy "logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_data_controller:avmm_data_controller|altera_onchip_flash_s_address_write_protection_check:sector_address_write_protection_checker" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_avmm_data_controller.v Line: 1255
+Info (12128): Elaborating entity "altera_onchip_flash_convert_sector" for hierarchy "logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_data_controller:avmm_data_controller|altera_onchip_flash_convert_sector:sector_convertor" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_avmm_data_controller.v Line: 1266
+Info (12128): Elaborating entity "altera_onchip_flash_block" for hierarchy "logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_block:altera_onchip_flash_block" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash.v Line: 327
+Info (12128): Elaborating entity "game_fsm" for hierarchy "game_fsm:u_game" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/samegame_top.sv Line: 234
+Warning (10036): Verilog HDL or VHDL warning at game_fsm.sv(89): object "fall_frame" assigned a value but never read File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/game_fsm.sv Line: 89
+Warning (10036): Verilog HDL or VHDL warning at game_fsm.sv(89): object "shift_frame" assigned a value but never read File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/game_fsm.sv Line: 89
+Info (10264): Verilog HDL Case Statement information at game_fsm.sv(388): all case item expressions in this case statement are onehot File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/game_fsm.sv Line: 388
+Info (12128): Elaborating entity "rng_generator" for hierarchy "game_fsm:u_game|rng_generator:u_rng" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/game_fsm.sv Line: 82
+Info (12128): Elaborating entity "floodfill_engine" for hierarchy "game_fsm:u_game|floodfill_engine:u_ff" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/game_fsm.sv Line: 113
+Warning (10230): Verilog HDL assignment warning at floodfill_engine.sv(89): truncated value with size 32 to match size of target (8) File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/floodfill_engine.sv Line: 89
+Warning (10230): Verilog HDL assignment warning at floodfill_engine.sv(96): truncated value with size 32 to match size of target (8) File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/floodfill_engine.sv Line: 96
+Warning (10230): Verilog HDL assignment warning at floodfill_engine.sv(120): truncated value with size 32 to match size of target (8) File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/floodfill_engine.sv Line: 120
+Info (12128): Elaborating entity "erase_engine" for hierarchy "game_fsm:u_game|erase_engine:u_erase" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/game_fsm.sv Line: 143
+Info (12128): Elaborating entity "gravity_engine" for hierarchy "game_fsm:u_game|gravity_engine:u_grav" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/game_fsm.sv Line: 158
+Warning (10230): Verilog HDL assignment warning at gravity_engine.sv(100): truncated value with size 32 to match size of target (8) File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/gravity_engine.sv Line: 100
+Warning (10230): Verilog HDL assignment warning at gravity_engine.sv(114): truncated value with size 32 to match size of target (8) File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/gravity_engine.sv Line: 114
+Info (12128): Elaborating entity "column_shift_engine" for hierarchy "game_fsm:u_game|column_shift_engine:u_shift" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/game_fsm.sv Line: 175
+Warning (10230): Verilog HDL assignment warning at column_shift_engine.sv(132): truncated value with size 32 to match size of target (8) File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/column_shift_engine.sv Line: 132
+Warning (10230): Verilog HDL assignment warning at column_shift_engine.sv(162): truncated value with size 32 to match size of target (8) File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/column_shift_engine.sv Line: 162
+Info (12128): Elaborating entity "score_manager" for hierarchy "game_fsm:u_game|score_manager:u_score" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/game_fsm.sv Line: 183
+Info (12128): Elaborating entity "lcd_renderer" for hierarchy "lcd_renderer:u_render" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/samegame_top.sv Line: 249
+Warning (10230): Verilog HDL assignment warning at lcd_renderer.sv(111): truncated value with size 32 to match size of target (8) File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/lcd_renderer.sv Line: 111
+Warning (10230): Verilog HDL assignment warning at lcd_renderer.sv(146): truncated value with size 38 to match size of target (10) File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/lcd_renderer.sv Line: 146
+Warning (10230): Verilog HDL assignment warning at lcd_renderer.sv(151): truncated value with size 32 to match size of target (8) File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/lcd_renderer.sv Line: 151
+Warning (10230): Verilog HDL assignment warning at lcd_renderer.sv(180): truncated value with size 38 to match size of target (10) File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/lcd_renderer.sv Line: 180
+Warning (10230): Verilog HDL assignment warning at lcd_renderer.sv(184): truncated value with size 32 to match size of target (8) File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/lcd_renderer.sv Line: 184
+Warning (276020): Inferred RAM node "game_fsm:u_game|floodfill_engine:u_ff|fifo_mem_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
+Info (276014): Found 2 instances of uninferred RAM logic
+    Info (276007): RAM logic "game_fsm:u_game|column_shift_engine:u_shift|cols" is uninferred due to asynchronous read logic File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/column_shift_engine.sv Line: 59
+    Info (276004): RAM logic "game_fsm:u_game|column_shift_engine:u_shift|target" is uninferred due to inappropriate RAM size File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/column_shift_engine.sv Line: 60
+Info (19000): Inferred 2 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "game_fsm:u_game|floodfill_engine:u_ff|fifo_mem_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 8
+        Info (286033): Parameter WIDTHAD_A set to 8
+        Info (286033): Parameter NUMWORDS_A set to 256
+        Info (286033): Parameter WIDTH_B set to 8
+        Info (286033): Parameter WIDTHAD_B set to 8
+        Info (286033): Parameter NUMWORDS_B set to 256
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "logo_ram:u_ram|mem_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 16
+        Info (286033): Parameter WIDTHAD_A set to 11
+        Info (286033): Parameter NUMWORDS_A set to 2048
+        Info (286033): Parameter WIDTH_B set to 16
+        Info (286033): Parameter WIDTHAD_B set to 11
+        Info (286033): Parameter NUMWORDS_B set to 2048
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+Info (278001): Inferred 6 megafunctions from design logic
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "lcd_ili9341_ctrl:u_lcd|Mult0" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/lcd_ili9341_ctrl.sv Line: 230
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "touch_controller:u_touch|Mult1" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/touch_controller.sv Line: 164
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "touch_controller:u_touch|Mult0" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/touch_controller.sv Line: 154
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "lcd_renderer:u_render|Mult2" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/lcd_renderer.sv Line: 279
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "lcd_renderer:u_render|Mult0" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/lcd_renderer.sv Line: 97
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "lcd_renderer:u_render|Mult1" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/lcd_renderer.sv Line: 98
+Info (12130): Elaborated megafunction instantiation "game_fsm:u_game|floodfill_engine:u_ff|altsyncram:fifo_mem_rtl_0"
+Info (12133): Instantiated megafunction "game_fsm:u_game|floodfill_engine:u_ff|altsyncram:fifo_mem_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "8"
+    Info (12134): Parameter "WIDTHAD_A" = "8"
+    Info (12134): Parameter "NUMWORDS_A" = "256"
+    Info (12134): Parameter "WIDTH_B" = "8"
+    Info (12134): Parameter "WIDTHAD_B" = "8"
+    Info (12134): Parameter "NUMWORDS_B" = "256"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_8ob1.tdf
+    Info (12023): Found entity 1: altsyncram_8ob1 File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/db/altsyncram_8ob1.tdf Line: 28
+Info (12130): Elaborated megafunction instantiation "logo_ram:u_ram|altsyncram:mem_rtl_0"
+Info (12133): Instantiated megafunction "logo_ram:u_ram|altsyncram:mem_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "16"
+    Info (12134): Parameter "WIDTHAD_A" = "11"
+    Info (12134): Parameter "NUMWORDS_A" = "2048"
+    Info (12134): Parameter "WIDTH_B" = "16"
+    Info (12134): Parameter "WIDTHAD_B" = "11"
+    Info (12134): Parameter "NUMWORDS_B" = "2048"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_kgg1.tdf
+    Info (12023): Found entity 1: altsyncram_kgg1 File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/db/altsyncram_kgg1.tdf Line: 28
+Info (12130): Elaborated megafunction instantiation "lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult0" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/lcd_ili9341_ctrl.sv Line: 230
+Info (12133): Instantiated megafunction "lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult0" with the following parameter: File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/lcd_ili9341_ctrl.sv Line: 230
+    Info (12134): Parameter "LPM_WIDTHA" = "8"
+    Info (12134): Parameter "LPM_WIDTHB" = "16"
+    Info (12134): Parameter "LPM_WIDTHP" = "24"
+    Info (12134): Parameter "LPM_WIDTHR" = "24"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "YES"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "6"
+Info (12131): Elaborated megafunction instantiation "lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult0|multcore:mult_core", which is child of megafunction instantiation "lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult0" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_mult.tdf Line: 309
+Info (12131): Elaborated megafunction instantiation "lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder", which is child of megafunction instantiation "lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult0" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/multcore.tdf Line: 229
+Info (12131): Elaborated megafunction instantiation "lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]", which is child of megafunction instantiation "lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult0" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/mpar_add.tdf Line: 78
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_arg.tdf
+    Info (12023): Found entity 1: add_sub_arg File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/db/add_sub_arg.tdf Line: 23
+Info (12131): Elaborated megafunction instantiation "lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult0|altshift:external_latency_ffs", which is child of megafunction instantiation "lcd_ili9341_ctrl:u_lcd|lpm_mult:Mult0" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_mult.tdf Line: 352
+Info (12130): Elaborated megafunction instantiation "touch_controller:u_touch|lpm_mult:Mult1" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/touch_controller.sv Line: 164
+Info (12133): Instantiated megafunction "touch_controller:u_touch|lpm_mult:Mult1" with the following parameter: File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/touch_controller.sv Line: 164
+    Info (12134): Parameter "LPM_WIDTHA" = "21"
+    Info (12134): Parameter "LPM_WIDTHB" = "8"
+    Info (12134): Parameter "LPM_WIDTHP" = "29"
+    Info (12134): Parameter "LPM_WIDTHR" = "29"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "YES"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_3qs.tdf
+    Info (12023): Found entity 1: mult_3qs File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/db/mult_3qs.tdf Line: 31
+Info (12130): Elaborated megafunction instantiation "touch_controller:u_touch|lpm_mult:Mult0" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/touch_controller.sv Line: 154
+Info (12133): Instantiated megafunction "touch_controller:u_touch|lpm_mult:Mult0" with the following parameter: File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/touch_controller.sv Line: 154
+    Info (12134): Parameter "LPM_WIDTHA" = "22"
+    Info (12134): Parameter "LPM_WIDTHB" = "9"
+    Info (12134): Parameter "LPM_WIDTHP" = "31"
+    Info (12134): Parameter "LPM_WIDTHR" = "31"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "YES"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_ups.tdf
+    Info (12023): Found entity 1: mult_ups File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/db/mult_ups.tdf Line: 31
+Info (12130): Elaborated megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult2" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/lcd_renderer.sv Line: 279
+Info (12133): Instantiated megafunction "lcd_renderer:u_render|lpm_mult:Mult2" with the following parameter: File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/lcd_renderer.sv Line: 279
+    Info (12134): Parameter "LPM_WIDTHA" = "3"
+    Info (12134): Parameter "LPM_WIDTHB" = "9"
+    Info (12134): Parameter "LPM_WIDTHP" = "12"
+    Info (12134): Parameter "LPM_WIDTHR" = "12"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "YES"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12131): Elaborated megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult2|multcore:mult_core", which is child of megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult2" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_mult.tdf Line: 309
+Info (12131): Elaborated megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult2|multcore:mult_core|mpar_add:padder", which is child of megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult2" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/multcore.tdf Line: 229
+Info (12131): Elaborated megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult2|altshift:external_latency_ffs", which is child of megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult2" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_mult.tdf Line: 352
+Info (12130): Elaborated megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult0" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/lcd_renderer.sv Line: 97
+Info (12133): Instantiated megafunction "lcd_renderer:u_render|lpm_mult:Mult0" with the following parameter: File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/lcd_renderer.sv Line: 97
+    Info (12134): Parameter "LPM_WIDTHA" = "9"
+    Info (12134): Parameter "LPM_WIDTHB" = "9"
+    Info (12134): Parameter "LPM_WIDTHP" = "18"
+    Info (12134): Parameter "LPM_WIDTHR" = "18"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "YES"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12131): Elaborated megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult0|multcore:mult_core", which is child of megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult0" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_mult.tdf Line: 309
+Info (12131): Elaborated megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder", which is child of megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult0" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/multcore.tdf Line: 229
+Info (12131): Elaborated megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]", which is child of megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult0" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/mpar_add.tdf Line: 78
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_crg.tdf
+    Info (12023): Found entity 1: add_sub_crg File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/db/add_sub_crg.tdf Line: 23
+Info (12131): Elaborated megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add", which is child of megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult0" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/mpar_add.tdf Line: 138
+Info (12131): Elaborated megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]", which is child of megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult0" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/mpar_add.tdf Line: 78
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_grg.tdf
+    Info (12023): Found entity 1: add_sub_grg File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/db/add_sub_grg.tdf Line: 23
+Info (12131): Elaborated megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult0|altshift:external_latency_ffs", which is child of megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult0" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_mult.tdf Line: 352
+Info (12130): Elaborated megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult1" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/lcd_renderer.sv Line: 98
+Info (12133): Instantiated megafunction "lcd_renderer:u_render|lpm_mult:Mult1" with the following parameter: File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/lcd_renderer.sv Line: 98
+    Info (12134): Parameter "LPM_WIDTHA" = "8"
+    Info (12134): Parameter "LPM_WIDTHB" = "9"
+    Info (12134): Parameter "LPM_WIDTHP" = "17"
+    Info (12134): Parameter "LPM_WIDTHR" = "17"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "YES"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12131): Elaborated megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult1|multcore:mult_core", which is child of megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult1" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_mult.tdf Line: 309
+Info (12131): Elaborated megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult1|multcore:mult_core|mpar_add:padder", which is child of megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult1" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/multcore.tdf Line: 229
+Info (12131): Elaborated megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult1|altshift:external_latency_ffs", which is child of megafunction instantiation "lcd_renderer:u_render|lpm_mult:Mult1" File: h:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_mult.tdf Line: 352
+Info (13014): Ignored 21 buffer(s)
+    Info (13019): Ignored 21 SOFT buffer(s)
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 66 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/output_files/lcd_game.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 2 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "sw1" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/samegame_top.sv Line: 39
+    Warning (15610): No output dependent on input pin "sw2" File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/samegame_top.sv Line: 40
+Info (21057): Implemented 10505 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 5 input pins
+    Info (21059): Implemented 12 output pins
+    Info (21061): Implemented 10457 logic cells
+    Info (21064): Implemented 24 RAM segments
+    Info (21062): Implemented 6 DSP elements
+    Info (21070): Implemented 1 User Flash Memory blocks
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 19 warnings
+    Info: Peak virtual memory: 4967 megabytes
+    Info: Processing ended: Sat Sep 26 03:56:07 2026
+    Info: Elapsed time: 00:00:46
+    Info: Total CPU time (on all processors): 00:01:02
+Info: *******************************************************************
+Info: Running Quartus Prime Fitter
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Processing started: Sat Sep 26 03:56:08 2026
+Info: Command: quartus_fit --read_settings_files=off --write_settings_files=off lcd_game -c lcd_game
+Info: qfit2_default_script.tcl version: #1
+Info: Project  = lcd_game
+Info: Revision = lcd_game
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (119006): Selected device 10M08SCE144C8G for design "lcd_game"
+Info (22896): The CONFIG_SEL pin is disabled. It is not supported for MAX 10 devices with compact features.
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Info (171003): Fitter is performing an Auto Fit compilation, which may decrease Fitter effort to reduce compilation time
+Warning (292013): Feature LogicLock is only available with a valid subscription license. You can purchase a software subscription to gain full access to this feature.
+Critical Warning (16562): Review the Power Analyzer report file (<design>.pow.rpt) to ensure your design is within the maximum power utilization limit of the single power-supply target device and to avoid functional failures.
+Info (176444): Device migration not selected. If you intend to use device migration later, you may need to change the pin assignments as they may be incompatible with other devices
+    Info (176445): Device 10M04SCE144C8G is compatible
+    Info (176445): Device 10M16SCE144C8G is compatible
+    Info (176445): Device 10M25SCE144C8G is compatible
+Info (169124): Fitter converted 7 user pins into dedicated programming pins
+    Info (169125): Pin ~ALTERA_TMS~ is reserved at location 16
+    Info (169125): Pin ~ALTERA_TCK~ is reserved at location 18
+    Info (169125): Pin ~ALTERA_TDI~ is reserved at location 19
+    Info (169125): Pin ~ALTERA_TDO~ is reserved at location 20
+    Info (169125): Pin ~ALTERA_nCONFIG~ is reserved at location 129
+    Info (169125): Pin ~ALTERA_nSTATUS~ is reserved at location 136
+    Info (169125): Pin ~ALTERA_CONF_DONE~ is reserved at location 138
+Info (169141): DATA[0] dual-purpose pin not reserved
+Info (12825): Data[1]/ASDO dual-purpose pin not reserved
+Info (12825): nCSO dual-purpose pin not reserved
+Info (12825): DCLK dual-purpose pin not reserved
+Warning (15714): Some pins have incomplete I/O assignments. Refer to the I/O Assignment Warnings report for details
+Info (176045): Design uses memory blocks. Violating setup or hold times of memory block address registers for either read or write operations could cause memory contents to be corrupted. Make sure that all memory block address registers meet the setup and hold time requirements.
+Info (332164): Evaluating HDL-embedded SDC commands
+    Info (332165): Entity altera_std_synchronizer
+        Info (332166): set_false_path -to [get_keepers {*altera_std_synchronizer:*|din_s1}]
+Warning (332174): Ignored filter at qfit2_legacy_fmain_fitter_flow.tcl(117): *altera_std_synchronizer:*|din_s1 could not be matched with a keeper File: H:/altera_lite/25.1std/quartus/common/tcl/internal/qfit2_legacy_fmain_fitter_flow.tcl Line: 117
+Warning (332049): Ignored set_false_path at qfit2_legacy_fmain_fitter_flow.tcl(117): Argument <to> is an empty collection File: H:/altera_lite/25.1std/quartus/common/tcl/internal/qfit2_legacy_fmain_fitter_flow.tcl Line: 117
+    Info (332050): run_legacy_fitter_flow File: H:/altera_lite/25.1std/quartus/common/tcl/internal/qfit2_legacy_fmain_fitter_flow.tcl Line: 117
+Info (332104): Reading SDC File: 'logo_flash/synthesis/submodules/altera_onchip_flash.sdc'
+Warning (332174): Ignored filter at altera_onchip_flash.sdc(120): *|flash_busy_reg could not be matched with a register File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash.sdc Line: 120
+Warning (332049): Ignored set_false_path at altera_onchip_flash.sdc(120): Argument <to> is an empty collection File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash.sdc Line: 120
+    Info (332050): set_false_path -to [get_registers {*|flash_busy_reg}] File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash.sdc Line: 120
+Warning (332174): Ignored filter at altera_onchip_flash.sdc(122): *|flash_busy_clear_reg could not be matched with a register File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash.sdc Line: 122
+Warning (332049): Ignored set_false_path at altera_onchip_flash.sdc(122): Argument <to> is an empty collection File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash.sdc Line: 122
+    Info (332050): set_false_path -to [get_registers {*|flash_busy_clear_reg}] File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash.sdc Line: 122
+Info (332104): Reading SDC File: 'lcd_game.sdc'
+Info (332151): Clock uncertainty is not calculated until you update the timing netlist.
+Info (332154): The derive_clock_uncertainty command did not apply clock uncertainty to any clock-to-clock transfers.
+Info (332129): Detected timing requirements -- optimizing circuit to achieve only the specified requirements
+Info (332111): Found 1 clocks
+    Info (332111):   Period   Clock Name
+    Info (332111): ======== ============
+    Info (332111):   20.000          clk
+Info (176353): Automatically promoted node clk~input (placed in PIN 88 (CLK2p, DIFFIO_RX_R14p, DIFFOUT_R14p, High_Speed)) File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/samegame_top.sv Line: 36
+    Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G9
+    Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
+        Info (176357): Destination node logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_data_controller:avmm_data_controller|enable_drclk_neg_reg File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_avmm_data_controller.v Line: 214
+        Info (176357): Destination node logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_data_controller:avmm_data_controller|enable_arclk_neg_pos_reg File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_avmm_data_controller.v Line: 213
+        Info (176357): Destination node logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_data_controller:avmm_data_controller|enable_arclk_neg_reg File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_avmm_data_controller.v Line: 212
+        Info (176357): Destination node logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_data_controller:avmm_data_controller|flash_arclk~0 File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_avmm_data_controller.v Line: 165
+        Info (176357): Destination node logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_data_controller:avmm_data_controller|enable_drclk_neg_pos_reg File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_avmm_data_controller.v Line: 215
+        Info (176357): Destination node logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_data_controller:avmm_data_controller|flash_drclk~0 File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_avmm_data_controller.v Line: 167
+        Info (176357): Destination node logo_flash:u_ufm|altera_onchip_flash:ufm|altera_onchip_flash_avmm_data_controller:avmm_data_controller|flash_se_neg_reg File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/logo_flash/synthesis/submodules/altera_onchip_flash_avmm_data_controller.v Line: 457
+Info (176233): Starting register packing
+Info (176235): Finished register packing
+    Extra Info (176219): No registers were packed into other blocks
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:05
+Info (14896): Fitter has disabled Advanced Physical Optimization because it is not supported for the current family.
+Info (170189): Fitter placement preparation operations beginning
+Error (170011): Design contains 8386 blocks of type combinational node.  However, the device contains only 8064 blocks.
+Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:00
+Info (11888): Total time spent on timing analysis during the Fitter is 0.10 seconds.
+Error (171000): Can't fit design in device
+Warning (169177): 5 pins must meet Intel FPGA requirements for 3.3-, 3.0-, and 2.5-V interfaces. For more information, refer to AN 447: Interfacing MAX 10 Devices with 3.3/3.0/2.5-V LVTTL/LVCMOS I/O Systems.
+    Info (169178): Pin sw1 uses I/O standard 3.3-V LVCMOS at 62 File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/samegame_top.sv Line: 39
+    Info (169178): Pin sw2 uses I/O standard 3.3-V LVCMOS at 48 File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/samegame_top.sv Line: 40
+    Info (169178): Pin clk uses I/O standard 3.3-V LVCMOS at 88 File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/samegame_top.sv Line: 36
+    Info (169178): Pin btn_rst uses I/O standard 3.3-V LVCMOS at 17 File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/samegame_top.sv Line: 37
+    Info (169178): Pin touch_miso uses I/O standard 3.3-V LVCMOS at 56 File: H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/rtl/samegame_top.sv Line: 49
+Info (144001): Generated suppressed messages file H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/output_files/lcd_game.fit.smsg
+Error: Quartus Prime Fitter was unsuccessful. 2 errors, 10 warnings
+    Error: Peak virtual memory: 5947 megabytes
+    Error: Processing ended: Sat Sep 26 03:56:22 2026
+    Error: Elapsed time: 00:00:14
+    Error: Total CPU time (on all processors): 00:00:18
+Error (293001): Quartus Prime Full Compilation was unsuccessful. 4 errors, 29 warnings
+Error: Flow compile (for project H:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/lcd_game) was not successful
+Error: ERROR: Error(s) found while running an executable. See report file(s) for error message(s). Message log indicates which executable was run last.
+
+Error (23031): Evaluation of Tcl script h:/altera_lite/25.1std/quartus/common/tcl/internal/qsh_flow.tcl unsuccessful
+Error: Quartus Prime Shell was unsuccessful. 11 errors, 29 warnings
+    Error: Peak virtual memory: 4689 megabytes
+    Error: Processing ended: Sat Sep 26 03:56:23 2026
+    Error: Elapsed time: 00:01:03
+    Error: Total CPU time (on all processors): 00:00:34

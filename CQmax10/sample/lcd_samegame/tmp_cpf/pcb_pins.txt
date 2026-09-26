@@ -1,0 +1,87 @@
+pcb size = 913722 chars
+
+=== J2   (kicad8-2:Pmod_socket) ===
+   pad 1   : /IOPIN59
+   pad 2   : /IOPIN57
+   pad 3   : /IOPIN55
+   pad 4   : /IOPIN52
+   pad 5   : GND
+   pad 6   : +3V3
+   pad 7   : /IOPIN60
+   pad 8   : /IOPIN58
+   pad 9   : /IOPIN56
+   pad 10  : /IOPIN50
+   pad 11  : GND
+   pad 12  : +3V3
+
+=== J1   (kicad8-2:Pmod_socket) ===
+   pad 1   : /IOPIN46
+   pad 2   : /IOPIN44
+   pad 3   : /IOPIN41
+   pad 4   : /IOPIN38
+   pad 5   : GND
+   pad 6   : +3V3
+   pad 7   : /IOPIN45
+   pad 8   : /IOPIN43
+   pad 9   : /IOPIN39
+   pad 10  : /IOPIN47
+   pad 11  : GND
+   pad 12  : +3V3
+
+=== J4   (kicad8-2:Pmod_socket) ===
+   pad 1   : /IOPIN98
+   pad 2   : /IOPIN99
+   pad 3   : /IOPIN96
+   pad 4   : /IOPIN97
+   pad 5   : GND
+   pad 6   : +3V3
+   pad 7   : /IOPIN101
+   pad 8   : /IOPIN100
+   pad 9   : /IOPIN105
+   pad 10  : /IOPIN106
+   pad 11  : GND
+   pad 12  : +3V3
+
+=== J3   (kicad8-2:Pmod_socket) ===
+   pad 1   : /IOPIN13
+   pad 2   : /IOPIN11
+   pad 3   : /IOPIN8
+   pad 4   : /IOPIN6
+   pad 5   : GND
+   pad 6   : +3V3
+   pad 7   : /IOPIN14
+   pad 8   : /IOPIN12
+   pad 9   : /IOPIN10
+   pad 10  : /IOPIN7
+   pad 11  : GND
+   pad 12  : +3V3
+
+=== J5   (kicad8-2:Pmod_socket) ===
+   pad 1   : /IOPIN80
+   pad 2   : /IOPIN79
+   pad 3   : /IOPIN77
+   pad 4   : /IOPIN76
+   pad 5   : GND
+   pad 6   : +3V3
+   pad 7   : /IOPIN81
+   pad 8   : /IOPIN78
+   pad 9   : /IOPIN74
+   pad 10  : /IOPIN75
+   pad 11  : GND
+   pad 12  : +3V3
+
+=== J6   (kicad8-2:Pmod_socket) ===
+   pad 1   : /IOPIN134
+   pad 2   : /IOPIN135
+   pad 3   : /IOPIN132
+   pad 4   : /IOPIN130
+   pad 5   : GND
+   pad 6   : +3V3
+   pad 7   : /IOPIN141
+   pad 8   : /IOPIN140
+   pad 9   : /IOPIN131
+   pad 10  : /IOPIN127
+   pad 11  : GND
+   pad 12  : +3V3
+
+Pmod footprints found = 6

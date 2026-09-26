@@ -1,0 +1,189 @@
+
+===================================================
+ running tb_samegame
+===================================================
+Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+Start time: 04:30:12 on Sep 26,2026
+vlog -sv ..\..\rtl\board_memory.sv ..\..\rtl\floodfill_engine.sv ..\..\rtl\gravity_engine.sv ..\..\rtl\column_shift_engine.sv tb_samegame.sv 
+** Note: (vlog-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+-- Compiling module board_memory
+-- Compiling module floodfill_engine
+-- Compiling module gravity_engine
+-- Compiling module column_shift_engine
+-- Compiling module tb_samegame
+
+Top level modules:
+	tb_samegame
+End time: 04:30:12 on Sep 26,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2025.2
+
+# ** Note: (vsim-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# vsim -c -do "run -all; quit -f" tb_samegame 
+# Start time: 04:30:14 on Sep 26,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# //  Questa Altera Starter FPGA Edition-64
+# //  Version 2025.2 win64 May 31 2025
+# //
+# // Unpublished work. Copyright 2025 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading sv_std.std
+# Loading work.tb_samegame(fast)
+# run -all
+# [1] board clear after reset
+# [2] flood fill: 2x2 group of Logo0
+# [3] flood fill on empty cell
+# [4] gravity compaction
+# [5] column shift: A B Empty C D Empty -> A B C D Empty Empty
+# ================================
+#   checks=216 errors=0
+#   ALL PASS
+# ================================
+# ** Note: $finish    : tb_samegame.sv(279)
+#    Time: 27035 ns  Iteration: 0  Instance: /tb_samegame
+# End time: 04:30:16 on Sep 26,2026, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0
+
+===================================================
+ running tb_renderer
+===================================================
+Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+Start time: 04:30:17 on Sep 26,2026
+vlog -sv ..\..\rtl\board_memory.sv ..\..\rtl\logo_ram.sv ..\..\rtl\lcd_renderer.sv tb_renderer.sv 
+** Note: (vlog-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+-- Compiling module board_memory
+-- Compiling module logo_ram
+-- Compiling module lcd_renderer
+-- Compiling module tb_renderer
+
+Top level modules:
+	tb_renderer
+End time: 04:30:17 on Sep 26,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2025.2
+
+# ** Note: (vsim-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# vsim -c -do "run -all; quit -f" tb_renderer 
+# Start time: 04:30:19 on Sep 26,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# //  Questa Altera Starter FPGA Edition-64
+# //  Version 2025.2 win64 May 31 2025
+# //
+# // Unpublished work. Copyright 2025 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading sv_std.std
+# Loading work.tb_renderer(fast)
+# run -all
+# [1] static sweep (mode 0)
+#     checks=76801 errors=0
+# [2] fall end (mode 2, fall_px = 240)
+#     checks=153602 errors=0
+# [3] shift end (mode 3, shift_px = 320)
+#     checks=230403 errors=0
+# [4] fall middle (mode 2)
+#     checks=307204 errors=0
+# [5] blink (mode 1, blink_on = 0)
+#     checks=384005 errors=0
+# ================================
+#   checks=384005 errors=0
+#   ALL PASS
+# ================================
+# ** Note: $finish    : tb_renderer.sv(365)
+#    Time: 7755600 ns  Iteration: 1  Instance: /tb_renderer
+# End time: 04:30:34 on Sep 26,2026, Elapsed time: 0:00:15
+# Errors: 0, Warnings: 0
+
+===================================================
+ running tb_game_fsm
+===================================================
+Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+Start time: 04:30:35 on Sep 26,2026
+vlog -sv ..\..\rtl\board_memory.sv ..\..\rtl\rng_generator.sv ..\..\rtl\floodfill_engine.sv ..\..\rtl\erase_engine.sv ..\..\rtl\gravity_engine.sv ..\..\rtl\column_shift_engine.sv ..\..\rtl\score_manager.sv ..\..\rtl\game_fsm.sv tb_game_fsm.sv 
+** Note: (vlog-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+-- Compiling module board_memory
+-- Compiling module rng_generator
+-- Compiling module floodfill_engine
+-- Compiling module erase_engine
+-- Compiling module gravity_engine
+-- Compiling module column_shift_engine
+-- Compiling module score_manager
+-- Compiling module game_fsm
+-- Compiling module tb_game_fsm
+
+Top level modules:
+	tb_game_fsm
+End time: 04:30:35 on Sep 26,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2025.2
+
+# ** Note: (vsim-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# vsim -c -do "run -all; quit -f" tb_game_fsm 
+# Start time: 04:30:37 on Sep 26,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# //  Questa Altera Starter FPGA Edition-64
+# //  Version 2025.2 win64 May 31 2025
+# //
+# // Unpublished work. Copyright 2025 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading sv_std.std
+# Loading work.tb_game_fsm(fast)
+# run -all
+# [1] board generation after reset
+# [2] tap a 2x2 group -> erase + fall + shift, score += 4^2
+# [3] tap an isolated cell (group of 1) -> nothing happens
+# [4] tap an EMPTY cell -> nothing happens
+# [5] animation mode sequence = blink, fall, shift
+#     anim_mode sequence: 1230
+# [6] no dead-lock over many random taps
+#     10 taps issued, final state=S_GAMEOVER score=96
+# [7] generated board uses all five logos
+#     logo histogram: 35 38 39 44 36
+# [8] game-over scan includes the last cell
+# ================================
+#   checks=51 errors=0
+#   ALL PASS
+# ================================
+# ** Note: $finish    : tb_game_fsm.sv(483)
+#    Time: 4293520 ns  Iteration: 1  Instance: /tb_game_fsm
+# End time: 04:30:41 on Sep 26,2026, Elapsed time: 0:00:04
+# Errors: 0, Warnings: 0
+
+===================================================
+ ALL TESTBENCHES PASSED
+===================================================

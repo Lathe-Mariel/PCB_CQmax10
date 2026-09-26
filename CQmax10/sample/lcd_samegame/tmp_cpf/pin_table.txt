@@ -1,0 +1,167 @@
+=== J1 at (55.88, 41.275) ===
+   pin  1 : IOPIN46     instances=3
+   pin  2 : IOPIN44     instances=3
+   pin  3 : IOPIN41     instances=3
+   pin  4 : IOPIN38     instances=3
+   pin  5 : IOPIN38     instances=3
+   pin  6 : IOPIN38     instances=3
+   pin  7 : IOPIN45     instances=3
+   pin  8 : IOPIN43     instances=3
+   pin  9 : IOPIN39     instances=3
+   pin 10 : IOPIN47     instances=3
+   pin 11 : IOPIN47     instances=3
+   pin 12 : IOPIN47     instances=3
+
+=== J2 at (95.25, 41.275) ===
+   pin  1 : IOPIN59     instances=3
+   pin  2 : IOPIN57     instances=3
+   pin  3 : IOPIN55     instances=3
+   pin  4 : IOPIN52     instances=3
+   pin  5 : IOPIN52     instances=3
+   pin  6 : IOPIN52     instances=3
+   pin  7 : IOPIN60     instances=3
+   pin  8 : IOPIN58     instances=3
+   pin  9 : IOPIN56     instances=3
+   pin 10 : IOPIN50     instances=3
+   pin 11 : IOPIN50     instances=3
+   pin 12 : IOPIN50     instances=3
+
+=== J3 at (184.785, 41.275) ===
+   pin  1 : IOPIN13     instances=3
+   pin  2 : IOPIN11     instances=3
+   pin  3 : IOPIN8      instances=3
+   pin  4 : IOPIN6      instances=3
+   pin  5 : IOPIN6      instances=3
+   pin  6 : IOPIN6      instances=3
+   pin  7 : IOPIN14     instances=3
+   pin  8 : IOPIN12     instances=3
+   pin  9 : IOPIN10     instances=3
+   pin 10 : IOPIN7      instances=3
+   pin 11 : IOPIN7      instances=3
+   pin 12 : IOPIN7      instances=3
+
+=== J4 at (224.155, 41.275) ===
+   pin  1 : IOPIN98     instances=3
+   pin  2 : IOPIN99     instances=3
+   pin  3 : IOPIN96     instances=3
+   pin  4 : IOPIN97     instances=3
+   pin  5 : IOPIN97     instances=3
+   pin  6 : IOPIN97     instances=3
+   pin  7 : IOPIN101    instances=3
+   pin  8 : IOPIN100    instances=3
+   pin  9 : IOPIN105    instances=3
+   pin 10 : IOPIN106    instances=3
+   pin 11 : IOPIN106    instances=3
+   pin 12 : IOPIN106    instances=3
+
+=== J5 at (135.255, 41.275) ===
+   pin  1 : IOPIN80     instances=3
+   pin  2 : IOPIN79     instances=3
+   pin  3 : IOPIN77     instances=3   <- lcd_dc
+   pin  4 : IOPIN76     instances=3
+   pin  5 : IOPIN76     instances=3
+   pin  6 : IOPIN76     instances=3
+   pin  7 : IOPIN81     instances=3   <- lcd_cs
+   pin  8 : IOPIN78     instances=3   <- lcd_mosi
+   pin  9 : IOPIN74     instances=3
+   pin 10 : IOPIN75     instances=3   <- lcd_sck
+   pin 11 : IOPIN75     instances=3   <- lcd_sck
+   pin 12 : IOPIN75     instances=3   <- lcd_sck
+
+=== J6 at (264.795, 41.275) ===
+   pin  1 : IOPIN134    instances=3
+   pin  2 : IOPIN135    instances=3
+   pin  3 : IOPIN132    instances=3
+   pin  4 : IOPIN130    instances=3
+   pin  5 : IOPIN130    instances=3
+   pin  6 : IOPIN130    instances=3
+   pin  7 : IOPIN141    instances=3
+   pin  8 : IOPIN140    instances=3
+   pin  9 : IOPIN131    instances=3
+   pin 10 : IOPIN127    instances=3
+   pin 11 : IOPIN127    instances=3
+   pin 12 : IOPIN127    instances=3
+
+=== nets routed to more than one physical point ===
+   IOPIN6      x3
+   IOPIN7      x3
+   IOPIN8      x3
+   IOPIN10     x3
+   IOPIN11     x3
+   IOPIN12     x3
+   IOPIN13     x3
+   IOPIN14     x3
+   IOPIN26     x2
+   IOPIN27     x2
+   IOPIN28     x2
+   IOPIN29     x2
+   IOPIN30     x3
+   IOPIN32     x2
+   IOPIN33     x2
+   IOPIN38     x3
+   IOPIN39     x3
+   IOPIN41     x3
+   IOPIN43     x3
+   IOPIN44     x3
+   IOPIN45     x3
+   IOPIN46     x3
+   IOPIN47     x3
+   IOPIN48     x3
+   IOPIN50     x3
+   IOPIN52     x3
+   IOPIN54     x3
+   IOPIN55     x3
+   IOPIN56     x3
+   IOPIN57     x3
+   IOPIN58     x3
+   IOPIN59     x3
+   IOPIN60     x3
+   IOPIN61     x2
+   IOPIN62     x3
+   IOPIN64     x2
+   IOPIN65     x2
+   IOPIN66     x2
+   IOPIN69     x2
+   IOPIN70     x2
+   IOPIN74     x3
+   IOPIN75     x3
+   IOPIN76     x3
+   IOPIN77     x3
+   IOPIN78     x3
+   IOPIN79     x3
+   IOPIN80     x3
+   IOPIN81     x3
+   IOPIN90     x2
+   IOPIN91     x2
+   IOPIN92     x2
+   IOPIN93     x2
+   IOPIN96     x3
+   IOPIN97     x3
+   IOPIN98     x3
+   IOPIN99     x3
+   IOPIN100    x3
+   IOPIN101    x3
+   IOPIN102    x2
+   IOPIN105    x3
+   IOPIN106    x3
+   IOPIN110    x2
+   IOPIN111    x2
+   IOPIN112    x2
+   IOPIN113    x2
+   IOPIN114    x2
+   IOPIN118    x2
+   IOPIN119    x2
+   IOPIN120    x3
+   IOPIN121    x3
+   IOPIN122    x3
+   IOPIN123    x3
+   IOPIN124    x2
+   IOPIN126    x2
+   IOPIN127    x3
+   IOPIN130    x3
+   IOPIN131    x3
+   IOPIN132    x3
+   IOPIN134    x3
+   IOPIN135    x3
+   IOPIN140    x3
+   IOPIN141    x3

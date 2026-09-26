@@ -1,0 +1,40 @@
+
+Topic: hexout
+
+To generate a Hexadecimal (Intel-Format) Output File (.hexout), 
+specify the input file name and output file name. Make sure 
+the file extension of the output file is .hexout. The input 
+file can be either an SRAM Object File (.sof) or a Programmer 
+Object File (.pof). 
+
+You can use optional arguments to specify the data start 
+address and count direction. These arguments are not legal 
+if you are trying to convert an enhanced configuration device 
+.pof to a .hexout.
+
+Optional arguments are as follows:
+
+-u | --count_dir        Specifies the count direction for 
+                        the data.
+
+-a | --start_address    Specifies the start address of the 
+                        data. Make sure to enter the address
+                        as a hexadecimal number.
+
+---------
+Examples:
+---------
+
+# To convert a .sof or .pof to .hexout
+quartus_cpf -c <input_file> <output_hexout_file>
+
+#start address = 0x200, data count direction = up
+quartus_cpf -c -u up -a 0x200 <input_file> <output_hexout_file>
+
+#start address = 0x0fffff, data count direction = down
+quartus_cpf -c -u down -a 0x0fffff <input_file> <output_hexout_file>
+
+# To use a Conversion Setup File (.cof) created with 
+# the Convert Programming Files dialog box in the UI
+quartus_cpf -c <input_cof_file>
+

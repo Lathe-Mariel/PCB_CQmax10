@@ -6,7 +6,7 @@
    version="1.0"
    description=""
    tags="INTERNAL_COMPONENT=false"
-   categories="" />
+   categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
    element ufm
@@ -42,7 +42,7 @@
  <interface name="ufm_csr" internal="ufm.csr" type="avalon" dir="end" />
  <interface name="ufm_data" internal="ufm.data" type="avalon" dir="end" />
  <interface name="ufm_reset" internal="ufm.nreset" type="reset" dir="end" />
- <module name="ufm" kind="altera_onchip_flash" version="24.1" enabled="1">
+ <module name="ufm" kind="altera_onchip_flash" version="25.1" enabled="1">
   <parameter name="AUTO_CLOCK_RATE" value="0" />
   <parameter name="CLOCK_FREQUENCY" value="116.0" />
   <parameter name="CONFIGURATION_MODE">Single Uncompressed Image</parameter>
@@ -53,7 +53,7 @@
   <parameter name="READ_BURST_COUNT" value="8" />
   <parameter name="READ_BURST_MODE" value="Incrementing" />
   <parameter name="SECTOR_ACCESS_MODE">Read and write,Read and write,Read only,Hidden,Hidden</parameter>
-  <parameter name="autoInitializationFileName" value="logo_flash_ufm" />
+  <parameter name="autoInitializationFileName" value="$${FILENAME}_ufm" />
   <parameter name="initFlashContent" value="true" />
   <parameter name="initializationFileName" value="logo_rom.hex" />
   <parameter name="initializationFileNameForSim">altera_onchip_flash.dat</parameter>

@@ -1,0 +1,2 @@
+// probe.qsf - a copy of the real project's settings, used to generate a .pof
+// explicitly and check whether the UFM content survives the conversion.

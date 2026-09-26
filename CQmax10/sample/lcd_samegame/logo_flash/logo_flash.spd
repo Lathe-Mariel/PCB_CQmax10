@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="simulation/submodules/altera_onchip_flash_util.v"
+   type="VERILOG"
+   library="ufm" />
+ <file
+   path="simulation/submodules/altera_onchip_flash.v"
+   type="VERILOG"
+   library="ufm" />
+ <file
+   path="simulation/submodules/altera_onchip_flash_avmm_data_controller.v"
+   type="VERILOG"
+   library="ufm" />
+ <file
+   path="simulation/submodules/altera_onchip_flash_avmm_csr_controller.v"
+   type="VERILOG"
+   library="ufm" />
+ <file path="simulation/logo_flash.v" type="VERILOG" />
+ <topLevel name="logo_flash" />
+ <deviceFamily name="max10" />
+ <modelMap controllerPath="logo_flash.ufm" modelPath="logo_flash.ufm" />
+</simPackage>
