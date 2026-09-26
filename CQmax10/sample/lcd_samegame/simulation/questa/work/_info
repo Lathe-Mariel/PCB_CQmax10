@@ -14,10 +14,10 @@ Z1 dH:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/simulation/questa
 T_opt
 !i145 1
 !i144 0
-!s110 1790403568
-VOOQz09dSTX4U?mS;HA3@D2
-04 19 4 work tb_touch_controller fast 0
-=1-9418827106c0-6ab763ef-1b5-834c
+!s110 1790441334
+VQ7NkIUY_I6gnE^[XSk>oc3
+04 17 4 work tb_ps2_controller fast 0
+=1-9418827106c0-6ab7f775-b0-a3cc
 R0
 !s12f OEM100
 !s12b OEM100
@@ -27,78 +27,78 @@ o-quiet -auto_acc_if_foreign -work work
 tCvgOpt 0 defaultOptions 1107585188
 n@_opt
 OL;O;2025.2;82
-vtb_touch_controller
-Z2 2..\..\rtl\touch_controller.sv|tb_touch_controller.sv
+vps2_controller
+Z2 2..\..\rtl\ps2_controller.sv|tb_ps2_controller.sv
 Z3 DXx6 sv_std 3 std 0 22 @5XbY]_OacJl=`ToSm<M^0
-Z4 !s110 1790403565
+Z4 !s110 1790441330
 !i10b 1
-!s100 zYZiAK_V4;C;HUCJJfUX01
-IC?:9G[c?OeVX3HFcBgbzn3
+!s100 I;0fnm3fH5<VM0<8g4aaT2
+INHn^>C8fl8_@IzWY;U<eW2
 S1
 R1
-Z5 w1790403317
-Z6 8tb_touch_controller.sv
-Z7 Ftb_touch_controller.sv
+Z5 w1790441316
+8..\..\rtl\ps2_controller.sv
+F..\..\rtl\ps2_controller.sv
 !i122 0
-L0 111 388
-Z8 VDg1SIo80bB@j0V0VzS_@n1
-Z9 OL;L;2025.2;82
+L0 52 599
+Z6 VDg1SIo80bB@j0V0VzS_@n1
+Z7 OL;L;2025.2;82
 r1
 !s85 0
 31
-Z10 !s108 1790403564.000000
-Z11 !s107 tb_touch_controller.sv|..\\..\\rtl\\touch_controller.sv|
-Z12 !s90 -sv|..\..\rtl\touch_controller.sv|tb_touch_controller.sv|
+Z8 !s108 1790441330.000000
+Z9 !s107 tb_ps2_controller.sv|..\\..\\rtl\\ps2_controller.sv|
+Z10 !s90 -sv|..\..\rtl\ps2_controller.sv|tb_ps2_controller.sv|
 !i113 0
-Z13 o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-Z14 tCvgOpt 0 defaultOptions 1085333592
-vtouch_controller
+Z11 o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z12 tCvgOpt 0 defaultOptions 1085333592
+vps2_slave_model
 R2
 R3
 R4
 !i10b 1
-!s100 oP;_DzN6f;3Xc_7Y;[V^m1
-IYP5T8WcJBcakNXi7cjY@i2
-S1
-R1
-w1790403454
-8..\..\rtl\touch_controller.sv
-F..\..\rtl\touch_controller.sv
-!i122 0
-L0 72 660
-R8
-R9
-r1
-!s85 0
-31
-R10
-R11
-R12
-!i113 0
-R13
-R14
-vxpt2046_model
-R2
-R3
-R4
-!i10b 1
-!s100 VIc:lGLfN0MIV<JVK9`7Z0
-If;I9edBECCFLWIi<5@HlA1
+!s100 Wj7VLi[`:V9V4jd]YDJmW0
+I:bo7mcbg6JN9;=8J:[KkX3
 S1
 R1
 R5
+Z13 8tb_ps2_controller.sv
+Z14 Ftb_ps2_controller.sv
+!i122 0
+L0 26 99
 R6
 R7
-!i122 0
-L0 43 66
-R8
-R9
 r1
 !s85 0
 31
+R8
+R9
 R10
+!i113 0
 R11
 R12
-!i113 0
+vtb_ps2_controller
+R2
+R3
+R4
+!i10b 1
+!s100 imJKO`^NT3Y`LRmSGE]BR2
+I0nmb<FBOH<nD;An[9LhO<2
+S1
+R1
+R5
 R13
 R14
+!i122 0
+L0 127 370
+R6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 0
+R11
+R12

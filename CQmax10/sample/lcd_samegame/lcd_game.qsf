@@ -38,104 +38,88 @@ set_location_assignment PIN_75 -to lcd_sck
 set_location_assignment PIN_77 -to lcd_dc
 
 # ------------------------------------------------------------------ #
-# Touch panel (XPT2046 on the PMOD-TFTLCD module).
-#
-# On the MODULE the LCD and the touch controller are on TWO SEPARATE PMOD
-# connectors.  Its schematic (wuxx/icesugar: schematic/pmod-tftlcd-v1.1.pdf)
-# netlist is
-#     TFT_SPI_CS   = module J2 pin 1      TFT_SPI_MOSI = module J2 pin 2
-#     TFT_RS (DC)  = module J2 pin 10     TFT_SPI_CLK  = module J2 pin 4
-#     TP_SPI_CS    = module J3 pin 1      TP_SPI_MOSI  = module J3 pin 2
-#     TP_SPI_MISO  = module J3 pin 3      TP_SPI_CLK   = module J3 pin 4
-# so the touch controller is a self-contained 4-signal group in the order
-# CS, MOSI, MISO, CLK.  BOTH module connectors must be plugged into the board.
-#
-# ---------------------------------------------------------------------------
-# CORRECTION (an earlier version of this comment was WRONG)
-# ---------------------------------------------------------------------------
-# An earlier note claimed that PIN_60/58/56/50 "belong to TWO DIFFERENT PMOD
-# connectors and could never work".  That is FALSE.  Re-deriving the connector
-# pin table from CQmax10.kicad_sch gives, for every 12-pin PMOD socket, a
-# self-consistent group at pins 7,8,9,10 that sits in the same (1,2,3,4) row as
-# the LCD's pins (it is the second physical row of the 2x6 connector):
-#
-#     J2 : pins 7,8,9,10 = PIN_60, 58, 56, 50   <- currently assigned to TOUCH
-#     J5 : pins 7,8,9,10 = PIN_81, 78, 74, 75   <- LCD, verified working
-#
-# The LCD therefore occupies pin 7 (CS), 8 (MOSI) and 10 (CLK) of its socket,
-# which means the module's LCD connector mates with the board socket's
-# LOWER-numbered row - and the touch connector of the same module must then
-# land on the equivalent row of whatever socket it is plugged into.  That is
-# exactly what PIN_60/58/56/50 are for socket J2, so the assignment below is
-# self-consistent and is retained.
-#
-# CAUTION WHEN CHANGING THESE: the touch CS and its MOSI/MISO/CLK must always be
-# four pins from ONE socket's 7,8,9,10 row.  A mixed assignment cannot work.
-# ---------------------------------------------------------------------------
-# --------------------------------------------------------------------------- #
-# THE PINS THE PROJECT SHIPPED WITH - and why they are back
-# --------------------------------------------------------------------------- #
-# These are the ORIGINAL assignments from the first commit of this project
-# (git: f57857d, "samegame 1st version done").  They are J6 pads 1,2,3,4.
-#
-# An intermediate version of this comment replaced them with J2 pads 7,8,9,10
-# (60/58/56/50), arguing that was "derived from the netlist".  That was WRONG
-# and cost many builds: MEASURED on the board, EVERY socket's 7,8,9,10 row was
-# dead (each conversion read 12'hFFF and the MISO pad never went low in a whole
-# 24-clock transfer), while the project's own original choice was a 1,2,3,4 row.
-#
-# The reason is the module's pinout.  From its schematic (pmod-tftlcd-v1.1.pdf):
-#     LCD   connector J2 : CS=1  MOSI=2   CLK=4   DC=10
-#     TOUCH connector J3 : CS=1  MOSI=2   MISO=3  CLK=4
-# i.e. BOTH connectors put their signals on the module connector's pins 1..4
-# and 10.  On this board the sockets expose those as:
-#     pad 1..4   -> the socket's LOW row
-#     pad 7..10  -> the socket's HIGH row
-# The known-good LCD on socket J5 uses pads 3 (DC), 7 (CS), 8 (MOSI), 10 (CLK),
-# so its connector sits ACROSS the two rows - which means the touch connector,
-# wired the same way on the module, also needs BOTH rows, and the row it lands
-# on is a property of the module's mechanical layout, NOT of any netlist.
-#
-# So this build goes back to the original row and probes the OTHER sockets' low
-# rows (J2 and J4) at the same time, with the read path AUTO-SELECTING whichever
-# socket answers.  One of these is where the touch controller is.
-# --------------------------------------------------------------------------- #
-set_location_assignment PIN_134 -to touch_cs
-set_location_assignment PIN_135 -to touch_mosi
-set_location_assignment PIN_132 -to touch_miso
-set_location_assignment PIN_130 -to touch_sck
-
+# INPUT DEVICE: Pmod-2xDS2 (Sipeed) - a PLAYSTATION 2 CONTROLLER PORT
 # ------------------------------------------------------------------ #
-# SECOND candidate pad for MISO, read simultaneously with touch_miso so ONE
-# build can answer "which pad is the touch chip actually driving?".
+# THE TOUCH PANEL IS GONE, and this note records why so it is not re-tried.
 #
-# WHY: on the board every conversion returned 12'hFFF, which means the MISO
-# input sat at a constant 1 - the pad being read was never driven.  Re-deriving
-# the pin order from the schematics keeps giving a self-consistent answer, so
-# the question is settled by MEASUREMENT instead: two pads are watched at the
-# same instants and the bring-up LEDs report which one ever went LOW.
+# The PMOD-TFTLCD's touch controller (XPT2046) was never made to work on this
+# board.  MEASURED, exhaustively:
+#   * every conversion returned 12'hFFF, i.e. MISO sat at a constant 1, and the
+#     pad never went low anywhere in a whole 24-clock transfer;
+#   * the SPI logic itself was proven correct - the bit-clock divider phase bug
+#     that silently shortened the frame to 23 clocks was found and fixed, and a
+#     structural testbench guard (exactly 24 rising edges per CS-low window) now
+#     covers it;
+#   * every PMOD socket's 7,8,9,10 row AND the J2/J4 low rows were probed, and
+#     the module schematic was read to extract the pin netlist directly
+#     (TP_SPI_CS=J3-1, MOSI=2, MISO=3, CLK=4).
+# None of that ever produced a live pad, so the touch path cannot detect a press
+# on this hardware.  The user decided to drop it.
 #
-# PIN_55 is board socket J2 pad 3.  Reasoning for trying it: the LCD of the
-# SAME module uses its socket's pads 3 (DC), 7 (CS), 8 (MOSI) and 10 (CLK) -
-# note the four signals map to pads 3,7,8,10, NOT to 7,8,9,10.  If the module
-# wires its touch connector the same way then the fourth touch signal (MISO)
-# lands on pad 3 as well, and pad 9 - which touch_miso currently uses - is not
-# connected at all.  That is exactly the observed symptom.
+# Pmod-2xDS2 is NOT a GPIO module - it is a PS2 pad port.  The pad is read over
+# a SPI-like SYNCHRONOUS SERIAL bus (4 signals; "SEL" plays the role of chip
+# select).  See ps2_controller.sv for the protocol, the 5-byte poll and the
+# button bit map.
 #
-# This is a DIAGNOSTIC pin.  Once the answer is known, touch_miso should be
-# moved to whichever pad the LEDs identified and this input removed.
+#   ps_sel : ATTENTION, active LOW, driven by this design (bus master)
+#   ps_clk : bit clock, generated by this design
+#   ps_cmd : master -> pad
+#   ps_dat : pad -> master (the only INPUT of the four)
+#
 # ------------------------------------------------------------------ #
-# socket J2 LOW row : CS=59 MOSI=57 MISO=55 SCK=52
-set_location_assignment PIN_59 -to alt_cs
-set_location_assignment PIN_57 -to alt_mosi
-set_location_assignment PIN_55 -to touch_miso_alt
-set_location_assignment PIN_52 -to alt_sck
-
-# socket J4 LOW row : CS=98 MOSI=99 MISO=96 SCK=97
-set_location_assignment PIN_98 -to fr_cs
-set_location_assignment PIN_99 -to fr_mosi
-set_location_assignment PIN_96 -to touch_miso_fr
-set_location_assignment PIN_97 -to fr_sck
+# Pmod-2xDS2 PIN ASSIGNMENTS - SUPPLIED BY THE USER.  Do not change these
+# without re-confirming on the board; they are a MEASUREMENT, not a derivation.
+#
+#     CS   -> PIN_99   (ps_sel, active-low attention)
+#     MOSI -> PIN_98   (ps_cmd, master -> pad)
+#     MISO -> PIN_97   (ps_dat, pad -> master)
+#     SCLK -> PIN_96   (ps_clk, generated here)
+#
+# Cross-check against CQmax10.kicad_pcb: socket J4's LOW row is pads 1..4 =
+# 98, 99, 96, 97, so the four PS2 signals occupy that row - the same pattern the
+# module uses (signals on the connector's pins 1..4).
+#
+# Bring-up check: led (PIN_85) LIT means the pad ANSWERED (0x5A signature), i.e.
+# all four signals are in the right order.  DARK means nothing answered.
+# ------------------------------------------------------------------ #
+# These use socket J4's LOW row, as specified by the user - see the pin table
+# below.  Do NOT re-derive these from a module schematic: a netlist can say which
+# FPGA pin a socket pad reaches, but NOT which socket the module is plugged into
+# or how the module orders its four signals.  That is a measurement.
+# ------------------------------------------------------------------ #
+# The trailing comments are deliberately on their OWN lines: a QSF `#` comment
+# after a value on the same line is accepted by some Quartus versions and folded
+# into the value by others, and a pin assignment is not worth that risk.
+#
+# ------------------------------------------------------------------ #
+# BACK TO THE SUPPLIED TABLE - CMD/DAT ARE NOT SWAPPED.
+#
+# An earlier revision swapped pins 97 and 98, reasoning that the received reply
+# byte 2 (measured as 0x00) matched THIS design's own command byte 2 and must
+# therefore be a CMD->DAT loopback.
+#
+# That inference was NOT reliable: 0x00 is also what a data line stuck low reads,
+# and the user's table is the authority.  Confirmation that the ORIGINAL order is
+# right comes from the reference implementation this design is based on
+# (Sipeed TangPrimer-25K nestang): its physical-constraints file names the four
+# signals `joystick_cs`, `joystick_mosi`, `joystick_miso`, `joystick_clk` - the
+# standard PMOD SPI order - which is exactly the order supplied:
+#
+#     CS (99) / MOSI (98) / MISO (97) / SCLK (96)
+#
+# So the assignment is the one the user gave, unchanged.
+#
+# The next build does NOT rely on inferring anything from a single LED any more:
+# it DISPLAYS THE RECEIVED BYTE ITSELF four bits at a time (see samegame_top.sv),
+# because reading the actual value is the only unambiguous way forward.  Look for
+# the signature 0x5A - its two nibbles alternate as
+#     low  nibble 0xA = lit,dark,lit,dark   and
+#     high nibble 0x5 = dark,lit,dark,lit.
+# ------------------------------------------------------------------ #
+set_location_assignment PIN_99 -to ps_sel
+set_location_assignment PIN_98 -to ps_cmd
+set_location_assignment PIN_97 -to ps_dat
+set_location_assignment PIN_96 -to ps_clk
 
 set_location_assignment PIN_85 -to led
 set_location_assignment PIN_122 -to led0
@@ -151,18 +135,28 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lcd_cs
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lcd_mosi
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lcd_sck
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to lcd_dc
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to touch_cs
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to touch_mosi
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to touch_miso
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to touch_miso_alt
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to touch_miso_fr
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to alt_cs
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to alt_mosi
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to alt_sck
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to fr_cs
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to fr_mosi
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to fr_sck
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to touch_sck
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ps_sel
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ps_clk
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ps_cmd
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ps_dat
+
+# ------------------------------------------------------------------ #
+# WEAK PULL-UP ON ps_dat - this had gone MISSING and it is very likely part of
+# why the pad never answered.
+#
+# MEASURED SYMPTOM: every bring-up LED stayed DARK, with only the odd flicker -
+# i.e. the sampled data line read a steady 0 with occasional 1s.  That is exactly
+# what a FLOATING input reads: with no pull-up and no active driver, the pin
+# hovers near the middle of the rail and noise decides each sample.
+#
+# The PS2 data line must sit HIGH when nothing is driving it, so the weak pull-up
+# is not optional here - it defines the idle level the protocol relies on.  A pad
+# that answers pulls the line low for its zero bits.
+#
+# KEEP THIS LINE.  It is easy to lose when the surrounding comments are edited,
+# and losing it looks exactly like a dead pad.
+# ------------------------------------------------------------------ #
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to ps_dat
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led0
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led1
@@ -189,7 +183,7 @@ set_global_assignment -name SYSTEMVERILOG_FILE rtl/gravity_engine.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/column_shift_engine.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/score_manager.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/rng_generator.sv
-set_global_assignment -name SYSTEMVERILOG_FILE rtl/touch_controller.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/ps2_controller.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/logo_ram.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/ufm_bootloader.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/lcd_renderer.sv

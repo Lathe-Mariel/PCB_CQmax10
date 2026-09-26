@@ -67,13 +67,15 @@ module tb_samegame;
     logic [2:0]  grav_wr_data;
     logic [3:0]  grav_rd_col;
     logic [CELLS*4-1:0] grav_fall_dist;
+    logic [3:0]         grav_max_dist;
 
     gravity_engine u_grav (
         .clk(clk), .rst(rst),
         .start(grav_start), .done(grav_done), .busy(grav_busy),
         .wr_en(grav_wr_en), .wr_addr(grav_wr_addr), .wr_data(grav_wr_data),
         .rd_col(grav_rd_col), .col_data(col_data),
-        .fall_dist(grav_fall_dist)
+        .fall_dist(grav_fall_dist),
+        .max_dist(grav_max_dist)
     );
 
     // ---- column shift ----
@@ -84,13 +86,15 @@ module tb_samegame;
     logic [3:0]  shift_rd_col;
     logic [COLS-1:0] column_empty;
     logic [COLS*4-1:0] shift_dist;
+    logic [3:0]        shift_max_dist;
 
     column_shift_engine u_shift (
         .clk(clk), .rst(rst),
         .start(shift_start), .done(shift_done), .busy(shift_busy),
         .wr_en(shift_wr_en), .wr_addr(shift_wr_addr), .wr_data(shift_wr_data),
         .rd_col(shift_rd_col), .col_data(col_data),
-        .column_empty(column_empty), .shift_dist(shift_dist)
+        .column_empty(column_empty), .shift_dist(shift_dist),
+        .max_dist(shift_max_dist)
     );
 
     // ---- manual write path (testbench-controlled, highest priority) ----
@@ -233,6 +237,9 @@ module tb_samegame;
         // Logo3 was at row 3 -> settled row 11 = 8 cells of fall
         check("gravity fall_dist(3,11)=8", grav_fall_dist[4*(3*ROWS+11) +: 4], 8);
         check("gravity fall_dist(3,10)=8", grav_fall_dist[4*(3*ROWS+10) +: 4], 8);
+        // The longest drop drives the fall-animation duration, so it must equal
+        // the largest per-cell distance - NOT the board height.
+        check("gravity max_dist=8", grav_max_dist, 8);
 
         // ---------------------------------------------------------------
         // Test 5: column shift
@@ -269,6 +276,10 @@ module tb_samegame;
         check("shift: cell(4,11) empty", cell_value, 3'b111);
         check("shift_dist[2] (col3->2)=1", shift_dist[4*2 +: 4], 1);
         check("shift_dist[3] (col4->3)=1", shift_dist[4*3 +: 4], 1);
+        // col0->0 and col1->1 do not move; col3->2 and col4->3 both move 1, so
+        // the LONGEST move is 1 - far less than the 16-column board width the
+        // animation used to wait for.
+        check("shift max_dist=1", shift_max_dist, 1);
 
         // ---------------------------------------------------------------
         $display("================================");

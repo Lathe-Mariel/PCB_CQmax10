@@ -70,9 +70,10 @@ module tb_game_fsm;
 
     // ---- game FSM ----
     logic        frame_tick;
-    logic        touch_valid, touch_down, touch_up;
-    logic [8:0]  touch_x;
-    logic [7:0]  touch_y;
+    // cursor input (replaces the touch panel - see game_fsm.sv)
+    logic        key_up, key_down, key_left, key_right, key_select;
+    logic [3:0]  cur_x, cur_y;
+    logic        cur_on;
     logic [15:0] score;
     logic [1:0]  anim_mode;
     logic [CELLS-1:0] blink_mask;
@@ -86,8 +87,10 @@ module tb_game_fsm;
     game_fsm #(.COLS(COLS), .ROWS(ROWS), .CELLS(CELLS), .AW(AW)) u_game (
         .clk(clk), .rst(rst),
         .frame_tick(frame_tick),
-        .touch_valid(touch_valid), .touch_x(touch_x), .touch_y(touch_y),
-        .touch_down(touch_down), .touch_up(touch_up),
+        .key_up(key_up), .key_down(key_down),
+        .key_left(key_left), .key_right(key_right),
+        .key_select(key_select),
+        .cur_x(cur_x), .cur_y(cur_y), .cur_on(cur_on),
         .ff_rd_addr(ff_rd_addr), .ff_rd_data(ff_rd_data),
         .board_wr_en(fsm_wr_en), .board_wr_addr(fsm_wr_addr), .board_wr_data(fsm_wr_data),
         .col_rd_col(col_rd_col), .col_rd_data(col_rd_data),
@@ -252,29 +255,54 @@ module tb_game_fsm;
     endtask
 
     // ------------------------------------------------------------------
-    // tap a pixel: the FSM samples touch_down while in PLAY
+    // cursor input helpers
+    //
+    // The touch panel is gone; input is now the PS2 pad (see game_fsm.sv).  The
+    // FSM edge-detects the keys, so each helper must drive a key LOW then HIGH
+    // again to produce exactly ONE step.
     // ------------------------------------------------------------------
-    task automatic tap_pixel(input int px, input int py);
-        touch_x     <= 9'(px);
-        touch_y     <= 8'(py);
-        touch_valid <= 1'b1;
-        @(negedge clk);
-        touch_down  <= 1'b1;
-        @(negedge clk);
-        touch_down  <= 1'b0;
-        repeat (4) @(negedge clk);      // let the FSM see it
-        touch_valid <= 1'b0;
-        @(negedge clk);
+    task automatic press_up();
+        key_up <= 1'b1; @(negedge clk); @(negedge clk);
+        key_up <= 1'b0; repeat (2) @(negedge clk);
+    endtask
+    task automatic press_down();
+        key_down <= 1'b1; @(negedge clk); @(negedge clk);
+        key_down <= 1'b0; repeat (2) @(negedge clk);
+    endtask
+    task automatic press_left();
+        key_left <= 1'b1; @(negedge clk); @(negedge clk);
+        key_left <= 1'b0; repeat (2) @(negedge clk);
+    endtask
+    task automatic press_right();
+        key_right <= 1'b1; @(negedge clk); @(negedge clk);
+        key_right <= 1'b0; repeat (2) @(negedge clk);
+    endtask
+    task automatic press_select();
+        key_select <= 1'b1; @(negedge clk); @(negedge clk);
+        key_select <= 1'b0; repeat (2) @(negedge clk);
+    endtask
+
+    // Move the cursor from its current position to (tx,ty) using the keys, then
+    // press ○.  This is the direct replacement for `tap_pixel`: the FSM now
+    // selects whatever cell the CURSOR is on.
+    task automatic cursor_to_and_select(input int tx, input int ty);
+        // walk horizontally then vertically, one key press per cell
+        while (cur_x > tx) press_left();
+        while (cur_x < tx) press_right();
+        while (cur_y > ty) press_up();
+        while (cur_y < ty) press_down();
+        press_select();
+        repeat (6) @(negedge clk);      // let the FSM run the flood fill
     endtask
 
     // ------------------------------------------------------------------
     initial begin
         frame_tick   = 1'b0;
-        touch_valid  = 1'b0;
-        touch_down   = 1'b0;
-        touch_up     = 1'b0;
-        touch_x      = 9'd0;
-        touch_y      = 8'd0;
+        key_up       = 1'b0;
+        key_down     = 1'b0;
+        key_left     = 1'b0;
+        key_right    = 1'b0;
+        key_select   = 1'b0;
         bm_clr_start = 1'b0;
         rd_addr_a    = '0;
         tb_wr_en     = 1'b0;
@@ -301,7 +329,7 @@ module tb_game_fsm;
         chk("group at (10,0) = 4",  group_size(10,0), 4);
         chk("group at (5,5) = 4",   group_size(5,5), 4);
 
-        tap_pixel(5, 5);                 // pixel (5,5) -> cell (0,0)
+        cursor_to_and_select(0, 0);       // pixel (5,5) -> cell (0,0)
         run_to_play(2000);
         chkstr("back to PLAY after erase", state_name(), "S_PLAY");
         chk("score == 16", score, 16);
@@ -336,9 +364,9 @@ module tb_game_fsm;
         begin
             int score_before;
             score_before = score;
-            tap_pixel(15*20 + 5, 5);
+            cursor_to_and_select(15, 0);
             run_to_play(300);
-            chkstr("still PLAY after isolated tap", state_name(), "S_PLAY");
+            chkstr("still PLAY after isolated select", state_name(), "S_PLAY");
             read_board_model();
             chk("isolated cell untouched", ref_board[0*COLS + 15], 3);
             chk("score unchanged", score, score_before);
@@ -349,9 +377,9 @@ module tb_game_fsm;
         begin
             int score_before;
             score_before = score;
-            tap_pixel(15*20 + 5, 5*20 + 5);   // cell (15,5) is EMPTY
+            cursor_to_and_select(15, 5);      // cell (15,5) is EMPTY
             run_to_play(300);
-            chkstr("still PLAY after empty tap", state_name(), "S_PLAY");
+            chkstr("still PLAY after empty select", state_name(), "S_PLAY");
             chk("score still unchanged", score, score_before);
         end
 
@@ -362,15 +390,14 @@ module tb_game_fsm;
             string seen;
             int i;
             int mode_ch;
+            int fall_frames;
+            int shift_frames;
             seen = "";
-            touch_x     <= 9'(5);
-            touch_y     <= 8'(5);
-            touch_valid <= 1'b1;
-            @(negedge clk);
-            touch_down  <= 1'b1;
-            @(negedge clk);
-            touch_down  <= 1'b0;
-            touch_valid <= 1'b0;
+            fall_frames  = 0;
+            shift_frames = 0;
+            // move the cursor onto cell (5,5) and press ○ to trigger the
+            // erase / fall / shift sequence
+            cursor_to_and_select(5, 5);
 
             i = 0;
             while (state_name() != "S_PLAY" && i < 2000) begin
@@ -378,6 +405,11 @@ module tb_game_fsm;
                 mode_ch = 8'd48 + anim_mode;   // '0' + mode -> "0".."3"
                 if (seen.len() == 0 || seen[seen.len()-1] != mode_ch[7:0])
                     seen = {seen, mode_ch[7:0]};
+                // count the frames spent in EACH animation phase, so the
+                // measurement is not polluted by the post-erase game-over scan
+                // (192 flood fills, which dominates the total)
+                if (anim_mode == 2'd2) fall_frames++;
+                if (anim_mode == 2'd3) shift_frames++;
                 i++;
             end
             $display("    anim_mode sequence: %s", seen);
@@ -387,6 +419,41 @@ module tb_game_fsm;
             while (seen.len() > 1 && seen[0] == "0")
                 seen = seen.substr(1, seen.len()-1);
             chkstr("animation sequence", seen.substr(0,2), "123");
+
+            // ---------------------------------------------------------------
+            // THE ANIMATION MUST NOT OUTLAST THE MOTION.
+            //
+            // Regression test for the reported "the cursor stops responding for a
+            // while after erasing" bug.  The FSM used to run the fall for
+            // ROWS*20 px and the shift for COLS*20 px - 240 + 320 = 560 px at
+            // 5 px/frame = 112 frames - REGARDLESS of how far anything moved.  The
+            // renderer clamps its offset with min(px_progress, dist*20), so the
+            // picture settled within a few frames and the cursor was then frozen
+            // on a finished board.
+            //
+            // COUNT THE ANIMATION PHASES SEPARATELY, and check the SPANS the FSM
+            // latched from the engines.  Counting frames up to S_PLAY was the wrong
+            // measurement: reaching S_PLAY also runs the full-board game-over scan
+            // (192 flood fills), which took ~111 frames on its own and swamped the
+            // animation being measured.
+            //
+            // The spans are the direct, deterministic thing that was fixed, so they
+            // are checked exactly: this scenario's real distances are fall 10 cells
+            // and shift 8 cells = 200 px and 160 px, NOT the worst case 240 / 320.
+            $display("    frames: fall=%0d shift=%0d  spans: fall=%0d px shift=%0d px",
+                     fall_frames, shift_frames,
+                     u_game.fall_span_r, u_game.shift_span_r);
+            chk("fall span is the real drop (200 px)", u_game.fall_span_r, 200);
+            chk("shift span is the real move (160 px)", u_game.shift_span_r, 160);
+            // The phase durations follow the spans at 10 px/frame, NOT the board
+            // size.  Worst case would be 240/10 = 24 fall frames and
+            // 320/10 = 32 shift frames; the real spans need 20 and 16.  The
+            // bounds sit between the two so a regression back to worst-case
+            // timing fails, while a small change in step size does not.
+            chk("fall phase <= 22 frames (real span needs 20, worst case 24)",
+                (fall_frames <= 22) ? 1 : 0, 1);
+            chk("shift phase <= 18 frames (real span needs 16, worst case 32)",
+                (shift_frames <= 18) ? 1 : 0, 1);
         end
 
         // ---------------------------------------------------------------
@@ -400,9 +467,9 @@ module tb_game_fsm;
                 int px, py;
                 if (state_name() == "S_GAMEOVER") break;
                 if (state_name() != "S_PLAY") run_to_play(2000);
-                px = $urandom % SCREEN_W;
-                py = $urandom % SCREEN_H;
-                tap_pixel(px, py);
+                px = $urandom % COLS;
+                py = $urandom % ROWS;
+                cursor_to_and_select(px, py);
                 run_to_play(2000);
                 taps++;
                 chk("score never decreases", (score < score_prev) ? 0 : 1, 1);
@@ -424,11 +491,8 @@ module tb_game_fsm;
             for (int i = 0; i < 5; i++) hist[i] = 0;
             // restart the game so a fresh board is generated
             if (state_name() == "S_GAMEOVER") begin
-                touch_x     <= 9'd5;
-                touch_y     <= 8'd5;
-                touch_down  <= 1'b1;
-                @(negedge clk);
-                touch_down  <= 1'b0;
+                // ○ restarts from GAMEOVER (the touch panel used to do this)
+                press_select();
             end else begin
                 force u_game.state = u_game.S_INIT;
                 @(negedge clk);

@@ -28,13 +28,12 @@ REM reset, the board stays EMPTY and the panel shows nothing but BG_COLOR.
 call :run tb_ufm_boot       "%RTL%\ufm_bootloader.sv %RTL%\logo_ram.sv"
 if errorlevel 1 set FAILED=1
 
-REM The touch controller.  It was untested until the board showed that touches
-REM did nothing, and two faults had hidden behind that: the pins put the touch
-REM CS and MOSI on different PMOD connectors, and adc_to_x/adc_to_y divided by
-REM 8192 instead of the real ADC span, so the right half of the panel could
-REM never respond.  The coordinate sweep in this testbench is the regression
-REM guard for the second one.
-call :run tb_touch_controller "%RTL%\touch_controller.sv"
+REM The PS2 pad reader for the Pmod-2xDS2, which REPLACED the touch panel.
+REM The touch panel was dropped after it was MEASURED that the XPT2046 never
+REM drove MISO on any probeable socket, so no press could be detected on this
+REM hardware.  This testbench drives a PS2 slave model and checks the poll,
+REM the 0x5A presence signature and the button bit map.
+call :run tb_ps2_controller "%RTL%\ps2_controller.sv"
 if errorlevel 1 set FAILED=1
 
 REM Top-level integration test: the WHOLE power-up chain with the UFM modelled,
@@ -65,7 +64,7 @@ if exist work_top rmdir /s /q work_top
     "%RTL%\gravity_engine.sv" "%RTL%\column_shift_engine.sv" ^
     "%RTL%\score_manager.sv" "%RTL%\rng_generator.sv" "%RTL%\game_fsm.sv" ^
     "%RTL%\logo_ram.sv" "%RTL%\lcd_renderer.sv" "%RTL%\ufm_bootloader.sv" ^
-    "%RTL%\touch_controller.sv" "%RTL%\samegame_top.sv"
+    "%RTL%\ps2_controller.sv" "%RTL%\samegame_top.sv"
 if errorlevel 1 exit /b 1
 "%QDIR%\vsim.exe" -c -work work_top -do "run -all; quit -f" tb_samegame_top
 if errorlevel 1 exit /b 1

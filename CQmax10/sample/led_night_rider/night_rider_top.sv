@@ -4,7 +4,9 @@
 module night_rider_top (
     input  logic       clk,
     input  logic       rst_n,
-    output logic [7:0] led
+    output logic [7:0] led,
+	 input logic [3:0] board_button,
+	 output logic [3:0] board_led
 );
 
     logic [7:0] brightness [8];
@@ -21,5 +23,7 @@ module night_rider_top (
         .brightness(brightness),
         .led_pwm   (led)
     );
+	 
+assign board_led = board_button;
 
 endmodule

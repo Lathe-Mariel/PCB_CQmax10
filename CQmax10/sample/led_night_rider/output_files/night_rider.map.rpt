@@ -1,5 +1,5 @@
 Analysis & Synthesis report for night_rider
-Sat Sep 26 14:43:18 2026
+Sat Sep 26 18:25:04 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -45,7 +45,7 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Sep 26 14:43:18 2026           ;
+; Analysis & Synthesis Status        ; Successful - Sat Sep 26 18:25:04 2026           ;
 ; Quartus Prime Version              ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
 ; Revision Name                      ; night_rider                                     ;
 ; Top-level Entity Name              ; night_rider_top                                 ;
@@ -54,7 +54,7 @@ on the Quartus Prime software download page.
 ;     Total combinational functions  ; 180                                             ;
 ;     Dedicated logic registers      ; 44                                              ;
 ; Total registers                    ; 44                                              ;
-; Total pins                         ; 10                                              ;
+; Total pins                         ; 18                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -200,14 +200,14 @@ on the Quartus Prime software download page.
 ;     -- Dedicated logic registers            ; 44                                    ;
 ;     -- I/O registers                        ; 0                                     ;
 ;                                             ;                                       ;
-; I/O pins                                    ; 10                                    ;
+; I/O pins                                    ; 18                                    ;
 ;                                             ;                                       ;
 ; Embedded Multiplier 9-bit elements          ; 0                                     ;
 ;                                             ;                                       ;
 ; Maximum fan-out node                        ; night_rider:u_night_rider|position[0] ;
 ; Maximum fan-out                             ; 59                                    ;
-; Total fan-out                               ; 778                                   ;
-; Average fan-out                             ; 3.19                                  ;
+; Total fan-out                               ; 790                                   ;
+; Average fan-out                             ; 3.04                                  ;
 +---------------------------------------------+---------------------------------------+
 
 
@@ -216,7 +216,7 @@ on the Quartus Prime software download page.
 +--------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node     ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                        ; Entity Name     ; Library Name ;
 +--------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------+-----------------+--------------+
-; |night_rider_top               ; 180 (0)             ; 44 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 10   ; 0            ; 0          ; |night_rider_top                           ; night_rider_top ; work         ;
+; |night_rider_top               ; 180 (0)             ; 44 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 18   ; 0            ; 0          ; |night_rider_top                           ; night_rider_top ; work         ;
 ;    |night_rider:u_night_rider| ; 63 (63)             ; 36 (36)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |night_rider_top|night_rider:u_night_rider ; night_rider     ; work         ;
 ;    |pwm_controller:u_pwm|      ; 117 (117)           ; 8 (8)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |night_rider_top|pwm_controller:u_pwm      ; pwm_controller  ; work         ;
 +--------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------+-----------------+--------------+
@@ -267,7 +267,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 10                          ;
+; boundary_port         ; 18                          ;
 ; cycloneiii_ff         ; 44                          ;
 ;     CLR               ; 12                          ;
 ;     CLR SCLR          ; 32                          ;
@@ -282,7 +282,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;         4 data inputs ; 100                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 6.00                        ;
-; Average LUT depth     ; 3.98                        ;
+; Average LUT depth     ; 3.92                        ;
 +-----------------------+-----------------------------+
 
 
@@ -301,7 +301,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
-    Info: Processing started: Sat Sep 26 14:43:07 2026
+    Info: Processing started: Sat Sep 26 18:24:53 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off night_rider -c night_rider
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -312,20 +312,20 @@ Info (12021): Found 1 design units, including 1 entities, in source file night_r
 Info (12021): Found 1 design units, including 1 entities, in source file pwm_controller.sv
     Info (12023): Found entity 1: pwm_controller File: H:/git/PCB_CQmax10/CQmax10/sample/led_night_rider/pwm_controller.sv Line: 4
 Info (12127): Elaborating entity "night_rider_top" for the top level hierarchy
-Info (12128): Elaborating entity "night_rider" for hierarchy "night_rider:u_night_rider" File: H:/git/PCB_CQmax10/CQmax10/sample/led_night_rider/night_rider_top.sv Line: 16
+Info (12128): Elaborating entity "night_rider" for hierarchy "night_rider:u_night_rider" File: H:/git/PCB_CQmax10/CQmax10/sample/led_night_rider/night_rider_top.sv Line: 18
 Warning (10762): Verilog HDL Case Statement warning at night_rider.sv(23): can't check case statement for completeness because the case expression has too many possible states File: H:/git/PCB_CQmax10/CQmax10/sample/led_night_rider/night_rider.sv Line: 23
-Info (12128): Elaborating entity "pwm_controller" for hierarchy "pwm_controller:u_pwm" File: H:/git/PCB_CQmax10/CQmax10/sample/led_night_rider/night_rider_top.sv Line: 23
+Info (12128): Elaborating entity "pwm_controller" for hierarchy "pwm_controller:u_pwm" File: H:/git/PCB_CQmax10/CQmax10/sample/led_night_rider/night_rider_top.sv Line: 25
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 190 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 2 input pins
-    Info (21059): Implemented 8 output pins
+Info (21057): Implemented 198 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 6 input pins
+    Info (21059): Implemented 12 output pins
     Info (21061): Implemented 180 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 2 warnings
     Info: Peak virtual memory: 4848 megabytes
-    Info: Processing ended: Sat Sep 26 14:43:18 2026
+    Info: Processing ended: Sat Sep 26 18:25:04 2026
     Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:28
+    Info: Total CPU time (on all processors): 00:00:27
 
 

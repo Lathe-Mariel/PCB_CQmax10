@@ -1,0 +1,86 @@
+Reading pref.tcl
+
+# 2025.2
+
+# ** Note: (vsim-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# vsim -c -do "run -all; quit -f" tb_ps2_controller 
+# Start time: 00:11:08 on Sep 27,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
+# //  Questa Altera Starter FPGA Edition-64
+# //  Version 2025.2 win64 May 31 2025
+# //
+# // Unpublished work. Copyright 2025 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading sv_std.std
+# Loading work.tb_ps2_controller(fast)
+# run -all
+# [1] poll + signature: pad present, nothing pressed
+#   tick=0 wst=1 byte=0 bit=0 rx=00 dat=1 fcnt=0 idx=0 clk=1 cmd=1
+#   tick=1 wst=1 byte=0 bit=0 rx=00 dat=1 fcnt=0 idx=0 clk=1 cmd=1
+#   tick=2 wst=1 byte=0 bit=0 rx=00 dat=1 fcnt=0 idx=0 clk=1 cmd=1
+#   tick=3 wst=1 byte=0 bit=0 rx=00 dat=1 fcnt=0 idx=0 clk=1 cmd=1
+#   tick=4 wst=1 byte=0 bit=0 rx=00 dat=1 fcnt=0 idx=0 clk=1 cmd=1
+#   tick=5 wst=1 byte=0 bit=0 rx=00 dat=1 fcnt=0 idx=0 clk=1 cmd=1
+#   tick=6 wst=1 byte=0 bit=0 rx=00 dat=1 fcnt=0 idx=0 clk=1 cmd=1
+#   tick=7 wst=1 byte=0 bit=0 rx=00 dat=1 fcnt=0 idx=0 clk=1 cmd=1
+#   tick=8 wst=1 byte=0 bit=0 rx=00 dat=1 fcnt=0 idx=0 clk=1 cmd=1
+#   tick=9 wst=1 byte=0 bit=0 rx=00 dat=1 fcnt=0 idx=0 clk=1 cmd=1
+#   tick=10 wst=1 byte=0 bit=0 rx=00 dat=1 fcnt=0 idx=0 clk=1 cmd=1
+#   tick=11 wst=1 byte=0 bit=0 rx=00 dat=1 fcnt=0 idx=0 clk=1 cmd=1
+#   tick=12 wst=1 byte=0 bit=0 rx=00 dat=1 fcnt=0 idx=0 clk=1 cmd=1
+#   tick=13 wst=2 byte=0 bit=0 rx=00 dat=1 fcnt=0 idx=0 clk=1 cmd=1
+#   tick=14 wst=3 byte=0 bit=0 rx=00 dat=1 fcnt=1 idx=0 clk=0 cmd=1
+#   tick=15 wst=2 byte=0 bit=1 rx=80 dat=1 fcnt=1 idx=0 clk=1 cmd=1
+#   tick=16 wst=3 byte=0 bit=1 rx=80 dat=1 fcnt=2 idx=1 clk=0 cmd=0
+#   tick=17 wst=2 byte=0 bit=2 rx=c0 dat=1 fcnt=2 idx=1 clk=1 cmd=0
+#   tick=18 wst=3 byte=0 bit=2 rx=c0 dat=1 fcnt=3 idx=2 clk=0 cmd=0
+#   tick=19 wst=2 byte=0 bit=3 rx=e0 dat=1 fcnt=3 idx=2 clk=1 cmd=0
+#   tick=20 wst=3 byte=0 bit=3 rx=e0 dat=1 fcnt=4 idx=3 clk=0 cmd=0
+#   tick=21 wst=2 byte=0 bit=4 rx=f0 dat=1 fcnt=4 idx=3 clk=1 cmd=0
+#   tick=22 wst=3 byte=0 bit=4 rx=f0 dat=1 fcnt=5 idx=4 clk=0 cmd=0
+#   tick=23 wst=2 byte=0 bit=5 rx=f8 dat=1 fcnt=5 idx=4 clk=1 cmd=0
+#   tick=24 wst=3 byte=0 bit=5 rx=f8 dat=1 fcnt=6 idx=5 clk=0 cmd=0
+#   tick=25 wst=2 byte=0 bit=6 rx=fc dat=1 fcnt=6 idx=5 clk=1 cmd=0
+#   tick=26 wst=3 byte=0 bit=6 rx=fc dat=1 fcnt=7 idx=6 clk=0 cmd=0
+#   tick=27 wst=2 byte=0 bit=7 rx=fe dat=1 fcnt=7 idx=6 clk=1 cmd=0
+#   tick=28 wst=3 byte=0 bit=7 rx=fe dat=1 fcnt=8 idx=7 clk=0 cmd=0
+#   tick=29 wst=4 byte=1 bit=0 rx=ff dat=1 fcnt=8 idx=7 clk=1 cmd=0
+#   tick=30 wst=4 byte=1 bit=0 rx=ff dat=1 fcnt=8 idx=7 clk=1 cmd=0
+#   tick=31 wst=4 byte=1 bit=0 rx=ff dat=1 fcnt=8 idx=7 clk=1 cmd=0
+#   tick=32 wst=4 byte=1 bit=0 rx=ff dat=1 fcnt=8 idx=7 clk=1 cmd=0
+#   tick=33 wst=4 byte=1 bit=0 rx=ff dat=1 fcnt=8 idx=7 clk=1 cmd=0
+#   tick=34 wst=4 byte=1 bit=0 rx=ff dat=1 fcnt=8 idx=7 clk=1 cmd=0
+#   tick=35 wst=4 byte=1 bit=0 rx=ff dat=1 fcnt=8 idx=7 clk=1 cmd=0
+#   tick=36 wst=4 byte=1 bit=0 rx=ff dat=1 fcnt=8 idx=7 clk=1 cmd=0
+#   tick=37 wst=4 byte=1 bit=0 rx=ff dat=1 fcnt=8 idx=7 clk=1 cmd=0
+#   tick=38 wst=4 byte=1 bit=0 rx=ff dat=1 fcnt=8 idx=7 clk=1 cmd=0
+#   tick=39 wst=4 byte=1 bit=0 rx=ff dat=1 fcnt=8 idx=7 clk=1 cmd=0
+#   tick=40 wst=4 byte=1 bit=0 rx=ff dat=1 fcnt=8 idx=7 clk=1 cmd=0
+#   tick=41 wst=4 byte=1 bit=0 rx=ff dat=1 fcnt=8 idx=7 clk=1 cmd=0
+#   tick=42 wst=2 byte=1 bit=0 rx=00 dat=1 fcnt=8 idx=7 clk=1 cmd=0
+#   tick=43 wst=3 byte=1 bit=0 rx=00 dat=1 fcnt=9 idx=8 clk=0 cmd=0
+#   tick=44 wst=2 byte=1 bit=1 rx=80 dat=1 fcnt=9 idx=8 clk=1 cmd=0
+#   tick=45 wst=3 byte=1 bit=1 rx=80 dat=0 fcnt=10 idx=9 clk=0 cmd=1
+#   tick=46 wst=2 byte=1 bit=2 rx=40 dat=0 fcnt=10 idx=9 clk=1 cmd=1
+#   tick=47 wst=3 byte=1 bit=2 rx=40 dat=0 fcnt=11 idx=10 clk=0 cmd=0
+#   tick=48 wst=2 byte=1 bit=3 rx=20 dat=0 fcnt=11 idx=10 clk=1 cmd=0
+#   tick=49 wst=3 byte=1 bit=3 rx=20 dat=0 fcnt=12 idx=11 clk=0 cmd=0
+#     raw rx = ff 41 5a ff ff   sig_idx=2
+#     checks=3 errors=0
+# [2] direction keys (ACTIVE LOW on the wire)
+#     checks=11 errors=0
+# [3] select button: ???E= buttons_hi bit5 -> 0xDF
+simulator: Unexpected EOF on RPC channel sock000000000C0CBE10
+Kernel lost connection to front end process.
+** Fatal: Exiting VSIM license process.
+simulator: Unexpected EOF on RPC channel sock000000000C0CC290

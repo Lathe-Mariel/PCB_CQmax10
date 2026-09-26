@@ -36,6 +36,38 @@
 					"strict" : false
 				},
 				{
+					"name" : "board_led[0]",
+					"strict" : false
+				},
+				{
+					"name" : "board_led[1]",
+					"strict" : false
+				},
+				{
+					"name" : "board_led[2]",
+					"strict" : false
+				},
+				{
+					"name" : "board_led[3]",
+					"strict" : false
+				},
+				{
+					"name" : "board_button[0]",
+					"strict" : false
+				},
+				{
+					"name" : "board_button[1]",
+					"strict" : false
+				},
+				{
+					"name" : "board_button[2]",
+					"strict" : false
+				},
+				{
+					"name" : "board_button[3]",
+					"strict" : false
+				},
+				{
 					"name" : "clk",
 					"strict" : false
 				},

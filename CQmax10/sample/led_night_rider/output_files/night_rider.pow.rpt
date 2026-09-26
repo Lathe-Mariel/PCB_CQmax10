@@ -1,5 +1,5 @@
 Power Analyzer report for night_rider
-Sat Sep 26 14:43:35 2026
+Sat Sep 26 18:25:18 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -53,29 +53,29 @@ on the Quartus Prime software download page.
 ; Number detected on machine ; 36          ;
 ; Maximum allowed            ; 16          ;
 ;                            ;             ;
-; Average used               ; 1.13        ;
+; Average used               ; 1.23        ;
 ; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-16        ;   0.8%      ;
+;     Processors 2-16        ;   1.5%      ;
 +----------------------------+-------------+
 
 
 +-------------------------------------------------------------------------------------------+
 ; Power Analyzer Summary                                                                    ;
 +----------------------------------------+--------------------------------------------------+
-; Power Analyzer Status                  ; Successful - Sat Sep 26 14:43:35 2026            ;
+; Power Analyzer Status                  ; Successful - Sat Sep 26 18:25:18 2026            ;
 ; Quartus Prime Version                  ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition  ;
 ; Revision Name                          ; night_rider                                      ;
 ; Top-level Entity Name                  ; night_rider_top                                  ;
 ; Family                                 ; MAX 10                                           ;
 ; Device                                 ; 10M08SCE144C8G                                   ;
 ; Power Models                           ; Final                                            ;
-; Total Thermal Power Dissipation        ; 130.89 mW                                        ;
+; Total Thermal Power Dissipation        ; 140.71 mW                                        ;
 ; Core Dynamic Thermal Power Dissipation ; 0.00 mW                                          ;
-; Core Static Thermal Power Dissipation  ; 110.65 mW                                        ;
-; I/O Thermal Power Dissipation          ; 20.24 mW                                         ;
+; Core Static Thermal Power Dissipation  ; 110.68 mW                                        ;
+; I/O Thermal Power Dissipation          ; 30.03 mW                                         ;
 ; Power Estimation Confidence            ; Low: user provided insufficient toggle rate data ;
 +----------------------------------------+--------------------------------------------------+
 
@@ -111,6 +111,10 @@ on the Quartus Prime software download page.
 +------------------+-----------------------------+
 ; Node             ; Reason                      ;
 +------------------+-----------------------------+
+; board_button[0]  ; No valid clock domain found ;
+; board_button[1]  ; No valid clock domain found ;
+; board_button[2]  ; No valid clock domain found ;
+; board_button[3]  ; No valid clock domain found ;
 ; clk              ; No valid clock domain found ;
 ; rst_n            ; No valid clock domain found ;
 ; clk~inputclkctrl ; No valid clock domain found ;
@@ -130,9 +134,8 @@ on the Quartus Prime software download page.
 ;     3.3-V LVTTL I/O Standard                ; 3.3 V                      ;
 ;     3.3-V LVCMOS I/O Standard               ; 3.3 V                      ;
 ;     3.3 V Schmitt Trigger I/O Standard      ; 3.3 V                      ;
-;     2.5 V Schmitt Trigger I/O Standard      ; 2.5 V                      ;
 ;                                             ;                            ;
-; Auto computed junction temperature          ; 27.4 degrees Celsius       ;
+; Auto computed junction temperature          ; 27.6 degrees Celsius       ;
 ;     Ambient temperature                     ; 25.0 degrees Celsius       ;
 ;     Junction-to-Case thermal resistance     ; 10.90 degrees Celsius/Watt ;
 ;     Case-to-Heat Sink thermal resistance    ; 0.10 degrees Celsius/Watt  ;
@@ -157,7 +160,7 @@ on the Quartus Prime software download page.
 +--------------------+-----------------------------------+-----------------------------+--------------------------------+-------------------------------+-----------------------------------------------------------+
 ; Combinational cell ; 0.00 mW                           ; 0.00 mW                     ; --                             ; 0.00 mW                       ;    0.000                                                  ;
 ; Register cell      ; 0.00 mW                           ; 0.00 mW                     ; --                             ; 0.00 mW                       ;    0.000                                                  ;
-; I/O                ; 0.65 mW                           ; 0.00 mW                     ; 0.65 mW                        ; 0.00 mW                       ;    0.000                                                  ;
+; I/O                ; 1.13 mW                           ; 0.00 mW                     ; 1.13 mW                        ; 0.00 mW                       ;    0.000                                                  ;
 ; Voltage Regulator  ; 0.00 mW                           ; 0.00 mW                     ; 0.00 mW                        ; --                            ; --                                                        ;
 +--------------------+-----------------------------------+-----------------------------+--------------------------------+-------------------------------+-----------------------------------------------------------+
 (1) The "Block Thermal Static Power" for all block types except Pins and the Voltage Regulator, if one exists, is part of the "Core Static Thermal Power Dissipation" value found on the PowerPlay Power Analyzer-->Summary report panel. The "Core Static Thermal Power Dissipation" also contains the thermal static power dissipated by the routing.
@@ -168,7 +171,7 @@ on the Quartus Prime software download page.
 +-------------------------------------+--------------------------------------+---------------------------------+-----------------------------------+-----------------------------------+-------------------------------------------------+
 ; Compilation Hierarchy Node          ; Total Thermal Power by Hierarchy (1) ; Block Thermal Dynamic Power (1) ; Block Thermal Static Power (1)(2) ; Routing Thermal Dynamic Power (1) ; Full Hierarchy Name                             ;
 +-------------------------------------+--------------------------------------+---------------------------------+-----------------------------------+-----------------------------------+-------------------------------------------------+
-; |night_rider_top                    ; 0.65 mW (0.65 mW)                    ; 0.00 mW (0.00 mW)               ; 0.65 mW (0.65 mW)                 ; 0.00 mW (0.00 mW)                 ; |night_rider_top                                ;
+; |night_rider_top                    ; 1.13 mW (1.13 mW)                    ; 0.00 mW (0.00 mW)               ; 1.13 mW (1.13 mW)                 ; 0.00 mW (0.00 mW)                 ; |night_rider_top                                ;
 ;     |hard_block:auto_generated_inst ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |night_rider_top|hard_block:auto_generated_inst ;
 ;     |night_rider:u_night_rider      ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |night_rider_top|night_rider:u_night_rider      ;
 ;     |pwm_controller:u_pwm           ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |night_rider_top|pwm_controller:u_pwm           ;
@@ -192,9 +195,9 @@ on the Quartus Prime software download page.
 +----------------+-------------------------+---------------------------+--------------------------+----------------------------------+
 ; Voltage Supply ; Total Current Drawn (1) ; Dynamic Current Drawn (1) ; Static Current Drawn (1) ; Minimum Power Supply Current (2) ;
 +----------------+-------------------------+---------------------------+--------------------------+----------------------------------+
-; VCCIO          ; 6.54 mA                 ; 0.00 mA                   ; 6.54 mA                  ; 6.54 mA                          ;
+; VCCIO          ; 9.41 mA                 ; 0.00 mA                   ; 9.41 mA                  ; 9.41 mA                          ;
 ; VCCA           ; 0.00 mA                 ; 0.00 mA                   ; 0.00 mA                  ; 0.00 mA                          ;
-; VCC_ONE        ; 36.88 mA                ; 0.00 mA                   ; 36.88 mA                 ; 36.88 mA                         ;
+; VCC_ONE        ; 36.89 mA                ; 0.00 mA                   ; 36.89 mA                 ; 36.89 mA                         ;
 +----------------+-------------------------+---------------------------+--------------------------+----------------------------------+
 (1) Currents reported in columns "Total Current Drawn", "Dynamic Current Drawn", and "Static Current Drawn" are sufficient for user operation of the device.  
 (2) Currents reported in column "Minimum Power Supply Current" are sufficient for power-up, configuration, and user operation of the device.
@@ -208,12 +211,12 @@ on the Quartus Prime software download page.
 ; 1A       ; 2.5V          ; 0.25 mA             ; 0.00 mA               ; 0.25 mA              ;
 ; 1B       ; 3.3V          ; 1.68 mA             ; 0.00 mA               ; 1.68 mA              ;
 ; 2        ; 2.5V          ; 0.25 mA             ; 0.00 mA               ; 0.25 mA              ;
-; 3        ; 3.3V          ; 1.73 mA             ; 0.00 mA               ; 1.73 mA              ;
-; 4        ; 2.5V          ; 0.25 mA             ; 0.00 mA               ; 0.25 mA              ;
+; 3        ; 3.3V          ; 1.77 mA             ; 0.00 mA               ; 1.77 mA              ;
+; 4        ; 3.3V          ; 1.62 mA             ; 0.00 mA               ; 1.62 mA              ;
 ; 5        ; 2.5V          ; 0.25 mA             ; 0.00 mA               ; 0.25 mA              ;
 ; 6        ; 3.3V          ; 1.62 mA             ; 0.00 mA               ; 1.62 mA              ;
 ; 7        ; 2.5V          ; 0.25 mA             ; 0.00 mA               ; 0.25 mA              ;
-; 8        ; 2.5V          ; 0.26 mA             ; 0.00 mA               ; 0.26 mA              ;
+; 8        ; 3.3V          ; 1.73 mA             ; 0.00 mA               ; 1.73 mA              ;
 +----------+---------------+---------------------+-----------------------+----------------------+
 
 
@@ -222,8 +225,8 @@ on the Quartus Prime software download page.
 +---------------+-------------------------+---------------------------+--------------------------+----------------------------------+
 ; VCCIO Voltage ; Total Current Drawn (1) ; Dynamic Current Drawn (1) ; Static Current Drawn (1) ; Minimum Power Supply Current (2) ;
 +---------------+-------------------------+---------------------------+--------------------------+----------------------------------+
-; 2.5V          ; 1.51 mA                 ; 0.00 mA                   ; 1.51 mA                  ; 1.51 mA                          ;
-; 3.3V          ; 5.03 mA                 ; 0.00 mA                   ; 5.03 mA                  ; 5.03 mA                          ;
+; 2.5V          ; 1.00 mA                 ; 0.00 mA                   ; 1.00 mA                  ; 1.00 mA                          ;
+; 3.3V          ; 8.41 mA                 ; 0.00 mA                   ; 8.41 mA                  ; 8.41 mA                          ;
 +---------------+-------------------------+---------------------------+--------------------------+----------------------------------+
 (1) Currents reported in columns "Total Current Drawn", "Dynamic Current Drawn", and "Static Current Drawn" are sufficient for user operation of the device.  
 (2) Currents reported in column "Minimum Power Supply Current" are sufficient for power-up, configuration, and user operation of the device.
@@ -243,16 +246,16 @@ on the Quartus Prime software download page.
 ;     -- Number of signals with Static Probability from Node, entity or clock assignment ; 1 (0.3%)    ; 0 (0.0%)   ; 0 (0.0%)    ; 1 (0.4%)      ;
 ;                                                                                        ;             ;            ;             ;               ;
 ; Vectorless estimation                                                                  ;             ;            ;             ;               ;
-;     -- Number of signals with Toggle Rate from Vectorless estimation                   ; 284 (97.6%) ; 10 (58.8%) ; 44 (100.0%) ; 230 (100.0%)  ;
-;     -- Number of signals with Zero toggle rate, from Vectorless estimation             ; 5 (1.7%)    ; 1 (5.9%)   ; 0 (0.0%)    ; 4 (1.7%)      ;
-;     -- Number of signals with Static Probability from Vectorless estimation            ; 283 (97.3%) ; 10 (58.8%) ; 44 (100.0%) ; 229 (99.6%)   ;
+;     -- Number of signals with Toggle Rate from Vectorless estimation                   ; 296 (96.4%) ; 14 (56.0%) ; 44 (100.0%) ; 238 (100.0%)  ;
+;     -- Number of signals with Zero toggle rate, from Vectorless estimation             ; 17 (5.5%)   ; 5 (20.0%)  ; 0 (0.0%)    ; 12 (5.0%)     ;
+;     -- Number of signals with Static Probability from Vectorless estimation            ; 295 (96.1%) ; 14 (56.0%) ; 44 (100.0%) ; 237 (99.6%)   ;
 ;                                                                                        ;             ;            ;             ;               ;
 ; Default assignment                                                                     ;             ;            ;             ;               ;
 ;     -- Number of signals with Toggle Rate from Default assignment                      ; 0 (0.0%)    ; 0 (0.0%)   ; 0 (0.0%)    ; 0 (0.0%)      ;
-;     -- Number of signals with Static Probability from Default assignment               ; 7 (2.4%)    ; 7 (41.2%)  ; 0 (0.0%)    ; 0 (0.0%)      ;
+;     -- Number of signals with Static Probability from Default assignment               ; 11 (3.6%)   ; 11 (44.0%) ; 0 (0.0%)    ; 0 (0.0%)      ;
 ;                                                                                        ;             ;            ;             ;               ;
 ; Assumed 0                                                                              ;             ;            ;             ;               ;
-;     -- Number of signals with Toggle Rate assumed 0                                    ; 7 (2.4%)    ; 7 (41.2%)  ; 0 (0.0%)    ; 0 (0.0%)      ;
+;     -- Number of signals with Toggle Rate assumed 0                                    ; 11 (3.6%)   ; 11 (44.0%) ; 0 (0.0%)    ; 0 (0.0%)      ;
 +----------------------------------------------------------------------------------------+-------------+------------+-------------+---------------+
 
 
@@ -270,7 +273,7 @@ on the Quartus Prime software download page.
 Info: *******************************************************************
 Info: Running Quartus Prime Power Analyzer
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
-    Info: Processing started: Sat Sep 26 14:43:30 2026
+    Info: Processing started: Sat Sep 26 18:25:16 2026
 Info: Command: quartus_pow --read_settings_files=off --write_settings_files=off night_rider -c night_rider
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (21077): Low junction temperature is 0 degrees C
@@ -286,11 +289,11 @@ Info (218000): Using Advanced I/O Power to simulate I/O buffers with the specifi
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (215049): Average toggle rate for this design is 0.000 millions of transitions / sec
-Info (215031): Total thermal power estimate for the design is 130.89 mW
+Info (215031): Total thermal power estimate for the design is 140.71 mW
 Info: Quartus Prime Power Analyzer was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 4958 megabytes
-    Info: Processing ended: Sat Sep 26 14:43:35 2026
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:05
+    Info: Peak virtual memory: 4957 megabytes
+    Info: Processing ended: Sat Sep 26 18:25:18 2026
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
 
 

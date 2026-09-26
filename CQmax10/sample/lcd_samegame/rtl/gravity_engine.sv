@@ -44,7 +44,26 @@ module gravity_engine #(
     input  logic [35:0] col_data,
 
     // fall distance per target cell (in rows), indexed target = col*ROWS+row
-    output logic [CELLS*4-1:0] fall_dist
+    output logic [CELLS*4-1:0] fall_dist,
+
+    // ------------------------------------------------------------------
+    // LONGEST DROP THIS PASS, in rows.
+    //
+    // WHY THIS PORT EXISTS
+    // --------------------
+    // The fall animation used to be timed by the WORST-CASE board height
+    // (ROWS*20 px), so the FSM waited ~48 frames (8 s at 166 ms/frame) after EVERY
+    // erase, no matter how far anything actually dropped.  The renderer clamps the
+    // offset with min(fall_px, fall_dist*20), so the picture finished moving in a
+    // few frames and then the cursor sat frozen on a finished board for the rest
+    // of the 8 seconds.  Reporting the real maximum lets the FSM stop when the
+    // motion is over.
+    //
+    // It is a plain running maximum, accumulated in the SAME state that already
+    // computes the per-cell distance, so it costs one comparator and no extra
+    // pass over the board.
+    // ------------------------------------------------------------------
+    output logic [3:0]  max_dist
 );
     localparam logic [2:0] EMPTY = 3'b111;
 
@@ -57,6 +76,7 @@ module gravity_engine #(
     logic [3:0]  row;          // current row 0..ROWS-1 (clear / scan pointer)
     logic [3:0]  dst;          // destination row (moves up as cells are placed)
     logic [35:0] col_latch;    // original column word (captured before clear)
+    logic [3:0]  max_r;        // running maximum of dst - row over this pass
 
     assign rd_col = col;
 
@@ -68,6 +88,7 @@ module gravity_engine #(
             dst   <= 4'd0;
             wr_en <= 1'b0;
             done  <= 1'b0;
+            max_r <= 4'd0;
         end else begin
             wr_en <= 1'b0;
             done  <= 1'b0;
@@ -76,6 +97,7 @@ module gravity_engine #(
             S_IDLE: begin
                 if (start) begin
                     col   <= 4'd0;
+                    max_r <= 4'd0;          // reset the running maximum per pass
                     state <= S_LATCH;
                 end
             end
@@ -108,6 +130,10 @@ module gravity_engine #(
                     wr_addr <= AW'(dst)*COLS + AW'(col);
                     wr_data <= col_latch[3*row +: 3];
                     fall_dist[4*(col*ROWS + dst) +: 4] <= 4'(dst - row);
+                    // track the longest drop seen so far (this cell's distance
+                    // is `dst - row`, and `dst` only ever moves up)
+                    if (4'(dst - row) > max_r)
+                        max_r <= 4'(dst - row);
                     if (dst != 4'd0)
                         dst <= dst - 4'd1;
                 end
@@ -136,5 +162,6 @@ module gravity_engine #(
         end
     end
 
-    assign busy = (state != S_IDLE);
+    assign busy     = (state != S_IDLE);
+    assign max_dist = max_r;
 endmodule

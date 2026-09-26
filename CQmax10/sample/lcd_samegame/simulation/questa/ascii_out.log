@@ -3,7 +3,7 @@
  running tb_samegame
 ===================================================
 Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
-Start time: 15:17:37 on Sep 26,2026
+Start time: 01:45:53 on Sep 27,2026
 vlog -sv ..\..\rtl\board_memory.sv ..\..\rtl\floodfill_engine.sv ..\..\rtl\gravity_engine.sv ..\..\rtl\column_shift_engine.sv tb_samegame.sv 
 ** Note: (vlog-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
 -- Compiling module board_memory
@@ -14,7 +14,7 @@ vlog -sv ..\..\rtl\board_memory.sv ..\..\rtl\floodfill_engine.sv ..\..\rtl\gravi
 
 Top level modules:
 	tb_samegame
-End time: 15:17:38 on Sep 26,2026, Elapsed time: 0:00:01
+End time: 01:45:54 on Sep 27,2026, Elapsed time: 0:00:01
 Errors: 0, Warnings: 0
 Reading pref.tcl
 
@@ -22,7 +22,7 @@ Reading pref.tcl
 
 # ** Note: (vsim-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
 # vsim -c -do "run -all; quit -f" tb_samegame 
-# Start time: 15:17:40 on Sep 26,2026
+# Start time: 01:45:56 on Sep 27,2026
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Note: (vopt-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
 # //  Questa Altera Starter FPGA Edition-64
@@ -48,19 +48,19 @@ Reading pref.tcl
 # [4] gravity compaction
 # [5] column shift: A B Empty C D Empty -> A B C D Empty Empty
 # ================================
-#   checks=216 errors=0
+#   checks=218 errors=0
 #   ALL PASS
 # ================================
-# ** Note: $finish    : tb_samegame.sv(279)
+# ** Note: $finish    : tb_samegame.sv(290)
 #    Time: 27035 ns  Iteration: 0  Instance: /tb_samegame
-# End time: 15:17:42 on Sep 26,2026, Elapsed time: 0:00:02
+# End time: 01:45:58 on Sep 27,2026, Elapsed time: 0:00:02
 # Errors: 0, Warnings: 0
 
 ===================================================
  running tb_renderer
 ===================================================
 Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
-Start time: 15:17:43 on Sep 26,2026
+Start time: 01:45:59 on Sep 27,2026
 vlog -sv ..\..\rtl\board_memory.sv ..\..\rtl\logo_ram.sv ..\..\rtl\lcd_renderer.sv tb_renderer.sv 
 ** Note: (vlog-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
 -- Compiling module board_memory
@@ -70,7 +70,7 @@ vlog -sv ..\..\rtl\board_memory.sv ..\..\rtl\logo_ram.sv ..\..\rtl\lcd_renderer.
 
 Top level modules:
 	tb_renderer
-End time: 15:17:43 on Sep 26,2026, Elapsed time: 0:00:00
+End time: 01:45:59 on Sep 27,2026, Elapsed time: 0:00:00
 Errors: 0, Warnings: 0
 Reading pref.tcl
 
@@ -78,7 +78,7 @@ Reading pref.tcl
 
 # ** Note: (vsim-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
 # vsim -c -do "run -all; quit -f" tb_renderer 
-# Start time: 15:17:45 on Sep 26,2026
+# Start time: 01:46:01 on Sep 27,2026
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Note: (vopt-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
 # //  Questa Altera Starter FPGA Edition-64
@@ -108,20 +108,31 @@ Reading pref.tcl
 #     checks=307204 errors=0
 # [5] blink (mode 1, blink_on = 0)
 #     checks=384005 errors=0
+# [6] cursor overlay inverts exactly one cell
+#     checks=460806 errors=0
+# [6b] cursor on an empty cell is visible (black -> white)
+#     checks=537612 errors=0
+# [6c] cursor off -> board unchanged
+#     checks=614413 errors=0
+# [6d] game-over banner overrides the top band only
+#     checks=691214 errors=0
+#     checks=691224 errors=0
+# [6e] banner cleared -> board visible again
+#     checks=768025 errors=0
 # ================================
-#   checks=384005 errors=0
+#   checks=768025 errors=0
 #   ALL PASS
 # ================================
-# ** Note: $finish    : tb_renderer.sv(371)
-#    Time: 115274700 ns  Iteration: 1  Instance: /tb_renderer
-# End time: 15:19:03 on Sep 26,2026, Elapsed time: 0:01:18
+# ** Note: $finish    : tb_renderer.sv(561)
+#    Time: 169048360 ns  Iteration: 1  Instance: /tb_renderer
+# End time: 01:48:27 on Sep 27,2026, Elapsed time: 0:02:26
 # Errors: 0, Warnings: 0
 
 ===================================================
  running tb_game_fsm
 ===================================================
 Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
-Start time: 15:19:03 on Sep 26,2026
+Start time: 01:48:28 on Sep 27,2026
 vlog -sv ..\..\rtl\board_memory.sv ..\..\rtl\rng_generator.sv ..\..\rtl\floodfill_engine.sv ..\..\rtl\erase_engine.sv ..\..\rtl\gravity_engine.sv ..\..\rtl\column_shift_engine.sv ..\..\rtl\score_manager.sv ..\..\rtl\game_fsm.sv tb_game_fsm.sv 
 ** Note: (vlog-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
 -- Compiling module board_memory
@@ -136,7 +147,7 @@ vlog -sv ..\..\rtl\board_memory.sv ..\..\rtl\rng_generator.sv ..\..\rtl\floodfil
 
 Top level modules:
 	tb_game_fsm
-End time: 15:19:04 on Sep 26,2026, Elapsed time: 0:00:01
+End time: 01:48:28 on Sep 27,2026, Elapsed time: 0:00:00
 Errors: 0, Warnings: 0
 Reading pref.tcl
 
@@ -144,7 +155,7 @@ Reading pref.tcl
 
 # ** Note: (vsim-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
 # vsim -c -do "run -all; quit -f" tb_game_fsm 
-# Start time: 15:19:06 on Sep 26,2026
+# Start time: 01:48:30 on Sep 27,2026
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Note: (vopt-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
 # //  Questa Altera Starter FPGA Edition-64
@@ -170,25 +181,28 @@ Reading pref.tcl
 # [4] tap an EMPTY cell -> nothing happens
 # [5] animation mode sequence = blink, fall, shift
 #     anim_mode sequence: 1230
+#     frames: fall=27 shift=21  spans: fall=200 px shift=160 px
+#   FAIL fall phase <= 22 frames (real span needs 20, worst case 24) : got 0 expected 1
+#   FAIL shift phase <= 18 frames (real span needs 16, worst case 32) : got 0 expected 1
 # [6] no dead-lock over many random taps
-#     10 taps issued, final state=S_GAMEOVER score=96
+#     12 taps issued, final state=S_GAMEOVER score=96
 # [7] generated board uses all five logos
 #     logo histogram: 35 38 39 44 36
 # [8] game-over scan includes the last cell
 # ================================
-#   checks=51 errors=0
-#   ALL PASS
+#   checks=57 errors=2
+#   *** FAILURES ***
 # ================================
-# ** Note: $finish    : tb_game_fsm.sv(483)
-#    Time: 4293520 ns  Iteration: 1  Instance: /tb_game_fsm
-# End time: 15:19:10 on Sep 26,2026, Elapsed time: 0:00:04
+# ** Note: $finish    : tb_game_fsm.sv(547)
+#    Time: 3990360 ns  Iteration: 1  Instance: /tb_game_fsm
+# End time: 01:48:35 on Sep 27,2026, Elapsed time: 0:00:05
 # Errors: 0, Warnings: 0
 
 ===================================================
  running tb_ufm_boot
 ===================================================
 Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
-Start time: 15:19:11 on Sep 26,2026
+Start time: 01:48:36 on Sep 27,2026
 vlog -sv ..\..\rtl\ufm_bootloader.sv ..\..\rtl\logo_ram.sv tb_ufm_boot.sv 
 ** Note: (vlog-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
 -- Compiling module ufm_bootloader
@@ -198,7 +212,7 @@ vlog -sv ..\..\rtl\ufm_bootloader.sv ..\..\rtl\logo_ram.sv tb_ufm_boot.sv
 
 Top level modules:
 	tb_ufm_boot
-End time: 15:19:11 on Sep 26,2026, Elapsed time: 0:00:00
+End time: 01:48:36 on Sep 27,2026, Elapsed time: 0:00:00
 Errors: 0, Warnings: 0
 Reading pref.tcl
 
@@ -206,7 +220,7 @@ Reading pref.tcl
 
 # ** Note: (vsim-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
 # vsim -c -do "run -all; quit -f" tb_ufm_boot 
-# Start time: 15:19:13 on Sep 26,2026
+# Start time: 01:48:38 on Sep 27,2026
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Note: (vopt-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
 # //  Questa Altera Starter FPGA Edition-64
@@ -243,31 +257,31 @@ Reading pref.tcl
 # ================================
 # ** Note: $finish    : tb_ufm_boot.sv(481)
 #    Time: 24320171 ns  Iteration: 0  Instance: /tb_ufm_boot
-# End time: 15:19:24 on Sep 26,2026, Elapsed time: 0:00:11
+# End time: 01:48:50 on Sep 27,2026, Elapsed time: 0:00:12
 # Errors: 0, Warnings: 0
 
 ===================================================
- running tb_touch_controller
+ running tb_ps2_controller
 ===================================================
 Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
-Start time: 15:19:24 on Sep 26,2026
-vlog -sv ..\..\rtl\touch_controller.sv tb_touch_controller.sv 
+Start time: 01:48:50 on Sep 27,2026
+vlog -sv ..\..\rtl\ps2_controller.sv tb_ps2_controller.sv 
 ** Note: (vlog-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
--- Compiling module touch_controller
--- Compiling module xpt2046_model
--- Compiling module tb_touch_controller
+-- Compiling module ps2_controller
+-- Compiling module ps2_slave_model
+-- Compiling module tb_ps2_controller
 
 Top level modules:
-	tb_touch_controller
-End time: 15:19:25 on Sep 26,2026, Elapsed time: 0:00:01
+	tb_ps2_controller
+End time: 01:48:50 on Sep 27,2026, Elapsed time: 0:00:00
 Errors: 0, Warnings: 0
 Reading pref.tcl
 
 # 2025.2
 
 # ** Note: (vsim-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
-# vsim -c -do "run -all; quit -f" tb_touch_controller 
-# Start time: 15:19:26 on Sep 26,2026
+# vsim -c -do "run -all; quit -f" tb_ps2_controller 
+# Start time: 01:48:52 on Sep 27,2026
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Note: (vopt-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
 # //  Questa Altera Starter FPGA Edition-64
@@ -285,1739 +299,49 @@ Reading pref.tcl
 # // and may not be used in any way not expressly authorized by SISW.
 # //
 # Loading sv_std.std
-# Loading work.tb_touch_controller(fast)
+# Loading work.tb_ps2_controller(fast)
 # run -all
-# [1] no touch: Z1 below threshold -> touch_valid must stay 0
-#     checks=1 errors=0
-# [2] press: Z1 above threshold -> touch_valid must rise
-#     first press: valid=1 x=164 y=123
-# [3] coordinate sweep (the /8192 regression guard)
+# [1] poll + signature: pad present, nothing pressed
+#     raw rx = ff 41 5a ff ff   sig_idx=2
+#     checks=3 errors=0
+# [2] direction keys (ACTIVE LOW on the wire)
+#     checks=11 errors=0
+# [3] select button: ???E= buttons_hi bit5 -> 0xDF
+#     checks=16 errors=0
+# [4] no pad (all-ones reply) -> no phantom presses
+#     raw rx2=ff rx3=ff rx4=ff
+#     checks=18 errors=0
+# [5] bad signature but plausible buttons -> still no press
+#     checks=20 errors=0
+# [6] recovery: signature back -> pad works again
 #     checks=22 errors=0
-# [4] full-scale reach: the extremes must be usable
-# [4b] pad liveness: socket J2 driven, J1/J3 undriven
-# [4c] Z1 magnitude meter
-#     [sd] t=56015830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=2000 dut_st=2
-#     [sd] t=56115830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=56215830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=56315830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=56415830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=56515830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=56615830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=56715830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=56815830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=56915830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=57015830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=57115830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=57215830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=57315830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=57415830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=57515830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=57615830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=57715830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=57815830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=57915830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=58015830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=58115830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=58215830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=58315830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=58415830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=58515830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=58615830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=58715830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=58815830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=58915830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=59015830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=59115830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=59215830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=59315830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=59415830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=59515830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=59615830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=59715830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=59815830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=59915830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     val_z1=0 dut.raw_z1=0 dut.spi_result=0 dbg_z1=000 state=0
-#     [sd] t=60015830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=0 dut_st=2
-#     [sd] t=60031270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=60046690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=60115830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=60131270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=60146690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=60215830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=60231270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=60246690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=60315830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=60331270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=60346690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=60415830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=60431270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=60446690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=60515830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=60531270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=60546690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=60615830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=60631270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=60646690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=60715830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=60731270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=60746690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=60815830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=60831270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=60846690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=60915830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=60931270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=60946690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=61015830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=61031270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=61046690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=61115830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=61131270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=61146690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=61215830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=61231270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=61246690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=61315830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=61331270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=61346690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=61415830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=61431270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=61446690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=61515830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=61531270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=61546690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=61615830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=61631270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=61646690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=61715830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=61731270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=61746690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=61815830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=61831270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=61846690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=61915830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=61931270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=61946690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=62015830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=62031270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=62046690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=62115830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=62131270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=62146690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=62215830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=62231270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=62246690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=62315830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=62331270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=62346690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=62415830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=62431270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=62446690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=62515830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=62531270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=62546690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=62615830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=62631270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=62646690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=62715830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=62731270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=62746690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=62815830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=62831270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=62846690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=62915830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=62931270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=62946690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=63015830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=63031270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=63046690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=63115830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=63131270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=63146690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=63215830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=63231270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=63246690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=63315830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=63331270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=63346690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=63415830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=63431270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=63446690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=63515830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=63531270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=63546690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=63615830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=63631270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=63646690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=63715830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=63731270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=63746690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=63815830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=63831270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=63846690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     [sd] t=63915830 panel_cmd=b0 panel_n=24 dut_shift=000001100100 dut_res=100 dut_rz=100 dut_st=2
-#     [sd] t=63931270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=5
-#     [sd] t=63946690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=100 dut_st=7
-#     val_z1=100 dut.raw_z1=100 dut.spi_result=3880 dbg_z1=001 state=0
-#     [sd] t=64015830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=100 dut_st=2
-#     [sd] t=64031270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=64046690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=64115830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=64131270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=64146690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=64215830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=64231270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=64246690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=64315830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=64331270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=64346690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=64415830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=64431270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=64446690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=64515830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=64531270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=64546690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=64615830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=64631270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=64646690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=64715830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=64731270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=64746690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=64815830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=64831270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=64846690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=64915830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=64931270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=64946690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=65015830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=65031270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=65046690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=65115830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=65131270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=65146690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=65215830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=65231270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=65246690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=65315830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=65331270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=65346690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=65415830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=65431270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=65446690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=65515830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=65531270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=65546690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=65615830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=65631270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=65646690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=65715830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=65731270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=65746690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=65815830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=65831270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=65846690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=65915830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=65931270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=65946690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=66015830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=66031270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=66046690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=66115830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=66131270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=66146690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=66215830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=66231270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=66246690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=66315830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=66331270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=66346690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=66415830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=66431270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=66446690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=66515830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=66531270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=66546690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=66615830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=66631270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=66646690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=66715830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=66731270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=66746690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=66815830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=66831270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=66846690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=66915830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=66931270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=66946690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=67015830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=67031270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=67046690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=67115830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=67131270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=67146690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=67215830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=67231270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=67246690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=67315830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=67331270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=67346690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=67415830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=67431270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=67446690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=67515830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=67531270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=67546690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=67615830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=67631270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=67646690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=67715830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=67731270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=67746690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=67815830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=67831270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=67846690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     [sd] t=67915830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=67931270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=5
-#     [sd] t=67946690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=1000 dut_st=7
-#     val_z1=1000 dut.raw_z1=1000 dut.spi_result=3880 dbg_z1=011 state=0
-#     [sd] t=68015830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=1000 dut_st=2
-#     [sd] t=68031270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=68046690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=68115830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=68131270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=68146690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=68215830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=68231270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=68246690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=68315830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=68331270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=68346690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=68415830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=68431270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=68446690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=68515830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=68531270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=68546690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=68615830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=68631270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=68646690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=68715830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=68731270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=68746690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=68815830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=68831270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=68846690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=68915830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=68931270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=68946690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=69015830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=69031270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=69046690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=69115830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=69131270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=69146690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=69215830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=69231270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=69246690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=69315830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=69331270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=69346690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=69415830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=69431270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=69446690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=69515830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=69531270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=69546690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=69615830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=69631270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=69646690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=69715830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=69731270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=69746690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=69815830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=69831270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=69846690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=69915830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=69931270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=69946690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=70015830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=70031270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=70046690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=70115830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=70131270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=70146690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=70215830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=70231270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=70246690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=70315830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=70331270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=70346690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=70415830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=70431270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=70446690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=70515830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=70531270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=70546690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=70615830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=70631270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=70646690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=70715830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=70731270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=70746690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=70815830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=70831270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=70846690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=70915830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=70931270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=70946690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=71015830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=71031270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=71046690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=71115830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=71131270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=71146690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=71215830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=71231270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=71246690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=71315830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=71331270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=71346690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=71415830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=71431270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=71446690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=71515830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=71531270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=71546690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=71615830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=71631270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=71646690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=71715830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=71731270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=71746690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=71815830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=71831270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=71846690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     [sd] t=71915830 panel_cmd=b0 panel_n=24 dut_shift=101110111000 dut_res=3000 dut_rz=3000 dut_st=2
-#     [sd] t=71931270 panel_cmd=d0 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=5
-#     [sd] t=71946690 panel_cmd=90 panel_n=24 dut_shift=111100101000 dut_res=3880 dut_rz=3000 dut_st=7
-#     val_z1=3000 dut.raw_z1=3000 dut.spi_result=3880 dbg_z1=111 state=0
-# [4d] first-low-clock probe (dbg_low_idx)
-#     [sd] t=72015830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=3000 dut_st=2
-#     [sd] t=72115830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=72215830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=72315830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=72415830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=72515830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=72615830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=72715830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=72815830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=72915830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=73015830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=73115830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=73215830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=73315830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=73415830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=73515830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=73615830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=73715830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=73815830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=73915830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=74015830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=74115830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=74215830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=74315830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=74415830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=74515830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=74615830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=74715830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=74815830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=74915830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=75015830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=75115830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=75215830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=75315830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=75415830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=75515830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=75615830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=75715830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=75815830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     [sd] t=75915830 panel_cmd=b0 panel_n=24 dut_shift=000000000000 dut_res=0 dut_rz=0 dut_st=2
-#     all-channels=0 dbg_low_idx=9 (5'h1F=31 means never low)
-#     [sd] t=76015830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=0 dut_st=2
-#     [sd] t=76031270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=76046690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=76115830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=76131270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=76146690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=76215830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=76231270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=76246690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=76315830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=76331270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=76346690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=76415830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=76431270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=76446690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=76515830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=76531270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=76546690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=76615830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=76631270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=76646690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=76715830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=76731270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=76746690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=76815830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=76831270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=76846690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=76915830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=76931270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=76946690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=77015830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=77031270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=77046690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=77115830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=77131270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=77146690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=77215830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=77231270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=77246690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=77315830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=77331270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=77346690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=77415830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=77431270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=77446690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=77515830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=77531270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=77546690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=77615830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=77631270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=77646690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=77715830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=77731270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=77746690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=77815830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=77831270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=77846690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=77915830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=77931270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=77946690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=78015830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=78031270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=78046690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=78115830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=78131270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=78146690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=78215830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=78231270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=78246690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=78315830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=78331270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=78346690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=78415830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=78431270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=78446690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=78515830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=78531270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=78546690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=78615830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=78631270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=78646690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=78715830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=78731270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=78746690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=78815830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=78831270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=78846690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=78915830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=78931270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=78946690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=79015830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=79031270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=79046690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=79115830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=79131270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=79146690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=79215830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=79231270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=79246690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=79315830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=79331270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=79346690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=79415830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=79431270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=79446690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=79515830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=79531270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=79546690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=79615830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=79631270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=79646690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=79715830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=79731270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=79746690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=79815830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=79831270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=79846690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=79915830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=79931270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=79946690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     all-channels=0xFFF dbg_low_idx=31
-#     [sd] t=80015830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=4095 dut_st=2
-#     [sd] t=80031270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=80046690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=80115830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=80131270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=80146690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=80215830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=80231270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=80246690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=80315830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=80331270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=80346690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=80415830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=80431270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=80446690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=80515830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=80531270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=80546690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=80615830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=80631270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=80646690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=80715830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=80731270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=80746690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=80815830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=80831270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=80846690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=80915830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=80931270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=80946690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=81015830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=81031270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=81046690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=81115830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=81131270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=81146690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=81215830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=81231270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=81246690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=81315830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=81331270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=81346690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=81415830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=81431270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=81446690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=81515830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=81531270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=81546690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=81615830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=81631270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=81646690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=81715830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=81731270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=81746690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=81815830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=81831270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=81846690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=81915830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=81931270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=81946690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=82015830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=82031270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=82046690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=82115830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=82131270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=82146690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=82215830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=82231270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=82246690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=82315830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=82331270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=82346690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=82415830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=82431270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=82446690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=82515830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=82531270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=82546690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=82615830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=82631270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=82646690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=82715830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=82731270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=82746690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=82815830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=82831270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=82846690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=82915830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=82931270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=82946690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=83015830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=83031270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=83046690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=83115830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=83131270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=83146690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=83215830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=83231270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=83246690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=83315830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=83331270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=83346690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=83415830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=83431270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=83446690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=83515830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=83531270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=83546690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=83615830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=83631270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=83646690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=83715830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=83731270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=83746690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=83815830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=83831270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=83846690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     [sd] t=83915830 panel_cmd=b0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=2
-#     [sd] t=83931270 panel_cmd=d0 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=5
-#     [sd] t=83946690 panel_cmd=90 panel_n=24 dut_shift=001111101000 dut_res=1000 dut_rz=1000 dut_st=7
-#     all-channels=0x3E8 dbg_low_idx=9
-#     [sd] t=84015830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=1000 dut_st=2
-#     [sd] t=84031270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=84046690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=84115830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=84131270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=84146690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=84215830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=84231270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=84246690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=84315830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=84331270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=84346690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=84415830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=84431270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=84446690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=84515830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=84531270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=84546690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=84615830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=84631270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=84646690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=84715830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=84731270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=84746690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=84815830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=84831270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=84846690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=84915830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=84931270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=84946690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=85015830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=85031270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=85046690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=85115830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=85131270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=85146690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=85215830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=85231270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=85246690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=85315830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=85331270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=85346690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=85415830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=85431270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=85446690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=85515830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=85531270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=85546690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=85615830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=85631270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=85646690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=85715830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=85731270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=85746690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=85815830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=85831270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=85846690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=85915830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=85931270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=85946690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=86015830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=86031270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=86046690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=86115830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=86131270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=86146690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=86215830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=86231270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=86246690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=86315830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=86331270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=86346690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=86415830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=86431270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=86446690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=86515830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=86531270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=86546690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=86615830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=86631270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=86646690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=86715830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=86731270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=86746690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=86815830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=86831270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=86846690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=86915830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=86931270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=86946690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=87015830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=87031270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=87046690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=87115830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=87131270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=87146690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=87215830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=87231270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=87246690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=87315830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=87331270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=87346690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=87415830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=87431270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=87446690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=87515830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=87531270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=87546690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=87615830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=87631270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=87646690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=87715830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=87731270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=87746690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=87815830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=87831270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=87846690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     [sd] t=87915830 panel_cmd=b0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=2
-#     [sd] t=87931270 panel_cmd=d0 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=5
-#     [sd] t=87946690 panel_cmd=90 panel_n=24 dut_shift=100000000000 dut_res=2048 dut_rz=2048 dut_st=7
-#     all-channels=0x800 dbg_low_idx=10
-#     [sd] t=88015830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=2048 dut_st=2
-#     [sd] t=88031270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=88046690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=88115830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=88131270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=88146690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=88215830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=88231270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=88246690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=88315830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=88331270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=88346690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=88415830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=88431270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=88446690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=88515830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=88531270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=88546690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=88615830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=88631270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=88646690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=88715830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=88731270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=88746690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=88815830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=88831270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=88846690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=88915830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=88931270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=88946690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=89015830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=89031270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=89046690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=89115830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=89131270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=89146690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=89215830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=89231270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=89246690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=89315830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=89331270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=89346690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=89415830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=89431270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=89446690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=89515830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=89531270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=89546690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=89615830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=89631270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=89646690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=89715830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=89731270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=89746690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=89815830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=89831270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=89846690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=89915830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=89931270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=89946690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=90015830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=90031270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=90046690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=90115830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=90131270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=90146690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=90215830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=90231270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=90246690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=90315830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=90331270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=90346690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=90415830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=90431270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=90446690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=90515830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=90531270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=90546690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=90615830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=90631270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=90646690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=90715830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=90731270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=90746690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=90815830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=90831270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=90846690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=90915830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=90931270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=90946690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=91015830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=91031270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=91046690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=91115830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=91131270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=91146690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=91215830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=91231270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=91246690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=91315830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=91331270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=91346690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=91415830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=91431270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=91446690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=91515830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=91531270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=91546690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=91615830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=91631270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=91646690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=91715830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=91731270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=91746690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=91815830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=91831270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=91846690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     [sd] t=91915830 panel_cmd=b0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=2
-#     [sd] t=91931270 panel_cmd=d0 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=5
-#     [sd] t=91946690 panel_cmd=90 panel_n=24 dut_shift=110000000000 dut_res=3072 dut_rz=3072 dut_st=7
-#     all-channels=0xC00 dbg_low_idx=11
-# [5] release: Z1 drops -> touch_valid clears
-#     [sd] t=92015830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=3072 dut_st=2
-#     [sd] t=92115830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=92215830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=92315830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=92415830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=92515830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=92615830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=92715830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=92815830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=92915830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=93015830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=93115830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=93215830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=93315830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=93415830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=93515830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=93615830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=93715830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=93815830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=93915830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=94015830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=94115830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=94215830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=94315830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=94415830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=94515830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=94615830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=94715830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=94815830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=94915830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=95015830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=95115830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=95215830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=95315830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=95415830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=95515830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=95615830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=95715830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=95815830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=95915830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=96015830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=96115830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=96215830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=96315830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=96415830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=96515830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=96615830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=96715830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=96815830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     [sd] t=96915830 panel_cmd=b0 panel_n=24 dut_shift=000000001000 dut_res=8 dut_rz=8 dut_st=2
-#     checks=37 errors=0
-# [6] MISO stuck HIGH (all-ones results) -> dbg_stuck must latch
-#     [sd] t=97015830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=8 dut_st=2
-#     [sd] t=97031270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=97046690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=97115830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=97131270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=97146690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=97215830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=97231270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=97246690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=97315830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=97331270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=97346690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=97415830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=97431270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=97446690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=97515830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=97531270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=97546690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=97615830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=97631270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=97646690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=97715830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=97731270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=97746690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=97815830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=97831270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=97846690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=97915830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=97931270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=97946690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=98015830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=98031270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=98046690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=98115830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=98131270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=98146690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=98215830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=98231270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=98246690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=98315830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=98331270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=98346690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=98415830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=98431270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=98446690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=98515830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=98531270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=98546690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=98615830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=98631270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=98646690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=98715830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=98731270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=98746690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=98815830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=98831270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=98846690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=98915830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=98931270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=98946690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=99015830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=99031270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=99046690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=99115830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=99131270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=99146690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=99215830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=99231270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=99246690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=99315830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=99331270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=99346690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=99415830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=99431270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=99446690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=99515830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=99531270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=99546690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=99615830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=99631270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=99646690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=99715830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=99731270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=99746690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=99815830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=99831270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=99846690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=99915830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=99931270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=99946690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=100015830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=100031270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=100046690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=100115830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=100131270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=100146690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=100215830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=100231270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=100246690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=100315830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=100331270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=100346690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=100415830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=100431270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=100446690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=100515830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=100531270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=100546690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=100615830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=100631270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=100646690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=100715830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=100731270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=100746690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=100815830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=100831270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=100846690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=100915830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=100931270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=100946690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=101015830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=101031270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=101046690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=101115830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=101131270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=101146690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=101215830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=101231270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=101246690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=101315830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=101331270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=101346690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=101415830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=101431270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=101446690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=101515830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=101531270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=101546690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=101615830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=101631270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=101646690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=101715830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=101731270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=101746690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=101815830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=101831270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=101846690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=101915830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=101931270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=101946690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=102015830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=102031270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=102046690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=102115830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=102131270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=102146690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=102215830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=102231270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=102246690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=102315830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=102331270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=102346690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=102415830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=102431270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=102446690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=102515830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=102531270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=102546690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=102615830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=102631270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=102646690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=102715830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=102731270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=102746690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=102815830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=102831270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=102846690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=102915830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=102931270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=102946690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=103015830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=103031270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=103046690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=103115830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=103131270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=103146690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=103215830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=103231270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=103246690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=103315830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=103331270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=103346690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=103415830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=103431270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=103446690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=103515830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=103531270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=103546690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=103615830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=103631270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=103646690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=103715830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=103731270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=103746690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=103815830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=103831270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=103846690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=103915830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=103931270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=103946690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=104015830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=104031270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=104046690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=104115830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=104131270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=104146690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=104215830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=104231270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=104246690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=104315830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=104331270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=104346690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=104415830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=104431270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=104446690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=104515830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=104531270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=104546690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=104615830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=104631270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=104646690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=104715830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=104731270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=104746690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=104815830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=104831270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=104846690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=104915830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=104931270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=104946690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=105015830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=105031270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=105046690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=105115830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=105131270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=105146690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=105215830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=105231270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=105246690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=105315830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=105331270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=105346690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=105415830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=105431270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=105446690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=105515830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=105531270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=105546690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=105615830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=105631270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=105646690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=105715830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=105731270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=105746690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=105815830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=105831270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=105846690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=105915830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=105931270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=105946690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=106015830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=106031270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=106046690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=106115830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=106131270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=106146690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=106215830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=106231270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=106246690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=106315830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=106331270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=106346690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=106415830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=106431270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=106446690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=106515830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=106531270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=106546690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=106615830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=106631270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=106646690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=106715830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=106731270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=106746690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=106815830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=106831270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=106846690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=106915830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=106931270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=106946690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=107015830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=107031270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=107046690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=107115830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=107131270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=107146690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=107215830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=107231270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=107246690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=107315830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=107331270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=107346690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=107415830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=107431270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=107446690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=107515830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=107531270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=107546690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=107615830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=107631270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=107646690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=107715830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=107731270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=107746690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=107815830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=107831270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=107846690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=107915830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=107931270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=107946690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=108015830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=108031270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=108046690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=108115830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=108131270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=108146690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=108215830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=108231270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=108246690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=108315830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=108331270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=108346690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=108415830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=108431270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=108446690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=108515830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=108531270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=108546690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=108615830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=108631270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=108646690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=108715830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=108731270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=108746690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=108815830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=108831270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=108846690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     [sd] t=108915830 panel_cmd=b0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=2
-#     [sd] t=108931270 panel_cmd=d0 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=5
-#     [sd] t=108946690 panel_cmd=90 panel_n=24 dut_shift=111111111111 dut_res=4095 dut_rz=4095 dut_st=7
-#     checks=40 errors=0
-# [7] link recovers -> dbg_stuck must clear
-#     [sd] t=109015830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=4095 dut_st=2
-#     [sd] t=109031270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=109046690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=109115830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=109131270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=109146690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=109215830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=109231270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=109246690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=109315830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=109331270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=109346690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=109415830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=109431270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=109446690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=109515830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=109531270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=109546690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=109615830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=109631270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=109646690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=109715830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=109731270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=109746690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=109815830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=109831270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=109846690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=109915830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=109931270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=109946690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=110015830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=110031270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=110046690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=110115830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=110131270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=110146690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=110215830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=110231270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=110246690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=110315830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=110331270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=110346690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=110415830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=110431270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=110446690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=110515830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=110531270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=110546690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=110615830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=110631270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=110646690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=110715830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=110731270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=110746690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=110815830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=110831270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=110846690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=110915830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=110931270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=110946690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=111015830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=111031270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=111046690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=111115830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=111131270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=111146690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=111215830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=111231270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=111246690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=111315830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=111331270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=111346690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=111415830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=111431270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=111446690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=111515830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=111531270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=111546690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=111615830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=111631270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=111646690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=111715830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=111731270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=111746690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=111815830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=111831270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=111846690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=111915830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=111931270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=111946690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=112015830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=112031270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=112046690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=112115830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=112131270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=112146690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=112215830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=112231270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=112246690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=112315830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=112331270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=112346690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=112415830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=112431270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=112446690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=112515830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=112531270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=112546690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=112615830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=112631270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=112646690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=112715830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=112731270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=112746690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=112815830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=112831270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=112846690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=112915830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=112931270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=112946690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=113015830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=113031270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=113046690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=113115830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=113131270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=113146690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=113215830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=113231270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=113246690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=113315830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=113331270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=113346690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=113415830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=113431270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=113446690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=113515830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=113531270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=113546690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=113615830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=113631270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=113646690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=113715830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=113731270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=113746690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=113815830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=113831270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=113846690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=113915830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=113931270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=113946690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=114015830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=114031270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=114046690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=114115830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=114131270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=114146690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=114215830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=114231270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=114246690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=114315830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=114331270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=114346690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=114415830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=114431270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=114446690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=114515830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=114531270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=114546690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=114615830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=114631270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=114646690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=114715830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=114731270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=114746690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=114815830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=114831270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=114846690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=114915830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=114931270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=114946690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=115015830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=115031270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=115046690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=115115830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=115131270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=115146690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=115215830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=115231270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=115246690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=115315830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=115331270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=115346690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=115415830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=115431270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=115446690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=115515830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=115531270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=115546690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=115615830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=115631270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=115646690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=115715830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=115731270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=115746690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=115815830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=115831270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=115846690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=115915830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=115931270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=115946690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=116015830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=116031270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=116046690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=116115830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=116131270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=116146690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=116215830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=116231270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=116246690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=116315830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=116331270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=116346690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=116415830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=116431270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=116446690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=116515830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=116531270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=116546690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=116615830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=116631270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=116646690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=116715830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=116731270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=116746690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=116815830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=116831270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=116846690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=116915830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=116931270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=116946690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=117015830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=117031270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=117046690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=117115830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=117131270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=117146690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=117215830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=117231270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=117246690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=117315830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=117331270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=117346690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=117415830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=117431270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=117446690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=117515830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=117531270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=117546690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=117615830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=117631270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=117646690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=117715830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=117731270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=117746690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=117815830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=117831270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=117846690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=117915830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=117931270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=117946690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=118015830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=118031270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=118046690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=118115830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=118131270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=118146690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=118215830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=118231270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=118246690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=118315830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=118331270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=118346690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=118415830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=118431270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=118446690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=118515830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=118531270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=118546690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=118615830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=118631270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=118646690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=118715830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=118731270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=118746690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=118815830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=118831270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=118846690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=118915830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=118931270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=118946690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=119015830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=119031270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=119046690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=119115830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=119131270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=119146690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=119215830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=119231270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=119246690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=119315830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=119331270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=119346690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=119415830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=119431270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=119446690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=119515830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=119531270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=119546690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=119615830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=119631270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=119646690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=119715830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=119731270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=119746690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=119815830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=119831270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=119846690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=119915830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=119931270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=119946690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=120015830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=120031270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=120046690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=120115830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=120131270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=120146690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=120215830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=120231270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=120246690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=120315830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=120331270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=120346690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=120415830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=120431270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=120446690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=120515830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=120531270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=120546690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=120615830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=120631270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=120646690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=120715830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=120731270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=120746690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=120815830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=120831270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=120846690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     [sd] t=120915830 panel_cmd=b0 panel_n=24 dut_shift=011111010000 dut_res=2000 dut_rz=2000 dut_st=2
-#     [sd] t=120931270 panel_cmd=d0 panel_n=24 dut_shift=010010110000 dut_res=1200 dut_rz=2000 dut_st=5
-#     [sd] t=120946690 panel_cmd=90 panel_n=24 dut_shift=101000101000 dut_res=2600 dut_rz=2000 dut_st=7
-#     checks=41 errors=0
+# [7] bus framing
+#     40 rising clock edges in one transaction
+# [8] bring-up diagnostics
+# [8b] with no pad, dbg_dat_low must stay clear
+#     polls=15 dat_low=0 rx2=ff
+#     checks=34 errors=0
+# [9] reply byte classification (what the LEDs show)
+#     checks=42 errors=0
+# [10] loopback detection (echoing our own commands)
+#     rx2=00 loopback=1
+#     checks=47 errors=0
+#     checks=47 errors=0
 # ================================
-#   checks=41 errors=0 malformed_frames=0
-#   checks=42 errors=0
+#   checks=47 errors=0
 #   ALL PASS
 # ================================
-# ** Note: $finish    : tb_touch_controller.sv(483)
-#    Time: 121000390 ns  Iteration: 1  Instance: /tb_touch_controller
-# End time: 15:20:06 on Sep 26,2026, Elapsed time: 0:00:40
+# ** Note: $finish    : tb_ps2_controller.sv(482)
+#    Time: 416853030 ns  Iteration: 1  Instance: /tb_ps2_controller
+# End time: 01:51:11 on Sep 27,2026, Elapsed time: 0:02:19
 # Errors: 0, Warnings: 0
 
 ===================================================
  running tb_samegame_top (integration)
 ===================================================
 Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
-Start time: 15:20:06 on Sep 26,2026
-vlog -sv -work work_top tb_samegame_top.sv logo_flash_tb.sv ..\..\rtl\samegame_pkg.sv ..\..\rtl\reset_sync.sv ..\..\rtl\debounce.sv ..\..\rtl\spi_byte_master.sv ..\..\rtl\lcd_ili9341_ctrl.sv ..\..\rtl\frame_seq.sv ..\..\rtl\board_memory.sv ..\..\rtl\floodfill_engine.sv ..\..\rtl\erase_engine.sv ..\..\rtl\gravity_engine.sv ..\..\rtl\column_shift_engine.sv ..\..\rtl\score_manager.sv ..\..\rtl\rng_generator.sv ..\..\rtl\game_fsm.sv ..\..\rtl\logo_ram.sv ..\..\rtl\lcd_renderer.sv ..\..\rtl\ufm_bootloader.sv ..\..\rtl\touch_controller.sv ..\..\rtl\samegame_top.sv 
+Start time: 01:51:11 on Sep 27,2026
+vlog -sv -work work_top tb_samegame_top.sv logo_flash_tb.sv ..\..\rtl\samegame_pkg.sv ..\..\rtl\reset_sync.sv ..\..\rtl\debounce.sv ..\..\rtl\spi_byte_master.sv ..\..\rtl\lcd_ili9341_ctrl.sv ..\..\rtl\frame_seq.sv ..\..\rtl\board_memory.sv ..\..\rtl\floodfill_engine.sv ..\..\rtl\erase_engine.sv ..\..\rtl\gravity_engine.sv ..\..\rtl\column_shift_engine.sv ..\..\rtl\score_manager.sv ..\..\rtl\rng_generator.sv ..\..\rtl\game_fsm.sv ..\..\rtl\logo_ram.sv ..\..\rtl\lcd_renderer.sv ..\..\rtl\ufm_bootloader.sv ..\..\rtl\ps2_controller.sv ..\..\rtl\samegame_top.sv 
 ** Note: (vlog-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
 -- Compiling module ufm_model_top
 -- Compiling module tb_samegame_top
@@ -2039,12 +363,12 @@ vlog -sv -work work_top tb_samegame_top.sv logo_flash_tb.sv ..\..\rtl\samegame_p
 -- Compiling module logo_ram
 -- Compiling module lcd_renderer
 -- Compiling module ufm_bootloader
--- Compiling module touch_controller
+-- Compiling module ps2_controller
 -- Compiling module samegame_top
 
 Top level modules:
 	tb_samegame_top
-End time: 15:20:06 on Sep 26,2026, Elapsed time: 0:00:00
+End time: 01:51:11 on Sep 27,2026, Elapsed time: 0:00:00
 Errors: 0, Warnings: 0
 Reading pref.tcl
 
@@ -2052,7 +376,7 @@ Reading pref.tcl
 
 # ** Note: (vsim-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
 # vsim -c -work work_top -do "run -all; quit -f" tb_samegame_top 
-# Start time: 15:20:08 on Sep 26,2026
+# Start time: 01:51:13 on Sep 27,2026
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Note: (vopt-220) 'H:/altera_lite/25.1std/questa_fse/win64/../modelsim.ini' is used as the ini file.
 # //  Questa Altera Starter FPGA Edition-64
@@ -2081,18 +405,18 @@ Reading pref.tcl
 #     board non-empty cells = 192 / 192
 #   ok   board non-empty cells = 192
 # [3] streaming frames (this takes a while)
-#     pixels captured=806394  non-background=779162  (cycles=0)
+#     pixels captured=806394  non-background=779170  (cycles=0)
 #     pix_req=76800 pix_valid=76800
 #   ok   non-background pixels > 0 = 1
 #   ok   at least one full frame captured = 1
 #   ok   pix_req answered by pix_valid = 76800
-#     background pixels=27232  logo pixels=779162
+#     background pixels=27224  logo pixels=779170
 # ================================
 #   ALL PASS
 # ================================
-# ** Note: $finish    : tb_samegame_top.sv(346)
+# ** Note: $finish    : tb_samegame_top.sv(378)
 #    Time: 118793540 ns  Iteration: 1  Instance: /tb_samegame_top
-# End time: 15:21:27 on Sep 26,2026, Elapsed time: 0:01:19
+# End time: 01:52:33 on Sep 27,2026, Elapsed time: 0:01:20
 # Errors: 0, Warnings: 0
 
 ===================================================

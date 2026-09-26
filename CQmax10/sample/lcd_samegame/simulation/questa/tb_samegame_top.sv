@@ -103,17 +103,54 @@ module tb_samegame_top;
 
     // ---- DUT I/O ----
     logic lcd_cs, lcd_mosi, lcd_sck, lcd_dc;
-    logic touch_cs, touch_mosi, touch_sck;
-    logic touch_miso = 1'b1;
-    // The two extra candidate sockets are probed by this build (see
-    // touch_controller).  Their MISO pads are undriven here, which is what a
-    // floating input reads (all ones), so they must stay HIGH; leaving the
-    // ports unconnected makes vsim warn (vopt-2718) and tie them to X instead.
-    logic touch_miso_alt = 1'b1;
-    logic touch_miso_fr  = 1'b1;
-    logic alt_cs, alt_mosi, alt_sck;
-    logic fr_cs, fr_mosi, fr_sck;
+    // Pmod-2xDS2: three outputs driven by the DUT (it is the bus master) and one
+    // input coming back from the pad.
+    logic ps_sel, ps_clk, ps_cmd;
+    logic ps_dat;
     logic led, led0, led1, led2, led3;
+
+    // ------------------------------------------------------------------
+    // Minimal PS2 pad model
+    //
+    // Enough to exercise the controller: it answers the 5-byte digital poll
+    // with FF 41 5A 00 00 (no button pressed), which is what a connected but
+    // untouched pad returns.  Buttons are LSB-first and the PAD presents each
+    // bit on the FALLING edge while the master samples on the RISING edge, so
+    // this model shifts out on `negedge ps_clk`.
+    // ------------------------------------------------------------------
+    logic [7:0] pad_reply [0:4];
+    logic [2:0] pad_byte;
+    logic [2:0] pad_bit;
+    logic       pad_cs_d;
+
+    always_comb begin
+        pad_reply[0] = 8'hFF;   // idle byte
+        pad_reply[1] = 8'h41;   // digital pad id
+        pad_reply[2] = 8'h5A;   // signature - the controller's presence test
+        pad_reply[3] = 8'h00;   // buttons_lo (ACTIVE LOW, all released)
+        pad_reply[4] = 8'h00;   // buttons_hi
+    end
+
+    always_ff @(posedge clk) pad_cs_d <= ps_sel;
+
+    always_ff @(negedge clk) begin
+        if (ps_sel) begin
+            // attention released: reset the reply framing
+            pad_byte <= 3'd0;
+            pad_bit  <= 3'd0;
+        end else begin
+            // count the bits the master has clocked out
+            if (pad_bit == 3'd7) begin
+                pad_bit  <= 3'd0;
+                pad_byte <= pad_byte + 3'd1;
+            end else begin
+                pad_bit <= pad_bit + 3'd1;
+            end
+        end
+    end
+
+    // Present the current reply bit (LSB first) while attention is asserted.
+    assign ps_dat = ps_sel ? 1'b1 : pad_reply[pad_byte][pad_bit];
 
     // ---- UFM model connections ----
     logic        flash_read, flash_waitrequest, flash_readdatavalid;
@@ -140,12 +177,7 @@ module tb_samegame_top;
         .clk(clk), .btn_rst(btn_rst),
         .sw1(1'b1), .sw2(1'b1),
         .lcd_cs(lcd_cs), .lcd_mosi(lcd_mosi), .lcd_sck(lcd_sck), .lcd_dc(lcd_dc),
-        .touch_cs(touch_cs), .touch_mosi(touch_mosi),
-        .touch_miso(touch_miso), .touch_sck(touch_sck),
-        .touch_miso_alt(touch_miso_alt),
-        .touch_miso_fr(touch_miso_fr),
-        .alt_cs(alt_cs), .alt_mosi(alt_mosi), .alt_sck(alt_sck),
-        .fr_cs(fr_cs), .fr_mosi(fr_mosi), .fr_sck(fr_sck),
+        .ps_sel(ps_sel), .ps_clk(ps_clk), .ps_cmd(ps_cmd), .ps_dat(ps_dat),
         .led(led), .led0(led0), .led1(led1), .led2(led2), .led3(led3)
     );
 

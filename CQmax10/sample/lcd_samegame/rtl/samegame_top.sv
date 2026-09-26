@@ -1,8 +1,18 @@
 // samegame_top.sv
 //
 // Top level of the "さめがめ" FPGA game.  Wires the LCD/TFT controller, the
-// touch controller, the game logic, the board memory, the logo ROM and the
+// PS2 pad reader, the game logic, the board memory, the logo ROM and the
 // renderer together.
+//
+// INPUT DEVICE: Pmod-2xDS2 (Sipeed) - a PLAYSTATION 2 controller port.
+// ---------------------------------------------------------------------------
+// The touch panel was ABANDONED.  MEASURED on the board, the XPT2046 never
+// drove MISO on any socket that could be probed (every conversion returned
+// 12'hFFF and the pad never went low in a whole 24-clock transfer), so no press
+// could ever be detected.  Pmod-2xDS2 replaces it:
+//     up / down / left / right  -> move the cursor
+//     ○ (circle)                -> select the panel under the cursor
+// See ps2_controller.sv for the protocol.
 //
 // Pin map (from the board schematic):
 //   clk         PIN_88   (50 MHz)
@@ -13,18 +23,13 @@
 //   lcd_mosi    PIN_78
 //   lcd_sck     PIN_75
 //   lcd_dc      PIN_77
-//   touch_cs    PIN_134
-//   touch_mosi  PIN_135
-//   touch_miso  PIN_132
-//   touch_sck   PIN_130
 //   led         PIN_85
 //   led0..led3  PIN_122,123,120,121
 //
-// On the PMOD-TFTLCD module the LCD and the touch controller are on TWO
-// SEPARATE PMOD connectors, so these two groups must NOT be merged: the LCD is
-// verified working on 81/78/75/77 and the touch controller is a self-contained
-// 4-signal PMOD (CS, MOSI, MISO, CLK) on 134/135/132/130.  See
-// touch_controller.sv for the derivation from the module schematic.
+// Pmod-2xDS2 (PS2 pad) pins are in the .qsf; see ps2_controller.sv.
+//
+// NOTE the PMOD-TFTLCD's LCD connector (81/78/75/77) is verified working and
+// must not be disturbed by the input device change.
 //
 // The board memory keeps the *settled* board; the renderer draws the three
 // animation overlays (blink / fall / shift) by offsetting blocks away from
@@ -50,21 +55,13 @@ module samegame_top #(
     output logic lcd_sck,
     output logic lcd_dc,
 
-    output logic touch_cs,
-    output logic touch_mosi,
-    input  logic touch_miso,
-    input  logic touch_miso_alt,     // candidate MISO, socket J1 - see touch_controller
-    input  logic touch_miso_fr,      // candidate MISO, third socket
-    output logic touch_sck,
-    // The two extra sockets receive copies of the touch traffic (see
-    // touch_controller).  Only the socket the touch connector is really
-    // plugged into will answer.
-    output logic alt_cs,
-    output logic alt_mosi,
-    output logic alt_sck,
-    output logic fr_cs,
-    output logic fr_mosi,
-    output logic fr_sck,
+    // ---- Pmod-2xDS2 (PS2 pad) ----
+    // NOTE ps_cmd/ps_clk/ps_sel are driven BY this design (it is the bus
+    // master); only ps_dat comes back from the pad.
+    output logic ps_sel,
+    output logic ps_clk,
+    output logic ps_cmd,
+    input  logic ps_dat,
 
     output logic led,
     output logic led0,
@@ -95,6 +92,10 @@ module samegame_top #(
     logic pix_req, pix_valid;
     logic [8:0] pix_x;
     logic [7:0] pix_y;
+    //  pix_color_raw = renderer output.  Kept as a separate name so a bring-up
+    //  overlay can be re-inserted here later without touching the renderer or the
+    //  LCD controller (see the note where the two are joined).
+    logic [15:0] pix_color_raw;
     logic [15:0] pix_color;
 
     lcd_ili9341_ctrl #(
@@ -128,33 +129,38 @@ module samegame_top #(
     logic frame_tick;
     assign frame_tick = lcd_frame_done;
 
-    // ---- touch controller ----
-    logic touch_valid, touch_down, touch_up;
-    logic [8:0] touch_x;
-    logic [7:0] touch_y;
-    logic [2:0] touch_dbg_z1;
-    logic       touch_dbg_stuck;
-    logic [2:0] touch_dbg_live;
-    logic [1:0] touch_dbg_socket;
-    logic [4:0] touch_dbg_low_idx;
-    logic [4:0] touch_dbg_low_idx_alt;
-    logic [4:0] touch_dbg_low_idx_fr;
-    touch_controller #(
-        .CLK_FREQ_HZ(CLK_FREQ_HZ),
-        .MS_SCALE(MS_SCALE)
-    ) u_touch (
+    // ---- input device: Pmod-2xDS2 (PS2 pad) ----
+    //
+    // Replaces the touch panel, which is gone (the XPT2046 never drove MISO on
+    // the board).  The decoded buttons are ACTIVE HIGH levels here; game_fsm
+    // edge-detects them so one press = one cursor step.
+    logic pad_up, pad_down, pad_left, pad_right, pad_circle, pad_cross;
+    logic pad_ok;
+    logic [7:0] pad_rx0, pad_rx1, pad_rx2, pad_rx3, pad_rx4;
+    logic       pad_dat_low;
+    logic [3:0] pad_polls;
+    logic       pad_loopback;
+    logic       pad_dat_high_idle;
+    logic       pad_dat_high_act;
+    logic [2:0] pad_sig_idx;
+    logic [3:0] pad_sig_hits;
+
+    ps2_controller #(
+        .CLK_FREQ_HZ(CLK_FREQ_HZ)
+    ) u_pad (
         .clk(clk), .rst(rst),
-        .touch_cs(touch_cs), .touch_mosi(touch_mosi), .touch_miso(touch_miso), .touch_sck(touch_sck),
-        .alt_cs(alt_cs), .alt_mosi(alt_mosi), .alt_miso(touch_miso_alt), .alt_sck(alt_sck),
-        .fr_cs(fr_cs), .fr_mosi(fr_mosi), .fr_miso(touch_miso_fr), .fr_sck(fr_sck),
-        .touch_valid(touch_valid), .touch_x(touch_x), .touch_y(touch_y),
-        .touch_down(touch_down), .touch_up(touch_up),
-        .dbg_z1(touch_dbg_z1), .dbg_stuck(touch_dbg_stuck),
-        .dbg_live(touch_dbg_live),
-        .dbg_low_idx(touch_dbg_low_idx),
-        .dbg_low_idx_alt(touch_dbg_low_idx_alt),
-        .dbg_low_idx_fr(touch_dbg_low_idx_fr),
-        .dbg_socket(touch_dbg_socket)
+        .ps_sel(ps_sel), .ps_clk(ps_clk), .ps_cmd(ps_cmd), .ps_dat(ps_dat),
+        .up(pad_up), .down(pad_down), .left(pad_left), .right(pad_right),
+        .circle(pad_circle), .btn_cross(pad_cross),
+        .pad_ok(pad_ok),
+        .dbg_rx0(pad_rx0), .dbg_rx1(pad_rx1),
+        .dbg_rx2(pad_rx2), .dbg_rx3(pad_rx3), .dbg_rx4(pad_rx4),
+        .dbg_dat_low(pad_dat_low), .dbg_polls(pad_polls),
+        .dbg_dat_high_idle(pad_dat_high_idle),
+        .dbg_dat_high_act(pad_dat_high_act),
+        .dbg_sig_idx(pad_sig_idx),
+        .dbg_sig_hits(pad_sig_hits),
+        .dbg_loopback(pad_loopback)
     );
 
     // ---- board memory ----
@@ -271,11 +277,17 @@ module samegame_top #(
     logic game_rst;
     assign game_rst = rst | ~boot_done;
 
+    logic [3:0] cursor_x, cursor_y;
+    logic       cursor_on;
+
     game_fsm #(.COLS(COLS), .ROWS(ROWS), .CELLS(CELLS), .AW(AW)) u_game (
         .clk(clk), .rst(game_rst),
         .frame_tick(frame_tick),
-        .touch_valid(touch_valid), .touch_x(touch_x), .touch_y(touch_y),
-        .touch_down(touch_down), .touch_up(touch_up),
+        // Pmod-2xDS2: direction keys move the cursor, ○ selects
+        .key_up(pad_up), .key_down(pad_down),
+        .key_left(pad_left), .key_right(pad_right),
+        .key_select(pad_circle),
+        .cur_x(cursor_x), .cur_y(cursor_y), .cur_on(cursor_on),
         .ff_rd_addr(ff_rd_addr), .ff_rd_data(ff_rd_data),
         .board_wr_en(board_wr_en), .board_wr_addr(board_wr_addr), .board_wr_data(board_wr_data),
         .col_rd_col(col_rd_col), .col_rd_data(col_rd_data),
@@ -293,13 +305,31 @@ module samegame_top #(
     ) u_render (
         .clk(clk), .rst(rst),
         .pix_req(pix_req), .pix_x(pix_x), .pix_y(pix_y),
-        .pix_color(pix_color), .pix_valid(pix_valid),
+        .pix_color(pix_color_raw), .pix_valid(pix_valid),
         .board_rd_addr(rd_addr_a), .board_rd_data(rd_data_a),
         .rom_addr(rom_addr), .rom_data(rom_data_eff),
         .anim_mode(anim_mode), .blink_mask(blink_mask), .blink_on(blink_on),
         .fall_px(fall_px), .fall_dist(fall_dist),
-        .shift_px(shift_px), .shift_dist(shift_dist)
+        .shift_px(shift_px), .shift_dist(shift_dist),
+        // cursor overlay: that cell is drawn inverted
+        .cur_on(cursor_on), .cur_x(cursor_x), .cur_y(cursor_y),
+        // game-over banner: a red band over the top of the board, cleared as soon
+        // as ○ starts a new game (game_fsm lowers it in S_INIT)
+        .game_over(game_over)
     );
+
+    // ---- renderer -> LCD ----
+    //
+    // A bring-up ON-SCREEN SCOPE used to sit between these two (`ps2_scope.sv`):
+    // it painted the raw PS2 reply bytes and a per-half-period logic capture of
+    // ps_dat/ps_clk/ps_cmd over this corner of the panel.  It earned its place -
+    // the trace is what exposed the extra clock pulse that was slipping every
+    // reply byte by one bit - but the pad decodes correctly now, so it has been
+    // removed and the renderer drives the panel directly again.
+    //
+    // `pix_color_raw` is kept as a distinct name so an overlay can be dropped back
+    // in here without touching the renderer or the LCD controller.
+    assign pix_color = pix_color_raw;
 
     // The board clears itself after reset (board_memory does this on reset),
     // so board_clr_start can stay deasserted here.  The game FSM generates a
@@ -312,56 +342,53 @@ module samegame_top #(
     // backwards once produced a completely wrong diagnosis, so read the
     // polarity first, always.)
     //
-    //   led  (PIN_85)  : ~socket_live.  LIT = the touch chip was found and is
-    //                     being read (any of J2/J4/J6 answered).
-    //   led0 (PIN_122) : ~heartbeat, toggles once per completed frame (~6 Hz)
-    //                    so it always BLINKS while frames are scanned.
-    //   led1 (PIN_123) : ~dbg_socket[0]  |  together these two form a binary
-    //   led2 (PIN_120) : ~dbg_socket[1]  |  SOCKET CODE (both ACTIVE LOW, so a
-    //                    LIT LED is a 1 bit):
+    // ------------------------------------------------------------------ #
+    // THE LEDs SHOW *HOW MANY TIMES THE SIGNATURE WAS RECEIVED* - static code
     //
-    //                        led1 led2   socket the touch chip was found on
-    //                        --------------------------------
-    //                         lit  lit    3 = J6   (141/140/131/127)
-    //                         lit dark    2 = J4   (101/100/105/106)
-    //                        dark  lit    1 = J2   (60/58/56/50)
-    //                        dark dark    0 = NONE found
+    // MEASURED, step by step, on the board:
+    //     dat_high_idle = 1   the line rises HIGH while idle -> pull-up works
+    //     dat_high_act  = 1   it rises HIGH during a poll     -> pad releases it
+    //     dat_low       = 1   it also goes LOW during a poll  -> pad drives zeros
+    //   and yet 0x5A was found in NONE of the five reply bytes.
     //
-    //                     Read it as a binary number: led1 is the 2s bit, led2
-    //                     the 1s bit.  "dark dark" (+ led3 lit) means the touch
-    //                     connector is on none of the probed sockets.
-    //   led3 (PIN_121) : ~touch_dbg_stuck.  LIT = 16 consecutive conversions all
-    //                    returned 12'hFFF, i.e. NOTHING is answering.
+    // 0x5A is BIT-SYMMETRIC (01011010 reversed is still 01011010), so a wrong bit
+    // ORDER cannot explain that.  What CAN explain it on an open-drain bus is
+    // MARGIN: the pad pulls the line low quickly but it only returns high through
+    // the weak pull-up and the ribbon's capacitance, so an alternating pattern
+    // like 0x5A is the first thing to be corrupted when the bit clock is too
+    // fast for the rise time.
     //
-    // WHY THE PINS HAD TO BE FOUND THIS WAY:
-    //   The module puts its LCD on one PMOD connector and its touch controller on
-    //   a SECOND.  The touch port carries CS, MOSI, MISO and CLK on the module
-    //   connector's pins 1..4, and the board exposes those on pins 7,8,9,10 of
-    //   EVERY socket.  Which socket the touch connector lands on depends only on
-    //   the module's mechanical layout - it cannot be derived from a netlist, and
-    //   guessing it has already cost several builds.  So this build DRIVES the
-    //   remaining candidates (J4 and J6; J2/J1/J3 were measured dead) with
-    //   identical SPI traffic, watches all three MISO pins, and AUTO-SELECTS the
-    //   one that answers - so if the chip is there, touch works in this build.
+    // That failure mode is INTERMITTENT, and the previous readout could not show
+    // it: the signature index came from the LATEST poll only, so one bad poll hid
+    // every earlier success.  This display fixes that by showing a COUNT.
     //
-    // NOTE the extra CS/MOSI/SCK outputs also drive sockets that are unused by
-    // this project, so the duplicated traffic cannot disturb anything.
-    wire socket_live   = (touch_dbg_socket != 2'd0);
-    wire [1:0] sock    = touch_dbg_socket;
-    // `boot_ok` stays referenced so it is not swept away and remains probe-able.
+    //   led0..led3 = a 4-bit binary number, led0 the LSB, led3 the MSB.
+    //                LIT = 1 (all LEDs are ACTIVE LOW).
+    //                The number is how many polls have contained 0x5A, saturated
+    //                at 15.
+    //
+    // HOW TO READ IT - and this one number decides the remaining work:
+    //
+    //   0  (all four DARK)  -> the signature has NEVER been received.  The bytes
+    //                          genuinely never contain 0x5A, so the framing or the
+    //                          bit order is wrong. The slower clock did not help.
+    //   1..14               -> the signature IS being received, just not every
+    //                          poll.  THE FRAMING IS CORRECT and only the MARGIN
+    //                          is short; lowering the bit clock further will fix
+    //                          it.  ANY non-zero value other than 15 means this.
+    //   15 (all four LIT)   -> every poll succeeded (the count saturated). The
+    //                          decode is fully working; ignore the other LEDs.
+    //
+    // NOTE 0 and 15 are the all-dark and all-lit extremes and both are
+    // unmistakable, which is why the count is shown saturated at 15 rather than
+    // scaled.
+    //
+    // These are BRING-UP leds.  Once the pad works they reduce to
+    // `led = ~pad_ok` and led0..3 are freed or repurposed to the score.
+    // ------------------------------------------------------------------ #
     logic boot_bad;
     assign boot_bad = boot_fail | boot_blank;
     wire   boot_ok  = boot_done & ~boot_bad;
-
-    logic heartbeat;
-    always_ff @(posedge clk) begin
-        if (rst) heartbeat <= 1'b0;
-        else if (lcd_frame_done) heartbeat <= ~heartbeat;
-    end
-
-    // `touch_valid`, `touch_down`, `touch_x` and `touch_y` are fully wired to
-    // game_fsm (see the instantiation above) and need no LED: this build's LEDs
-    // answer the ONE question still open - which socket the touch chip is on.
 
     // `boot_beat` (bootloader alive) and `boot_pix` (a sample of what the flash
     // actually returned) are intentionally NOT routed to an LED: there are only
@@ -372,24 +399,38 @@ module samegame_top #(
     logic [1:0] unused_boot_pix;
     assign unused_boot_beat = boot_beat;
     assign unused_boot_pix  = boot_pix;
+    // boot_ok stays referenced so it is not swept away and remains probe-able.
     logic unused_boot_ok;
     assign unused_boot_ok = boot_ok;
 
-    // The Z1 meter, the stuck flag and the first-low-clock indices are off the
-    // pins (they saturated to the same pattern for every fault).  Keep them
-    // alive so SignalTap can still observe them.
-    logic [2:0] unused_dbg_z1;
-    logic [2:0] unused_dbg_live;
-    logic [4:0] unused_idx_j2, unused_idx_j4, unused_idx_j6;
-    assign unused_dbg_z1    = touch_dbg_z1;
-    assign unused_dbg_live  = touch_dbg_live;
-    assign unused_idx_j2    = touch_dbg_low_idx;
-    assign unused_idx_j4    = touch_dbg_low_idx_alt;
-    assign unused_idx_j6    = touch_dbg_low_idx_fr;
+    // Keep everything a SignalTap probe might want alive so it is not optimised
+    // away: the raw reply bytes, the signature index, the DAT-level flags (which
+    // already ruled OUT wiring, power and the pull-up) and the button signals.
+    logic unused_pad;
+    assign unused_pad = pad_cross ^ pad_left ^ pad_right ^ pad_circle
+                      ^ pad_down ^ pad_up ^ pad_rx0 ^ pad_rx1 ^ pad_rx2
+                      ^ pad_rx3 ^ pad_rx4;
+    logic unused_diag;
+    assign unused_diag = (|pad_polls) | pad_loopback | pad_dat_low
+                       | pad_dat_high_idle | pad_dat_high_act
+                       ^ pad_sig_idx[0] ^ pad_sig_idx[1];
 
-    assign led  = ~socket_live;          // LIT = a socket was found and is read
-    assign led0 = ~heartbeat;            // frame heartbeat (blinks ~6 Hz)
-    assign led1 = ~sock[0];              // socket code bit 0 (1s)
-    assign led2 = ~sock[1];              // socket code bit 1 (2s)
-    assign led3 = ~touch_dbg_stuck;      // LIT = nothing is answering
+    // ------------------------------------------------------------------
+    // LEDs  (all ACTIVE LOW, so LIT = the signal is 1)
+    // ------------------------------------------------------------------
+    // The bring-up build spent these five pins on the PS2 diagnostics (pad_ok and
+    // the signature-hit count).  The pad decodes correctly now, so they go back to
+    // showing the SCORE, which is what the specification asks for.
+    //
+    // The 16-bit score is shown as its low four bits plus a "non-zero" lamp:
+    //   led  = the score is not zero
+    //   led0 = score bit 0   (LSB)
+    //   led1 = score bit 1
+    //   led2 = score bit 2
+    //   led3 = score bit 3
+    assign led  = ~(|score);
+    assign led0 = ~score[0];
+    assign led1 = ~score[1];
+    assign led2 = ~score[2];
+    assign led3 = ~score[3];
 endmodule

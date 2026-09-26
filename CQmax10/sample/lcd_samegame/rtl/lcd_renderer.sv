@@ -111,9 +111,50 @@ module lcd_renderer #(
     input  logic [8:0]   fall_px,          // global fall progress (pixels)
     input  logic [CELLS*4-1:0] fall_dist,  // per target cell, in cells (0..11)
     input  logic [8:0]   shift_px,         // global shift progress (pixels)
-    input  logic [COLS*4-1:0] shift_dist   // per target column, in cells
+    input  logic [COLS*4-1:0] shift_dist,  // per target column, in cells
+
+    // cursor overlay (from game_fsm).  cur_on = 1 draws it.
+    input  logic         cur_on,
+    input  logic [3:0]   cur_x,
+    input  logic [3:0]   cur_y,
+
+    // ------------------------------------------------------------------
+    // GAME-OVER BANNER
+    //
+    // The game is over when no group of two or more same-coloured cells is
+    // left, which game_fsm determines by flood-filling every cell.  Until now
+    // `game_over` was computed and then went nowhere visible, so the player had
+    // no way to tell "no moves left" from "the buttons stopped working".
+    //
+    // This draws a red band with a white outline across the top of the panel.
+    // It is deliberately NOT a text bitmap: the logo ROM is full (2000 words =
+    // 2 M9K blocks) and there is no font in the design, so a solid banner is the
+    // only way to signal it without adding memory.  ○ restarts.
+    //
+    // Drawn LAST, so it covers the board and the cursor rather than the other
+    // way round - during game over those are not interactive anyway.
+    // ------------------------------------------------------------------
+    input  logic         game_over
 );
     localparam logic [2:0] EMPTY = 3'b111;
+
+    // ------------------------------------------------------------------
+    // game-over banner geometry
+    //
+    // Full width, rows 90..149 (60 px tall, centred on the 240-row panel).  A
+    // 2 px white outline around the red fill keeps the band obvious even if the
+    // panel's colours are slightly off.
+    //
+    // THESE MUST BE DECLARED ABOVE THE always_ff THAT USES THEM.  Putting them at
+    // the end of the file looked fine to Quartus but Questa's vlog rejected all
+    // four uses with (vlog-2730) "Undefined variable", which failed the renderer
+    // suite and the integration suite outright.  Module-scope `logic`/`wire` may
+    // be used before their declaration, a `localparam` may NOT.
+    // ------------------------------------------------------------------
+    localparam logic [15:0] GO_FILL   = 16'hF800;   // red
+    localparam logic [15:0] GO_BORDER = 16'hFFFF;   // white
+    localparam int GO_Y0 = 90;
+    localparam int GO_Y1 = 150;     // exclusive
 
     // sized copy of the geometry parameter used for the FALL scan base.  The
     // parameter is a plain `int` (32-bit, SIGNED), so using it directly in a
@@ -190,6 +231,41 @@ module lcd_renderer #(
 
     // logo address accumulator (12 bits - see note 2)
     logic [11:0] rom_acc;
+
+    // ------------------------------------------------------------------
+    // cursor overlay
+    //
+    // The cursor cell is drawn INVERTED (RGB565 inverted is just `~color`), so
+    // no second logo image and no extra memory is needed - which matters on a
+    // MAX 10 10M08 where the logo ROM has no spare room.
+    //
+    // `faddr` already holds the cell being emitted in EVERY mode:
+    //   STATIC / BLINK : the pixel's own cell (set in R_IDLE)
+    //   FALL / SHIFT   : the cell the search matched
+    // so a single comparison covers all four animations, and during FALL/SHIFT
+    // the cursor correctly rides along with the moving block.
+    //
+    // The address is REGISTERED rather than recomputed in R_EMIT: cur_y*COLS is
+    // a shift (COLS == 16) but the module's timing discipline is to keep every
+    // arithmetic term out of the emit cycle, and this costs one 8-bit compare.
+    //
+    // NOTE the cursor is inverted even where the cell is EMPTY (base colour =
+    // BG_COLOR): inverting black gives white, which is exactly what makes the
+    // cursor VISIBLE on an empty panel.  Without that the player could not see
+    // the cursor at all once it moved onto a cleared cell.
+    // ------------------------------------------------------------------
+    logic [AW-1:0] cur_addr;      // cursor cell address, registered
+    logic          cur_vis;       // 1 = the cursor should be drawn
+
+    always_ff @(posedge clk) begin
+        if (rst) begin
+            cur_addr <= '0;
+            cur_vis  <= 1'b0;
+        end else begin
+            cur_addr <= AW'(cur_y) * COLS + AW'(cur_x);
+            cur_vis  <= cur_on;
+        end
+    end
 
     // ------------------------------------------------------------------
     // one search step : exactly ONE candidate cell per clock
@@ -374,7 +450,26 @@ module lcd_renderer #(
             // --------------------------------- emit and free the FSM
             R_EMIT: begin
                 // rom_data belongs to the address presented in R_LOGO.
-                pix_color <= foundv ? rom_data : BG_COLOR;
+                // The cursor cell is inverted (see the note above `cur_addr`).
+                //
+                // GAME-OVER BANNER is applied LAST, as an override, so the board
+                // and the cursor cannot punch through it.  `pya` is the display
+                // row of THIS pixel (registered in R_IDLE and unchanged since), so
+                // the band lines up exactly with the pixel being emitted.
+                //
+                // Why a solid band and not text: the logo ROM is full (2000 words
+                // = 2 M9K blocks) and there is no font in the design, so text would
+                // mean another memory.  Red fill with a white outline is
+                // unmistakable and costs two comparators.  ○ restarts.
+                if (game_over && (pya >= 8'(GO_Y0)) && (pya < 8'(GO_Y1))) begin
+                    pix_color <= ((pya < 8'(GO_Y0 + 2)) || (pya >= 8'(GO_Y1 - 2)))
+                                 ? GO_BORDER
+                                 : GO_FILL;
+                end else begin
+                    pix_color <= (cur_vis && faddr == cur_addr)
+                                 ? ~(foundv ? rom_data : BG_COLOR)
+                                 :  (foundv ? rom_data : BG_COLOR);
+                end
                 pix_valid <= 1'b1;
                 st        <= R_IDLE;
             end

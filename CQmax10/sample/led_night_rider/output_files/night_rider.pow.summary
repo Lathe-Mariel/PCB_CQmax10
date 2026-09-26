@@ -1,12 +1,12 @@
-Power Analyzer Status : Successful - Sat Sep 26 14:43:35 2026
+Power Analyzer Status : Successful - Sat Sep 26 18:25:18 2026
 Quartus Prime Version : 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 Revision Name : night_rider
 Top-level Entity Name : night_rider_top
 Family : MAX 10
 Device : 10M08SCE144C8G
 Power Models : Final
-Total Thermal Power Dissipation : 130.89 mW
+Total Thermal Power Dissipation : 140.71 mW
 Core Dynamic Thermal Power Dissipation : 0.00 mW
-Core Static Thermal Power Dissipation : 110.65 mW
-I/O Thermal Power Dissipation : 20.24 mW
+Core Static Thermal Power Dissipation : 110.68 mW
+I/O Thermal Power Dissipation : 30.03 mW
 Power Estimation Confidence : Low: user provided insufficient toggle rate data

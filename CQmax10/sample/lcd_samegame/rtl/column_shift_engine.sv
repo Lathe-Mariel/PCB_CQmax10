@@ -44,7 +44,17 @@ module column_shift_engine #(
     output logic [COLS-1:0] column_empty,
 
     // shift distance per target column (in cells), indexed target = column
-    output logic [COLS*4-1:0] shift_dist
+    output logic [COLS*4-1:0] shift_dist,
+
+    // ------------------------------------------------------------------
+    // LONGEST COLUMN MOVE THIS PASS, in columns.
+    //
+    // Same reasoning as gravity_engine's max_dist: the shift animation used to
+    // run for the worst-case board width (COLS*20 px = 320 px = 64 frames = 10.6 s)
+    // after EVERY erase, even when nothing moved at all.  That is what made the
+    // cursor feel frozen well after the picture had clearly settled.
+    // ------------------------------------------------------------------
+    output logic [3:0] max_dist
 );
     localparam logic [2:0] EMPTY = 3'b111;
 
@@ -56,6 +66,7 @@ module column_shift_engine #(
     logic [3:0]  scan_col;     // column index for scan / write phases
     logic [3:0]  dst_cnt;      // number of non-empty columns seen so far
     logic [3:0]  row;          // write row
+    logic [3:0]  max_r;        // running maximum of scan_col - dst_cnt
     logic [35:0] cols [0:COLS-1];      // latched column words
     logic [3:0]  target [0:COLS-1];    // target column per source column
     logic [COLS-1:0] empty_map;
@@ -80,6 +91,7 @@ module column_shift_engine #(
             shift_dist<= '0;
             wr_en     <= 1'b0;
             done      <= 1'b0;
+            max_r     <= 4'd0;
         end else begin
             wr_en <= 1'b0;
             done  <= 1'b0;
@@ -91,6 +103,7 @@ module column_shift_engine #(
                     dst_cnt   <= 4'd0;
                     empty_map <= '0;
                     shift_dist <= '0;
+                    max_r     <= 4'd0;      // reset the running maximum per pass
                     state     <= S_SCAN;
                 end
             end
@@ -108,6 +121,9 @@ module column_shift_engine #(
                     // this column moves from scan_col to dst_cnt: distance
                     // scan_col - dst_cnt, keyed by its TARGET column.
                     shift_dist[4*dst_cnt +: 4] <= 4'(scan_col - dst_cnt);
+                    // track the longest move seen so far
+                    if (4'(scan_col - dst_cnt) > max_r)
+                        max_r <= 4'(scan_col - dst_cnt);
                     dst_cnt <= dst_cnt + 4'd1;
                 end
 
@@ -181,4 +197,5 @@ module column_shift_engine #(
 
     assign column_empty = empty_map;
     assign busy = (state != S_IDLE);
+    assign max_dist = max_r;
 endmodule

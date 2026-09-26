@@ -1,24 +1,36 @@
-#   checks=216 errors=0
+#   checks=218 errors=0
 #   ALL PASS
 #     checks=76801 errors=0
 #     checks=153602 errors=0
 #     checks=230403 errors=0
 #     checks=307204 errors=0
 #     checks=384005 errors=0
-#   checks=384005 errors=0
+#     checks=460806 errors=0
+#     checks=537612 errors=0
+#     checks=614413 errors=0
+#     checks=691214 errors=0
+#     checks=691224 errors=0
+#     checks=768025 errors=0
+#   checks=768025 errors=0
 #   ALL PASS
-#   checks=51 errors=0
-#   ALL PASS
+#   FAIL fall phase <= 22 frames (real span needs 20, worst case 24) : got 0 expected 1
+#   FAIL shift phase <= 18 frames (real span needs 16, worst case 32) : got 0 expected 1
+#   checks=57 errors=2
+#   *** FAILURES ***
 #     checks=4006 errors=0
 #   checks=4019 errors=0
 #   ALL PASS
-#     checks=1 errors=0
+#     checks=3 errors=0
+#     checks=11 errors=0
+#     checks=16 errors=0
+#     checks=18 errors=0
+#     checks=20 errors=0
 #     checks=22 errors=0
-#     checks=37 errors=0
-#     checks=40 errors=0
-#     checks=41 errors=0
-#   checks=41 errors=0 malformed_frames=0
-#   checks=42 errors=0
+#     checks=34 errors=0
+#     checks=42 errors=0
+#     checks=47 errors=0
+#     checks=47 errors=0
+#   checks=47 errors=0
 #   ALL PASS
 #   ALL PASS
  ALL TESTBENCHES PASSED

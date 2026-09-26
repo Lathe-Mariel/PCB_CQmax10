@@ -10,17 +10,19 @@ st.R_LW 0 1 0 0 0 0 1
 st.R_EMIT 1 0 0 0 0 0 1 
 
 State Machine - |samegame_top|game_fsm:u_game|state
-Name state.S_GAMEOVER state.S_SHIFT_ANIM state.S_FALL_ANIM state.S_ERASE_EFFECT state.S_FLOODFILL state.S_PLAY state.S_CHECK_WAIT state.S_CHECK state.S_GENERATE state.S_INIT 
-state.S_INIT 0 0 0 0 0 0 0 0 0 0 
-state.S_GENERATE 0 0 0 0 0 0 0 0 1 1 
-state.S_CHECK 0 0 0 0 0 0 0 1 0 1 
-state.S_CHECK_WAIT 0 0 0 0 0 0 1 0 0 1 
-state.S_PLAY 0 0 0 0 0 1 0 0 0 1 
-state.S_FLOODFILL 0 0 0 0 1 0 0 0 0 1 
-state.S_ERASE_EFFECT 0 0 0 1 0 0 0 0 0 1 
-state.S_FALL_ANIM 0 0 1 0 0 0 0 0 0 1 
-state.S_SHIFT_ANIM 0 1 0 0 0 0 0 0 0 1 
-state.S_GAMEOVER 1 0 0 0 0 0 0 0 0 1 
+Name state.S_GAMEOVER state.S_SHIFT_ANIM state.S_SHIFT_WAIT state.S_FALL_ANIM state.S_FALL_WAIT state.S_ERASE_EFFECT state.S_FLOODFILL state.S_PLAY state.S_CHECK_WAIT state.S_CHECK state.S_GENERATE state.S_INIT 
+state.S_INIT 0 0 0 0 0 0 0 0 0 0 0 0 
+state.S_GENERATE 0 0 0 0 0 0 0 0 0 0 1 1 
+state.S_CHECK 0 0 0 0 0 0 0 0 0 1 0 1 
+state.S_CHECK_WAIT 0 0 0 0 0 0 0 0 1 0 0 1 
+state.S_PLAY 0 0 0 0 0 0 0 1 0 0 0 1 
+state.S_FLOODFILL 0 0 0 0 0 0 1 0 0 0 0 1 
+state.S_ERASE_EFFECT 0 0 0 0 0 1 0 0 0 0 0 1 
+state.S_FALL_WAIT 0 0 0 0 1 0 0 0 0 0 0 1 
+state.S_FALL_ANIM 0 0 0 1 0 0 0 0 0 0 0 1 
+state.S_SHIFT_WAIT 0 0 1 0 0 0 0 0 0 0 0 1 
+state.S_SHIFT_ANIM 0 1 0 0 0 0 0 0 0 0 0 1 
+state.S_GAMEOVER 1 0 0 0 0 0 0 0 0 0 0 1 
 
 State Machine - |samegame_top|game_fsm:u_game|column_shift_engine:u_shift|state
 Name state.S_DONE state.S_WRITE state.S_CLEAR state.S_SCANW state.S_SCAN state.S_IDLE 
@@ -105,19 +107,14 @@ state.S_NEXT 0 0 1 0 0 0 0 1
 state.S_ABORT 0 1 0 0 0 0 0 1 
 state.S_DONE 1 0 0 0 0 0 0 1 
 
-State Machine - |samegame_top|touch_controller:u_touch|state
-Name state.S_NO_TOUCH state.S_MEDIAN state.S_STORE state.S_Y_WAIT state.S_Y_START state.S_X_WAIT state.S_X_START state.S_Z1_CHECK state.S_Z1_WAIT state.S_Z1_START state.S_IDLE 
-state.S_IDLE 0 0 0 0 0 0 0 0 0 0 0 
-state.S_Z1_START 0 0 0 0 0 0 0 0 0 1 1 
-state.S_Z1_WAIT 0 0 0 0 0 0 0 0 1 0 1 
-state.S_Z1_CHECK 0 0 0 0 0 0 0 1 0 0 1 
-state.S_X_START 0 0 0 0 0 0 1 0 0 0 1 
-state.S_X_WAIT 0 0 0 0 0 1 0 0 0 0 1 
-state.S_Y_START 0 0 0 0 1 0 0 0 0 0 1 
-state.S_Y_WAIT 0 0 0 1 0 0 0 0 0 0 1 
-state.S_STORE 0 0 1 0 0 0 0 0 0 0 1 
-state.S_MEDIAN 0 1 0 0 0 0 0 0 0 0 1 
-state.S_NO_TOUCH 1 0 0 0 0 0 0 0 0 0 1 
+State Machine - |samegame_top|ps2_controller:u_pad|wst
+Name wst.W_END wst.W_GAP wst.W_HIGH wst.W_LOW wst.W_SETTLE wst.W_IDLE 
+wst.W_IDLE 0 0 0 0 0 0 
+wst.W_SETTLE 0 0 0 0 1 1 
+wst.W_LOW 0 0 0 1 0 1 
+wst.W_HIGH 0 0 1 0 0 1 
+wst.W_GAP 0 1 0 0 0 1 
+wst.W_END 1 0 0 0 0 1 
 
 State Machine - |samegame_top|frame_seq:u_fseq|state
 Name state.F_WAIT_INIT state.F_REQ state.F_WAIT_PERIOD 

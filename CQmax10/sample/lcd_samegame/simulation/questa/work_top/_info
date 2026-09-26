@@ -14,10 +14,10 @@ Z1 dH:/git/PCB_CQmax10/CQmax10/sample/lcd_samegame/simulation/questa
 T_opt
 !i145 1
 !i144 0
-!s110 1790403610
-VSThL`PYhEz`2_=FJEi:`_0
+!s110 1790441475
+VBaefTea>4UjL3Z8MOWl;m3
 04 15 4 work tb_samegame_top fast 0
-=1-9418827106c0-6ab76419-fc-9378
+=1-9418827106c0-6ab7f802-12f-bc24
 R0
 !s12f OEM100
 !s12b OEM100
@@ -28,9 +28,9 @@ tCvgOpt 0 defaultOptions 1107585188
 n@_opt
 OL;O;2025.2;82
 vboard_memory
-Z2 2tb_samegame_top.sv|logo_flash_tb.sv|..\..\rtl\samegame_pkg.sv|..\..\rtl\reset_sync.sv|..\..\rtl\debounce.sv|..\..\rtl\spi_byte_master.sv|..\..\rtl\lcd_ili9341_ctrl.sv|..\..\rtl\frame_seq.sv|..\..\rtl\board_memory.sv|..\..\rtl\floodfill_engine.sv|..\..\rtl\erase_engine.sv|..\..\rtl\gravity_engine.sv|..\..\rtl\column_shift_engine.sv|..\..\rtl\score_manager.sv|..\..\rtl\rng_generator.sv|..\..\rtl\game_fsm.sv|..\..\rtl\logo_ram.sv|..\..\rtl\lcd_renderer.sv|..\..\rtl\ufm_bootloader.sv|..\..\rtl\touch_controller.sv|..\..\rtl\samegame_top.sv
+Z2 2tb_samegame_top.sv|logo_flash_tb.sv|..\..\rtl\samegame_pkg.sv|..\..\rtl\reset_sync.sv|..\..\rtl\debounce.sv|..\..\rtl\spi_byte_master.sv|..\..\rtl\lcd_ili9341_ctrl.sv|..\..\rtl\frame_seq.sv|..\..\rtl\board_memory.sv|..\..\rtl\floodfill_engine.sv|..\..\rtl\erase_engine.sv|..\..\rtl\gravity_engine.sv|..\..\rtl\column_shift_engine.sv|..\..\rtl\score_manager.sv|..\..\rtl\rng_generator.sv|..\..\rtl\game_fsm.sv|..\..\rtl\logo_ram.sv|..\..\rtl\lcd_renderer.sv|..\..\rtl\ufm_bootloader.sv|..\..\rtl\ps2_controller.sv|..\..\rtl\samegame_top.sv
 Z3 DXx6 sv_std 3 std 0 22 @5XbY]_OacJl=`ToSm<M^0
-Z4 !s110 1790403606
+Z4 !s110 1790441471
 !i10b 1
 !s100 L^79fdaIF@S6EN?g>[XAT2
 IceB4CMzH4L^5XC:^fEhM02
@@ -46,9 +46,9 @@ Z7 OL;L;2025.2;82
 r1
 !s85 0
 31
-Z8 !s108 1790403606.000000
-Z9 !s107 ..\\..\\rtl\\samegame_top.sv|..\\..\\rtl\\touch_controller.sv|..\\..\\rtl\\ufm_bootloader.sv|..\\..\\rtl\\lcd_renderer.sv|..\\..\\rtl\\logo_ram.sv|..\\..\\rtl\\game_fsm.sv|..\\..\\rtl\\rng_generator.sv|..\\..\\rtl\\score_manager.sv|..\\..\\rtl\\column_shift_engine.sv|..\\..\\rtl\\gravity_engine.sv|..\\..\\rtl\\erase_engine.sv|..\\..\\rtl\\floodfill_engine.sv|..\\..\\rtl\\board_memory.sv|..\\..\\rtl\\frame_seq.sv|..\\..\\rtl\\lcd_ili9341_ctrl.sv|..\\..\\rtl\\spi_byte_master.sv|..\\..\\rtl\\debounce.sv|..\\..\\rtl\\reset_sync.sv|..\\..\\rtl\\samegame_pkg.sv|logo_flash_tb.sv|tb_samegame_top.sv|
-Z10 !s90 -sv|-work|work_top|tb_samegame_top.sv|logo_flash_tb.sv|..\..\rtl\samegame_pkg.sv|..\..\rtl\reset_sync.sv|..\..\rtl\debounce.sv|..\..\rtl\spi_byte_master.sv|..\..\rtl\lcd_ili9341_ctrl.sv|..\..\rtl\frame_seq.sv|..\..\rtl\board_memory.sv|..\..\rtl\floodfill_engine.sv|..\..\rtl\erase_engine.sv|..\..\rtl\gravity_engine.sv|..\..\rtl\column_shift_engine.sv|..\..\rtl\score_manager.sv|..\..\rtl\rng_generator.sv|..\..\rtl\game_fsm.sv|..\..\rtl\logo_ram.sv|..\..\rtl\lcd_renderer.sv|..\..\rtl\ufm_bootloader.sv|..\..\rtl\touch_controller.sv|..\..\rtl\samegame_top.sv|
+Z8 !s108 1790441471.000000
+Z9 !s107 ..\\..\\rtl\\samegame_top.sv|..\\..\\rtl\\ps2_controller.sv|..\\..\\rtl\\ufm_bootloader.sv|..\\..\\rtl\\lcd_renderer.sv|..\\..\\rtl\\logo_ram.sv|..\\..\\rtl\\game_fsm.sv|..\\..\\rtl\\rng_generator.sv|..\\..\\rtl\\score_manager.sv|..\\..\\rtl\\column_shift_engine.sv|..\\..\\rtl\\gravity_engine.sv|..\\..\\rtl\\erase_engine.sv|..\\..\\rtl\\floodfill_engine.sv|..\\..\\rtl\\board_memory.sv|..\\..\\rtl\\frame_seq.sv|..\\..\\rtl\\lcd_ili9341_ctrl.sv|..\\..\\rtl\\spi_byte_master.sv|..\\..\\rtl\\debounce.sv|..\\..\\rtl\\reset_sync.sv|..\\..\\rtl\\samegame_pkg.sv|logo_flash_tb.sv|tb_samegame_top.sv|
+Z10 !s90 -sv|-work|work_top|tb_samegame_top.sv|logo_flash_tb.sv|..\..\rtl\samegame_pkg.sv|..\..\rtl\reset_sync.sv|..\..\rtl\debounce.sv|..\..\rtl\spi_byte_master.sv|..\..\rtl\lcd_ili9341_ctrl.sv|..\..\rtl\frame_seq.sv|..\..\rtl\board_memory.sv|..\..\rtl\floodfill_engine.sv|..\..\rtl\erase_engine.sv|..\..\rtl\gravity_engine.sv|..\..\rtl\column_shift_engine.sv|..\..\rtl\score_manager.sv|..\..\rtl\rng_generator.sv|..\..\rtl\game_fsm.sv|..\..\rtl\logo_ram.sv|..\..\rtl\lcd_renderer.sv|..\..\rtl\ufm_bootloader.sv|..\..\rtl\ps2_controller.sv|..\..\rtl\samegame_top.sv|
 !i113 0
 Z11 o-sv -work work_top -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 Z12 tCvgOpt 0 defaultOptions 1085333592
@@ -57,15 +57,15 @@ R2
 R3
 R4
 !i10b 1
-!s100 hSfl=X9o`15WXSOXGALHj2
-IlQozbDU^hE0SaFlH7FM8V0
+!s100 LYYHD?Vd7SnKUoN7S[m4?2
+I6X3Mh3LJ[[llG=<m5nGBR2
 S1
 R1
-w1790364833
+Z13 w1790441316
 8..\..\rtl\column_shift_engine.sv
 F..\..\rtl\column_shift_engine.sv
 !i122 0
-L0 22 163
+L0 22 180
 R6
 R7
 r1
@@ -86,7 +86,7 @@ R4
 IoUBhB[k[B3=:Az2Mc[Jg?0
 S1
 R1
-Z13 w1790142320
+Z14 w1790142320
 8..\..\rtl\debounce.sv
 F..\..\rtl\debounce.sv
 !i122 0
@@ -107,15 +107,15 @@ R2
 R3
 R4
 !i10b 1
-!s100 R^h9d5ATQZ62TC<>?F1J?3
-IB?Wb<e0:@M]YJVGj<cC5a2
+!s100 ^H[iHlBN^5<W:T;hR>FD11
+IO7Aiz^jk@Z=m7=P[akh063
 S1
 R1
-R5
+R13
 8..\..\rtl\erase_engine.sv
 F..\..\rtl\erase_engine.sv
 !i122 0
-L0 13 96
+L0 21 96
 R6
 R7
 r1
@@ -161,7 +161,7 @@ R4
 I=Ld?RzY8AOXlkFlFKoNUC2
 S1
 R1
-R13
+R14
 8..\..\rtl\frame_seq.sv
 F..\..\rtl\frame_seq.sv
 !i122 0
@@ -182,15 +182,15 @@ R2
 R3
 R4
 !i10b 1
-!s100 =H]bOW:a?nlT65<oJ[znX2
-I8M^CiVGKYYanAJSjU<HcE0
+!s100 EWTQY@TM20_m>nVdb<^ga3
+I>C:YZN;8[3MFPnFdgPW[]1
 S1
 R1
-Z14 w1790369706
+R13
 8..\..\rtl\game_fsm.sv
 F..\..\rtl\game_fsm.sv
 !i122 0
-L0 22 387
+L0 35 529
 R6
 R7
 r1
@@ -207,15 +207,15 @@ R2
 R3
 R4
 !i10b 1
-!s100 AXOWkB[HW52mXY^B=Qo7j2
-I9nkW7L@UcDfB4?<YD0ec=2
+!s100 27z?NZWk3X<L930LND49=2
+IRmI>3_04<C`7[CKc8RRV]0
 S1
 R1
-R14
+R13
 8..\..\rtl\gravity_engine.sv
 F..\..\rtl\gravity_engine.sv
 !i122 0
-L0 24 117
+L0 24 144
 R6
 R7
 r1
@@ -257,15 +257,15 @@ R2
 R3
 R4
 !i10b 1
-!s100 XnznXn@IcoFcDQ^3RJ2]Y3
-IRRgRblCK`iQc:nJl8Z1jA1
+!s100 Yh^bQL[b`NBVR8;?h28?b3
+ITNI>EPhZFXL`VbWTE5R[Z2
 S1
 R1
-w1790387694
+R13
 8..\..\rtl\lcd_renderer.sv
 F..\..\rtl\lcd_renderer.sv
 !i122 0
-L0 80 307
+L0 80 402
 R6
 R7
 r1
@@ -286,7 +286,7 @@ R4
 IJ^FW7MbE1?U`XTj2b>KI31
 S1
 R1
-w1790384863
+R13
 8logo_flash_tb.sv
 Flogo_flash_tb.sv
 !i122 0
@@ -327,6 +327,31 @@ R10
 !i113 0
 R11
 R12
+vps2_controller
+R2
+R3
+R4
+!i10b 1
+!s100 I;0fnm3fH5<VM0<8g4aaT2
+I5cf7_]Ldne<cNhQ@L8no13
+S1
+R1
+R13
+8..\..\rtl\ps2_controller.sv
+F..\..\rtl\ps2_controller.sv
+!i122 0
+L0 52 599
+R6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 0
+R11
+R12
 vreset_sync
 R2
 R3
@@ -336,7 +361,7 @@ R4
 IbjS7NT[8_FomeYHIcSJWJ3
 S1
 R1
-R13
+R14
 8..\..\rtl\reset_sync.sv
 F..\..\rtl\reset_sync.sv
 !i122 0
@@ -407,15 +432,15 @@ R2
 R3
 R4
 !i10b 1
-!s100 lIEQTT1:nl<WYGV;niA5I3
-I94E5az`MHTHz4@GAZbR;33
+!s100 oU_1jdX2mzF]Fg?ja9=J61
+ITY;B0H]J:Y?VMAbBSZ^260
 S1
 R1
-w1790403301
+R13
 8..\..\rtl\samegame_top.sv
 F..\..\rtl\samegame_top.sv
 !i122 0
-L0 33 363
+L0 38 399
 R6
 R7
 r1
@@ -482,40 +507,15 @@ R2
 R3
 R4
 !i10b 1
-!s100 TnY`0b3fN639WFLSenVo;1
-I3gQZ8S:U9X_9FELkbjHoo1
+!s100 c9jcAO36<cJGRh9UmW8W<2
+IPAb]?`6X5YCR:bZ=FCPWQ1
 S1
 R1
-Z16 w1790402271
-Z17 8tb_samegame_top.sv
-Z18 Ftb_samegame_top.sv
+R13
+Z16 8tb_samegame_top.sv
+Z17 Ftb_samegame_top.sv
 !i122 0
-L0 90 269
-R6
-R7
-r1
-!s85 0
-31
-R8
-R9
-R10
-!i113 0
-R11
-R12
-vtouch_controller
-R2
-R3
-R4
-!i10b 1
-!s100 oP;_DzN6f;3Xc_7Y;[V^m1
-Id^MPKPg95MO_FUFR=Z=h33
-S1
-R1
-w1790403454
-8..\..\rtl\touch_controller.sv
-F..\..\rtl\touch_controller.sv
-!i122 0
-L0 72 660
+L0 90 301
 R6
 R7
 r1
@@ -536,7 +536,7 @@ R4
 I4RKlga@lGoQbI45h@Tm]J0
 S1
 R1
-w1790389293
+R13
 8..\..\rtl\ufm_bootloader.sv
 F..\..\rtl\ufm_bootloader.sv
 !i122 0
@@ -561,9 +561,9 @@ R4
 Iz:HOLof>;jFOAeOhd1GX?0
 S1
 R1
+R13
 R16
 R17
-R18
 !i122 0
 L0 42 45
 R6

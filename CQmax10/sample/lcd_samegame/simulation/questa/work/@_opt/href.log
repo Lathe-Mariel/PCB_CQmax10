@@ -1,11 +1,11 @@
-BEGIN 1:xpt2046_model:fast:work
-    n :  1:tb_touch_controller:fast:work
-    cmd_r :  1:tb_touch_controller:fast:work
+BEGIN 1:ps2_controller:fast:work
+    byte_i :  1:tb_ps2_controller:fast:work
+    rx_shift :  1:tb_ps2_controller:fast:work
+    wst :  1:tb_ps2_controller:fast:work
+    bit_i :  1:tb_ps2_controller:fast:work
+    tick :  1:tb_ps2_controller:fast:work
 END 
-BEGIN 1:touch_controller:fast:work
-    spi_done :  1:tb_touch_controller:fast:work
-    spi_result :  1:tb_touch_controller:fast:work
-    state :  1:tb_touch_controller:fast:work
-    shift_in :  1:tb_touch_controller:fast:work
-    raw_z1 :  1:tb_touch_controller:fast:work
+BEGIN 1:ps2_slave_model:fast:work
+    idx :  1:tb_ps2_controller:fast:work
+    fcnt :  1:tb_ps2_controller:fast:work
 END 

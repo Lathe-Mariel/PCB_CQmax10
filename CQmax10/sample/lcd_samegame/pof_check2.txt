@@ -11,6 +11,6 @@
   16-bit BE pixels    : NOT FOUND (searched 736469 bytes)
 
 === occurrences of the 16-bit value 0x00EA (little-endian EA 00) ===
-lcd_game.pof : 5 aligned 16-bit words equal 0x00EA
-lcd_game.sof : 10 aligned 16-bit words equal 0x00EA
+lcd_game.pof : 1 aligned 16-bit words equal 0x00EA
+lcd_game.sof : 7 aligned 16-bit words equal 0x00EA
 DONE

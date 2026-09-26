@@ -1,11 +1,19 @@
 // erase_engine.sv
 //
-// Erases the flooded group after a 6-frame blink effect.  On `start`, the
-// engine latches the erase mask (the flood-fill bitmap) and begins blinking:
-// for 6 frames it toggles `blink_on` between 1 and 0 once per frame so the
-// renderer can blank the affected blocks.  After BLINK_FRAMES frames it writes
-// EMPTY into every cell in the mask (via the single-cell write port) and
-// pulses `done`.
+// Erases the flooded group after a short blink effect.  On `start`, the engine
+// latches the erase mask (the flood-fill bitmap) and begins blinking: it toggles
+// `blink_on` once per frame so the renderer can blank the affected blocks.  After
+// BLINK_FRAMES frames it writes EMPTY into every cell in the mask (via the
+// single-cell write port) and pulses `done`.
+//
+// BLINK_FRAMES is 3, i.e. three frames at ~166 ms = ~0.5 s, with the toggle
+// happening at the start of each one, so the block flashes dark/light about
+// twice.  It was 6 (~1 s, ~3 flashes) but that felt sluggish next to the
+// erase/fall/shift sequence, so the whole effect was sped up.
+//
+// NOTE there is no separate "off" time: BLINK_FRAMES counts FRAMES, not toggles,
+// so the visible blinking is BLINK_FRAMES-1 transitions.  Do not reduce it to 1 -
+// that would erase with no blink at all.
 //
 // `frame_tick` is a one-cycle pulse marking the start of a new frame; it is
 // produced by the game FSM from the LCD frame timing.
@@ -13,7 +21,7 @@
 module erase_engine #(
     parameter int CELLS = 192,
     parameter int AW    = 8,
-    parameter int BLINK_FRAMES = 6
+    parameter int BLINK_FRAMES = 3
 )(
     input  logic        clk,
     input  logic        rst,

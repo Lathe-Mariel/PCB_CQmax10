@@ -82,6 +82,12 @@ module tb_renderer;
     logic [8:0]        shift_px;
     logic [COLS*4-1:0] shift_dist;
 
+    // cursor overlay inputs.  Default OFF so every existing test is unaffected;
+    // the cursor test below turns it on explicitly.
+    logic              cur_on;
+    logic [3:0]        cur_x, cur_y;
+    logic              game_over;
+
     lcd_renderer #(
         .COLS(COLS), .ROWS(ROWS), .CELLS(CELLS), .AW(AW), .RA_W(RA_W),
         .BG_COLOR(BG_COLOR)
@@ -93,8 +99,26 @@ module tb_renderer;
         .rom_addr(ram_addr), .rom_data(ram_data),
         .anim_mode(anim_mode), .blink_mask(blink_mask), .blink_on(blink_on),
         .fall_px(fall_px), .fall_dist(fall_dist),
-        .shift_px(shift_px), .shift_dist(shift_dist)
+        .shift_px(shift_px), .shift_dist(shift_dist),
+        .cur_on(cur_on), .cur_x(cur_x), .cur_y(cur_y),
+        .game_over(game_over)
     );
+
+    // The reference model applies the SAME cursor rule as the DUT: invert the
+    // colour of every pixel inside the cursor cell.  Inverting BG_COLOR is what
+    // makes the cursor visible on an empty cell, which is the whole point.
+    function automatic logic [15:0] ref_cursor(input int x, input int y,
+                                               input logic [15:0] base);
+        // The banner is a FINAL override in the DUT, so the reference must apply
+        // it after the cursor - otherwise every pixel inside the band would
+        // mismatch while the banner is up.
+        if (game_over && (y >= 90) && (y < 150)) begin
+            ref_cursor = ((y < 92) || (y >= 148)) ? 16'hFFFF : 16'hF800;
+        end else begin
+            ref_cursor = (cur_on && (x/20 == cur_x) && (y/20 == cur_y))
+                         ? ~base : base;
+        end
+    endfunction
 
     // ------------------------------------------------------------------
     // reference model
@@ -157,10 +181,28 @@ module tb_renderer;
     logic [COLS*4-1:0]  ref_shift_dist;
 
     function automatic logic [15:0] ref_pixel(input int x, input int y);
-        ref_pixel = (anim_mode == 2'd2) ? ref_fall(x, y) :
-                    (anim_mode == 2'd3) ? ref_shift(x, y) :
-                    (anim_mode == 2'd1) ? ref_blink(x, y) : ref_static(x, y);
+        logic [15:0] base;
+        base = (anim_mode == 2'd2) ? ref_fall(x, y) :
+               (anim_mode == 2'd3) ? ref_shift(x, y) :
+               (anim_mode == 2'd1) ? ref_blink(x, y) : ref_static(x, y);
+        // the cursor overlay is applied ON TOP of whatever the animation drew,
+        // exactly like the DUT does in R_EMIT
+        ref_pixel = ref_cursor(x, y, base);
     endfunction
+
+    // Read ONE pixel through the real request/valid handshake, so the new
+    // cursor checks do not have to run a whole 76,800-pixel sweep.
+    task automatic pixel_at(input int x, input int y, output logic [15:0] c);
+        @(negedge clk);
+        pix_req = 1'b1;
+        pix_x   = 9'(x);
+        pix_y   = 8'(y);
+        @(negedge clk);
+        pix_req = 1'b0;
+        while (!pix_valid) @(negedge clk);
+        c = pix_color;
+        @(negedge clk);
+    endtask
 
     function automatic logic [15:0] ref_fall(input int x, input int y);
         int cx; int found; logic [15:0] col;
@@ -263,6 +305,20 @@ module tb_renderer;
         blink_on = 1'b1;
         fall_px = '0; fall_dist = '0;
         shift_px = '0; shift_dist = '0;
+        // CURSOR OVERLAY OFF for every existing test.
+        // This MUST be initialised: leaving `cur_on` at X makes the DUT's
+        // `(cur_vis && faddr == cur_addr) ? ~c : c` ternary have an X condition,
+        // and Questa then merges both branches - `c & ~c` = 0 - so EVERY pixel
+        // came out black and the whole colour suite failed.  (Same class of trap
+        // as the uninitialised `stuck_mode` in the old touch testbench: an X on a
+        // condition silently picks a nonsense value instead of erroring.)
+        cur_on = 1'b0;
+        cur_x  = 4'd0;
+        cur_y  = 4'd0;
+        // game_over MUST be initialised for the same reason cur_on must be: an X
+        // on the DUT's `game_over && in_band` condition would let Questa merge
+        // both branches of the override and corrupt every pixel.
+        game_over = 1'b0;
         streaming = 1'b0;
         ref_fall_dist = '0;
         ref_shift_dist = '0;
@@ -360,6 +416,140 @@ module tb_renderer;
         for (int cy = 0; cy < ROWS; cy++) blink_mask[cy*COLS + 0] = 1'b1;
         blink_on  = 1'b0;
         anim_mode = 2'd1;
+        sweep();
+        $display("    checks=%0d errors=%0d", checks, errors);
+
+        // ---------------------------------------------------------------
+        // [6] CURSOR OVERLAY - the new selection indicator.
+        //
+        // The touch panel was replaced by a D-pad + ○ cursor, so the renderer
+        // must invert the 20x20 cell under the cursor.  This is the regression
+        // guard for that feature, and it checks the two properties that matter:
+        //   1. EXACTLY the cursor cell is inverted (no bleed into neighbours -
+        //      an off-by-one in the /20 decomposition would show up here);
+        //   2. an EMPTY cell is inverted to WHITE, which is what makes the
+        //      cursor visible after the player clears that panel.  Without this
+        //      the cursor would be invisible on every cleared cell.
+        $display("[6] cursor overlay inverts exactly one cell");
+        blink_on  = 1'b1;                 // back to lit (blink off)
+        blink_mask = '0;
+        clear_board();
+        for (int cy = 0; cy < ROWS; cy++)
+            for (int cx = 0; cx < COLS; cx++) begin
+                int v;
+                v = (cx * 3 + cy) % 5;
+                write_cell(cx, cy, v);
+                ref_cell[cy*COLS + cx] = v[2:0];
+            end
+        cur_on = 1'b1;
+        cur_x  = 4'd6;
+        cur_y  = 4'd3;
+        anim_mode = 2'd0;
+        sweep();
+        $display("    checks=%0d errors=%0d", checks, errors);
+
+        // cursor over an EMPTY cell must invert BG_COLOR (black -> white)
+        $display("[6b] cursor on an empty cell is visible (black -> white)");
+        write_cell(6, 3, 3'b111);         // EMPTY
+        ref_cell[3*COLS + 6] = 3'b111;
+        sweep();
+        // explicit single-pixel checks: the centre of the cursor cell
+        //
+        // NOTE two traps this test hit when first written, both of them the
+        // TESTBENCH's fault and not the DUT's:
+        //   1. `~BG_COLOR` is widened to 32 bits in a task argument (BG_COLOR is
+        //      a 16-bit parameter), so it compared 0x0000FFFF against
+        //      0xFFFFFFFF.  Mask to 16 bits.
+        //   2. Only cell (6,3) was made EMPTY, so "a non-cursor cell should be
+        //      BG_COLOR" was simply false for the neighbours - they hold logos.
+        //      Ask the reference model instead of assuming, so the check is about
+        //      the CURSOR and not about the board contents.
+        begin
+            logic [15:0] c;
+            logic [15:0] inv_bg;
+            inv_bg = ~BG_COLOR;               // 16-bit inversion (see note 1)
+
+            pixel_at(6*20 + 10, 3*20 + 10, c);
+            chk("cursor cell centre inverted from BG_COLOR", c, inv_bg);
+            pixel_at(6*20 + 10, 5*20 + 10, c);    // two cells below: not the cursor
+            chk("a non-cursor cell is NOT inverted", c, ref_static(6*20 + 10, 5*20 + 10));
+
+            // The very last pixel of the cursor cell must be inverted too, and the
+            // first pixel outside it must not be: this is exactly where an
+            // off-by-one in the /20 decomposition would show up.
+            pixel_at(6*20 + 19, 3*20 + 19, c);
+            chk("cursor cell last pixel inverted", c, inv_bg);
+            pixel_at(6*20 + 20, 3*20 + 19, c);
+            chk("pixel just right of cursor NOT inverted",
+                c, ref_static(6*20 + 20, 3*20 + 19));
+            pixel_at(6*20 + 19, 3*20 + 20, c);
+            chk("pixel just below cursor NOT inverted",
+                c, ref_static(6*20 + 19, 3*20 + 20));
+        end
+        $display("    checks=%0d errors=%0d", checks, errors);
+
+        // and with the cursor OFF nothing may be inverted
+        $display("[6c] cursor off -> board unchanged");
+        cur_on = 1'b0;
+        cur_x  = 4'd0;
+        cur_y  = 4'd0;
+        sweep();
+        $display("    checks=%0d errors=%0d", checks, errors);
+
+        // ---------------------------------------------------------------
+        // [6d] GAME-OVER BANNER
+        //
+        // The banner is a FINAL override, so it must be checked for the two things
+        // that makes it an override rather than a layer:
+        //   1. it wins over the board colours inside its band, and
+        //   2. it does NOT touch a single pixel outside the band - including
+        //      pixels of the very row it starts and ends on.
+        // It must also OVERRIDE THE CURSOR, otherwise the cursor would punch a
+        // hole in the band (the cursor is left visible during game over because
+        // ○ is still live, so the case is reachable).
+        // ---------------------------------------------------------------
+        $display("[6d] game-over banner overrides the top band only");
+        cur_on = 1'b1;                    // deliberately under the band
+        cur_x  = 4'd6;
+        cur_y  = 4'd5;                    // row 100..119, inside the band
+        game_over = 1'b1;
+        sweep();
+        $display("    checks=%0d errors=%0d", checks, errors);
+
+        // explicit edges: first band row, last band row, and the rows either side
+        begin
+            logic [15:0] c;
+            pixel_at(10, 89, c);
+            chk("row 89 (just above band) is not the banner",
+                c, ref_static(10, 89));
+            pixel_at(10, 90, c);
+            chk("row 90 is the white border", c, 16'hFFFF);
+            pixel_at(10, 91, c);
+            chk("row 91 is the white border", c, 16'hFFFF);
+            pixel_at(10, 92, c);
+            chk("row 92 is the red fill", c, 16'hF800);
+            pixel_at(159, 120, c);
+            chk("band centre is the red fill", c, 16'hF800);
+            pixel_at(10, 147, c);
+            chk("row 147 is the red fill", c, 16'hF800);
+            pixel_at(10, 148, c);
+            chk("row 148 is the white border", c, 16'hFFFF);
+            pixel_at(10, 149, c);
+            chk("row 149 is the white border", c, 16'hFFFF);
+            pixel_at(10, 150, c);
+            chk("row 150 (just below band) is not the banner",
+                c, ref_static(10, 150));
+            // the banner must beat the cursor: cell (6,5) spans y 100..119,
+            // x 120..139, which is inside the band
+            pixel_at(6*20 + 10, 5*20 + 10, c);
+            chk("banner overrides the cursor", c, 16'hF800);
+        end
+        $display("    checks=%0d errors=%0d", checks, errors);
+
+        // banner cleared -> the board (and cursor) come back
+        $display("[6e] banner cleared -> board visible again");
+        game_over = 1'b0;
+        cur_on    = 1'b1;
         sweep();
         $display("    checks=%0d errors=%0d", checks, errors);
 

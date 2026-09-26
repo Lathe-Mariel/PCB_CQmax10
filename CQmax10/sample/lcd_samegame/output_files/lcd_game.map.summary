@@ -1,16 +1,16 @@
-Analysis & Synthesis Status : Successful - Sat Sep 26 15:39:34 2026
+Analysis & Synthesis Status : Successful - Sun Sep 27 01:49:19 2026
 Quartus Prime Version : 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 Revision Name : lcd_game
 Top-level Entity Name : samegame_top
 Family : MAX 10
-Total logic elements : 8,151
-    Total combinational functions : 5,986
-    Dedicated logic registers : 3,412
-Total registers : 3412
-Total pins : 25
+Total logic elements : 7,972
+    Total combinational functions : 5,863
+    Dedicated logic registers : 3,400
+Total registers : 3400
+Total pins : 17
 Total virtual pins : 0
 Total memory bits : 34,816
-Embedded Multiplier 9-bit elements : 8
+Embedded Multiplier 9-bit elements : 1
 Total PLLs : 0
 UFM blocks : 1
 ADC blocks : 0

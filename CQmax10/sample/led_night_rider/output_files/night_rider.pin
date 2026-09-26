@@ -31,11 +31,11 @@
  --                  Bank 1B:       3.3V
  --                  Bank 2:       2.5V
  --                  Bank 3:       3.3V
- --                  Bank 4:       2.5V
+ --                  Bank 4:       3.3V
  --                  Bank 5:       2.5V
  --                  Bank 6:       3.3V
  --                  Bank 7:       2.5V
- --                  Bank 8:       2.5V
+ --                  Bank 8:       3.3V
  -- GND           : Dedicated ground pin. Dedicated GND pins MUST be connected to GND.
  --                  It can also be used to report unused dedicated pins. The connection
  --                  on the board for unused dedicated pins depends on whether this will
@@ -117,13 +117,13 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : 44        :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : 45        :        :                   :         : 3         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 46        :        :                   :         : 3         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 47        :        :                   :         : 3         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 48        :        :                   :         : 3         :                
+board_button[2]              : 48        : input  : 3.3-V LVCMOS      :         : 3         : Y              
 VCCIO3                       : 49        : power  :                   : 3.3V    : 3         :                
 led[7]                       : 50        : output : 3.3-V LVCMOS      :         : 3         : Y              
 VCC_ONE                      : 51        : power  :                   : 3.0V/3.3V :           :                
 led[3]                       : 52        : output : 3.3-V LVCMOS      :         : 3         : Y              
 GND                          : 53        : gnd    :                   :         :           :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 54        :        :                   :         : 3         :                
+board_button[1]              : 54        : input  : 3.3-V LVCMOS      :         : 3         : Y              
 led[2]                       : 55        : output : 3.3-V LVCMOS      :         : 3         : Y              
 led[6]                       : 56        : output : 3.3-V LVCMOS      :         : 3         : Y              
 led[1]                       : 57        : output : 3.3-V LVCMOS      :         : 3         : Y              
@@ -131,12 +131,12 @@ led[5]                       : 58        : output : 3.3-V LVCMOS      :         
 led[0]                       : 59        : output : 3.3-V LVCMOS      :         : 3         : Y              
 led[4]                       : 60        : output : 3.3-V LVCMOS      :         : 3         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : 61        :        :                   :         : 4         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 62        :        :                   :         : 4         :                
+board_button[0]              : 62        : input  : 3.3-V LVCMOS      :         : 4         : Y              
 GND                          : 63        : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 64        :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 65        :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 66        :        :                   :         : 4         :                
-VCCIO4                       : 67        : power  :                   : 2.5V    : 4         :                
+VCCIO4                       : 67        : power  :                   : 3.3V    : 4         :                
 GND                          : 68        : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 69        :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 70        :        :                   :         : 4         :                
@@ -189,26 +189,26 @@ GND                          : 116       : gnd    :                   :         
 VCCIO7                       : 117       : power  :                   : 2.5V    : 7         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 118       :        :                   :         : 7         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 119       :        :                   :         : 7         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 120       :        :                   :         : 8         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 121       :        :                   :         : 8         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 122       :        :                   :         : 8         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 123       :        :                   :         : 8         :                
+board_led[3]                 : 120       : output : 3.3-V LVCMOS      :         : 8         : Y              
+board_led[2]                 : 121       : output : 3.3-V LVCMOS      :         : 8         : Y              
+board_led[0]                 : 122       : output : 3.3-V LVCMOS      :         : 8         : Y              
+board_led[1]                 : 123       : output : 3.3-V LVCMOS      :         : 8         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : 124       :        :                   :         : 8         :                
 GND                          : 125       : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 126       :        :                   :         : 8         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 127       :        :                   :         : 8         :                
-VCCIO8                       : 128       : power  :                   : 2.5V    : 8         :                
-~ALTERA_nCONFIG~ / RESERVED_INPUT : 129       : input  : 2.5 V Schmitt Trigger :         : 8         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : 130       :        :                   :         : 8         :                
+VCCIO8                       : 128       : power  :                   : 3.3V    : 8         :                
+~ALTERA_nCONFIG~ / RESERVED_INPUT : 129       : input  : 3.3 V Schmitt Trigger :         : 8         : N              
+board_button[3]              : 130       : input  : 3.3-V LVCMOS      :         : 8         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : 131       :        :                   :         : 8         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 132       :        :                   :         : 8         :                
 GND                          : 133       : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 134       :        :                   :         : 8         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 135       :        :                   :         : 8         :                
-~ALTERA_nSTATUS~ / RESERVED_INPUT : 136       : input  : 2.5 V Schmitt Trigger :         : 8         : N              
+~ALTERA_nSTATUS~ / RESERVED_INPUT : 136       : input  : 3.3 V Schmitt Trigger :         : 8         : N              
 GND                          : 137       : gnd    :                   :         :           :                
-~ALTERA_CONF_DONE~ / RESERVED_INPUT : 138       : input  : 2.5 V Schmitt Trigger :         : 8         : N              
-VCCIO8                       : 139       : power  :                   : 2.5V    : 8         :                
+~ALTERA_CONF_DONE~ / RESERVED_INPUT : 138       : input  : 3.3 V Schmitt Trigger :         : 8         : N              
+VCCIO8                       : 139       : power  :                   : 3.3V    : 8         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 140       :        :                   :         : 8         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 141       :        :                   :         : 8         :                
 GND                          : 142       : gnd    :                   :         :           :                
